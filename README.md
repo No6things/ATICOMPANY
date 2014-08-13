@@ -1,14 +1,12 @@
-
-
 #ATICOMPANY
 ===========
 ###De que se trata
-Automatización de procesos de entregas de paqueteria mediante el uso de una plataforma web.
+* Se busca la automatización de los procesos de entregas de paqueteria mediante el uso de una plataforma web.
 
-Corresponde a los requerimientos provistos por el Proyecto de Aplicaciones con TecnologÃ­a a Internet 2, de la Universidad Central de Venezuela en el semestre I-2014
+* Dicha plataforma busca dar cumplimiento a los requerimientos provistos por el Proyecto de Aplicaciones con Tecnología a Internet 2, de la Universidad Central de Venezuela en el semestre I-2014
+
 ###Quienes somos
+* Alberto Cavadia [No6things](https://github.com/No6things)
+* Jesús Gómez [jesusgomez545](https://github.com/jesusgomez545)
+
 ###Contacto
-
-
-
-
