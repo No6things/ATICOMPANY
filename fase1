@@ -1,0 +1,21 @@
+Requisitos No Funcionales:
+
+-El envio de notificaciones via correo se realice en un lapso no mayor a 6 horas.
+-Los valores de las tarifas deben ser redondeados con una precision de dos decimales.
+-La informacion de la empresa debe ser deplegada de manera amigable que cumpla con los estandare de mercadeo establecidos por las buenas practicas del mercado y la interaccion con usuarios
+-La interfaz debe ser comoda, usable e intuitiva para el usuario con miras al incremento de la clientela.
+-Asegurarse que las contraseñas cumplan con los estandares de seguridad.
+-Permitir el despliegue de la platafomra en multiples lenguajes para abarcar la diversidad de los usuarios.
+
+
+Requisitos Funcionales:
+
+*incluir diagramas de estados*
+-Mecanismo de persistencia para los usuarios y administradores (registro y acceso de cuentas)
+-Visualizar la informacion de los paquetes (estado, fecha y tarifa) relacionados al usuario
+-Permitir el envio de paquetes en los operadores
+-Permitir que los operadores cambien el estado de los paquetes
+-Notificar el cambio de estado de paquetes a los usuarios involucrados
+-Permitir que los administradores modifiquen los parametros internos para el calculo de tarifas
+-Calculadora capaz de establecer el precio del envio de un paquete dado el ancho, alto, profundida y precio del paquete
+-
