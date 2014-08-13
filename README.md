@@ -6,7 +6,7 @@
 
 ###Quienes somos
 * Desarrolladores independientes miembros de la comunidad de la Universidad Central de Venezuela.
-* Desarrolladores Web, orientados al desarrollo de plataformas inteligentes.
+* Desarrolladores Web, orientados al desarrollo de plataformas inteligentes de atención a usuarios.
 
 ###Contacto
 * Alberto Cavadia:	[@No6things](https://github.com/No6things)
