@@ -9,5 +9,5 @@
 * Desarrolladores Web, orientados a la construcción de plataformas inteligentes de atención a usuarios.
 
 ###Contacto
-*  Alberto Cavadia:	[@No6things](https://github.com/No6things)
-*  Jesús Gómez:		[@jesusgomez545](https://github.com/jesusgomez545)
+* Alberto Cavadia:	[@No6things](https://github.com/No6things)
+* Jesús Gómez:		[@jesusgomez545](https://github.com/jesusgomez545)
