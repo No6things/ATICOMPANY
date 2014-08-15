@@ -1,4 +1,4 @@
-#ATICOMPANY
+ATICOMPANY
 De que se trata
 ==================
 * Se busca la automatización de los procesos de entregas de paqueteria mediante el uso de una plataforma web.
