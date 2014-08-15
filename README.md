@@ -1,13 +1,16 @@
 #ATICOMPANY
 ###De que se trata
-* Se busca la automatizaci髇 de los procesos de entregas de paqueteria mediante el uso de una plataforma web.
+==================
+* Se busca la automatizaci贸n de los procesos de entregas de paqueteria mediante el uso de una plataforma web.
 
-* Dicha plataforma busca dar cumplimiento a los requerimientos provistos por el Proyecto de Aplicaciones con Tecnolog韆 a Internet 2, de la Universidad Central de Venezuela en el semestre I-2014.
+* Dicha plataforma busca dar cumplimiento a los requerimientos provistos por el Proyecto de Aplicaciones con Tecnolog铆a a Internet 2, de la Universidad Central de Venezuela en el semestre I-2014.
 
 ###Quienes somos
+================
 * Desarrolladores independientes miembros de la comunidad de la Universidad Central de Venezuela.
-* Desarrolladores Web, orientados a la construcci髇 de plataformas inteligentes de atenci髇 a usuarios.
+* Desarrolladores Web, orientados a la construcci贸n de plataformas inteligentes de atenci贸n a usuarios.
 
 ###Contacto
+===========
 * Alberto Cavadia:	[@No6things](https://github.com/No6things)
-* Jes鷖 G髆ez:		[@jesusgomez545](https://github.com/jesusgomez545)
+* Jes煤s G贸mez:		[@jesusgomez545](https://github.com/jesusgomez545)
