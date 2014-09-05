@@ -1,8 +1,10 @@
 
-CREATE SEQUENCE public.paquete_id_seq;
+\c <DBNAME>
 
-CREATE TABLE public.paquete (
-                id INTEGER NOT NULL DEFAULT nextval('public.paquete_id_seq'),
+CREATE SEQUENCE <SCHEMA>.paquete_id_seq;
+
+CREATE TABLE <SCHEMA>.paquete (
+                id INTEGER NOT NULL DEFAULT nextval('<SCHEMA>.paquete_id_seq'),
                 ancho REAL NOT NULL,
                 alto REAL NOT NULL,
                 peso REAL NOT NULL,
@@ -13,43 +15,45 @@ CREATE TABLE public.paquete (
 );
 
 
-ALTER SEQUENCE public.paquete_id_seq OWNED BY public.paquete.id;
+ALTER SEQUENCE <SCHEMA>.paquete_id_seq OWNED BY <SCHEMA>.paquete.id;
 
 CREATE UNIQUE INDEX numero_guia_paquete_idx
- ON public.paquete
+ ON <SCHEMA>.paquete
  ( numero_guia );
 
-CREATE SEQUENCE public.tipo_estatdo_id_seq;
+CREATE SEQUENCE <SCHEMA>.tipo_estado_id_seq;
 
-CREATE TABLE public.tipo_estatdo (
-                id INTEGER NOT NULL DEFAULT nextval('public.tipo_estatdo_id_seq'),
+CREATE TABLE <SCHEMA>.tipo_estado (
+                id INTEGER NOT NULL DEFAULT nextval('<SCHEMA>.tipo_estado_id_seq'),
                 nombre VARCHAR NOT NULL,
                 abreviacion VARCHAR NOT NULL,
                 CONSTRAINT tipo_estado_id_idx PRIMARY KEY (id)
 );
 
 
-ALTER SEQUENCE public.tipo_estatdo_id_seq OWNED BY public.tipo_estatdo.id;
+ALTER SEQUENCE <SCHEMA>.tipo_estado_id_seq OWNED BY <SCHEMA>.tipo_estado.id;
 
-CREATE SEQUENCE public.tipo_usuario_id_seq;
+CREATE SEQUENCE <SCHEMA>.tipo_usuario_id_seq;
 
-CREATE TABLE public.tipo_usuario (
-                id INTEGER NOT NULL DEFAULT nextval('public.tipo_usuario_id_seq'),
+CREATE TABLE <SCHEMA>.tipo_usuario (
+                id INTEGER NOT NULL DEFAULT nextval('<SCHEMA>.tipo_usuario_id_seq'),
                 nombre VARCHAR NOT NULL,
                 abreviacion VARCHAR NOT NULL,
-                CONSTRAINT tipousuario_id_idx PRIMARY KEY (id)
+                CONSTRAINT tipo_usuario_id_idx PRIMARY KEY (id)
 );
 
 
-ALTER SEQUENCE public.tipo_usuario_id_seq OWNED BY public.tipo_usuario.id;
+ALTER SEQUENCE <SCHEMA>.tipo_usuario_id_seq OWNED BY <SCHEMA>.tipo_usuario.id;
 
-CREATE UNIQUE INDEX abreviacion_tipousuario_idx
- ON public.tipo_usuario
+CREATE UNIQUE INDEX abreviacion_tipo_usuario_idx
+ ON <SCHEMA>.tipo_usuario
  ( abreviacion );
 
-CREATE TABLE public.usuario (
-                id INTEGER NOT NULL,
-                tipousuario_id INTEGER NOT NULL,
+CREATE SEQUENCE <SCHEMA>.usuario_id_seq;
+
+CREATE TABLE <SCHEMA>.usuario (
+                id INTEGER NOT NULL DEFAULT nextval('<SCHEMA>.usuario_id_seq'),
+                tipo_usuario_id INTEGER NOT NULL,
                 nombre VARCHAR NOT NULL,
                 apellido VARCHAR NOT NULL,
                 correo_electronico VARCHAR NOT NULL,
@@ -58,11 +62,13 @@ CREATE TABLE public.usuario (
                 CONSTRAINT usuario_id_idx PRIMARY KEY (id)
 );
 
+ALTER SEQUENCE <SCHEMA>.usuario_id_seq OWNED BY <SCHEMA>.usuario.id;
 
-CREATE SEQUENCE public.empresa_id_seq;
 
-CREATE TABLE public.empresa (
-                id INTEGER NOT NULL DEFAULT nextval('public.empresa_id_seq'),
+CREATE SEQUENCE <SCHEMA>.empresa_id_seq;
+
+CREATE TABLE <SCHEMA>.empresa (
+                id INTEGER NOT NULL DEFAULT nextval('<SCHEMA>.empresa_id_seq'),
                 nombre VARCHAR NOT NULL,
                 rif VARCHAR NOT NULL,
                 frase_comercial VARCHAR NOT NULL,
@@ -72,26 +78,32 @@ CREATE TABLE public.empresa (
 );
 
 
-ALTER SEQUENCE public.empresa_id_seq OWNED BY public.empresa.id;
+ALTER SEQUENCE <SCHEMA>.empresa_id_seq OWNED BY <SCHEMA>.empresa.id;
 
 CREATE INDEX nombre_empresa_idx
- ON public.empresa
+ ON <SCHEMA>.empresa
  ( nombre DESC );
 
 CREATE UNIQUE INDEX rif_empresa_idx
- ON public.empresa
+ ON <SCHEMA>.empresa
  ( rif );
 
-CREATE TABLE public.usuario_empresa (
-                id INTEGER NOT NULL,
+CREATE SEQUENCE <SCHEMA>.usuario_empresa_seq;
+
+CREATE TABLE <SCHEMA>.usuario_empresa (
+                id INTEGER NOT NULL DEFAULT nextval('<SCHEMA>.usuario_empresa_seq'),
                 usuario_id INTEGER NOT NULL,
                 empresa_id INTEGER NOT NULL,
                 CONSTRAINT usuario_empresa_id_idx PRIMARY KEY (id)
 );
 
+ALTER SEQUENCE <SCHEMA>.usuario_empresa_seq OWNED BY <SCHEMA>.usuario_empresa.id;
 
-CREATE TABLE public.agencia (
-                id INTEGER NOT NULL,
+
+CREATE SEQUENCE <SCHEMA>.agencia_seq;
+
+CREATE TABLE <SCHEMA>.agencia (
+                id INTEGER NOT NULL DEFAULT nextval('<SCHEMA>.agencia_seq'),
                 empresa_id INTEGER NOT NULL,
                 nombre VARCHAR NOT NULL,
                 ubicacion TEXT NOT NULL,
@@ -101,12 +113,17 @@ CREATE TABLE public.agencia (
 );
 
 
+ALTER SEQUENCE <SCHEMA>.agencia_seq OWNED BY <SCHEMA>.agencia.id;
+
 CREATE UNIQUE INDEX nombre_agencia_idx
- ON public.agencia
+ ON <SCHEMA>.agencia
  ( nombre ASC );
 
-CREATE TABLE public.agencia_paquete (
-                id INTEGER NOT NULL,
+
+CREATE SEQUENCE <SCHEMA>.agencia_paquete_seq;
+
+CREATE TABLE <SCHEMA>.agencia_paquete (
+                id INTEGER NOT NULL DEFAULT nextval('<SCHEMA>.agencia_paquete_seq'),
                 tipo_estatus INTEGER NOT NULL,
                 agencia_id INTEGER NOT NULL,
                 paquete_id INTEGER NOT NULL,
@@ -115,51 +132,53 @@ CREATE TABLE public.agencia_paquete (
 );
 
 
-ALTER TABLE public.agencia_paquete ADD CONSTRAINT paquete_agencia_paquete_fk
+ALTER SEQUENCE <SCHEMA>.agencia_paquete_seq OWNED BY <SCHEMA>.agencia_paquete.id;
+
+ALTER TABLE <SCHEMA>.agencia_paquete ADD CONSTRAINT paquete_agencia_paquete_fk
 FOREIGN KEY (paquete_id)
-REFERENCES public.paquete (id)
+REFERENCES <SCHEMA>.paquete (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.agencia_paquete ADD CONSTRAINT tipo_estatdo_agencia_paquete_fk
+ALTER TABLE <SCHEMA>.agencia_paquete ADD CONSTRAINT tipo_estatdo_agencia_paquete_fk
 FOREIGN KEY (tipo_estatus)
-REFERENCES public.tipo_estatdo (id)
+REFERENCES <SCHEMA>.tipo_estado (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.usuario ADD CONSTRAINT tipo_usuario_usuario_fk
-FOREIGN KEY (tipousuario_id)
-REFERENCES public.tipo_usuario (id)
+ALTER TABLE <SCHEMA>.usuario ADD CONSTRAINT tipo_usuario_usuario_fk
+FOREIGN KEY (tipo_usuario_id)
+REFERENCES <SCHEMA>.tipo_usuario (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.usuario_empresa ADD CONSTRAINT usuario_usuario_empresa_fk
+ALTER TABLE <SCHEMA>.usuario_empresa ADD CONSTRAINT usuario_usuario_empresa_fk
 FOREIGN KEY (usuario_id)
-REFERENCES public.usuario (id)
+REFERENCES <SCHEMA>.usuario (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.agencia ADD CONSTRAINT empresa_agencia_fk
+ALTER TABLE <SCHEMA>.agencia ADD CONSTRAINT empresa_agencia_fk
 FOREIGN KEY (empresa_id)
-REFERENCES public.empresa (id)
+REFERENCES <SCHEMA>.empresa (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.usuario_empresa ADD CONSTRAINT empresa_usuario_empresa_fk
+ALTER TABLE <SCHEMA>.usuario_empresa ADD CONSTRAINT empresa_usuario_empresa_fk
 FOREIGN KEY (empresa_id)
-REFERENCES public.empresa (id)
+REFERENCES <SCHEMA>.empresa (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.agencia_paquete ADD CONSTRAINT agencia_agencia_paquete_fk
+ALTER TABLE <SCHEMA>.agencia_paquete ADD CONSTRAINT agencia_agencia_paquete_fk
 FOREIGN KEY (agencia_id)
-REFERENCES public.agencia (id)
+REFERENCES <SCHEMA>.agencia (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
