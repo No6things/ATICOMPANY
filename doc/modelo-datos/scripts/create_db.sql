@@ -21,28 +21,19 @@ CREATE UNIQUE INDEX numero_guia_paquete_idx
  ON <SCHEMA>.paquete
  ( numero_guia );
 
-<<<<<<< HEAD
-CREATE SEQUENCE public.tipo_estado_id_seq;
 
-CREATE TABLE public.tipo_estado (
-                id INTEGER NOT NULL DEFAULT nextval('public.tipo_estado_id_seq'),
-=======
 CREATE SEQUENCE <SCHEMA>.tipo_estado_id_seq;
 
 CREATE TABLE <SCHEMA>.tipo_estado (
                 id INTEGER NOT NULL DEFAULT nextval('<SCHEMA>.tipo_estado_id_seq'),
->>>>>>> c25a3e3438ab651be42c888c40d6e0b8a54aed36
                 nombre VARCHAR NOT NULL,
                 abreviacion VARCHAR NOT NULL,
                 CONSTRAINT tipo_estado_id_idx PRIMARY KEY (id)
 );
 
 
-<<<<<<< HEAD
-ALTER SEQUENCE public.tipo_estado_id_seq OWNED BY public.tipo_estado.id;
-=======
+
 ALTER SEQUENCE <SCHEMA>.tipo_estado_id_seq OWNED BY <SCHEMA>.tipo_estado.id;
->>>>>>> c25a3e3438ab651be42c888c40d6e0b8a54aed36
 
 CREATE SEQUENCE <SCHEMA>.tipo_usuario_id_seq;
 
