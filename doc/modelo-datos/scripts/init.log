@@ -1,0 +1,9 @@
+~~~~~~~~~~~~~~~~~~~~~
+ DB Installation Log 
+~~~~~~~~~~~~~~~~~~~~~
+DROP DATABASE
+CREATE DATABASE
+You are now connected to database "test" as user "postgres".
+psql:init_db.sql:4: NOTICE:  schema "regular_access" does not exist, skipping
+DROP SCHEMA
+CREATE SCHEMA
