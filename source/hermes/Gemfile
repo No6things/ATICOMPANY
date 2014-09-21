@@ -30,8 +30,14 @@ gem 'spring',        group: :development
 # Nodejs
 gem 'execjs'
 
+# Minitest
+gem 'minitest'
+
 # Postgres
 gem 'pg'
+
+# Tzinfo
+gem 'tzinfo'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

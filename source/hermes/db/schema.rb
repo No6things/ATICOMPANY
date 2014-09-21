@@ -11,9 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140919192138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "tipo_usuarios", force: true do |t|
+    t.string   "nombre"
+    t.string   "abreviacion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "usuarios", force: true do |t|
+    t.integer  "tipo_usuario_id"
+    t.string   "nombre"
+    t.string   "apellido"
+    t.string   "correo_electronico"
+    t.string   "password"
+    t.datetime "fecha_ultimo_acceso"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "usuarios", ["tipo_usuario_id"], name: "index_usuarios_on_tipo_usuario_id", using: :btree
 
 end

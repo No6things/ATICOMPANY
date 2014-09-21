@@ -19,17 +19,17 @@ CREATE UNIQUE INDEX numero_guia_paquete_idx
  ON public.paquete
  ( numero_guia );
 
-CREATE SEQUENCE public.tipo_estado_id_seq;
+CREATE SEQUENCE public.tipo_estatdo_id_seq;
 
-CREATE TABLE public.tipo_estado (
-                id INTEGER NOT NULL DEFAULT nextval('public.tipo_estado_id_seq'),
+CREATE TABLE public.tipo_estatdo (
+                id INTEGER NOT NULL DEFAULT nextval('public.tipo_estatdo_id_seq'),
                 nombre VARCHAR NOT NULL,
                 abreviacion VARCHAR NOT NULL,
                 CONSTRAINT tipo_estado_id_idx PRIMARY KEY (id)
 );
 
 
-ALTER SEQUENCE public.tipo_estado_id_seq OWNED BY public.tipo_estado.id;
+ALTER SEQUENCE public.tipo_estatdo_id_seq OWNED BY public.tipo_estatdo.id;
 
 CREATE SEQUENCE public.tipo_usuario_id_seq;
 
@@ -122,9 +122,9 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.agencia_paquete ADD CONSTRAINT tipo_estado_agencia_paquete_fk
+ALTER TABLE public.agencia_paquete ADD CONSTRAINT tipo_estatdo_agencia_paquete_fk
 FOREIGN KEY (tipo_estatus)
-REFERENCES public.tipo_estado (id)
+REFERENCES public.tipo_estatdo (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;

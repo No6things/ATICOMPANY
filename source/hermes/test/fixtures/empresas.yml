@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  rif: MyString
+  frase_comercial: MyString
+  constante_tarifa: 1.5
+  porcentaje_tarifa: 1.5
+
+two:
+  nombre: MyString
+  rif: MyString
+  frase_comercial: MyString
+  constante_tarifa: 1.5
+  porcentaje_tarifa: 1.5
