@@ -1,13 +1,13 @@
-#Definicion del modelo TipoUsuario
+#Definicion del modelo relacion TipoEstado
 
-class TipoUsuario < ActiveRecord::Base
+class TipoEstado < ActiveRecord::Base
 	
 	#Validaciones
 	validates! :nombre, presence: true, on: :create
 	validates! :abreviacion, presence: true, uniqueness: true, length: { maximum: 4 }, on: :create
-
+	
 	#Relacion con otros recursos
-	has_many :usuarios
+	belongs_to :agencia_paquete	
 
 	#Funciones y codigo personalizado
 

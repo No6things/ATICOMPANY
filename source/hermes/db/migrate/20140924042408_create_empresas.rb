@@ -9,5 +9,7 @@ class CreateEmpresas < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :empresas, :nombre
+    add_index :empresas, :rif
   end
 end

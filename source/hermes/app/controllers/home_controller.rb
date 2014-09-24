@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 	before_action :set_usuario
 
 	def index
-		if params[:tipo] == 1
+		if params[:tipo] == 1			
       		@tipo = 1 #Administrator
     	else
       		@tipo = 0 #Common User
