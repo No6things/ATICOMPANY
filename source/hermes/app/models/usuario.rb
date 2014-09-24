@@ -17,8 +17,4 @@ class Usuario < ActiveRecord::Base
 		
 	#Funciones y codigo personalizado
 
-	def self.autenticacion (correo_electronico, password)
-	# False if authentication failure otherwise data user #
-		return find_by(correo_electronico: correo_electronico).authenticate(password)	  		
-	end
 end
