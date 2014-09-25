@@ -11,6 +11,7 @@ class HomeController < ApplicationController
 	      		p 'usuario comun'
 	    	end
 	    end
+	end
 
 
 	def login
