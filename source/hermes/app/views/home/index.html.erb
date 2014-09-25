@@ -3,6 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<%= csrf_meta_tag %>
 	<link rel="stylesheet" href="/assets/foundation.css" />
 	<link rel="stylesheet" href="/assets/normalize.css">
 	<link rel="stylesheet" href="/assets/font-config.css">		
@@ -235,11 +236,12 @@
 	  </div>
 	  
 	  <div class="modal-content row">
-	  	<form classa="login-form" action="" method="post">			
+	  	<form class="login-form" action="/login" method="post">	
+	  		<%= token_tag(nil) %>
 	  		<div class="row">
 	  		    <div class="large-12 small-12 columns">	  		      
 	  		    	<input type="text" placeholder="Usuario" name="login" required>
-	  		    	<input type="password" placeholder="Contraseña" name="passwd" required>  		        
+	  		    	<input type="password" placeholder="Contraseña" name="passwd" required>
 	  		    </div>
 	  		</div>
 

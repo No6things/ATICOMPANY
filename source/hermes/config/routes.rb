@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  post 'index/login' => 'index#authenticate'
-  get  'index/login' 
+ 
   get  'home/index'
-  post 'home/index'
   namespace :admin do
     root "admin#index"
   end
-  root "home#index"
 
+  root "home#index"
+  post "/login" => "login#login"
+  #post ""
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
