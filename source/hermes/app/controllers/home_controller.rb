@@ -2,7 +2,9 @@ class HomeController < ApplicationController
 
 	def index
 		if session.has_key?("id_usuario_actual")
-			@usuario=Usuario.find(session[:id_usuario_actual])			
+			if !session[:id_usuario_actual] 
+				@usuario=Usuario.find(session[:id_usuario_actual])			
+			end
 	    end
 	end
 
