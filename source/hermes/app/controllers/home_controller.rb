@@ -1,13 +1,6 @@
 class HomeController < ApplicationController
-	before_action :set_usuario
 
 	def index
-		if params[:tipo] == 1		#Administrator	
-      		#habilitar cosas de administrador
-    	else						#Common User
-      	
-    	end
-
 	end
 
 	def login
@@ -28,11 +21,12 @@ class HomeController < ApplicationController
 		 end
 	end
 
-	def set_usuario
-		if params.has_key?(:id)
-			@usuario = Usuario.find(params[:id])
-		else
-			@usuario = Usuario.new
+	def logout
+		begin			
+			reset_session
+			redirect_to root_url			
+		rescue Exception => e
+			render json: {err_mssg: "Temporalmente servicio fuera de linea", success_msg: ""}, status: 503			
 		end
 	end
 	

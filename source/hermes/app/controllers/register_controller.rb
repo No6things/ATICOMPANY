@@ -20,7 +20,7 @@ class RegisterController < ApplicationController
 				tipo_usuario: TipoUsuario.find_by(abreviacion: "UA")
 				)
 
-			render json: {err_mssg: "", success_mssg: "Bienvenid@ a Hermes "+u.nombre.capitalize}, status: 200
+			render json: {err_mssg: "", success_mssg: "Bienvenid@ a Hermes "+u.nombre.capitalize}, status: 201
 		rescue Exception => e			
 			msg = "El usuario ya existe en el sistema!"
 			
