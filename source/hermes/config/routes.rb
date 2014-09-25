@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "admin#index"
   end
-  root "index#login"
+  root "home#index"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
