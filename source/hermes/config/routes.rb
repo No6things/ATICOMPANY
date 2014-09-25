@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   root "home#index"
   post "/login" => "login#login"
+  get "/logout" => "logout#logout"
+  post "/register" => "register#register_user"
+
   #post ""
 
   # The priority is based upon order of creation: first created -> highest priority.

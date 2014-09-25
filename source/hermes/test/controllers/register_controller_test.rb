@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LoginControllerTest < ActionController::TestCase
+class RegisterControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
