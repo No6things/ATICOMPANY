@@ -2,11 +2,30 @@ class HomeController < ApplicationController
 	before_action :set_usuario
 
 	def index
-		if params[:tipo] == 1			
-      		@tipo = 1 #Administrator
-    	else
-      		@tipo = 0 #Common User
+		if params[:tipo] == 1		#Administrator	
+      		#habilitar cosas de administrador
+    	else						#Common User
+      	
     	end
+
+	end
+
+	def login
+		begin
+			usuario = Usuario.find_by(correo_electronico: params[:login]).authenticate(params[:passwd])
+		rescue NoMethodError
+				#enviar mensaje ajax de correo inexistente
+				redirect_to root_url
+		else	
+		  	if usuario == false
+		  		#enviar mensaje ajax de contrase;a erronea
+		  		redirect_to root_url
+		  	else
+		  		session[:id_usuario_actual]=usuario.id
+		  		p session[:id_usuario_actual]
+		  		redirect_to root_url
+		  	end
+		 end
 	end
 
 	def set_usuario
