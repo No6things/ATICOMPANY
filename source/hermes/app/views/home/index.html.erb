@@ -41,7 +41,7 @@
 					</li>
 
 					<li>
-						<%if @usuario -%>
+						<%if @usuario %>
 							<a href="#" class="alert button">Bienvenido, <%= @usuario.nombre.capitalize+" "+@usuario.apellido.capitalize %></a>
 						<%else%>
 							<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
@@ -67,8 +67,19 @@
 									&nbsp;
 									<i class="fa fa-usd fa-lg"></i>					
 								</a>
-							</li>
+							</li>							
 							<%if @usuario %>
+
+							<%if @usuario.tipo_usuario.abreviacion == "A"%>
+							<li>
+								<a class="alert button" href="/panel">
+									Administraci&oacute;n
+									&nbsp;
+									<i class="fa fa-cog fa-lg"></i>		
+								</a>
+							</li>
+							<%end%>
+							
 							<li>
 								<a class="alert button" href="#" data-reveal-id="modal_paquete">
 									Enviar paquete
@@ -80,7 +91,7 @@
 								<a class="alert button" href="/logout">
 									Cerrar Sesi&oacute;n
 									&nbsp;
-									<i class="fa fa-sign-out"></i>		
+									<i class="fa fa-sign-out fa-lg"></i>		
 								</a>
 							</li>
 							<% end %>

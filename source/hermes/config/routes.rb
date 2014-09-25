@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get  "/logout" => "home#logout"
   post "/register" => "register#register_user"
   get  "/paquete" => "package#create"
+  get "/panel" => "admin#home"
 
   #post ""
 

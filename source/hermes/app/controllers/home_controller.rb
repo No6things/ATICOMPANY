@@ -1,16 +1,8 @@
 class HomeController < ApplicationController
 
 	def index
-		if session[:id_usuario_actual]
-			@usuario=Usuario.find(session[:id_usuario_actual])
-			if @usuario.tipo_usuario.abreviacion == "A"		#Administrator	
-	      		#habilitar cosas de administrador
-	      		p 'administrador'
-	    	elsif 	@usuario.tipo_usuario.abreviacion == "O"#Operator
-	      		p 'operador'
-	      	else											#Common user
-	      		p 'usuario comun'
-	    	end 
+		if session.has_key?("id_usuario_actual")
+			@usuario=Usuario.find(session[:id_usuario_actual])			
 	    end
 	end
 
@@ -25,8 +17,7 @@ class HomeController < ApplicationController
 		  		#enviar mensaje ajax de contrase;a erronea
 		  		redirect_to root_url
 		  	else
-		  		session[:id_usuario_actual]=@usuario.id
-		  		p session[:id_usuario_actual]
+		  		session[:id_usuario_actual]=@usuario.id		  		
 		  		redirect_to root_url
 		  	end
 		 end
