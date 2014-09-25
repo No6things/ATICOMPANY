@@ -41,7 +41,12 @@
 					</li>
 
 					<li>
-						<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
+						<%if @usuario -%>
+							<a href="#" class="alert"> <%= @usuario.nombre%></a>
+						<%else%>
+							<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
+						<%end-%>
+
 					</li> 
 					<li class="has-dropdown"> 
 						<a href="#"><i class="fa fa-plus fa-lg"></i></a> 
