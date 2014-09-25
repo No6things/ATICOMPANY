@@ -20,7 +20,7 @@ class RegisterController < ApplicationController
 				tipo_usuario: TipoUsuario.find_by(abreviacion: "UA")
 				)
 
-			render json: {err_mssg: "", success_mssg: "Bienvenid@ a Hermes "+u.nombre.capitalize}, status: 201
+			render json: {err_mssg: "", success_mssg: "Bienvenid@ a Hermes "+u.nombre.capitalize+", para acceder a tu perfil inicia sesión empleando tu email y contraseña"}, status: 201
 		rescue Exception => e			
 			msg = "El usuario \""+params[:email]+"\" ya existe en el sistema!"
 			
