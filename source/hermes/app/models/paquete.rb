@@ -8,15 +8,18 @@ class Paquete < ActiveRecord::Base
 	validates! :peso, presence: true, on: :create
 	validates! :costo, presence: true, on: :create
 	validates! :descripcion, presence: true, on: :create
-	validates! :numero_guia, uniqueness: true, on: :create	
+	validates! :numero_guia, presence: true, uniqueness: true, on: [:create, :update]
 
 	#Relacion con otros recursos
 	belongs_to :agencia_paquete
+	belongs_to :emisor, :class_name => "Usuario"
+	belongs_to :receptor, :class_name => "Usuario"	
 
 	#Funciones y codigo personalizado
-	def generate_numero_guia
-		p Digest::SHA1.hexdigest("#{self.id}#{Time.now}#{self.costo}")
-	end
+	before_validation :generate_numero_guia
 
-	#after_create(self.generate_numero_guia)
+	protected		
+		def generate_numero_guia
+			self.numero_guia = Digest::SHA1.hexdigest("#{self.id}#{Time.now}")
+		end		
 end
