@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+  post 'index/login' => 'index#authenticate'
+  get  'index/login' 
+  get  'home/index'
+  post 'home/index'
   namespace :admin do
     root "admin#index"
   end
-  root "home#index"
+  root "index#login"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
