@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+ 
+  get  'home/index'
   namespace :admin do
     root "admin#index"
   end

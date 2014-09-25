@@ -16,5 +16,5 @@ class Usuario < ActiveRecord::Base
 	has_many :usuario_empresas
 		
 	#Funciones y codigo personalizado
-
+	
 end
