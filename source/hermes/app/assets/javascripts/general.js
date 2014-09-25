@@ -9,11 +9,6 @@ $(document).ready(function(){
 	$(".register-form").on('submit', function(event) {
 	 	event.preventDefault();
 	  	event.stopImmediatePropagation();
-		
-		var fname = $(this).find("input[name='fname']").val(), 
-			lname = $(this).find("input[name='lname']").val(), 
-			email = $(this).find("input[name='email']").val(), 
-			passwd = $(this).find("input[name='passwd']").val();
 
 		$.ajax({
 			type: 'POST',
