@@ -12,7 +12,7 @@ class Usuario < ActiveRecord::Base
 	has_secure_password
 
 	#Relacion con otros recursos
-	belongs_to :tipo_usuario		
+	belongs_to :tipo_usuario	
 	has_many :usuario_empresas
 		
 	#Funciones y codigo personalizado
