@@ -124,28 +124,6 @@ COPY paquetes (id, ancho, alto, peso, descripcion, numero_guia, costo, created_a
 
 SELECT pg_catalog.setval('paquetes_id_seq', 12, true);
 
-
---
--- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: aticompanyuser
---
-
-COPY schema_migrations (version) FROM stdin;
-20140924041724
-20140924042022
-20140924042132
-20140924042408
-20140924042837
-20140924043040
-20140924043340
-20140924043455
-20140924123137
-20140925114200
-20140925115952
-20140925122005
-20140927205022
-\.
-
-
 --
 -- Data for Name: tipo_estados; Type: TABLE DATA; Schema: public; Owner: aticompanyuser
 --
