@@ -73,7 +73,7 @@
 								</a>
 							</li>							
 							<%if @usuario %>
-								<%if @usuario.tipo_usuario.abreviacion == "O" %>
+								<%if @usuario.tipo_usuario.abreviacion == "O" or @usuario.tipo_usuario.abreviacion == "UA"  %>
 								<li>
 									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
 										Enviar paquete
@@ -419,15 +419,15 @@
 	  	<h4 class="white-text">Calculadora de Tarifas</h4>
 	  	<a class="close-reveal-modal">&#215;</a>
 	  </div>
-	  
+	   
 	  <div class="modal-content row extra-padding-row">
 	  	<form class="calculadora-form"  method="post">	
 	  		<%= token_tag(nil) %>	  		
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required />  		
-			<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required />
-			<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" required />
-			<input class="columns" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" name="peso" required />
-			<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required />
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" id="anchop" name="ancho" required />  		
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" id="altop" name="alto" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" id="profundidadp" name="profundidad" required />
+			<input class="columns" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" id="pesop" name="peso" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" id="valorp" name="valor" required />
   		  	<input type="submit" class="hidden-submit-button" />
   		  	<span class="alert round label">Presione Enter para calcular</span>
 	  	</form>	  	
@@ -451,7 +451,7 @@
 	</div>
 
 	<!-- ~~~~~~~~~ Modal paquete ~~~~~~~~~-->
-	<div id="modal_paquete" class="reveal-modal large custom-modal-container" data-reveal>
+	<div id="modal_paquete" class="reveal-modal large custom-modal-container" has_confirmation="false" data-reveal>
 	  <div class="modal-header row custom-modal-header slogan-u">
 	  	<h4 class="white-text notification-tittle">Enviar Paquete</h4>
 	  	<a class="close-reveal-modal">&#215;</a>
@@ -460,27 +460,38 @@
 	  <div class="modal-content row extra-padding-row">
 		  <div class="large-8 small-8 large-offset-2 small-offset-2 columns">
 
-		  	<form id="paquete-form"  class="paquete-form row" method="post">
+		  	<form class="paquete-form row" method="post">
 
 		  		<%= token_tag(nil) %>	  		
-				 <select class="columns" form="paquete-form"  name="agencia"required>
+				 <select class="columns" form="paquete-form"  name="agencia" id="newp_agencia"required>
 	  				<option value="">Agencia Destino</option>
 		        	<% Agencia.find_each do |agencia| %>
-		          	<option value="<%= agencia.id%>"><%= agencia.nombre%></option>
+		          	<option value="<%=agencia.id%>"><%=agencia.nombre%></option>
 		        	<%end%>	
-		      </select>
-			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required />  		
-			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required />
-			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" required />
-			  	<input class="columns" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" name="peso" required />
-			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required />
-			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Emisor" name="origen" required /> 
-			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Receptor" name="destino" required /> 
-			  	<textarea class="columns" form="paquete-form" placeholder="Descripci&oacute;n" name="descripcion" required></textarea>	
-			  	<input class="columns" type="text" placeholder="El costo de env&iacute;o es:" name="costo" disabled />
+		      	</select>
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" id="newp_ancho" required /> 
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" id="newp_alto" required />
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" id="newp_profundidad" required />
+
+			  	<input class="columns keyup_target" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" name="peso" id="newp_peso" required />
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" id="newp_valor" required />
+
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Emisor" name="origen" id="newp_origen" required /> 
+
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Receptor" name="destino" id="newp_destino" required /> 
+
+			  	<textarea class="columns" form="paquete-form" placeholder="Descripci&oacute;n" name="descripcion" id="newp_descripcion" required></textarea>	
+
+				<p class="slogan-frace">Costo estimado<p>
+			  	<input class="columns" type="text" placeholder="El costo de env&iacute;o es:" name="costo" value="0" id="newp_costo" disabled />
 
 	  		  <input class="hidden-submit-button" type="submit"/>
-	  		  <span class="alert round label">Presione Enter para enviar</span>
+
+	  		  <span class="alert round label">Presione Enter para Enviar</span>
 
 		  	</form>
 		  </div>	  

@@ -81,7 +81,7 @@ $(function(){
 				$('#modal_transaccion .modal-content #peso ').html(server_data.data.paquete.peso);
 				$('#modal_transaccion .modal-content #alto ').html(server_data.data.paquete.alto);
 				$('#modal_transaccion .modal-content #ancho ').html(server_data.data.paquete.ancho);
-				$('#modal_transaccion .modal-content #profundo ').html(server_data.data.paquete.peso);
+				$('#modal_transaccion .modal-content #profundo ').html(server_data.data.paquete.profundidad);
 				$('#modal_transaccion .modal-content #costo ').html(server_data.data.paquete.costo);
 				$('#modal_transaccion .modal-content #descripcion ').html(server_data.data.paquete.descripcion);
 				
@@ -158,26 +158,24 @@ $(function(){
 
 	});
 
-	$("#paquete-form").on('submit', function(event) {
-		alert ("digs");
+	$(".paquete-form").on('submit', function(event) {		
 	 	event.preventDefault();
-	  	event.stopImmediatePropagation();
-		clearInterval(intervalid);
+	  	event.stopImmediatePropagation();		
 
 		$.ajax({
 			type: 'POST',
 			url: '/create',
 			data: {
-			'agencia': $(this).find("select[name='agencia']").val(), 
-			'alto': $(this).find("input[name='alto']").val(), 
-			'ancho': $(this).find("input[name='ancho']").val() , 
-			'profundidad': $(this).find("input[name='profundidad']").val(), 
-			'peso': $(this).find("input[name='peso']").val(),
-			'valor': $(this).find("input[name='valor']").val(),
-			'costo': $(this).find("input[name='costo']").val(),
-			'emisor': $(this).find("input[name='origen']").val(),
-			'receptor': $(this).find("input[name='destino']").val(),
-			'descripcion': $(this).find("textarea[name='descripcion']").val()
+			'agencia': $('#newp_agencia').val(), 
+			'alto': $('#newp_alto').val(), 
+			'ancho':  $('#newp_alto').val(), 
+			'profundidad': $('#newp_profundidad').val(), 
+			'peso': $('#newp_peso').val(), 
+			'valor': $('#newp_valor').val(), 
+			'costo': $('#newp_costo').val(), 
+			'emisor': $('#newp_origen').val(), 
+			'receptor': $('#newp_destino').val(), 
+			'descripcion': $('#newp_descripcion').val(), 
 			},			
 			success: function(server_data) {
 				$('#modal_notificacion .notification-content').html(server_data["success_mssg"]);
@@ -193,52 +191,44 @@ $(function(){
 		$(this).trigger("reset");
 	});
 
-	$("#crear_paquete").on('click', function(event) {
-	 	event.preventDefault();
-	  	event.stopImmediatePropagation();
-		window.constante=0;
-		window.porcentaje=0;
+	$('.keyup_target').keyup(function(){
+		var costo = 0;
+		var alto =$('#newp_alto').val();
+		var ancho =$('#newp_ancho').val();
+		var profundidad =$('#newp_profundidad').val();
+		var peso =$('#newp_peso').val();
+		var valor = $('#newp_valor').val();
 
-		$.ajax({
-			type: 'POST',
-			url: '/enterprise',
-			data: {
-			'empresa_id': $("meta[name='empresa']").attr("content") 
-			},			
-			success: function(xhr) {
-				window.constante=xhr.constante;
-				window.porcentaje=xhr.porcentaje;
-				$("#modal_paquete").foundation('reveal', 'open');
+		if(
+			alto!="" &&
+			ancho!="" &&
+			profundidad!="" &&
+			peso!="" &&
+			valor!="" 
+		){
+			$.ajax({
+				type: 'POST',
+				url: '/enterprise',
+				data: {			
+				'ancho': ancho,	
+				'alto': alto,
+				'peso': peso,
+				'valor': valor,
+				'profundidad': profundidad,
+				},			
+				success: function(server_data) {
+					$('#newp_costo').val(server_data.costo)
+				},
+				fail: function(xhr, textStatus, errorThrown) {
+					console.log("error")
+					$('#modal_notificacion .notification-content').html(xhr.responseJSON.err_mssg);
+					$('#modal_notificacion').foundation('reveal','open');
+				}
+			});
 
-				window.intervalid=setInterval(function(){
-							var ancho;
-							var alto;
-							var profundidad;
-							var peso;
-							var valor;
-							ancho= $("input[name='ancho']");
-							alto= $("input[name='alto']");
-							profundidad= $("input[name='profundidad']");
-							valor= $("input[name='valor']");
-							peso= $("input[name='peso']");
-							if (ancho.val()>0 && alto.val()>0 && profundidad.val()>0 && peso.val()>0 && valor.val()>0){
-
-								$("input[name='costo']").val((ancho.val()*alto.val()*profundidad.val()*peso.val()*valor.val()/window.constante)+(window.porcentaje*valor.val()/100));
-							}
-							},2000);
-			},
-			fail: function(xhr, textStatus, errorThrown) {
-				console.log("error")
-				$('#modal_notificacion .notification-content').html(xhr.responseJSON.err_mssg);
-				$('#modal_notificacion').foundation('reveal','open');
-			}
-		});
-		$('#modal_notificacion .notification-content').html('');
-		$(this).trigger("reset");
-	});
-
-	$('#modal_paquete').bind('closed', function() { 
-		clearInterval(window.intervalid);	
+		}else{
+			$('#newp_costo').val(0);
+		}		
 	});
 
 	$(".calculadora-form").on('submit', function(event) {
@@ -248,16 +238,15 @@ $(function(){
 		$.ajax({
 			type: 'POST',
 			url: '/enterprise',
-			data: {
-			'empresa_id': $("meta[name='empresa']").attr("content")
-			'ancho': $("input[name='ancho']"),	
-			'alto': $("input[name='alto']"),
-			'peso': $("input[name='peso']"),
-			'valor': $("input[name='valor']"),
-			'profundidad': $("input[name='profundidad']")
+			data: {			
+			'ancho': $("#anchop").val(),	
+			'alto': $("#altop").val(),
+			'peso': $("#pesop").val(),
+			'valor': $("#valorp").val(),
+			'profundidad': $("#profundidadp").val(),
 			},			
-			success: function(xhr) {
-				$('#modal_notificacion .notification-content').html(xhr["success_msg"]);
+			success: function(server_data) {
+				$('#modal_notificacion .notification-content').html("El Costo estimado a pagar por tu producto es de  "+server_data.costo+"  Bsf");
 				$('#modal_notificacion').foundation('reveal','open');
 
 			},
@@ -267,6 +256,6 @@ $(function(){
 				$('#modal_notificacion').foundation('reveal','open');
 			}
 		});
-	});
+	});	
 
 });

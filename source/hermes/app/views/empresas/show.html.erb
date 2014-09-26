@@ -12,8 +12,7 @@
 	<link rel="stylesheet" href="/assets/foundation.min.css" />
 	<link rel="stylesheet" href="/assets/font-config.css">		
 	<link rel="stylesheet" href="/assets/font-awesome.min.css">
-	<link rel="stylesheet" href="/assets/general.css" />
-	<link rel="stylesheet" href="/assets/modernizr.js"/>	
+	<link rel="stylesheet" href="/assets/general.css" />		
 	</head>
 
 	<body class="colored-body">
@@ -473,15 +472,16 @@
 	  	<h4 class="white-text">Calculadora de Tarifas</h4>
 	  	<a class="close-reveal-modal">&#215;</a>
 	  </div>
-	  
+	   
 	  <div class="modal-content row extra-padding-row">
-	  	<form class="calculadora-form" action="" method="post">			
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" required>  		
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Peso en Kg" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" required>  	  
-  		  	<input type="submit" class="hidden-submit-button">
+	  	<form class="calculadora-form"  method="post">	
+	  		<%= token_tag(nil) %>	  		
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" id="anchop" name="ancho" required />  		
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" id="altop" name="alto" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" id="profundidadp" name="profundidad" required />
+			<input class="columns" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" id="pesop" name="peso" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" id="valorp" name="valor" required />
+  		  	<input type="submit" class="hidden-submit-button" />
   		  	<span class="alert round label">Presione Enter para calcular</span>
 	  	</form>	  	
 	  </div>
@@ -569,43 +569,54 @@
 	</div> 	  
 	</div>	
 
-	<!-- ~~~~~~~~~ Modal crear paquete ~~~~~~~~~-->
-	<div id="modal_paquete" class="reveal-modal large custom-modal-container" data-reveal>
+	<!-- ~~~~~~~~~ Modal paquete ~~~~~~~~~-->
+	<div id="modal_paquete" class="reveal-modal large custom-modal-container" has_confirmation="false" data-reveal>
 	  <div class="modal-header row custom-modal-header slogan-u">
 	  	<h4 class="white-text notification-tittle">Enviar Paquete</h4>
 	  	<a class="close-reveal-modal">&#215;</a>
 	  </div>
 	  
 	  <div class="modal-content row extra-padding-row">
+		  <div class="large-8 small-8 large-offset-2 small-offset-2 columns">
 
-	  <div class="large-8 small-8 large-offset-2 small-offset-2 columns">
-	  	<form class="paquete-form row" action="/paquete" method="post">
+		  	<form class="paquete-form row" method="post">
 
-			<select class="columns"  name="agencia">
-  				<option value="0">Agencia Destino</option>
-	        	<% Agencia.find_each do |agencia| %>
-	        	<option value="<%= agencia.id%>"><%= agencia.nombre%></option>
-	        	<%end%>	
-	        </select>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required>  		
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profun" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Peso en Kg" name="peso" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required>  	  		  	 
-		  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Destinatario" name="dest" required> 
-		  	<textarea class="columns" placeholder="Descripci&oacute;n" name="desc" required></textarea>	  
-  		  	<input type="submit" class="hidden-submit-button">
+		  		<%= token_tag(nil) %>	  		
+				 <select class="columns" form="paquete-form"  name="agencia" id="newp_agencia" required>
+	  				<option value="">Agencia Destino</option>
+		        	<% Agencia.find_each do |agencia| %>
+		          	<option value="<%=agencia.id%>"><%=agencia.nombre%></option>
+		        	<%end%>	
+		      	</select>
 
-  		  	<span class="alert round label">Presione Enter para enviar</span>
-	  	</form>
-	  	</div>	  
-	  	</div>		
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" id="newp_ancho" required /> 
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" id="newp_alto" required />
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" id="newp_profundidad" required />
+
+			  	<input class="columns keyup_target" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" name="peso" id="newp_peso" required />
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" id="newp_valor" required />
+
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Emisor" name="origen" id="newp_origen" required /> 
+
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Receptor" name="destino" id="newp_destino" required /> 
+
+			  	<textarea class="columns" form="paquete-form" placeholder="Descripci&oacute;n" name="descripcion" id="newp_descripcion" required></textarea>	
+
+				<p class="slogan-frace">Costo estimado<p>
+			  	<input class="columns" type="text" placeholder="El costo de env&iacute;o es:" name="costo" value="0" id="newp_costo" disabled />
+
+	  		  <input class="hidden-submit-button" type="submit"/>
+
+	  		  <span class="alert round label">Presione Enter para Enviar</span>
+
+		  	</form>
+		  </div>	  
 	  </div>
-
-	  <div class="modal-footer row notification-footer">	  	
-	  </div> 	  
+	  <div class="modal-footer row notification-footer"></div> 			
 	</div>
-
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- ~~~~~~~~~ END Definicion de modales utilizadas ~~~~~~~~~ -->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

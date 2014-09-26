@@ -31,6 +31,7 @@ class Paquete < ActiveRecord::Base
 			:alto => self.alto,
 			:peso => self.peso,
 			:costo => self.costo,
+			:profundidad => self.profundidad,
 			:descripcion => self.descripcion,
 			:numero_guia => self.numero_guia,
 			:emisor => self.emisor.as_json,
