@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#NOTE: The following script still needs works to be functional
+
 printf "(!) Please runme as a root privileged user\n"
 
 if [ $# -ne 2 ]; then

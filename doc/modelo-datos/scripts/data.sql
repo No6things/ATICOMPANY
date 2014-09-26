@@ -70,6 +70,9 @@ COPY agencia_paquetes (id, fecha_arribo, agencia_id, paquete_id, tipo_estado_id,
 30	2014-12-16 00:00:00	5	4	3	2014-09-25 15:11:05.822241	2014-09-25 15:11:05.822241
 31	2014-12-26 00:00:00	6	4	2	2014-09-25 15:11:05.846863	2014-09-25 15:11:05.846863
 32	2014-12-31 00:00:00	6	4	4	2014-09-25 15:11:06.808347	2014-09-25 15:11:06.808347
+33	2014-09-26 16:18:27.889609	2	9	2	2014-09-26 16:18:27.90743	2014-09-26 16:18:27.90743
+34	2014-09-26 17:19:38.839923	4	11	2	2014-09-26 17:19:38.860707	2014-09-26 17:19:38.860707
+35	2014-09-26 18:00:46.609924	4	12	2	2014-09-26 18:00:46.612043	2014-09-26 18:00:46.612043
 \.
 
 
@@ -77,7 +80,7 @@ COPY agencia_paquetes (id, fecha_arribo, agencia_id, paquete_id, tipo_estado_id,
 -- Name: agencia_paquetes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aticompanyuser
 --
 
-SELECT pg_catalog.setval('agencia_paquetes_id_seq', 32, true);
+SELECT pg_catalog.setval('agencia_paquetes_id_seq', 35, true);
 
 
 --
@@ -85,7 +88,7 @@ SELECT pg_catalog.setval('agencia_paquetes_id_seq', 32, true);
 --
 
 COPY empresas (id, nombre, rif, frase_comercial, constante_tarifa, porcentaje_tarifa, created_at, updated_at) FROM stdin;
-1	Hermes	J-123456789-0	El servicio de entrega de los dioses	15	15	2014-09-25 10:01:34.521632	2014-09-25 10:01:34.521632
+1	Hermes	J-123456789-0	El servicio de entrega de los dioses	15	10	2014-09-25 10:01:34.521632	2014-09-26 14:29:11.028121
 \.
 
 
@@ -100,14 +103,18 @@ SELECT pg_catalog.setval('empresas_id_seq', 1, true);
 -- Data for Name: paquetes; Type: TABLE DATA; Schema: public; Owner: aticompanyuser
 --
 
-COPY paquetes (id, ancho, alto, peso, profundidad, descripcion, numero_guia, costo, created_at, updated_at, emisor_id, receptor_id) FROM stdin;
-2	20	10	30	15.32	Descripcion	7d7fd9867d302d932fa443ed5cac772e6d684dd7	150	2014-09-25 14:16:04.273164	2014-09-25 14:16:04.273164	\N	\N
-3	17.5399999999999991	0.5	0.340000000000000024	25.8	Aretes	86cde88174b97f10be2abdfd301e244608b8c954	300	2014-09-25 14:17:27.300141	2014-09-25 14:17:27.300141	\N	\N
-4	27.8999999999999986	13.5	37.7700000000000031	13.5	Caja desconocida	3e4ac23a77fdf5126cd082dfb6362106dd806093	87.5999999999999943	2014-09-25 14:18:28.127075	2014-09-25 14:18:28.127075	\N	\N
-5	0.900000000000000022	9.5	7.96999999999999975	29.43	Lamina de Adamantio	86d00a65c6e807f8f810ce9596a9b45b3ea0ac17	1000	2014-09-25 14:19:27.256682	2014-09-25 14:19:27.256682	\N	\N
-6	56.8999999999999986	9.75999999999999979	7.96999999999999975	15.8	Queso Gigante	ed0d2dfb79b12ed9dd6ddf20f1a90e3967bcb9f2	0.5	2014-09-25 14:22:13.510192	2014-09-25 14:22:13.510192	\N	\N
-7	10.9000000000000004	20.7600000000000016	500	89.5	Monitor Viejo	364824aef420146d6990b3b000b39ecf2be9ac95	100	2014-09-25 14:22:49.188632	2014-09-25 14:22:49.188632	\N	\N
-8	40	4	0.400000000000000022	58.0	Teclado Gamer	548289c819c7d29d22e68b6fafc1c5ab1cec8cb0	120	2014-09-25 14:23:44.594811	2014-09-25 14:23:44.594811	\N	\N
+COPY paquetes (id, ancho, alto, peso, descripcion, numero_guia, costo, created_at, updated_at, emisor_id, receptor_id, profundidad) FROM stdin;
+8	40	4	0.400000000000000022	Teclado Gamer	548289c819c7d29d22e68b6fafc1c5ab1cec8cb0	120	2014-09-25 14:23:44.594811	2014-09-25 14:23:44.594811	\N	\N	58
+2	20	10	30	Descripcion	6bfdf5c20efa5a963ac7339c6891ca4124b9764e	150	2014-09-25 14:16:04.273164	2014-09-26 14:33:08.16502	1	2	15.3200000000000003
+3	17.5399999999999991	0.5	0.340000000000000024	Aretes	7b5d1f72494cfe5940ea8b765d2755b97dc13567	300	2014-09-25 14:17:27.300141	2014-09-26 14:33:17.002912	3	4	25.8000000000000007
+4	27.8999999999999986	13.5	37.7700000000000031	Caja desconocida	0afc5fb8e2d915d641abc948d371a4dadf3dd214	87.5999999999999943	2014-09-25 14:18:28.127075	2014-09-26 14:33:50.969775	5	6	13.5
+5	0.900000000000000022	9.5	7.96999999999999975	Lamina de Adamantio	58dd4fcb937e63509c854f30175a524e42dfde4e	1000	2014-09-25 14:19:27.256682	2014-09-26 14:34:31.81314	3	5	29.4299999999999997
+6	56.8999999999999986	9.75999999999999979	7.96999999999999975	Queso Gigante	702c97c440baaa9afe2404b549b32897ea829a98	0.5	2014-09-25 14:22:13.510192	2014-09-26 14:34:42.552338	2	4	15.8000000000000007
+7	10.9000000000000004	20.7600000000000016	500	Monitor Viejo	b42a1b82c89d65d2dd74c22833c883321a1c699b	100	2014-09-25 14:22:49.188632	2014-09-26 14:34:55.608403	1	5	89.5
+9	5	5	5	dfsf	f285302cf51af818490f019b6766a0f713638e98	100	2014-09-26 16:18:27.87941	2014-09-26 16:18:27.87941	1	7	5
+10	5	5	5	Test Pckg	c265841e8d728deab0e676813178f206af2efb79	42.1666666666666643	2014-09-26 17:18:12.269745	2014-09-26 17:18:12.269745	1	2	5
+11	5	5	5	any	ec6bc0bfb97d66bbc53b404f3272e23d0f584e6e	42.1666666666666643	2014-09-26 17:19:38.832334	2014-09-26 17:19:38.832334	1	2	5
+12	2	2	3	Test	cfd465f735135b31e17b6359d814dd481676c5d0	2.20000000000000018	2014-09-26 18:00:46.605216	2014-09-26 18:00:46.605216	1	2	3
 \.
 
 
@@ -115,7 +122,28 @@ COPY paquetes (id, ancho, alto, peso, profundidad, descripcion, numero_guia, cos
 -- Name: paquetes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aticompanyuser
 --
 
-SELECT pg_catalog.setval('paquetes_id_seq', 8, true);
+SELECT pg_catalog.setval('paquetes_id_seq', 12, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: aticompanyuser
+--
+
+COPY schema_migrations (version) FROM stdin;
+20140924041724
+20140924042022
+20140924042132
+20140924042408
+20140924042837
+20140924043040
+20140924043340
+20140924043455
+20140924123137
+20140925114200
+20140925115952
+20140925122005
+20140927205022
+\.
 
 
 --
@@ -218,12 +246,13 @@ SELECT pg_catalog.setval('usuario_interno_agencia_id_seq', 22, true);
 --
 
 COPY usuarios (id, nombre, apellido, correo_electronico, fecha_ultimo_acceso, tipo_usuario_id, created_at, updated_at, password_digest) FROM stdin;
-1	jesus	gomez	jgomez@mail.com	2014-09-25 15:40:06.518748	1	2014-09-25 15:40:06.618867	2014-09-25 15:40:06.618867	$2a$10$Pak6jpBi2rpkWgK/RukQmOmXGpg5jrGhvPtN7huSrpk1YUgJPCiZu
-2	alberto	cavadia	acavadia@mail.com	2014-09-25 15:41:50.189063	1	2014-09-25 15:41:50.301841	2014-09-25 15:41:50.301841	$2a$10$WkqhaheONvZh6.K0tri7CeTdJeFIpKleqeaqzTkKikNrxx9BfkIEu
 3	manuel	sanchez	msanhez@mail.com	2014-09-25 15:42:16.986305	2	2014-09-25 15:42:17.072707	2014-09-25 15:42:17.072707	$2a$10$QBspv94r8SQp13g10323JOgX87NPmOMEY9jnhCdNn.zWhzg.peG8i
 4	juan	garcia	jgarcia@mail.com	2014-09-25 15:42:37.10031	2	2014-09-25 15:42:37.178875	2014-09-25 15:42:37.178875	$2a$10$lDGZDIp1oseDgVwty4Epl.4LOxXVyDuvUHUFfdv1Dz8IY0NFui9ZS
-5	sergio	rivas	srivas@mail.com	2014-09-25 15:42:58.608164	3	2014-09-25 15:42:58.684456	2014-09-25 15:42:58.684456	$2a$10$1Q/oyrNOsZLuW3iiKaTZwOODiCcMv/j8tC6F0ZzCsHFWq1M5vZrtG
 6	andres	viviani	aviviani@mail.com	2014-09-25 15:45:24.617389	3	2014-09-25 15:45:24.705592	2014-09-25 15:45:24.705592	$2a$10$OGRDlrvtLKIQzjMs7sth9.u5upLpsFEuulpGmh2SLD0jeq4QrocD6
+2	alberto	cavadia	acavadia@mail.com	2014-09-26 14:39:44.775426	1	2014-09-25 15:41:50.301841	2014-09-26 14:39:44.779602	$2a$10$WkqhaheONvZh6.K0tri7CeTdJeFIpKleqeaqzTkKikNrxx9BfkIEu
+5	sergio	rivas	srivas@mail.com	2014-09-26 14:39:59.127624	3	2014-09-25 15:42:58.684456	2014-09-26 14:39:59.130059	$2a$10$1Q/oyrNOsZLuW3iiKaTZwOODiCcMv/j8tC6F0ZzCsHFWq1M5vZrtG
+7	teo	galindez	tgalindez@mail.com	2014-09-26 14:45:37.767057	3	2014-09-26 14:45:26.61043	2014-09-26 14:45:37.770232	$2a$10$tdVUaNE0qvodwPB4g41Wteaa2K6yDkDkHdcOR.e6lDdRBYIE8dJRi
+1	jesus	gomez	jgomez@mail.com	2014-09-26 17:56:45.516544	1	2014-09-25 15:40:06.618867	2014-09-26 17:56:45.527985	$2a$10$Pak6jpBi2rpkWgK/RukQmOmXGpg5jrGhvPtN7huSrpk1YUgJPCiZu
 \.
 
 
@@ -231,7 +260,7 @@ COPY usuarios (id, nombre, apellido, correo_electronico, fecha_ultimo_acceso, ti
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aticompanyuser
 --
 
-SELECT pg_catalog.setval('usuarios_id_seq', 6, true);
+SELECT pg_catalog.setval('usuarios_id_seq', 7, true);
 
 
 --
