@@ -105,8 +105,7 @@ SELECT pg_catalog.setval('empresas_id_seq', 1, true);
 --
 
 COPY paquetes (id, ancho, alto, peso, descripcion, numero_guia, costo, created_at, updated_at, emisor_id, receptor_id, profundidad) FROM stdin;
-
-8	40	4	0.400000000000000022	Teclado Gamer	548289c819c7d29d22e68b6fafc1c5ab1cec8cb0	120	2014-09-25 14:23:44.594811	2014-09-25 14:23:44.594811	\N	\N	58
+8	40	4	0.400000000000000022	Teclado Gamer	548289c819c7d29d22e68b6fafc1c5ab1cec8cb0	120	2014-09-25 14:23:44.594811	2014-09-25 14:23:44.594811	1	2	58
 2	20	10	30	Descripcion	6bfdf5c20efa5a963ac7339c6891ca4124b9764e	150	2014-09-25 14:16:04.273164	2014-09-26 14:33:08.16502	1	2	15.3200000000000003
 3	17.5399999999999991	0.5	0.340000000000000024	Aretes	7b5d1f72494cfe5940ea8b765d2755b97dc13567	300	2014-09-25 14:17:27.300141	2014-09-26 14:33:17.002912	3	4	25.8000000000000007
 4	27.8999999999999986	13.5	37.7700000000000031	Caja desconocida	0afc5fb8e2d915d641abc948d371a4dadf3dd214	87.5999999999999943	2014-09-25 14:18:28.127075	2014-09-26 14:33:50.969775	5	6	13.5
@@ -227,18 +226,17 @@ SELECT pg_catalog.setval('usuario_interno_agencia_id_seq', 22, true);
 --
 
 COPY usuarios (id, nombre, apellido, correo_electronico, fecha_ultimo_acceso, tipo_usuario_id, created_at, updated_at, password_digest, pregunta, respuesta) FROM stdin;
-3	manuel	sanchez	msanhez@mail.com	2014-09-25 15:42:16.986305	3	2014-09-25 15:42:17.072707	2014-09-25 15:42:17.072707	$2a$10$QBspv94r8SQp13g10323JOgX87NPmOMEY9jnhCdNn.zWhzg.peG8i	\N	\N
-4	juan	garcia	jgarcia@mail.com	2014-09-25 15:42:37.10031	3	2014-09-25 15:42:37.178875	2014-09-25 15:42:37.178875	$2a$10$lDGZDIp1oseDgVwty4Epl.4LOxXVyDuvUHUFfdv1Dz8IY0NFui9ZS	\N	\N
-5	sergio	rivas	srivas@mail.com	2014-09-25 15:42:58.608164	3	2014-09-25 15:42:58.684456	2014-09-25 15:42:58.684456	$2a$10$1Q/oyrNOsZLuW3iiKaTZwOODiCcMv/j8tC6F0ZzCsHFWq1M5vZrtG	\N	\N
-6	andres	viviani	aviviani@mail.com	2014-09-25 15:45:24.617389	3	2014-09-25 15:45:24.705592	2014-09-25 15:45:24.705592	$2a$10$OGRDlrvtLKIQzjMs7sth9.u5upLpsFEuulpGmh2SLD0jeq4QrocD6	\N	\N
-7	Daniel	Cavadia	dcavadia@mail.com	2014-09-28 05:17:04.951689	3	2014-09-28 05:17:05.020131	2014-09-28 05:17:05.020131	$2a$10$qS5Oi0c/U.wApeWstFZKtO5BXBGckuHzGSKFObOAhLvS2Pc.Ogm2.	\N	\N
-8	Ana	Russian	arussian@mail.com	2014-09-28 06:00:58.226254	3	2014-09-28 06:00:58.292935	2014-09-28 06:00:58.292935	$2a$10$2jpmssgOql92CFRF19Q7OOhCxSLS0SDrxT3B8ZGdbCClwu2B7zd9u	\N	\N
-9	Maria	Russian	mrussian@mail.com	2014-09-28 06:04:50.737498	3	2014-09-28 06:04:50.807474	2014-09-28 06:04:50.807474	$2a$10$ytB8cgcXxR6JBQMVTFE8rurjmyzWnmFi8hnfdc7vbw55bE1Risf/C	\N	\N
-10	Jacobo	Cordido	jcordido@mail.com	2014-09-28 06:08:51.291584	3	2014-09-28 06:08:51.361362	2014-09-28 06:08:51.361362	$2a$10$RC/8ooh6VQVkkJHYMKUrg./nC2b3RTjNzkgopB2tGTDzWDEgTGxhu	\N	\N
-2	alberto	cavadia	osoflash_2@hotmail.com	2014-09-28 04:38:21.101165	2	2014-09-25 15:41:50.301841	2014-09-28 04:38:21.103346	$2a$10$WkqhaheONvZh6.K0tri7CeTdJeFIpKleqeaqzTkKikNrxx9BfkIEu	Como se llama tu primer perro de la infancia?	toby
-11	Propel	PHP	pphp@mail.com	2014-09-28 13:24:48.229129	3	2014-09-28 13:24:48.362713	2014-09-28 13:24:48.362713	$2a$10$yPxLAbUA94PXHrltyTq2puNuzyGLCXfTEPU5C58qenhjQqUh9GRdm	\N	\N
-1	jesus	gomez	jesus.igp009@gmail.com	2014-09-27 18:41:12.054467	2	2014-09-25 15:40:06.618867	2014-09-27 18:41:12.056162	$2a$10$Pak6jpBi2rpkWgK/RukQmOmXGpg5jrGhvPtN7huSrpk1YUgJPCiZu	Si tu perrita fuera un embutido, cual seria?	salchica
-
+3	manuel	sanchez	msanhez@mail.com	2014-09-25 15:42:16.986305	3	2014-09-25 15:42:17.072707	2014-09-25 15:42:17.072707	$2a$10$QBspv94r8SQp13g10323JOgX87NPmOMEY9jnhCdNn.zWhzg.peG8i	Color Favorito?	amarillo
+4	juan	garcia	jgarcia@mail.com	2014-09-25 15:42:37.10031	3	2014-09-25 15:42:37.178875	2014-09-25 15:42:37.178875	$2a$10$lDGZDIp1oseDgVwty4Epl.4LOxXVyDuvUHUFfdv1Dz8IY0NFui9ZS	Color Favorito?	amarillo
+5	sergio	rivas	srivas@mail.com	2014-09-25 15:42:58.608164	2	2014-09-25 15:42:58.684456	2014-09-25 15:42:58.684456	$2a$10$1Q/oyrNOsZLuW3iiKaTZwOODiCcMv/j8tC6F0ZzCsHFWq1M5vZrtG	Color Favorito?	amarillo
+6	andres	viviani	aviviani@mail.com	2014-09-25 15:45:24.617389	2	2014-09-25 15:45:24.705592	2014-09-25 15:45:24.705592	$2a$10$OGRDlrvtLKIQzjMs7sth9.u5upLpsFEuulpGmh2SLD0jeq4QrocD6	Color Favorito?	amarillo
+7	Daniel	Cavadia	dcavadia@mail.com	2014-09-28 05:17:04.951689	3	2014-09-28 05:17:05.020131	2014-09-28 05:17:05.020131	$2a$10$qS5Oi0c/U.wApeWstFZKtO5BXBGckuHzGSKFObOAhLvS2Pc.Ogm2.	Color Favorito?	amarillo
+8	Ana	Russian	arussian@mail.com	2014-09-28 06:00:58.226254	3	2014-09-28 06:00:58.292935	2014-09-28 06:00:58.292935	$2a$10$2jpmssgOql92CFRF19Q7OOhCxSLS0SDrxT3B8ZGdbCClwu2B7zd9u	Color Favorito?	amarillo
+9	Maria	Russian	mrussian@mail.com	2014-09-28 06:04:50.737498	2	2014-09-28 06:04:50.807474	2014-09-28 06:04:50.807474	$2a$10$ytB8cgcXxR6JBQMVTFE8rurjmyzWnmFi8hnfdc7vbw55bE1Risf	Color Favorito?	amarillo
+10	Jacobo	Cordido	jcordido@mail.com	2014-09-28 06:08:51.291584	2	2014-09-28 06:08:51.361362	2014-09-28 06:08:51.361362	$2a$10$RC/8ooh6VQVkkJHYMKUrg./nC2b3RTjNzkgopB2tGTDzWDEgTGxhu	Color Favorito?	amarillo
+2	alberto	cavadia	osoflash_2@hotmail.com	2014-09-28 04:38:21.101165	1	2014-09-25 15:41:50.301841	2014-09-28 04:38:21.103346	$2a$10$WkqhaheONvZh6.K0tri7CeTdJeFIpKleqeaqzTkKikNrxx9BfkIEu	Como se llama tu primer perro de la infancia?	toby
+11	Propel	PHP	pphp@mail.com	2014-09-28 13:24:48.229129	3	2014-09-28 13:24:48.362713	2014-09-28 13:24:48.362713	$2a$10$yPxLAbUA94PXHrltyTq2puNuzyGLCXfTEPU5C58qenhjQqUh9GRdm	Color Favorito?	amarillo
+1	jesus	gomez	jesus.igp009@gmail.com	2014-09-27 18:41:12.054467	1	2014-09-25 15:40:06.618867	2014-09-27 18:41:12.056162	$2a$10$Pak6jpBi2rpkWgK/RukQmOmXGpg5jrGhvPtN7huSrpk1YUgJPCiZu	Si tu perrita fuera un embutido, cual seria?	salchica
 \.
 
 

@@ -4,8 +4,16 @@ before_filter :check_session
 	def create		
 		begin
 			p = params.permit(:agencia,:alto,:ancho,:profundidad,:peso,:valor,:costo,:emisor,:receptor,:descripcion)
-			e = Usuario.find_by(correo_electronico: p.require(:emisor)).id
-			r = Usuario.find_by(correo_electronico: p.require(:receptor)).id
+			e = Usuario.find_by(correo_electronico: p.require(:emisor))
+			r = Usuario.find_by(correo_electronico: p.require(:receptor))
+
+			if e.nil?
+				raise "Usuario emisor no registrado en el sistema"
+			end
+
+			if r.nil?
+				raise "Usuario receptor no registrado en el sistema"
+			end
 
 			@paquete= Paquete.create(
 				ancho:p.require(:ancho).to_f,
@@ -14,8 +22,8 @@ before_filter :check_session
 				profundidad: p.require(:profundidad).to_f,
 				descripcion: p.require(:descripcion),
 				costo: p.require(:costo).to_f,
-				emisor_id: e,
-				receptor_id: r,
+				emisor_id: e.id,
+				receptor_id: r.id,
 			)
 
 			@agencia_paquete=AgenciaPaquete.create(
