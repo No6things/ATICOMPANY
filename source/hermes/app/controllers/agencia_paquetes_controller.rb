@@ -46,13 +46,4 @@ class AgenciaPaquetesController < ApplicationController
 			render json: {err_mssg: "Pages could not be retrieved", success_mssg: ""}, status: 400
 		end
 	end
-
-	def show_by_user
-		begin				
-			t = AgenciaPaquete.find(params[:id].to_i)
-			render json: {err_mssg: "", success_mssg: "Transaction Found", data: t.as_json}, status: 200			
-		rescue Exception => e
-			render json: {err_mssg: "No Transaction found", success_mssg: ""}, status: 400
-		end
-	end
 end

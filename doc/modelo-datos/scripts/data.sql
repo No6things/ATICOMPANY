@@ -90,7 +90,7 @@ SELECT pg_catalog.setval('agencia_paquetes_id_seq', 37, true);
 --
 
 COPY empresas (id, nombre, rif, frase_comercial, constante_tarifa, porcentaje_tarifa, created_at, updated_at) FROM stdin;
-1	Hermes	J-123456789-0	El servicio de entrega de los dioses	15	10.0999999999999996	2014-09-25 10:01:34.521632	2014-09-26 19:28:22.726092
+1	Hermes	J-123456789-0	El servicio de entrega de los dioses	15	10	2014-09-25 10:01:34.521632	2014-09-26 22:34:11.049403
 \.
 
 
@@ -263,9 +263,9 @@ COPY usuarios (id, nombre, apellido, correo_electronico, fecha_ultimo_acceso, ti
 2	alberto	cavadia	osoflash_2@hotmail.com	2014-09-28 04:38:21.101165	1	2014-09-25 15:41:50.301841	2014-09-28 04:38:21.103346	$2a$10$WkqhaheONvZh6.K0tri7CeTdJeFIpKleqeaqzTkKikNrxx9BfkIEu	Como se llama tu primer perro de la infancia?	toby
 11	Propel	PHP	pphp@mail.com	2014-09-28 13:24:48.229129	3	2014-09-28 13:24:48.362713	2014-09-28 13:24:48.362713	$2a$10$yPxLAbUA94PXHrltyTq2puNuzyGLCXfTEPU5C58qenhjQqUh9GRdm	Color Favorito?	amarillo
 1	jesus	gomez	jesus.igp009@gmail.com	2014-09-26 20:51:59.36772	1	2014-09-25 15:40:06.618867	2014-09-26 20:51:59.370001	$2a$10$5oaN29XQaNC08jemTmyRSulqY9pk.l2CFF0lkonLsiWI3PJM6aai2	Si tu perrita fuera un embutido, cual seria?	salchicha
-13	Administrador	Prueba	a@m.com	2014-09-26 21:10:26.735928	1	2014-09-26 21:05:07.729756	2014-09-26 21:10:26.73817	$2a$10$jD3eHFrk/tiFDXEcqOKTa.CaXgDc3upMt3/nIonbY83PO9rZOGQnC	Color favorito?	amarillo
-14	operador	Prueba	o@m.com	2014-09-26 21:11:25.36059	2	2014-09-26 21:05:38.168446	2014-09-26 21:11:25.362647	$2a$10$uu6u8mtOFKcGDc9ndU5Qo.issBQG1/PHGeZr4Ucug7fYrdptiKBcm	Color favorito?	amarillo
-12	cliente	prueba	c@m.com	2014-09-26 21:18:40.068409	3	2014-09-26 20:58:20.817826	2014-09-26 21:18:40.07251	$2a$10$RCtoEsuZteP5sP5GIW/fB.tuytIPHgM0oLJYpP4oFX5TTSjMAdfSm	\N	\N
+14	operador	Prueba	o@m.com	2014-09-26 21:29:39.060741	2	2014-09-26 21:05:38.168446	2014-09-26 21:29:39.07816	$2a$10$uu6u8mtOFKcGDc9ndU5Qo.issBQG1/PHGeZr4Ucug7fYrdptiKBcm	Color favorito?	amarillo
+12	cliente	prueba	c@m.com	2014-09-26 21:30:04.363695	3	2014-09-26 20:58:20.817826	2014-09-26 21:30:04.366456	$2a$10$RCtoEsuZteP5sP5GIW/fB.tuytIPHgM0oLJYpP4oFX5TTSjMAdfSm	\N	\N
+13	Administrador	Prueba	a@m.com	2014-09-26 22:33:56.085085	1	2014-09-26 21:05:07.729756	2014-09-26 22:33:56.089139	$2a$10$jD3eHFrk/tiFDXEcqOKTa.CaXgDc3upMt3/nIonbY83PO9rZOGQnC	Color favorito?	amarillo
 \.
 
 
