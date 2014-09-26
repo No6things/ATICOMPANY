@@ -8,15 +8,15 @@ resources :agencias
 resources :paquetes
 resources :agencia_paquetes
 
-
 root "home#index"
 post "/login" => "home#login"
 get  "/logout" => "home#logout"
 post "/register" => "register#register_user"
-get  "/paquete" => "package#create"
+ post "/calculator" => "calculator#calculate"
+post  "/create" => "package#create"
 get "/admin" => "admin#index"
-
-get "/more_transactions" => "agencia_paquetes#get_page"
+post "/enterprise" => "home#enterprise"
+get "/pager_transactions" => "agencia_paquetes#get_page"
 
 end
 

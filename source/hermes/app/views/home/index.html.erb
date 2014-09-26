@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js Newslab" lang="es-VE">
 	<head>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="enterprise_token" content="1">	
@@ -72,6 +73,15 @@
 								</a>
 							</li>							
 							<%if @usuario %>
+								<%if @usuario.tipo_usuario.abreviacion == "O" %>
+								<li>
+									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+										Enviar paquete
+										&nbsp;
+										<i class="fa fa-send-o fa-lg"></i>					
+									</a>
+								</li>
+								<%end%>
 
 							<%if @usuario.tipo_usuario.abreviacion == "A"%>
 							<li>
@@ -83,13 +93,7 @@
 							</li>
 							<%end%>
 							
-							<li>
-								<a class="alert button" href="#" data-reveal-id="modal_paquete">
-									Enviar paquete
-									&nbsp;
-									<i class="fa fa-send-o fa-lg"></i>					
-								</a>
-							</li>
+							
 							<li>
 								<a class="alert button" href="/logout">
 									Cerrar Sesi&oacute;n
@@ -97,7 +101,7 @@
 									<i class="fa fa-sign-out fa-lg"></i>		
 								</a>
 							</li>
-							<% end %>
+						<% end %>
 						</ul> 
 					</li> 
 					</ul> 
@@ -114,25 +118,25 @@
 		</div>	
 	</div>
 	
-    <div class="row extra-padding-row">
-      <div class="large-12 columns">
-      	<div class="centered-image">
-      		<%= image_tag "hermes-logo.png" %>
-      	</div>
-        <!--<img class="centered-image" src="app/assets/images/hermes-logo.png" alt="">-->
-      </div>
+  <div class="row extra-padding-row">
+    <div class="large-12 columns">
+     	<div class="centered-image">
+    		<%= image_tag "hermes-logo.png" %>
+    	</div>
+      <!--<img class="centered-image" src="app/assets/images/hermes-logo.png" alt="">-->
     </div>
-    <div class="row">
-    	<div class="large-12 columns slogan-container">
-    		<h4 class="slogan-frace">
+  </div>
+  <div class="row">
+   	<div class="large-12 columns slogan-container">
+   		<h4 class="slogan-frace">
 				<i class="fa fa-quote-left"></i>
 				&nbsp;
-    			El servicio de entrega de los dioses
-    			&nbsp;
-    			<i class="fa fa-quote-right"></i>
-    		</h4>
-    	</div>    	
-    </div>
+  			El servicio de entrega de los dioses
+  			&nbsp;
+  			<i class="fa fa-quote-right"></i>
+  		</h4>
+  	</div>    	
+  </div>
 
 	<ul data-orbit> 
 		<li> 
@@ -264,34 +268,6 @@
 	<!-- ~~~~~~~~~ BEGIN Definicion de modales utilizadas ~~~~~~~~~ -->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-	<!-- ~~~~~~~~~ Modal inicio de sesion ~~~~~~~~~-->
-	<div id="modal_inicio_sesion" class="reveal-modal small custom-modal-container" data-reveal>
-	  <div class="modal-header row custom-modal-header slogan-u">
-	  	<h4 class="white-text">Iniciar Sesi&oacute;n</h4>
-	  	<a class="close-reveal-modal">&#215;</a>
-	  </div>
-	  
-	  <div class="modal-content row">
-	  	<form class="login-form" action="/login" method="post">	
-	  		<%= token_tag(nil) %>
-	  		<div class="row">
-	  		    <div class="large-12 small-12 columns">	  		      
-	  		    	<input type="text" placeholder="Usuario" name="login" required>
-	  		    	<input type="password" placeholder="Contraseña" name="passwd" required>
-	  		    </div>
-	  		</div>
-
-	  		<h4><small><a href="">¿Olvidaste tu contraseña?</a></small></h4>
-  	  
-  		  	<input type="submit" class="hidden-submit-button">
-  		  	<span class="alert round label">Presione Enter para acceder al sistema</span>
-
-	  	</form>	  	
-	  </div>
-
-	  <div class="modal-footer row"></div> 	  
-	</div>
-
 	<!-- ~~~~~~~~~ Modal quienes somos ~~~~~~~~~-->
 	<div id="modal_quienes_somos" class="reveal-modal large custom-modal-container" data-reveal>
 		<div class="modal-header row custom-modal-header slogan-u">
@@ -380,6 +356,35 @@
 	  <div class="modal-footer row"></div> 	  
 	</div>
 
+	<!-- ~~~~~~~~~ Modal inicio de sesion ~~~~~~~~~-->
+	<div id="modal_inicio_sesion" class="reveal-modal small custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text">Iniciar Sesi&oacute;n</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row">
+	  	<form class="login-form" action="/login" method="post">	
+	  		<%= token_tag(nil) %>
+
+	  		<div class="row">
+	  		    <div class="large-12 small-12 columns">	  		      
+	  		    	<input type="text" placeholder="Usuario" name="login" required />
+	  		    	<input type="password" placeholder="Contraseña" name="passwd" required />
+	  		    </div>
+	  		</div>
+
+	  		<h4><small><a href="">¿Olvidaste tu contraseña?</a></small></h4>
+  	  
+  		  	<input type="submit" class="hidden-submit-button" />
+  		  	<span class="alert round label">Presione Enter para acceder al sistema</span>
+
+	  	</form>	  	
+	  </div>
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
+
 	<!-- ~~~~~~~~~ Modal registrar usuario ~~~~~~~~~-->
 	<div id="modal_registrar_usuario" class="reveal-modal large custom-modal-container" data-reveal>
 	  <div class="modal-header row custom-modal-header slogan-u">
@@ -390,15 +395,18 @@
 	  <div class="modal-content row extra-padding-row">
 
 	  	<div class="large-8 small-8 large-offset-2 small-offset-2 columns">
-	  	<form class="register-form" method="post">
-	  		<%= token_tag(nil) %>	  		
-	  		<input name="fname" type="text" placeholder="Primer Nombre" required>
-	  		<input name="lname" type="text" placeholder="Primer Apellido" required>	  		
-	  		<input name="email" type="email" placeholder="Correo Electronico" required>
-	  		<input name="passwd" type="password" placeholder="Contraseña" required>
-	  		<span class="alert round label">Presione Enter para registrarse</span>
-			<input type="submit" class="hidden-submit-button">
-	  	</form>	 
+	    	<form class="register-form" method="post">
+
+	    		<%= token_tag(nil) %>	  		
+	    		<input name="fname" type="text" placeholder="Primer Nombre" required />
+	    		<input name="lname" type="text" placeholder="Primer Apellido" required />	  		
+	    		<input name="email" type="email" placeholder="Correo Electronico" required />
+	    		<input name="passwd" type="password" placeholder="Contraseña" required />
+
+	    		<span class="alert round label">Presione Enter para registrarse</span>
+  			    <input type="submit" class="hidden-submit-button"/>
+
+	    	</form>	 
 	  	</div> 	
 	  </div>
 
@@ -413,13 +421,14 @@
 	  </div>
 	  
 	  <div class="modal-content row extra-padding-row">
-	  	<form class="calculadora-form" action="" method="post">			
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" required>  		
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Peso en Kg" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" required>  	  
-  		  	<input type="submit" class="hidden-submit-button">
+	  	<form class="calculadora-form"  method="post">	
+	  		<%= token_tag(nil) %>	  		
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required />  		
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" required />
+			<input class="columns" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" name="peso" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required />
+  		  	<input type="submit" class="hidden-submit-button" />
   		  	<span class="alert round label">Presione Enter para calcular</span>
 	  	</form>	  	
 	  </div>
@@ -449,35 +458,35 @@
 	  </div>
 	  
 	  <div class="modal-content row extra-padding-row">
+		  <div class="large-8 small-8 large-offset-2 small-offset-2 columns">
 
-	  <div class="large-8 small-8 large-offset-2 small-offset-2 columns">
-	  	<form class="paquete-form row" action="/paquete" method="post">
+		  	<form id="paquete-form"  class="paquete-form row" method="post">
 
-			<select class="columns"  name="agencia">
-  				<option value="0">Agencia Destino</option>
-	        	<% Agencia.find_each do |agencia| %>
-	        	<option value="<%= agencia.id%>"><%= agencia.nombre%></option>
-	        	<%end%>	
-	        </select>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required>  		
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profun" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Peso en Kg" name="peso" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required>  	  		  	 
-		  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Destinatario" name="dest" required> 
-		  	<textarea class="columns" placeholder="Descripci&oacute;n" name="desc" required></textarea>	  
-  		  	<input type="submit" class="hidden-submit-button">
+		  		<%= token_tag(nil) %>	  		
+				 <select class="columns" form="paquete-form"  name="agencia"required>
+	  				<option value="">Agencia Destino</option>
+		        	<% Agencia.find_each do |agencia| %>
+		          	<option value="<%= agencia.id%>"><%= agencia.nombre%></option>
+		        	<%end%>	
+		      </select>
+			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required />  		
+			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required />
+			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" required />
+			  	<input class="columns" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" name="peso" required />
+			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required />
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Emisor" name="origen" required /> 
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Receptor" name="destino" required /> 
+			  	<textarea class="columns" form="paquete-form" placeholder="Descripci&oacute;n" name="descripcion" required></textarea>	
+			  	<input class="columns" type="text" placeholder="El costo de env&iacute;o es:" name="costo" disabled />
 
-  		  	<span class="alert round label">Presione Enter para enviar</span>
-	  	</form>
-	  	</div>	  
-	  	</div>		
+	  		  <input class="hidden-submit-button" type="submit"/>
+	  		  <span class="alert round label">Presione Enter para enviar</span>
+
+		  	</form>
+		  </div>	  
 	  </div>
-
-	  <div class="modal-footer row notification-footer">	  	
-	  </div> 	  
+	  <div class="modal-footer row notification-footer"></div> 			
 	</div>
-
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- ~~~~~~~~~ END Definicion de modales utilizadas ~~~~~~~~~ -->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -499,6 +508,6 @@
 				}
 			});
 	</script>
-	
+
 	</body>
 </html>

@@ -8,6 +8,7 @@ class Paquete < ActiveRecord::Base
 	validates! :alto, presence: true, on: :create
 	validates! :peso, presence: true, on: :create
 	validates! :costo, presence: true, on: :create
+	validates! :profundidad, presence: true, on: :create
 	validates! :descripcion, presence: true, on: :create
 	validates! :numero_guia, presence: true, uniqueness: true, on: [:create, :update]
 
