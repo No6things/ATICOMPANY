@@ -54,8 +54,7 @@ class HomeController < ApplicationController
 			e=Empresa.where(id: i)[0]
 			render json: {err_mssg: "", success_msg: "Enterprise data", data: e.as_json}, status: 202
 		rescue Exception => e
-			render json: {err_mssg: "Header error found, wrong or invalid enterprise-token value", success_msg: ""}, status: 400
+			render json: {err_mssg: "Header error found, invalid enterprise-token value", success_msg: ""}, status: 400
 		end
-
-	end	
+	end
 end

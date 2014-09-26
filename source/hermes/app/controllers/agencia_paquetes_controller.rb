@@ -45,5 +45,5 @@ class AgenciaPaquetesController < ApplicationController
 		rescue Exception => e
 			render json: {err_mssg: "Pages could not be retrieved", success_mssg: ""}, status: 400
 		end
-	end
+	end	
 end
