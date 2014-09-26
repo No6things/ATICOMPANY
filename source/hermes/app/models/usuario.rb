@@ -1,6 +1,7 @@
 #Definicion del modelo usuario
 
 class Usuario < ActiveRecord::Base
+	include Rails.application.routes.url_helpers
 
 	#Validaciones
 	validates! :nombre, presence: true, on: :create
@@ -16,5 +17,18 @@ class Usuario < ActiveRecord::Base
 	has_many :usuario_empresas
 		
 	#Funciones y codigo personalizado
-	
+	def url
+		usuario_path(self)
+	end
+
+	def as_json
+		{
+			:id => self.id,
+			:nombre => self.nombre,
+			:apellido => self.apellido,
+			:correo_electronico => self.correo_electronico,
+			:fecha_ultimo_acceso => self.fecha_ultimo_acceso,
+			:tipo_usuario => self.tipo_usuario.as_json,			
+		}		
+	end
 end

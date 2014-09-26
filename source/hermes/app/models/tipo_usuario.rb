@@ -1,6 +1,6 @@
 #Definicion del modelo TipoUsuario
 
-class TipoUsuario < ActiveRecord::Base
+class TipoUsuario < ActiveRecord::Base	
 	
 	#Validaciones
 	validates! :nombre, presence: true, on: :create
@@ -10,5 +10,11 @@ class TipoUsuario < ActiveRecord::Base
 	has_many :usuarios
 
 	#Funciones y codigo personalizado
-
+	def as_json
+		{
+			:id => self.id,
+			:nombre => self.nombre,
+			:abreviacion => self.abreviacion,
+		}		
+	end
 end

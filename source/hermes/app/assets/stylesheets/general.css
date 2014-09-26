@@ -168,6 +168,14 @@ body, a, li, ul, h1, h2, h3, h4, label, input, select,
 	background-color: #DFDFDF;
 }
 
+.tiny-custom{
+	margin: 0px;
+}
+
+.ui-helper-center {
+    text-align: center;
+}
+
 /* 
 	Media Query Section 
 	~~~~~~~~~~~~~~~~~~~

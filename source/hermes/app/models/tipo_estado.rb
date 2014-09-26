@@ -10,5 +10,12 @@ class TipoEstado < ActiveRecord::Base
 	belongs_to :agencia_paquete	
 
 	#Funciones y codigo personalizado
+	def as_json
+		{
+			:id => self.id,
+			:nombre => self.nombre,
+			:abreviacion => self.abreviacion,
+		}		
+	end
 
 end

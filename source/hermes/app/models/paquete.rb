@@ -1,6 +1,7 @@
 #Definicion del modelo Paquete
 
 class Paquete < ActiveRecord::Base
+	include Rails.application.routes.url_helpers
 	
 	#Validaciones	
 	validates! :ancho, presence: true, on: :create 
@@ -17,9 +18,27 @@ class Paquete < ActiveRecord::Base
 
 	#Funciones y codigo personalizado
 	before_validation :generate_numero_guia
+	
+	def url
+		paquete_path(self)
+	end
+
+	def as_json
+		{
+			:id => self.id,
+			:ancho => self.ancho,
+			:alto => self.alto,
+			:peso => self.peso,
+			:costo => self.costo,
+			:descripcion => self.descripcion,
+			:numero_guia => self.numero_guia,
+			:emisor => self.emisor.as_json,
+			:receptor => self.receptor.as_json,
+		}
+	end	
 
 	protected		
 		def generate_numero_guia
 			self.numero_guia = Digest::SHA1.hexdigest("#{self.id}#{Time.now}")
-		end		
+		end	
 end

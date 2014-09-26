@@ -3,12 +3,15 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="enterprise_token" content="1">	
 	<%= csrf_meta_tag %>
+
 	<link rel="stylesheet" href="/assets/normalize.css">
-	<link rel="stylesheet" href="/assets/foundation.css" />
+	<link rel="stylesheet" href="/assets/foundation.min.css" />
 	<link rel="stylesheet" href="/assets/font-config.css">		
 	<link rel="stylesheet" href="/assets/font-awesome.min.css">
 	<link rel="stylesheet" href="/assets/general.css" />
+	<link rel="stylesheet" href="/assets/modernizr.js"/>
 
 	<title>Hermes | Home</title>
 	</head>
@@ -72,7 +75,7 @@
 
 							<%if @usuario.tipo_usuario.abreviacion == "A"%>
 							<li>
-								<a class="alert button" href="/panel">
+								<a class="alert button" href="/empresas/1">
 									Administraci&oacute;n
 									&nbsp;
 									<i class="fa fa-cog fa-lg"></i>		

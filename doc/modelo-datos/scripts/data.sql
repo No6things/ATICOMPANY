@@ -238,10 +238,10 @@ SELECT pg_catalog.setval('usuario_interno_agencia_id_seq', 22, true);
 --
 
 COPY usuarios (id, nombre, apellido, correo_electronico, fecha_ultimo_acceso, tipo_usuario_id, created_at, updated_at, password_digest) FROM stdin;
-1	jesus	gomez	jgomez@mail.com	2014-09-25 15:40:06.518748	3	2014-09-25 15:40:06.618867	2014-09-25 15:40:06.618867	$2a$10$Pak6jpBi2rpkWgK/RukQmOmXGpg5jrGhvPtN7huSrpk1YUgJPCiZu
-2	alberto	cavadia	acavadia@mail.com	2014-09-25 15:41:50.189063	3	2014-09-25 15:41:50.301841	2014-09-25 15:41:50.301841	$2a$10$WkqhaheONvZh6.K0tri7CeTdJeFIpKleqeaqzTkKikNrxx9BfkIEu
-3	manuel	sanchez	msanhez@mail.com	2014-09-25 15:42:16.986305	3	2014-09-25 15:42:17.072707	2014-09-25 15:42:17.072707	$2a$10$QBspv94r8SQp13g10323JOgX87NPmOMEY9jnhCdNn.zWhzg.peG8i
-4	juan	garcia	jgarcia@mail.com	2014-09-25 15:42:37.10031	3	2014-09-25 15:42:37.178875	2014-09-25 15:42:37.178875	$2a$10$lDGZDIp1oseDgVwty4Epl.4LOxXVyDuvUHUFfdv1Dz8IY0NFui9ZS
+1	jesus	gomez	jgomez@mail.com	2014-09-25 15:40:06.518748	1	2014-09-25 15:40:06.618867	2014-09-25 15:40:06.618867	$2a$10$Pak6jpBi2rpkWgK/RukQmOmXGpg5jrGhvPtN7huSrpk1YUgJPCiZu
+2	alberto	cavadia	acavadia@mail.com	2014-09-25 15:41:50.189063	1	2014-09-25 15:41:50.301841	2014-09-25 15:41:50.301841	$2a$10$WkqhaheONvZh6.K0tri7CeTdJeFIpKleqeaqzTkKikNrxx9BfkIEu
+3	manuel	sanchez	msanhez@mail.com	2014-09-25 15:42:16.986305	2	2014-09-25 15:42:17.072707	2014-09-25 15:42:17.072707	$2a$10$QBspv94r8SQp13g10323JOgX87NPmOMEY9jnhCdNn.zWhzg.peG8i
+4	juan	garcia	jgarcia@mail.com	2014-09-25 15:42:37.10031	2	2014-09-25 15:42:37.178875	2014-09-25 15:42:37.178875	$2a$10$lDGZDIp1oseDgVwty4Epl.4LOxXVyDuvUHUFfdv1Dz8IY0NFui9ZS
 5	sergio	rivas	srivas@mail.com	2014-09-25 15:42:58.608164	3	2014-09-25 15:42:58.684456	2014-09-25 15:42:58.684456	$2a$10$1Q/oyrNOsZLuW3iiKaTZwOODiCcMv/j8tC6F0ZzCsHFWq1M5vZrtG
 6	andres	viviani	aviviani@mail.com	2014-09-25 15:45:24.617389	3	2014-09-25 15:45:24.705592	2014-09-25 15:45:24.705592	$2a$10$OGRDlrvtLKIQzjMs7sth9.u5upLpsFEuulpGmh2SLD0jeq4QrocD6
 \.
