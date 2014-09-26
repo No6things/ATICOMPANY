@@ -19,8 +19,9 @@ post "/enterprise" => "home#enterprise"
 get "/pager_transactions" => "agencia_paquetes#get_page"
 post "/retrieve" => "password#retrieve"
 get "/retrieve" => "password#retrieve"
-get "/secret" => "password#index"
-post "/secret" => "password#secret"
+get "/secret" => "password#ask"
+post "/secret" => "password#answer"
+get "/update" => "password#new_password"
 post "/update" => "password#update"
 
 

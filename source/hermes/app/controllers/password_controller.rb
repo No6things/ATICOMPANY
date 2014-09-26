@@ -1,19 +1,23 @@
 class PasswordController < ApplicationController
-	def index
-		@usuario=Usuario.find_by(correo_electronico: params[:correo_electronico])
-	end
+	
 
-	def retrieve
+	def retrieve #envia correo para recuerpar la contrasena y regresa al main
 			@usuario=Usuario.find_by(correo_electronico: params[:correo_electronico])
 			UserMailer.retrieve_pwd(@usuario).deliver
 			redirect_to root_url
 	end
 
-	def secret
+	def ask
+		@usuario=Usuario.find_by(correo_electronico: params[:correo_electronico])
+	end
+
+	def answer  #maneja el resultado de la pregunta secreta y la respuesta
 		begin
 			@usuario=Usuario.find_by(correo_electronico: params[:correo_electronico])
+			p @usuario.respuesta
 			if (@usuario.respuesta==params[:respuesta])
-				redirect_to "/update"
+				p 'dicks'
+				redirect_to "/update?correo_electronico="+params[:correo_electronico]
 			else 
 				redirect_to "/secret?correo_electronico="+params[:correo_electronico]
 			end
@@ -23,7 +27,11 @@ class PasswordController < ApplicationController
 
 	end
 
-	def update
+	def new_password
+
+	end
+
+	def update #maneja la actualizacion de la contrasena
 		begin
 			@usuario=Usuario.find_by(correo_electronico: params[:correo_electronico])
 			@usuario.password=params[contrasena]
