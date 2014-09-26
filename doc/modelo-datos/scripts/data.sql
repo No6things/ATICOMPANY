@@ -73,6 +73,8 @@ COPY agencia_paquetes (id, fecha_arribo, agencia_id, paquete_id, tipo_estado_id,
 33	2014-09-26 16:18:27.889609	2	9	2	2014-09-26 16:18:27.90743	2014-09-26 16:18:27.90743
 34	2014-09-26 17:19:38.839923	4	11	2	2014-09-26 17:19:38.860707	2014-09-26 17:19:38.860707
 35	2014-09-26 18:00:46.609924	4	12	2	2014-09-26 18:00:46.612043	2014-09-26 18:00:46.612043
+36	2014-09-26 19:45:30.84102	3	13	2	2014-09-26 19:45:30.843434	2014-09-26 19:45:30.843434
+37	2014-09-26 19:50:14.671086	2	14	2	2014-09-26 19:50:14.673439	2014-09-26 19:50:14.673439
 \.
 
 
@@ -80,8 +82,7 @@ COPY agencia_paquetes (id, fecha_arribo, agencia_id, paquete_id, tipo_estado_id,
 -- Name: agencia_paquetes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aticompanyuser
 --
 
-
-SELECT pg_catalog.setval('agencia_paquetes_id_seq', 35, true);
+SELECT pg_catalog.setval('agencia_paquetes_id_seq', 37, true);
 
 
 --
@@ -89,7 +90,7 @@ SELECT pg_catalog.setval('agencia_paquetes_id_seq', 35, true);
 --
 
 COPY empresas (id, nombre, rif, frase_comercial, constante_tarifa, porcentaje_tarifa, created_at, updated_at) FROM stdin;
-1	Hermes	J-123456789-0	El servicio de entrega de los dioses	15	10	2014-09-25 10:01:34.521632	2014-09-26 14:29:11.028121
+1	Hermes	J-123456789-0	El servicio de entrega de los dioses	15	10.0999999999999996	2014-09-25 10:01:34.521632	2014-09-26 19:28:22.726092
 \.
 
 
@@ -116,6 +117,8 @@ COPY paquetes (id, ancho, alto, peso, descripcion, numero_guia, costo, created_a
 10	5	5	5	Test Pckg	c265841e8d728deab0e676813178f206af2efb79	42.1666666666666643	2014-09-26 17:18:12.269745	2014-09-26 17:18:12.269745	1	2	5
 11	5	5	5	any	ec6bc0bfb97d66bbc53b404f3272e23d0f584e6e	42.1666666666666643	2014-09-26 17:19:38.832334	2014-09-26 17:19:38.832334	1	2	5
 12	2	2	3	Test	cfd465f735135b31e17b6359d814dd481676c5d0	2.20000000000000018	2014-09-26 18:00:46.605216	2014-09-26 18:00:46.605216	1	2	3
+13	1	1	1	Text	6334b9db63fbc2f4311d87e40c8919eac53f9085	0.60199999999999998	2014-09-26 19:45:30.836553	2014-09-26 19:48:37.343607	1	1	3
+14	12	12	21	Texto de prueba	5463c158bc3f62f89978018e3493b517ed7e5429	403.401999999999987	2014-09-26 19:50:14.666569	2014-09-26 19:50:14.666569	1	5	2
 \.
 
 
@@ -123,8 +126,31 @@ COPY paquetes (id, ancho, alto, peso, descripcion, numero_guia, costo, created_a
 -- Name: paquetes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aticompanyuser
 --
 
+SELECT pg_catalog.setval('paquetes_id_seq', 14, true);
 
-SELECT pg_catalog.setval('paquetes_id_seq', 12, true);
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: aticompanyuser
+--
+
+COPY schema_migrations (version) FROM stdin;
+20140924041724
+20140924042022
+20140924042132
+20140924042408
+20140924042837
+20140924043040
+20140924043340
+20140924043455
+20140924123137
+20140925114200
+20140925115952
+20140925122005
+20140927205022
+20140928100946
+20140928101301
+\.
+
 
 --
 -- Data for Name: tipo_estados; Type: TABLE DATA; Schema: public; Owner: aticompanyuser
@@ -236,7 +262,10 @@ COPY usuarios (id, nombre, apellido, correo_electronico, fecha_ultimo_acceso, ti
 10	Jacobo	Cordido	jcordido@mail.com	2014-09-28 06:08:51.291584	2	2014-09-28 06:08:51.361362	2014-09-28 06:08:51.361362	$2a$10$RC/8ooh6VQVkkJHYMKUrg./nC2b3RTjNzkgopB2tGTDzWDEgTGxhu	Color Favorito?	amarillo
 2	alberto	cavadia	osoflash_2@hotmail.com	2014-09-28 04:38:21.101165	1	2014-09-25 15:41:50.301841	2014-09-28 04:38:21.103346	$2a$10$WkqhaheONvZh6.K0tri7CeTdJeFIpKleqeaqzTkKikNrxx9BfkIEu	Como se llama tu primer perro de la infancia?	toby
 11	Propel	PHP	pphp@mail.com	2014-09-28 13:24:48.229129	3	2014-09-28 13:24:48.362713	2014-09-28 13:24:48.362713	$2a$10$yPxLAbUA94PXHrltyTq2puNuzyGLCXfTEPU5C58qenhjQqUh9GRdm	Color Favorito?	amarillo
-1	jesus	gomez	jesus.igp009@gmail.com	2014-09-27 18:41:12.054467	1	2014-09-25 15:40:06.618867	2014-09-27 18:41:12.056162	$2a$10$Pak6jpBi2rpkWgK/RukQmOmXGpg5jrGhvPtN7huSrpk1YUgJPCiZu	Si tu perrita fuera un embutido, cual seria?	salchicha
+1	jesus	gomez	jesus.igp009@gmail.com	2014-09-26 20:51:59.36772	1	2014-09-25 15:40:06.618867	2014-09-26 20:51:59.370001	$2a$10$5oaN29XQaNC08jemTmyRSulqY9pk.l2CFF0lkonLsiWI3PJM6aai2	Si tu perrita fuera un embutido, cual seria?	salchicha
+13	Administrador	Prueba	a@m.com	2014-09-26 21:10:26.735928	1	2014-09-26 21:05:07.729756	2014-09-26 21:10:26.73817	$2a$10$jD3eHFrk/tiFDXEcqOKTa.CaXgDc3upMt3/nIonbY83PO9rZOGQnC	Color favorito?	amarillo
+14	operador	Prueba	o@m.com	2014-09-26 21:11:25.36059	2	2014-09-26 21:05:38.168446	2014-09-26 21:11:25.362647	$2a$10$uu6u8mtOFKcGDc9ndU5Qo.issBQG1/PHGeZr4Ucug7fYrdptiKBcm	Color favorito?	amarillo
+12	cliente	prueba	c@m.com	2014-09-26 21:18:40.068409	3	2014-09-26 20:58:20.817826	2014-09-26 21:18:40.07251	$2a$10$RCtoEsuZteP5sP5GIW/fB.tuytIPHgM0oLJYpP4oFX5TTSjMAdfSm	\N	\N
 \.
 
 
@@ -244,9 +273,10 @@ COPY usuarios (id, nombre, apellido, correo_electronico, fecha_ultimo_acceso, ti
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aticompanyuser
 --
 
-SELECT pg_catalog.setval('usuarios_id_seq', 11, true);
+SELECT pg_catalog.setval('usuarios_id_seq', 14, true);
 
 
 --
 -- PostgreSQL database dump complete
 --
+
