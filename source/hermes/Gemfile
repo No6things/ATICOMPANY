@@ -13,6 +13,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'minitest'
 gem 'actionview'
+gem 'actionmailer'
+gem 'globalid'
 gem 'pg'
 gem 'tzinfo'
 gem 'bcrypt', '~> 3.1.7'

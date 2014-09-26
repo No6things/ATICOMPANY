@@ -38,7 +38,7 @@ class HomeController < ApplicationController
 		end
 	end
 
-	def enterprise
+	def enterprise #calculo un paquete
 		begin
 			i = request.headers["enterprise-token"].to_i
 			@empresa=Empresa.find(i)
@@ -48,5 +48,7 @@ class HomeController < ApplicationController
 			render json: {err_mssg: "La empresa a la que pertenece no se encuentra registrada", constante: 0, porcentaje: 0}, status: 503			
 		end
 	end
+
+	
 	
 end
