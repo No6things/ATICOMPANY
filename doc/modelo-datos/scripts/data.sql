@@ -236,7 +236,7 @@ COPY usuarios (id, nombre, apellido, correo_electronico, fecha_ultimo_acceso, ti
 10	Jacobo	Cordido	jcordido@mail.com	2014-09-28 06:08:51.291584	2	2014-09-28 06:08:51.361362	2014-09-28 06:08:51.361362	$2a$10$RC/8ooh6VQVkkJHYMKUrg./nC2b3RTjNzkgopB2tGTDzWDEgTGxhu	Color Favorito?	amarillo
 2	alberto	cavadia	osoflash_2@hotmail.com	2014-09-28 04:38:21.101165	1	2014-09-25 15:41:50.301841	2014-09-28 04:38:21.103346	$2a$10$WkqhaheONvZh6.K0tri7CeTdJeFIpKleqeaqzTkKikNrxx9BfkIEu	Como se llama tu primer perro de la infancia?	toby
 11	Propel	PHP	pphp@mail.com	2014-09-28 13:24:48.229129	3	2014-09-28 13:24:48.362713	2014-09-28 13:24:48.362713	$2a$10$yPxLAbUA94PXHrltyTq2puNuzyGLCXfTEPU5C58qenhjQqUh9GRdm	Color Favorito?	amarillo
-1	jesus	gomez	jesus.igp009@gmail.com	2014-09-27 18:41:12.054467	1	2014-09-25 15:40:06.618867	2014-09-27 18:41:12.056162	$2a$10$Pak6jpBi2rpkWgK/RukQmOmXGpg5jrGhvPtN7huSrpk1YUgJPCiZu	Si tu perrita fuera un embutido, cual seria?	salchica
+1	jesus	gomez	jesus.igp009@gmail.com	2014-09-27 18:41:12.054467	1	2014-09-25 15:40:06.618867	2014-09-27 18:41:12.056162	$2a$10$Pak6jpBi2rpkWgK/RukQmOmXGpg5jrGhvPtN7huSrpk1YUgJPCiZu	Si tu perrita fuera un embutido, cual seria?	salchicha
 \.
 
 

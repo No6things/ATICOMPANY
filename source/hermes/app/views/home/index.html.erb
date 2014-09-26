@@ -36,14 +36,6 @@
 				<section class="top-bar-section"> 
 					<ul class="right"> 
 
-					<li>					 					    	
-				      <a 
-				      	href="#" 
-				      	class="alert button large-5 small-5"
-						data-reveal-id="modal_resultados_busqueda"
-				      ><i class="fa fa-search fa-lg"></i></a>					
-					</li>
-
 					<li>
 						<%if @usuario %>
 							<a href="#" class="alert button">Bienvenido, <%= @usuario.nombre.capitalize+" "+@usuario.apellido.capitalize %></a>
@@ -79,6 +71,26 @@
 										Enviar paquete
 										&nbsp;
 										<i class="fa fa-send-o fa-lg"></i>					
+									</a>
+								</li>
+								<%end%>
+
+								<%if @usuario.tipo_usuario.abreviacion == "O"  %>
+								<li>
+									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+										Paquetes
+										&nbsp;
+										<i class="fa fa-archive fa-lg"></i>				
+									</a>
+								</li>
+								<%end%>
+
+								<%if @usuario.tipo_usuario.abreviacion == "UA"  %>
+								<li>
+									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+										Estado de Paquetes
+										&nbsp;
+										<i class="fa fa-archive fa-lg"></i>								
 									</a>
 								</li>
 								<%end%>
@@ -310,48 +322,6 @@
 				</a>
 			</div>
 		</div>	
-
-	  <div class="modal-footer row"></div> 	  
-	</div>
-
-	<!-- ~~~~~~~~~ Modal busqueda ~~~~~~~~~-->
-	<div id="modal_resultados_busqueda" class="reveal-modal large custom-modal-container withe-text" data-reveal>
-	  <div class="modal-header row custom-modal-header slogan-u">
-	  	<h4 class="white-text">B&uacute;squeda</h4>				
-	  	<a class="close-reveal-modal">&#215;</a>
-	  </div>
-	  
-	  <div class="modal-content row extra-padding-row">
-	  	<div class="large-3 small-3 columns">
-  		  	<input id="package-bool" type="radio" name="filter">
-  			<label class="white-text" for="package-bool">Paquete</label>
-	  	</div>
-	  	<div class="large-3 small-3 columns">	  		
-	  		<input id="user-bool" type="radio" name="filter">
-	  		<label class="white-text"for="user-bool">Usuario</label>
-	  	</div>
-	  	<div class="large-6 small-6 columns">
-	  		<form method="post" class="search-form" action="">
-	  			<input type="text" name="criteria" placeholder="Criterio de Busqueda" required>
-	  			<input type="submit" class="hidden-submit-button">
-	  		</form>
-	  	</div>
-		
-  	 	<table class="hovered-table">
-  	 	  <tbody>
-  	 	    <tr>
-  	 	      <td>Usuario ID</td>
-  	 	      <td>Content Goes Here</td>
-  	 	      <td><a href="" id="<usr-id>" class="button alert tiny">Ver</a></td>
-  	 	    </tr>
-  	 	    <tr>
-  	 	      <td>Package ID</td>  	 	      
-  	 	      <td>Content Goes Here</td>
-  	 	      <td><a href="" id="<pckg-id>" class="button alert tiny">Ver</a></td>
-  	 	    </tr>
-  	 	  </tbody>
-  	 	</table>
-	  </div>
 
 	  <div class="modal-footer row"></div> 	  
 	</div>
