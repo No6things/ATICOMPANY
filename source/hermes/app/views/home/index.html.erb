@@ -66,6 +66,15 @@
 									<i class="fa fa-usd fa-lg"></i>					
 								</a>
 							</li>
+<<<<<<< HEAD
+							<li>
+								<a class="alert button" href="#" data-reveal-id="modal_paquete">
+									Enviar paquete
+									&nbsp;
+									<i class="fa fa-send-o fa-lg"></i>					
+								</a>
+							</li> 
+=======
 							<%if @usuario -%>
 							<li>
 								<a class="alert button" href="/logout">
@@ -75,6 +84,7 @@
 								</a>
 							</li>
 							<% end %>
+>>>>>>> a5ff23cc3d12a29402b8915a35f98898b1965ded
 						</ul> 
 					</li> 
 					</ul> 
@@ -412,6 +422,41 @@
 	  </div>
 	  
 	  <div class="modal-content row extra-padding-row notification-content slogan-frace">	  		
+	  </div>
+
+	  <div class="modal-footer row notification-footer">	  	
+	  </div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal paquete ~~~~~~~~~-->
+	<div id="modal_paquete" class="reveal-modal tiny custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text notification-tittle">Enviar Paquete</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row extra-padding-row">
+	  <div class="large-12 columns">
+	  	<form class="paquete-form" action="/paquete" method="post">
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required>  		
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required>
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profun" required>
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Peso en Kg" name="peso" required>
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required>  	  
+		  	<textarea class="columns" placeholder="Descripci&oacute;n" name="desc" required></textarea> 
+		  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Destinatario" name="dest" required> 	  
+			<select class="columns"  name="agencia">
+	  				<option class="columns" value="">Agencia Destino</option>
+		        	<% Agencia.find_each do |agencia| %>
+		        	<option class="columns" value="<%= agencia.id%>"><%= agencia.nombre%></option>
+		        	<%end%>
+		        
+	        </select>
+  		  	<input type="submit" class="hidden-submit-button">
+
+  		  	<span class="alert round label">Presione Enter para calcular</span>
+	  	</form>	  
+	  	</div>		
 	  </div>
 
 	  <div class="modal-footer row notification-footer">	  	
