@@ -4,7 +4,7 @@ class Empresa < ActiveRecord::Base
 
 	#Validaciones
 	validates! :nombre, presence: true, on: :create
-	validates! :rif, presence: true, format: {with: /\A[VvJjEe]-[0-9]+-[1-9]\z/, on: :create}, uniqueness: true, on: :create
+	validates! :rif, presence: true, format: {with: /\A[VvJjEe]-[0-9]+-[1-9]\z/, on: :create}, uniqueness: true, on: [:create, :update]
 	validates! :constante_tarifa, presence: true, on: :create
 	validates! :porcentaje_tarifa, presence: true, on: :create
 
