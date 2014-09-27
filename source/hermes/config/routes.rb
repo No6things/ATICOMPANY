@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
 
  
-  get  'home/index'
   namespace :admin do
     root "admin#index"
   end
 
   root "home#index"
-  post "/login" => "home#login"
-  get "/logout" => "home#logout"
-  post "/register" => "register#register_user"
 
+  get  'home/index'
+  post "/login" => "home#login"
+  get  "/logout" => "home#logout"
+  post "/register" => "register#register_user"
+  get  "/paquete" => "package#create"
 
   #post ""
 

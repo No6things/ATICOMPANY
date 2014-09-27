@@ -6,9 +6,11 @@ class HomeController < ApplicationController
 			if @usuario.tipo_usuario.abreviacion == "A"		#Administrator	
 	      		#habilitar cosas de administrador
 	      		p 'administrador'
-	    	else						#Common User
+	    	elsif 	@usuario.tipo_usuario.abreviacion == "O"#Operator
+	      		p 'operador'
+	      	else											#Common user
 	      		p 'usuario comun'
-	    	end
+	    	end 
 	    end
 	end
 
