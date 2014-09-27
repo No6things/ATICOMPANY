@@ -3,6 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta empresa="1">
 	<%= csrf_meta_tag %>
 	<link rel="stylesheet" href="/assets/normalize.css">
 	<link rel="stylesheet" href="/assets/foundation.css" />
@@ -461,7 +462,7 @@
 				<%end%>
 				<%selector2 = HTML::Selector.new "input[name=origen]"%>
 				<%match2= selector2.select(element)%>
-				<input class="columns" type="text" value="<%= (matches[0]*matches[1]*matches[2]*matches[3]/Usuario.)+ %>" name="costo"/>
+				<input class="columns" type="text" value="<%= (matches[0]*matches[1]*matches[2]*matches[3]/Usuario.)+ Usuario.find_by(correo_elecronico: match2[0]). )%>" name="costo"/>
 		  	<%end%>
 		  	<textarea class="columns" placeholder="Descripci&oacute;n" name="desc" required></textarea>	  
   		  	<input type="submit" class="hidden-submit-button">

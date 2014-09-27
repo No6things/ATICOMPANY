@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   post "/login" => "home#login"
   get  "/logout" => "home#logout"
   post "/register" => "register#register_user"
-  get  "/paquete" => "package#create"
-
+  post "/paquete" => "package#create"
+  ppst "/calculadora" => "calculator#calculate"
   #post ""
 
   # The priority is based upon order of creation: first created -> highest priority.
