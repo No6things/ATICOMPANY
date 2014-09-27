@@ -3,15 +3,20 @@ class HomeController < ApplicationController
 	def index
 		if session[:id_usuario_actual]
 			@usuario=Usuario.find(session[:id_usuario_actual])
-			if @usuario.tipo_usuario.abreviacion == "A"		#Administrator	
-	      		#habilitar cosas de administrador
-	      		p 'administrador'
-	    	elsif 	@usuario.tipo_usuario.abreviacion == "O"#Operator
-	      		p 'operador'
-	      	else											#Common user
-	      		p 'usuario comun'
-	    	end 
+			begin
+				if @usuario.tipo_usuario.abreviacion == "A"		#Administrator	
+		      		#habilitar cosas de administrador
+		      		p 'administrador'
+		    	elsif 	@usuario.tipo_usuario.abreviacion == "O"#Operator
+		      		p 'operador'
+		      	else											#Common user
+		      		p 'usuario comun'
+		    	end 
+		    rescue NoMethodError
+		    	p 'No hay tipo de usuario'
+		    end
 	    end
+	    	p 'no hay sesion'
 	end
 
 	def login

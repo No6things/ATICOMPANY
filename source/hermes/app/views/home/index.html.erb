@@ -440,17 +440,29 @@
 	  	<form class="paquete-form row" action="/paquete" method="post">
 
 			<select class="columns"  name="agencia">
-  				<option value="0">Agencia Destino</option>
+  				<option value="">Agencia Destino</option>
 	        	<% Agencia.find_each do |agencia| %>
 	        	<option value="<%= agencia.id%>"><%= agencia.nombre%></option>
 	        	<%end%>	
 	        </select>
 		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required>  		
 		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profun" required>
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" required>
 		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Peso en Kg" name="peso" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required>  	  		  	 
-		  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Destinatario" name="dest" required> 
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required>
+		  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Emisor" name="origen" required> 
+		  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Receptor" name="destino" required> 
+		  	
+			<%selector = HTML::Selector.new "form.paquete-form input[type=number]"%>
+			<%matches = selector.select(element)%>
+			<% if matches%>
+				<%matches.each do |match|%>
+					<% puts "Found text field with name #{match.attributes['name']}"%>
+				<%end%>
+				<%selector2 = HTML::Selector.new "input[name=origen]"%>
+				<%match2= selector2.select(element)%>
+				<input class="columns" type="text" value="<%= (matches[0]*matches[1]*matches[2]*matches[3]/Usuario.)+ %>" name="costo"/>
+		  	<%end%>
 		  	<textarea class="columns" placeholder="Descripci&oacute;n" name="desc" required></textarea>	  
   		  	<input type="submit" class="hidden-submit-button">
 
