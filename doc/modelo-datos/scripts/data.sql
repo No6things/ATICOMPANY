@@ -75,6 +75,14 @@ COPY agencia_paquetes (id, fecha_arribo, agencia_id, paquete_id, tipo_estado_id,
 35	2014-09-26 18:00:46.609924	4	12	2	2014-09-26 18:00:46.612043	2014-09-26 18:00:46.612043
 36	2014-09-26 19:45:30.84102	3	13	2	2014-09-26 19:45:30.843434	2014-09-26 19:45:30.843434
 37	2014-09-26 19:50:14.671086	2	14	2	2014-09-26 19:50:14.673439	2014-09-26 19:50:14.673439
+38	2014-09-26 22:42:40.990825	4	15	2	2014-09-26 22:42:41.005091	2014-09-26 22:42:41.005091
+39	2014-09-27 00:20:49.350492	3	16	2	2014-09-27 00:20:49.352678	2014-09-27 00:20:49.352678
+40	2014-09-27 00:21:57.675192	3	17	2	2014-09-27 00:21:57.677217	2014-09-27 00:21:57.677217
+41	2014-09-27 00:25:16.498585	2	19	2	2014-09-27 00:25:16.501182	2014-09-27 00:25:16.501182
+42	2014-09-27 00:25:58.45781	2	20	2	2014-09-27 00:25:58.460747	2014-09-27 00:25:58.460747
+43	2014-09-27 00:38:40.425769	3	21	2	2014-09-27 00:38:40.432471	2014-09-27 00:38:40.432471
+44	2014-09-27 00:43:01.072899	3	22	2	2014-09-27 00:43:01.075269	2014-09-27 00:43:01.075269
+45	2014-09-27 00:48:12.821508	2	23	2	2014-09-27 00:48:12.823936	2014-09-27 00:48:12.823936
 \.
 
 
@@ -82,7 +90,7 @@ COPY agencia_paquetes (id, fecha_arribo, agencia_id, paquete_id, tipo_estado_id,
 -- Name: agencia_paquetes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aticompanyuser
 --
 
-SELECT pg_catalog.setval('agencia_paquetes_id_seq', 37, true);
+SELECT pg_catalog.setval('agencia_paquetes_id_seq', 45, true);
 
 
 --
@@ -90,7 +98,7 @@ SELECT pg_catalog.setval('agencia_paquetes_id_seq', 37, true);
 --
 
 COPY empresas (id, nombre, rif, frase_comercial, constante_tarifa, porcentaje_tarifa, created_at, updated_at) FROM stdin;
-1	Hermes	J-123456789-0	El servicio de entrega de los dioses	15	10	2014-09-25 10:01:34.521632	2014-09-26 22:34:11.049403
+1	Hermes	J-123456789-0	El servicio de entrega de los dioses	15	15	2014-09-25 10:01:34.521632	2014-09-27 00:18:42.409593
 \.
 
 
@@ -119,6 +127,15 @@ COPY paquetes (id, ancho, alto, peso, descripcion, numero_guia, costo, created_a
 12	2	2	3	Test	cfd465f735135b31e17b6359d814dd481676c5d0	2.20000000000000018	2014-09-26 18:00:46.605216	2014-09-26 18:00:46.605216	1	2	3
 13	1	1	1	Text	6334b9db63fbc2f4311d87e40c8919eac53f9085	0.60199999999999998	2014-09-26 19:45:30.836553	2014-09-26 19:48:37.343607	1	1	3
 14	12	12	21	Texto de prueba	5463c158bc3f62f89978018e3493b517ed7e5429	403.401999999999987	2014-09-26 19:50:14.666569	2014-09-26 19:50:14.666569	1	5	2
+15	5	5	0.149999999999999994	Teclado	1acae99bed11b1424527f4c930907fc498273739	24.5	2014-09-26 22:42:40.982562	2014-09-26 22:42:40.982562	13	12	10
+16	4	4	2	Test	155021eede2a531a47b9dfa1c11ec7a0483c0a0c	8.15000000000000036	2014-09-27 00:20:49.345674	2014-09-27 00:20:49.345674	14	12	3
+17	2	2	4	Test	57921cab6d7d1d1c848747a14336345573dc00fb	2.35000000000000009	2014-09-27 00:21:57.67113	2014-09-27 00:21:57.67113	14	13	3
+18	1	1	1	:0	f8583ed92b948b1c5bb66f19755f0a99a6d756b8	0.216666666666666674	2014-09-27 00:24:40.25286	2014-09-27 00:24:40.25286	5	1	1
+19	1	1	1	:0	a4dd9ce49de58c7b224d2bcba96ab54cb8ed12b4	0.216666666666666674	2014-09-27 00:25:16.491674	2014-09-27 00:25:16.491674	5	1	1
+20	2	2	4	:)	893ecaf15b6337c4845d298f5283208b226109b4	2.35000000000000009	2014-09-27 00:25:58.453456	2014-09-27 00:25:58.453456	5	1	3
+21	2	2	4	:)	c7befc13af7a0c9939a0d5435ba460f5aeb39231	2.35000000000000009	2014-09-27 00:38:40.420933	2014-09-27 00:38:40.420933	5	1	3
+22	2	2	4	:):)	c06d21790aeeee9d815913659d2d6512bec5be8f	2.35000000000000009	2014-09-27 00:43:01.04785	2014-09-27 00:43:01.04785	13	12	3
+23	1	2	4	:)	3293e2ba0cbc6b56d8209677a1b10864418d7010	2.35000000000000009	2014-09-27 00:48:12.816343	2014-09-27 00:48:12.816343	13	12	3
 \.
 
 
@@ -126,7 +143,7 @@ COPY paquetes (id, ancho, alto, peso, descripcion, numero_guia, costo, created_a
 -- Name: paquetes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aticompanyuser
 --
 
-SELECT pg_catalog.setval('paquetes_id_seq', 14, true);
+SELECT pg_catalog.setval('paquetes_id_seq', 23, true);
 
 
 --
@@ -262,10 +279,10 @@ COPY usuarios (id, nombre, apellido, correo_electronico, fecha_ultimo_acceso, ti
 10	Jacobo	Cordido	jcordido@mail.com	2014-09-28 06:08:51.291584	2	2014-09-28 06:08:51.361362	2014-09-28 06:08:51.361362	$2a$10$RC/8ooh6VQVkkJHYMKUrg./nC2b3RTjNzkgopB2tGTDzWDEgTGxhu	Color Favorito?	amarillo
 2	alberto	cavadia	osoflash_2@hotmail.com	2014-09-28 04:38:21.101165	1	2014-09-25 15:41:50.301841	2014-09-28 04:38:21.103346	$2a$10$WkqhaheONvZh6.K0tri7CeTdJeFIpKleqeaqzTkKikNrxx9BfkIEu	Como se llama tu primer perro de la infancia?	toby
 11	Propel	PHP	pphp@mail.com	2014-09-28 13:24:48.229129	3	2014-09-28 13:24:48.362713	2014-09-28 13:24:48.362713	$2a$10$yPxLAbUA94PXHrltyTq2puNuzyGLCXfTEPU5C58qenhjQqUh9GRdm	Color Favorito?	amarillo
-1	jesus	gomez	jesus.igp009@gmail.com	2014-09-26 20:51:59.36772	1	2014-09-25 15:40:06.618867	2014-09-26 20:51:59.370001	$2a$10$5oaN29XQaNC08jemTmyRSulqY9pk.l2CFF0lkonLsiWI3PJM6aai2	Si tu perrita fuera un embutido, cual seria?	salchicha
 14	operador	Prueba	o@m.com	2014-09-26 21:29:39.060741	2	2014-09-26 21:05:38.168446	2014-09-26 21:29:39.07816	$2a$10$uu6u8mtOFKcGDc9ndU5Qo.issBQG1/PHGeZr4Ucug7fYrdptiKBcm	Color favorito?	amarillo
-12	cliente	prueba	c@m.com	2014-09-26 21:30:04.363695	3	2014-09-26 20:58:20.817826	2014-09-26 21:30:04.366456	$2a$10$RCtoEsuZteP5sP5GIW/fB.tuytIPHgM0oLJYpP4oFX5TTSjMAdfSm	\N	\N
-13	Administrador	Prueba	a@m.com	2014-09-26 22:33:56.085085	1	2014-09-26 21:05:07.729756	2014-09-26 22:33:56.089139	$2a$10$jD3eHFrk/tiFDXEcqOKTa.CaXgDc3upMt3/nIonbY83PO9rZOGQnC	Color favorito?	amarillo
+12	cliente	prueba	c@m.com	2014-09-26 22:41:43.804955	3	2014-09-26 20:58:20.817826	2014-09-26 22:41:43.809865	$2a$10$RCtoEsuZteP5sP5GIW/fB.tuytIPHgM0oLJYpP4oFX5TTSjMAdfSm	\N	\N
+1	jesus	gomez	jesus.igp009@gmail.com	2014-09-26 20:51:59.36772	1	2014-09-25 15:40:06.618867	2014-09-27 00:18:00.73765	$2a$10$tKIIKpo8VV1vv6ucpmbaweMxeJfVQa9ohuAaq0tsGYZJtptT51rPy	Si tu perrita fuera un embutido, cual seria?	salchicha
+13	Administrador	Prueba	a@m.com	2014-09-27 00:18:14.693276	1	2014-09-26 21:05:07.729756	2014-09-27 00:18:14.695717	$2a$10$jD3eHFrk/tiFDXEcqOKTa.CaXgDc3upMt3/nIonbY83PO9rZOGQnC	Color favorito?	amarillo
 \.
 
 
