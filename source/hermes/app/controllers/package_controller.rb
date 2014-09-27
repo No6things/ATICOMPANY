@@ -1,29 +1,37 @@
 class PackageController < ApplicationController
+
 	def create
+		p 'dickdick'
 		begin
-			if session[:id_usuario_actual] && Usuario.find(session[:id_usuario_actual]).tipo_usuario.abreciacion=='O'
+			p session[:id_usuario_actual]
+			p Usuario.find(session[:id_usuario_actual]).tipo_usuario.abreviacion
+			if session[:id_usuario_actual] && Usuario.find(session[:id_usuario_actual]).tipo_usuario.abreviacion=='O'
 				begin
-					@paquete= Paquete.new
-					@paquete.ancho=params[:ancho]
-					@paquete.alto=params[:alto]
-					@paquete.peso=params[:peso]
-					@paquete.profundidad=params[:profundidad]
-					@paquete.descripcion=params[:descripcion]
-					@paquete.costo=params[:costo]
-					#@paquete.emisor_id=params[:origen]
-					#@paquete.receptor_id=params[:destino]
+					p 'huehue'
+					@paquete= Paquete.create(
+						ancho: params[:ancho],
+						alto: params[:alto],
+						peso: params[:peso],
+						profundidad: params[:profundidad],
+						descripcion: params[:descripcion],
+						costo: params[:costo],
+						emisor_id: params[:origen],
+						receptor_id: params[:destino]
+						)
+					p 'package created'
 				rescue
 					p 'parametros del paquete mal'
 				else
 					@agencia.agencia_paquete=params[:agencia]
-				rescue
-					p "no se creo la relacion del paquete con la agencia"
-				elsif @paquete.save
-					p "paquete almacenado en db"
+					if @paquete.save
+						p "paquete almacenado en db"
+					end
 				end	
 			end
-		rescue
-			p 'usuario invalido'
+		rescue Exception => e
+			msg= 'usuario invalido'
+			p msg
+			render json: {err_mssg: msg, success_mssg: ""}, status: 400
 		end
 	end
 end

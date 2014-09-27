@@ -2,8 +2,9 @@ class HomeController < ApplicationController
 
 	def index
 		if session[:id_usuario_actual]
-			@usuario=Usuario.find(session[:id_usuario_actual])
 			begin
+				@empresa=Empresa.find(1)
+				@usuario=Usuario.find(session[:id_usuario_actual])
 				if @usuario.tipo_usuario.abreviacion == "A"		#Administrator	
 		      		#habilitar cosas de administrador
 		      		p 'administrador'
@@ -15,8 +16,9 @@ class HomeController < ApplicationController
 		    rescue NoMethodError
 		    	p 'No hay tipo de usuario'
 		    end
-	    end
+	    else
 	    	p 'no hay sesion'
+	    end
 	end
 
 	def login
@@ -30,6 +32,8 @@ class HomeController < ApplicationController
 		  		#enviar mensaje ajax de contrase;a erronea
 		  		redirect_to root_url
 		  	else
+		  		@usuario.fecha_ultimo_acceso= DateTime.now
+		  		@usuario.save
 		  		session[:id_usuario_actual]=@usuario.id
 		  		p session[:id_usuario_actual]
 		  		redirect_to root_url
