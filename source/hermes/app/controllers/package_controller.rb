@@ -3,9 +3,9 @@ before_filter :check_session
 
 	def create		
 		begin
-			p = params.permit(:agencia,:alto,:ancho,:profundidad,:peso,:valor,:costo,:emisor,:receptor,:descripcion)
-			e = Usuario.find_by(correo_electronico: p.require(:emisor))
-			r = Usuario.find_by(correo_electronico: p.require(:receptor))
+			prms = params.permit(:agencia,:alto,:ancho,:profundidad,:peso,:valor,:costo,:emisor,:receptor,:descripcion)
+			e = Usuario.find_by(correo_electronico: prms.require(:emisor))
+			r = Usuario.find_by(correo_electronico: prms.require(:receptor))
 
 			if e.nil?
 				raise "Usuario emisor no registrado en el sistema"
@@ -13,22 +13,22 @@ before_filter :check_session
 
 			if r.nil?
 				raise "Usuario receptor no registrado en el sistema"
-			end
+			end	
 
 			@paquete= Paquete.create(
-				ancho:p.require(:ancho).to_f,
-				alto:p.require(:alto).to_f,
-				peso:p.require(:peso).to_f,
-				profundidad: p.require(:profundidad).to_f,
-				descripcion: p.require(:descripcion),
-				costo: p.require(:costo).to_f,
+				ancho:prms.require(:ancho).to_f,
+				alto:prms.require(:alto).to_f,
+				peso:prms.require(:peso).to_f,
+				profundidad: prms.require(:profundidad).to_f,
+				descripcion: prms.require(:descripcion),
+				costo: prms.require(:costo).to_f,
 				emisor_id: e.id,
 				receptor_id: r.id,
 			)
 
 			@agencia_paquete=AgenciaPaquete.create(
 				fecha_arribo: DateTime.now,
-				agencia_id: p.require(:agencia).to_i,
+				agencia_id: prms.require(:agencia).to_i,
 				paquete_id: @paquete.id,
 				tipo_estado_id: TipoEstado.find_by(abreviacion: "R").id)
 

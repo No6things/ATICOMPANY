@@ -165,15 +165,15 @@ $(function(){
 
 	$(".paquete-form").on('submit', function(event) {		
 	 	event.preventDefault();
-	  	event.stopImmediatePropagation();		
-
+	  	event.stopImmediatePropagation();	
+	  	
 		$.ajax({
 			type: 'POST',
 			url: '/create',
 			data: {
 			'agencia': $('#newp_agencia').val(), 
 			'alto': $('#newp_alto').val(), 
-			'ancho':  $('#newp_alto').val(), 
+			'ancho':  $('#newp_ancho').val(), 
 			'profundidad': $('#newp_profundidad').val(), 
 			'peso': $('#newp_peso').val(), 
 			'valor': $('#newp_valor').val(), 
