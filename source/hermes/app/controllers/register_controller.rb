@@ -22,7 +22,7 @@ class RegisterController < ApplicationController
 
 			render json: {err_mssg: "", success_mssg: "Bienvenid@ a Hermes "+u.nombre.capitalize}, status: 201
 		rescue Exception => e			
-			msg = "El usuario ya existe en el sistema!"
+			msg = "El usuario \""+params[:email]+"\" ya existe en el sistema!"
 			
 			if !err 
 				msg = "Existe inconsistencia en los datos de registro!"
