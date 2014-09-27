@@ -9,7 +9,7 @@ class Agencia < ActiveRecord::Base
 	validates! :longitud, presence: true, on: :create
 
 	#Relacion con otros recursos
-	belongs_to :empresa
+	belongs_to :empresa	
 	has_many :agencia_paquetes
 
 	#Funciones y codigo personalizado
