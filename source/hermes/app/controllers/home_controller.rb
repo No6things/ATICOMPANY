@@ -1,17 +1,16 @@
 class HomeController < ApplicationController
-	#before_action :set_usuario
 
 	def index
 		if session[:id_usuario_actual]
 			@usuario=Usuario.find(session[:id_usuario_actual])
-			if @usuario.tipo_usuario == 1		#Administrator	
+			if @usuario.tipo_usuario.abreviacion == "A"		#Administrator	
 	      		#habilitar cosas de administrador
 	      		p 'administrador'
 	    	else						#Common User
 	      		p 'usuario comun'
 	    	end
 	    end
-
+	end
 
 	def login
 		begin
