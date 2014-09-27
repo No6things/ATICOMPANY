@@ -42,7 +42,7 @@
 
 					<li>
 						<%if @usuario -%>
-							<a href="#" class="alert"> <%= @usuario.nombre%></a>
+							<a href="#" class="alert button">Bienvenido, <%= @usuario.nombre.capitalize+" "+@usuario.apellido.capitalize %></a>
 						<%else%>
 							<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
 						<%end-%>
@@ -66,6 +66,7 @@
 									<i class="fa fa-usd fa-lg"></i>					
 								</a>
 							</li>
+<<<<<<< HEAD
 							<li>
 								<a class="alert button" href="#" data-reveal-id="modal_paquete">
 									Enviar paquete
@@ -73,6 +74,17 @@
 									<i class="fa fa-send-o fa-lg"></i>					
 								</a>
 							</li> 
+=======
+							<%if @usuario -%>
+							<li>
+								<a class="alert button" href="/logout">
+									Cerrar Sesi&oacute;n
+									&nbsp;
+									<i class="fa fa-sign-out"></i>		
+								</a>
+							</li>
+							<% end %>
+>>>>>>> a5ff23cc3d12a29402b8915a35f98898b1965ded
 						</ul> 
 					</li> 
 					</ul> 
