@@ -240,7 +240,7 @@
 	  </div>
 	  
 	  <div class="modal-content row">
-	  	<form class="login-form" action="/home" method="post">	
+	  	<form class="login-form" action="/login" method="post">	
 	  		<%= token_tag(nil) %>
 	  		<div class="row">
 	  		    <div class="large-12 small-12 columns">	  		      
@@ -358,10 +358,10 @@
 	  <div class="modal-content row extra-padding-row">
 
 	  	<div class="large-8 small-8 large-offset-2 small-offset-2 columns">
-	  	<form class="register-form" action="" method="post">	  		
+	  	<form class="register-form" method="post">
+	  		<%= token_tag(nil) %>	  		
 	  		<input name="fname" type="text" placeholder="Primer Nombre" required>
-	  		<input name="lname" type="text" placeholder="Primer Apellido" required>
-	  		<input name="uname" type="text" placeholder="Nombre de Usuario" required>
+	  		<input name="lname" type="text" placeholder="Primer Apellido" required>	  		
 	  		<input name="email" type="email" placeholder="Correo Electronico" required>
 	  		<input name="passwd" type="password" placeholder="Contraseña" required>
 	  		<span class="alert round label">Presione Enter para registrarse</span>
@@ -398,11 +398,11 @@
 	<!-- ~~~~~~~~~ Modal notificacion ~~~~~~~~~-->
 	<div id="modal_notificacion" class="reveal-modal small custom-modal-container" data-reveal>
 	  <div class="modal-header row custom-modal-header slogan-u">
-	  	<h4 class="white-text notification-tittle"></h4>
+	  	<h4 class="white-text notification-tittle">Notificacion</h4>
 	  	<a class="close-reveal-modal">&#215;</a>
 	  </div>
 	  
-	  <div class="modal-content row extra-padding-row notification-content">	  		
+	  <div class="modal-content row extra-padding-row notification-content slogan-frace">	  		
 	  </div>
 
 	  <div class="modal-footer row notification-footer">	  	
@@ -413,11 +413,10 @@
 	<!-- ~~~~~~~~~ END Definicion de modales utilizadas ~~~~~~~~~ -->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+	<script src="/assets/jquery.js"></script>	
 	<script src="/assets/modernizr.js"></script>
-	<script src="/assets/jquery.js"></script>
 	<script src="/assets/foundation.min.js"></script>
-	
-
+	<script src="/assets/general.js"></script>
 	<script>
 		$(document).foundation({
 			orbit: {
@@ -431,5 +430,6 @@
 				}
 			});
 	</script>
+	
 	</body>
 </html>

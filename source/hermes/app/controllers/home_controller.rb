@@ -11,7 +11,7 @@ class HomeController < ApplicationController
 	      		p 'usuario comun'
 	    	end
 	    end
-	end
+
 
 	def login
 		begin
@@ -31,11 +31,12 @@ class HomeController < ApplicationController
 		 end
 	end
 
-	def set_usuario
-		if params.has_key?(:id)
-			@usuario = Usuario.find(params[:id])
-		else
-			@usuario = Usuario.new
+	def logout
+		begin			
+			reset_session
+			redirect_to root_url			
+		rescue Exception => e
+			render json: {err_mssg: "Temporalmente servicio fuera de linea", success_msg: ""}, status: 503			
 		end
 	end
 	
