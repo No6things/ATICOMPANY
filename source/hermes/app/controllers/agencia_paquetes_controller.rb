@@ -46,4 +46,17 @@ class AgenciaPaquetesController < ApplicationController
 			render json: {err_mssg: "Pages could not be retrieved", success_mssg: ""}, status: 400
 		end
 	end
+
+	def show_by_user
+		begin				
+			i = request.headers["enterprise-token"].to_i
+			e = session[:id_usuario_actual]
+			as_sender = AgenciaPaquete.where(agencia: Agencia.where(empresa_id: i)).joins(:paquete).merge(Paquete.where(emisor_id: e.id)).limit(5)
+			as_repcipent = AgenciaPaquete.where(agencia: Agencia.where(empresa_id: i)).joins(:paquete).merge(Paquete.where(receptor_id: e.id)).limit(5)
+			
+			render json: {err_mssg: "", success_mssg: "Transaction Found", data:{ as_sender: as_sender.as_json, as_repcipent: as_repcipent.as_json}}, status: 200
+		rescue Exception => e
+			render json: {err_mssg: "No Transaction found", success_mssg: ""}, status: 400
+		end
+	end	
 end

@@ -3,7 +3,6 @@ class HomeController < ApplicationController
 	def index
 		if session.has_key?("id_usuario_actual")
 			if !session[:id_usuario_actual].nil?
-				#@empresa=Empresa.find(1)
 				@usuario=Usuario.find(session[:id_usuario_actual])			
 			end
 		end
@@ -49,6 +48,13 @@ class HomeController < ApplicationController
 		end
 	end
 
-	
-	
+	def get_enterprise_data
+		begin
+			i = request.headers["enterprise-token"].to_i
+			e=Empresa.where(id: i)[0]
+			render json: {err_mssg: "", success_msg: "Enterprise data", data: e.as_json}, status: 202
+		rescue Exception => e
+			render json: {err_mssg: "Header error found, invalid enterprise-token value", success_msg: ""}, status: 400
+		end
+	end
 end

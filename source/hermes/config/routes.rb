@@ -11,6 +11,7 @@ resources :agencia_paquetes
 root to: "home#index"
 post "/login" => "home#login"
 get  "/logout" => "home#logout"
+get "/enterprise_data" => "home#get_enterprise_data"
 post "/register" => "register#register_user"
 post "/calculator" => "calculator#calculate"
 post  "/create" => "package#create"
@@ -23,6 +24,7 @@ get "/secret" => "password#ask"
 post "/secret" => "password#answer"
 get "/update" => "password#new_password"
 post "/update" => "password#update"
+
 
 
 =begin

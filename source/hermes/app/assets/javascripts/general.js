@@ -6,6 +6,11 @@ $(function(){
 	    'enterprise-token': $('meta[name="enterprise_token"]').attr('content'),
 	  }
 	});
+
+	$.get( "/enterprise_data", function( r ) {		
+	  $("#eporc").html(r.data.porcentaje_tarifa);
+	  $("#econst").html(r.data.constante_tarifa);	  
+	});
 	
 	$(".register-form").on('submit', function(event) {
 	 	event.preventDefault();

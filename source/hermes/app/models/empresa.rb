@@ -23,7 +23,7 @@ class Empresa < ActiveRecord::Base
 			:id => self.id,
 			:nombre => self.nombre,
 			:rif => self.rif,
-			:contante_tarifa => self.constante_tarifa,
+			:constante_tarifa => self.constante_tarifa,
 			:porcentaje_tarifa => self.porcentaje_tarifa,
 		}
 	end
