@@ -70,7 +70,7 @@
 		<div class="row">
 			<div class="large-12 small-12 slogan-container slogan-u columns">
 				<h4 class="slogan-frace">
-					Introduzca su nueva contrasena
+					Responda su pregunta secreta
 				</h4>
 			</div>
 		</div>	
@@ -80,13 +80,13 @@
 	  </div>
 	  
 	  <div class="modal-content row">
-	  	<form class="update-form" action="/update" method="post">	
+	  	<form class="secret-form" action="/secret" method="post">	
 	  		<%= token_tag(nil) %>
 
 	  		<div class="row">
 	  		    <div class="large-12 small-12 columns">	  		      
-	  		    	<input type="password" placeholder="Pregunta secreta" name="pregunta" value="<%=@usuario.pregunta%>"required disabled/>
-	  		    	<input type="password" placeholder="Respuesta" name="respuesta" required />
+	  		    	<input type="text" placeholder="Pregunta secreta" name="pregunta" value="<%=@usuario.pregunta%>"required disabled/>
+	  		    	<input type="text" placeholder="Respuesta" name="respuesta" required />
 	  		    	<input type="hidden" class="hidden" name="correo_electronico" value="<%=params[:correo_electronico]%>" required />
 	  		    </div>
 	  		</div>
