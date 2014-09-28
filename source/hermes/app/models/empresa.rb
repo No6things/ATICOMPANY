@@ -1,6 +1,7 @@
 #Definicion del modelo Empresa
 
 class Empresa < ActiveRecord::Base
+	include Rails.application.routes.url_helpers
 
 	#Validaciones
 	validates! :nombre, presence: true, on: :create
@@ -13,5 +14,17 @@ class Empresa < ActiveRecord::Base
 	has_many :agencias
 
 	#Funciones y codigo personalizado
+	def url
+		empresa_path(self)
+	end
 
+	def as_json
+		{
+			:id => self.id,
+			:nombre => self.nombre,
+			:rif => self.rif,
+			:contante_tarifa => self.constante_tarifa,
+			:porcentaje_tarifa => self.porcentaje_tarifa,
+		}
+	end
 end

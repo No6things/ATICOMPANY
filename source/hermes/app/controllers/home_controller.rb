@@ -40,10 +40,10 @@ class HomeController < ApplicationController
 
 	def enterprise #calculo un paquete
 		begin
-
-			@empresa=Empresa.find(params[:empresa_id])
-			costo=(params[:ancho]*params[:alto]*params[:profundidad]*params[:peso]*params[:valor]/@empresa.constante_tarifa)+(@empresa.porcentaje_tarifa*params[:valor]/100)
-			render json: {err_mssg: "", success_msg: costo}, status: 202			
+			i = request.headers["enterprise-token"].to_i
+			@empresa=Empresa.find(i)
+			costo= ((params[:ancho].to_f * params[:alto].to_f * params[:profundidad].to_f * params[:peso].to_f)/@empresa.constante_tarifa)+((@empresa.porcentaje_tarifa*params[:valor].to_f)/100)
+			render json: {err_mssg: "", success_msg: "Result", costo: costo.to_s}, status: 202
 		rescue
 			render json: {err_mssg: "La empresa a la que pertenece no se encuentra registrada", constante: 0, porcentaje: 0}, status: 503			
 		end
