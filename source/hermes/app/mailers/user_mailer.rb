@@ -1,9 +1,9 @@
 class UserMailer < ActionMailer::Base
-  default from: 'no6things@gmail.com'
+  default from: 'noreplytohermes@gmail.com'
 
   def retrieve_pwd(usuario)
   	@usuario=usuario
-  	mail(to: @usuario.correo_electronico, asunto: "Recuperacion de su contrasena")
+  	mail(to: @usuario.correo_electronico, subject: "Recuperacion de su contrasena")
    	
    
   end

@@ -10,8 +10,8 @@ Hermes::Application.configure do
   :address => "smtp.gmail.com",
   :port => 587,
   :domain => "hermes.com",
-  :user_name => "no6things",
-  :password => "ALEJANDROASDFGH",
+  :user_name => "noreplytohermes",
+  :password => "ASD123456",
   :authentication => "plain",
   :enable_starttls_auto => true
   }

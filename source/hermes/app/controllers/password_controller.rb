@@ -16,7 +16,6 @@ class PasswordController < ApplicationController
 			@usuario=Usuario.find_by(correo_electronico: params[:correo_electronico])
 			p @usuario.respuesta
 			if (@usuario.respuesta==params[:respuesta])
-				p 'dicks'
 				redirect_to "/update?correo_electronico="+params[:correo_electronico]
 			else 
 				redirect_to "/secret?correo_electronico="+params[:correo_electronico]
@@ -34,8 +33,9 @@ class PasswordController < ApplicationController
 	def update #maneja la actualizacion de la contrasena
 		begin
 			@usuario=Usuario.find_by(correo_electronico: params[:correo_electronico])
-			@usuario.password=params[contrasena]
+			@usuario.password=params[:contrasena]
 			@usuario.save
+			redirect_to root_url 
 		rescue
 			redirect_to root_url
 		end

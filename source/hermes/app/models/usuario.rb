@@ -10,6 +10,7 @@ class Usuario < ActiveRecord::Base
 	validates! :password, presence: true, length: { minimum: 5 }, on: :create
 	validates! :fecha_ultimo_acceso, presence: true, on: :create
 	
+	
 	has_secure_password
 
 	#Relacion con otros recursos
