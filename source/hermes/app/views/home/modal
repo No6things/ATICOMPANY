@@ -1,0 +1,18 @@
+<div id="modal_recuperar_contrasena" class="reveal-modal small custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text">Recuperar Contrasnea</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row extra-padding-row">
+	  	<form class="contrasena-form" action="/retrieve" method="post">	
+	  		<%= token_tag(nil) %>	  		
+		  	<input class="columns" type="text" placeholder="Correo Electronico" name="corre_electronico" required />  		
+
+  		  	<input type="submit" class="hidden-submit-button" />
+  		  	<span class="alert round label">Presione Enter para recuperar su contrasena</span>
+	  	</form>	  	
+	  </div>
+
+	  <div class="modal-footer row"></div> 	  
+	</div>

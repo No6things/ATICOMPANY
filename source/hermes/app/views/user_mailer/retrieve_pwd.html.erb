@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hola <%= @usuario.nombre.capitalize %></h1>
+    <p>
+      Para restablecer su contrasena en Hermes presiona el siguiente enlace:
+      
+      <h3> <a href="http://localhost:3000/secret?correo_electronico=<%= @usuario.correo_electronico%>">Recuperar contrasena</a></h3><br>
+    </p>
+    <p>
+      Si no deseea reestablecer su contrasena,  ignore este correo </br>
+
+      Para mas informacion, visitenos en : www.hermes.com. 
+    </p>
+
+    <p>Feliz dia!</p>
+  </body>
+</html>

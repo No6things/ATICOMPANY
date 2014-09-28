@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   post  "/create" => "package#create"
   get "/panel" => "admin#home"
   post "/enterprise" => "home#enterprise"
-
-
+  post "/retrieve" => "password#retrieve"
+  get "/retrieve" => "password#retrieve"
+  get "/secret" => "password#index"
+  post "/secret" => "password#secret"
+  post "/update" => "password#update"
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
