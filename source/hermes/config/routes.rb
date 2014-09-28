@@ -8,7 +8,7 @@ resources :agencias
 resources :paquetes
 resources :agencia_paquetes
 
-root "home#index"
+root to: "home#index"
 post "/login" => "home#login"
 get  "/logout" => "home#logout"
 post "/register" => "register#register_user"
@@ -76,3 +76,4 @@ edit_agencia_paquete GET    /agencia_paquetes/:id/edit(.:format) agencia_paquete
                      GET    /paquete(.:format)                   package#create
                admin GET    /admin(.:format)                     admin#index
 =end
+end
