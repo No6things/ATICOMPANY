@@ -36,11 +36,12 @@ $(document).ready(function(){
 	$(".paquete-form").on('submit', function(event) {
 	 	event.preventDefault();
 	  	event.stopImmediatePropagation();
-
+alert ($("input[name='costo']").val())
 		$.ajax({
 			type: 'POST',
 			url: '/create',
 			data: {
+			'agencia': $(this).find("select[name='agencia']").val(), 
 			'alto': $(this).find("input[name='alto']").val(), 
 			'ancho': $(this).find("input[name='ancho']").val() , 
 			'profundidad': $(this).find("input[name='profundidad']").val(), 
@@ -49,7 +50,7 @@ $(document).ready(function(){
 			'costo': $(this).find("input[name='costo']").val(),
 			'emisor': $(this).find("input[name='origen']").val(),
 			'receptor': $(this).find("input[name='destino']").val(),
-			'descripcion': $(this).find("input[name='descripcion']").val()
+			'descripcion': $(this).find("textarea[name='descripcion']").val()
 			},			
 			success: function(server_data) {
 				$('#modal_notificacion .notification-content').html(server_data["success_mssg"]);
@@ -64,4 +65,49 @@ $(document).ready(function(){
 		$('#modal_notificacion .notification-content').html('');
 		$(this).trigger("reset");
 	});
+
+	$("#crear_paquete").on('click', function(event) {
+	 	event.preventDefault();
+	  	event.stopImmediatePropagation();
+		window.constante=0;
+		window.porcentaje=0;
+		$.ajax({
+			type: 'POST',
+			url: '/enterprise',
+			data: {
+			'empresa_id': $("meta[name='empresa']").attr("content") 
+			},			
+			success: function(xhr) {
+				window.constante=xhr.constante;
+				window.porcentaje=xhr.porcentaje;
+
+			},
+			fail: function(xhr, textStatus, errorThrown) {
+				console.log("error")
+				$('#modal_notificacion .notification-content').html(xhr.responseJSON.err_mssg);
+				$('#modal_notificacion').foundation('reveal','open');
+			}
+		});
+
+		$("#modal_paquete").foundation('reveal', 'open');
+		window.intervalid=setInterval(function(){
+			var ancho;
+			var alto;
+			var profundidad;
+			var peso;
+			var valor;
+			ancho= $("input[name='ancho']");
+			alto= $("input[name='alto']");
+			profundidad= $("input[name='profundidad']");
+			valor= $("input[name='valor']");
+			peso= $("input[name='peso']");
+			if (ancho.val()>0 && alto.val()>0 && profundidad.val()>0 && peso.val()>0 && valor.val()>0){
+
+				$("input[name='costo']").val((ancho.val()*alto.val()*profundidad.val()*peso.val()*valor.val()/window.constante)+(window.porcentaje*valor.val()/100));
+			}
+			},2000);
+		$('#modal_notificacion .notification-content').html('');
+		$(this).trigger("reset");
+	});
+	$('#modal_paquete').bind('closed', function() {clearInterval(intervalid);});
 });

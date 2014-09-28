@@ -11,12 +11,11 @@ Rails.application.routes.draw do
   post "/login" => "home#login"
   get  "/logout" => "home#logout"
   post "/register" => "register#register_user"
-<<<<<<< HEAD
   post "/calculator" => "calculator#calculate"
-=======
-  get  "/paquete" => "package#create"
+  post  "/create" => "package#create"
   get "/panel" => "admin#home"
->>>>>>> 516cdb32696626e6516bfb4ec099eef7d4e52836
+  post "/enterprise" => "home#enterprise"
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

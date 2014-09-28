@@ -3,6 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="empresa" content="1">
 	<%= csrf_meta_tag %>
 	<link rel="stylesheet" href="/assets/normalize.css">
 	<link rel="stylesheet" href="/assets/foundation.css" />
@@ -70,7 +71,7 @@
 							<%if @usuario %>
 								<%if @usuario.tipo_usuario.abreviacion == "O" %>
 								<li>
-									<a id="crear_paquete"class="alert button" href="#" onclick="$().Calculate('<%=@empresa.constante_tarifa%>','<%=@empresa.porcentaje_tarifa%>');" data-reveal-id="modal_paquete" >
+									<a id="crear_paquete"class="alert button" href="#" data-reveal-id="modal_paquete" >
 										Enviar paquete
 										&nbsp;
 										<i class="fa fa-send-o fa-lg"></i>					
@@ -452,14 +453,14 @@
 	  
 	  <div class="modal-content row extra-padding-row">
 		  <div class="large-8 small-8 large-offset-2 small-offset-2 columns">
-		  	<form class="paquete-form row" method="post">
+		  	<form id="paquete-form" class="paquete-form row" method="post">
 		  		<%= token_tag(nil) %>	  		
-				<select class="columns"  name="agencia">
+				  <select class="columns"  name="agencia">
 	  				<option value="">Agencia Destino</option>
 		        	<% Agencia.find_each do |agencia| %>
 		        	<option value="<%= agencia.id%>"><%= agencia.nombre%></option>
 		        	<%end%>	
-		        	</select>
+		      </select>
 			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required>  		
 			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required>
 			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" required>
@@ -467,12 +468,12 @@
 			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required>
 			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Emisor" name="origen" required> 
 			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Receptor" name="destino" required> 
-				<input name="enterprise-token" type="hidden" value="1">
-			  	<textarea class="columns" placeholder="Descripci&oacute;n" name="desc" required></textarea>	
-			  	<input class="columns" type="text" placeholder="El costo de env&iacute;o es:" name="costo" />  
-	  		  	<input type="submit" class="hidden-submit-button">
+				  <input name="enterprise-token" type="hidden" value="1">
+			  	<textarea class="columns" form="paquete-form" placeholder="Descripci&oacute;n" name="descripcion" required></textarea>	
+			  	<input class="columns" type="text" placeholder="El costo de env&iacute;o es:" name="costo" disabled required>  
+	  		  <input type="submit" class="hidden-submit-button">
 
-	  		  	<span class="alert round label">Presione Enter para enviar</span>
+	  		  <span class="alert round label">Presione Enter para enviar</span>
 		  	</form>
 		  </div>	  
 	  </div>
@@ -502,27 +503,5 @@
 			});
 	</script>
 
-	<script>
-		function funca (param1, param2){
-			return function(){
-				var ancho;
-				var alto;
-				var profundidad;
-				var peso;
-				var valor;
-				ancho= $("input[name='ancho']");
-				alto= $("input[name='alto']");
-				profundidad= $("input[name='profundidad']");
-				valor= $("input[name='valor']");
-				peso= $("input[name='peso']");
-				if (ancho.val()>0 && alto.val()>0 && profundidad.val()>0 && peso.val()>0 && valor.val()>0){
-					$("input[name='costo']").val((ancho*alto*profundidad*peso*valor/param1)+param2);
-				}
-			}
-		}
-		$.fn.Calculate = function(param1, param2){
-			setInterval(function(){	funca(param1, param2)},2000);
-		};
-	</script>
 	</body>
 </html>

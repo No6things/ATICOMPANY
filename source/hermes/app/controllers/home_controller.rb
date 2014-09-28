@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 	def index
 		if session.has_key?("id_usuario_actual")
 			if !session[:id_usuario_actual].nil?
-				@empresa=Empresa.find(1)
+				#@empresa=Empresa.find(1)
 				@usuario=Usuario.find(session[:id_usuario_actual])			
 			end
 		end
@@ -35,6 +35,16 @@ class HomeController < ApplicationController
 			redirect_to root_url			
 		rescue Exception => e
 			render json: {err_mssg: "Temporalmente servicio fuera de linea", success_msg: ""}, status: 503			
+		end
+	end
+
+	def enterprise
+		begin
+
+			@empresa=Empresa.find(params[:empresa_id])
+			render json: {err_mssg: "", constante: @empresa.constante_tarifa, porcentaje: @empresa.porcentaje_tarifa}, status: 202			
+		rescue
+			render json: {err_mssg: "La empresa a la que pertenece no se encuentra registrada", constante: 0, porcentaje: 0}, status: 503			
 		end
 	end
 	
