@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html class="no-js Newslab" lang="es-VE">
 	<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="empresa" content="1">
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="empresa" content="1"/>
 	<%= csrf_meta_tag %>
-	<link rel="stylesheet" href="/assets/normalize.css">
-	<link rel="stylesheet" href="/assets/foundation.css" />
-	<link rel="stylesheet" href="/assets/font-config.css">		
-	<link rel="stylesheet" href="/assets/font-awesome.min.css">
-	<link rel="stylesheet" href="/assets/general.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/normalize.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/foundation.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/font-config.css">		
+	<link rel="stylesheet" type="text/css" href="/assets/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/general.css" />
 	<title>Hermes | Home</title>
 	</head>
 
@@ -71,7 +71,7 @@
 							<%if @usuario %>
 								<%if @usuario.tipo_usuario.abreviacion == "O" %>
 								<li>
-									<a id="crear_paquete"class="alert button" href="#" data-reveal-id="modal_paquete" >
+									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
 										Enviar paquete
 										&nbsp;
 										<i class="fa fa-send-o fa-lg"></i>					
@@ -114,25 +114,25 @@
 		</div>	
 	</div>
 	
-    <div class="row extra-padding-row">
-      <div class="large-12 columns">
-      	<div class="centered-image">
-      		<%= image_tag "hermes-logo.png" %>
-      	</div>
-        <!--<img class="centered-image" src="app/assets/images/hermes-logo.png" alt="">-->
-      </div>
+  <div class="row extra-padding-row">
+    <div class="large-12 columns">
+     	<div class="centered-image">
+    		<%= image_tag "hermes-logo.png" %>
+    	</div>
+      <!--<img class="centered-image" src="app/assets/images/hermes-logo.png" alt="">-->
     </div>
-    <div class="row">
-    	<div class="large-12 columns slogan-container">
-    		<h4 class="slogan-frace">
+  </div>
+  <div class="row">
+   	<div class="large-12 columns slogan-container">
+   		<h4 class="slogan-frace">
 				<i class="fa fa-quote-left"></i>
 				&nbsp;
-    			El servicio de entrega de los dioses
-    			&nbsp;
-    			<i class="fa fa-quote-right"></i>
-    		</h4>
-    	</div>    	
-    </div>
+  			El servicio de entrega de los dioses
+  			&nbsp;
+  			<i class="fa fa-quote-right"></i>
+  		</h4>
+  	</div>    	
+  </div>
 
 	<ul data-orbit> 
 		<li> 
@@ -365,14 +365,14 @@
 
 	  		<div class="row">
 	  		    <div class="large-12 small-12 columns">	  		      
-	  		    	<input type="text" placeholder="Usuario" name="login" required>
-	  		    	<input type="password" placeholder="Contraseña" name="passwd" required>
+	  		    	<input type="text" placeholder="Usuario" name="login" required />
+	  		    	<input type="password" placeholder="Contraseña" name="passwd" required />
 	  		    </div>
 	  		</div>
 
 	  		<h4><small><a href="">¿Olvidaste tu contraseña?</a></small></h4>
   	  
-  		  	<input type="submit" class="hidden-submit-button">
+  		  	<input type="submit" class="hidden-submit-button" />
   		  	<span class="alert round label">Presione Enter para acceder al sistema</span>
 
 	  	</form>	  	
@@ -391,15 +391,18 @@
 	  <div class="modal-content row extra-padding-row">
 
 	  	<div class="large-8 small-8 large-offset-2 small-offset-2 columns">
-	  	<form class="register-form" method="post">
-	  		<%= token_tag(nil) %>	  		
-	  		<input name="fname" type="text" placeholder="Primer Nombre" required>
-	  		<input name="lname" type="text" placeholder="Primer Apellido" required>	  		
-	  		<input name="email" type="email" placeholder="Correo Electronico" required>
-	  		<input name="passwd" type="password" placeholder="Contraseña" required>
-	  		<span class="alert round label">Presione Enter para registrarse</span>
-			<input type="submit" class="hidden-submit-button">
-	  	</form>	 
+	    	<form class="register-form" method="post">
+
+	    		<%= token_tag(nil) %>	  		
+	    		<input name="fname" type="text" placeholder="Primer Nombre" required />
+	    		<input name="lname" type="text" placeholder="Primer Apellido" required />	  		
+	    		<input name="email" type="email" placeholder="Correo Electronico" required />
+	    		<input name="passwd" type="password" placeholder="Contraseña" required />
+
+	    		<span class="alert round label">Presione Enter para registrarse</span>
+  			    <input type="submit" class="hidden-submit-button"/>
+
+	    	</form>	 
 	  	</div> 	
 	  </div>
 
@@ -414,15 +417,14 @@
 	  </div>
 	  
 	  <div class="modal-content row extra-padding-row">
-	  	<form class="calculadora-form" action="/calculator" method="post">	
+	  	<form class="calculadora-form"  method="post">	
 	  		<%= token_tag(nil) %>	  		
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" required>  		
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Peso en Kg" required>
-		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" required> 
-		  	<input name="enterprise-token" type="hidden" value="1"> 	  
-  		  	<input type="submit" class="hidden-submit-button">
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required />  		
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" required />
+			<input class="columns" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" name="peso" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required />
+  		  	<input type="submit" class="hidden-submit-button" />
   		  	<span class="alert round label">Presione Enter para calcular</span>
 	  	</form>	  	
 	  </div>
@@ -453,34 +455,34 @@
 	  
 	  <div class="modal-content row extra-padding-row">
 		  <div class="large-8 small-8 large-offset-2 small-offset-2 columns">
-		  	<form id="paquete-form" class="paquete-form row" method="post">
+
+		  	<form id="paquete-form"  class="paquete-form row" method="post">
+
 		  		<%= token_tag(nil) %>	  		
-				  <select class="columns"  name="agencia">
+				 <select class="columns" form="paquete-form"  name="agencia"required>
 	  				<option value="">Agencia Destino</option>
 		        	<% Agencia.find_each do |agencia| %>
-		        	<option value="<%= agencia.id%>"><%= agencia.nombre%></option>
+		          	<option value="<%= agencia.id%>"><%= agencia.nombre%></option>
 		        	<%end%>	
 		      </select>
-			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required>  		
-			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required>
-			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" required>
-			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Peso en Kg" name="peso" required>
-			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required>
-			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Emisor" name="origen" required> 
-			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Receptor" name="destino" required> 
-				  <input name="enterprise-token" type="hidden" value="1">
+			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" required />  		
+			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" required />
+			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" required />
+			  	<input class="columns" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" name="peso" required />
+			  	<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" required />
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Emisor" name="origen" required /> 
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Receptor" name="destino" required /> 
 			  	<textarea class="columns" form="paquete-form" placeholder="Descripci&oacute;n" name="descripcion" required></textarea>	
-			  	<input class="columns" type="text" placeholder="El costo de env&iacute;o es:" name="costo" disabled required>  
-	  		  <input type="submit" class="hidden-submit-button">
+			  	<input class="columns" type="text" placeholder="El costo de env&iacute;o es:" name="costo" disabled />
 
+	  		  <input class="hidden-submit-button" type="submit"/>
 	  		  <span class="alert round label">Presione Enter para enviar</span>
+
 		  	</form>
 		  </div>	  
 	  </div>
 	  <div class="modal-footer row notification-footer"></div> 			
 	</div>
-</div>
-	  
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- ~~~~~~~~~ END Definicion de modales utilizadas ~~~~~~~~~ -->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

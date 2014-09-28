@@ -42,7 +42,8 @@ class HomeController < ApplicationController
 		begin
 
 			@empresa=Empresa.find(params[:empresa_id])
-			render json: {err_mssg: "", constante: @empresa.constante_tarifa, porcentaje: @empresa.porcentaje_tarifa}, status: 202			
+			costo=(params[:ancho]*params[:alto]*params[:profundidad]*params[:peso]*params[:valor]/@empresa.constante_tarifa)+(@empresa.porcentaje_tarifa*params[:valor]/100)
+			render json: {err_mssg: "", success_msg: costo}, status: 202			
 		rescue
 			render json: {err_mssg: "La empresa a la que pertenece no se encuentra registrada", constante: 0, porcentaje: 0}, status: 503			
 		end
