@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 root to: "hermes_api#index"
 post "/entrar" => "general#entrar"
 post "/salir" => "general#salir"
+post "/registrar" => "general#registrar"
+post "/calcular" => "general#calcular"
+get "/info" => "general#info"
+post "operador/crear" => "operador#crear_paquete"
 
 #Declaracion de recursos
 #resources :empresas
