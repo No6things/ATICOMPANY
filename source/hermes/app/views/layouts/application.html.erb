@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hermes</title>
+  <title>Hermes | API</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="/assets/font-awesome.min.css">
   <%= csrf_meta_tags %>
 </head>
-<body>
+
+<body class="colored-body">	
+	<div class="row">
+	<div class="large-12">
+	<nav class="top-bar" data-topbar role="navigation"> 
+				
+	<ul class="title-area"> 
+		<li class="name">
+		<h1><a href=""><i class="fa fa-university fa-fw"></i>&nbsp;Hermes&nbsp;&nbsp;API</a></h1>
+        </li>
+	</ul> 
+	</nav>
+	</div>	
+	</div>
 
 <%= yield %>
 
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

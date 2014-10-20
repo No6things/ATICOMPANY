@@ -25,6 +25,7 @@ body, a, li, ul, h1, h2, h3, h4, label, input, select,
 .centered-container
 {
 	vertical-align: middle;
+	text-align: center;
 }
 
 .extra-padding-row
@@ -101,7 +102,7 @@ body, a, li, ul, h1, h2, h3, h4, label, input, select,
 
 .centered-image-logo
 {	
-	vertical-align: center;
+	vertical-align: center;	
 }
 
 .agent-image

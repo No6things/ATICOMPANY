@@ -1,29 +1,33 @@
 Rails.application.routes.draw do
 
- 
-#Declaracion de recursos
-resources :empresas
-resources :usuarios
-resources :agencias
-resources :paquetes
-resources :agencia_paquetes
 
-root to: "home#index"
-post "/login" => "home#login"
-get  "/logout" => "home#logout"
-get "/enterprise_data" => "home#get_enterprise_data"
-post "/register" => "register#register_user"
-post "/calculator" => "calculator#calculate"
-post  "/create" => "package#create"
-get "/admin" => "admin#index"
-post "/enterprise" => "home#enterprise"
-get "/pager_transactions" => "agencia_paquetes#get_page"
-post "/retrieve" => "password#retrieve"
-get "/retrieve" => "password#retrieve"
-get "/secret" => "password#ask"
-post "/secret" => "password#answer"
-get "/update" => "password#new_password"
-post "/update" => "password#update"
+root to: "hermes_api#index"
+post "/entrar" => "general#entrar"
+post "/salir" => "general#salir"
+
+#Declaracion de recursos
+#resources :empresas
+#resources :usuarios
+#resources :agencias
+#resources :paquetes
+#resources :agencia_paquetes
+
+#root to: "home#index"
+#post "/login" => "home#login"
+#get  "/logout" => "home#logout"
+#get "/enterprise_data" => "home#get_enterprise_data"
+#post "/register" => "register#register_user"
+#post "/calculator" => "calculator#calculate"
+#post  "/create" => "package#create"
+#get "/admin" => "admin#index"
+#post "/enterprise" => "home#enterprise"
+#get "/pager_transactions" => "agencia_paquetes#get_page"
+#post "/retrieve" => "password#retrieve"
+#get "/retrieve" => "password#retrieve"
+#get "/secret" => "password#ask"
+#post "/secret" => "password#answer"
+#get "/update" => "password#new_password"
+#post "/update" => "password#update"
 
 
 
