@@ -6,8 +6,8 @@ class Agencia < ActiveRecord::Base
 	#Validaciones
 	validates! :nombre, presence: true, on: :create
 	validates! :ubicacion, presence: true, on: :create
-	validates! :latitud, presence: true, on: :create
-	validates! :longitud, presence: true, on: :create
+	validates_numericality_of :latitud,  greater_than: 0, message: "El valor introducido debe ser numerico y positivo", presence: true, on: [:create, :update]
+	validates_numericality_of :longitud,  greater_than: 0, message: "El valor introducido debe ser numerico y positivo", presence: true, on: [:create, :update]
 
 	#Relacion con otros recursos
 	belongs_to :empresa	

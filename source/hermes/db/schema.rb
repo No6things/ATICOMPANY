@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928101301) do
+ActiveRecord::Schema.define(version: 20141021003719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20140928101301) do
     t.string   "password_digest"
     t.string   "pregunta"
     t.string   "respuesta"
+    t.string   "api_token"
   end
 
   add_index "usuarios", ["apellido"], name: "index_usuarios_on_apellido", using: :btree

@@ -8,7 +8,10 @@ class Usuario < ActiveRecord::Base
 	validates! :apellido, presence: true, on: :create
 	validates! :correo_electronico, presence: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/, on: :create}, uniqueness: true, on: [:create,:update]
 	validates! :password, presence: true, length: { minimum: 5 }, on: :create
+	validates! :pregunta, presence: true, on: :create
+	validates! :respuesta, presence: true, on: :create
 	validates! :fecha_ultimo_acceso, presence: true, on: :create
+	validates! :api_token, uniqueness: true, on: [:create,:update]
 	
 	
 	has_secure_password
@@ -29,7 +32,9 @@ class Usuario < ActiveRecord::Base
 			:apellido => self.apellido,
 			:correo_electronico => self.correo_electronico,
 			:fecha_ultimo_acceso => self.fecha_ultimo_acceso,
-			:tipo_usuario => self.tipo_usuario.as_json,			
+			:tipo_usuario => self.tipo_usuario.as_json,
+			:pregunta => self.pregunta,
+			:respuesta => self.respuesta			
 		}		
 	end
 end

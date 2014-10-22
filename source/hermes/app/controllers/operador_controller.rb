@@ -1,5 +1,6 @@
 class OperadorController < ApplicationController
 
+	# Crear paquete dentro del sistema
 	def crear_paquete	
 		begin
 			prms = params.permit(
@@ -8,7 +9,6 @@ class OperadorController < ApplicationController
 				:ancho,
 				:profundidad,
 				:peso,
-				:valor,
 				:costo,
 				:emisor,
 				:receptor,
@@ -25,15 +25,15 @@ class OperadorController < ApplicationController
 				raise "Usuario receptor no registrado en el sistema"
 			end	
 
-			paquete= Paquete.create(
-				ancho:prms.require(:ancho).to_f,
-				alto:prms.require(:alto).to_f,
-				peso:prms.require(:peso).to_f,
-				profundidad: prms.require(:profundidad).to_f,
+			paquete = Paquete.create!(
+				ancho:prms.require(:ancho),
+				alto:prms.require(:alto),
+				peso:prms.require(:peso),
+				profundidad: prms.require(:profundidad),
 				descripcion: prms.require(:descripcion),
-				costo: prms.require(:costo).to_f,
+				costo: prms.require(:costo),
 				emisor_id: e.id,
-				receptor_id: r.id,
+				receptor_id: r.id
 			)
 
 			agencia_paquete=AgenciaPaquete.create(
@@ -58,7 +58,62 @@ class OperadorController < ApplicationController
 		end
 	end
 
+	def ver_paquete
+		begin
+			prms = params.permit(
+				:id
+			)
+
+			pq = Paquete.find(
+				prms.require(:id).to_i
+			)
+			render json: {
+					err_mssg: "",
+					success_mssg: "OK",
+					data: pq.as_json
+				},
+				status: :ok
+
+		rescue Exception => e
+			msg= 'Lo sentimos pero ha ocurrido un problema con la creacion del paquete'
+			render json: {
+					err_mssg: msg+" - Motivo: "+ e.message,
+					success_mssg: ""
+				},
+				status: :bad_request
+		end
+	end
+
 	def cambiar_estado_paquete
+		begin
+			prms = params.permit(
+				:id,
+				:agencia
+			)
+
+			pq = Paquete.find(
+				prms.require(:id).to_i
+			).cambiar_estado prms.require(:agencia).to_i
+
+			if not pq.nil?
+			render json: {
+					err_mssg: "",
+					success_mssg: "Cambio de esto satisfactorio a: #{pq.tipo_estado.nombre}",
+					data: pq.as_json
+				},
+				status: :ok
+			else
+				raise "Este paquete no puede cambiar de estado ya que ha sido entregado y no esta bajo el control del sistema"
+			end
+					
+		rescue Exception => e
+			msg= 'Lo sentimos pero ha ocurrido un problema con la creacion del paquete'
+			render json: {
+					err_mssg: msg+" - Motivo: "+ e.message,
+					success_mssg: ""
+				},
+				status: :bad_request
+		end
 	end
 
 	def buscar_paquete

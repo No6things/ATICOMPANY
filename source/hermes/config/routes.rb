@@ -2,12 +2,19 @@ Rails.application.routes.draw do
 
 
 root to: "hermes_api#index"
-post "/entrar" => "general#entrar"
-post "/salir" => "general#salir"
+
+#Acceso permitido a funcionalidades sin restriccion
+get "/info" => "general#info"
+post "/token" => "general#api_token"
 post "/registrar" => "general#registrar"
 post "/calcular" => "general#calcular"
-get "/info" => "general#info"
-post "operador/crear" => "operador#crear_paquete"
+
+# Funcionalidades que requieren acceso con autenticacion previa
+post "/usuario/paquete/ver" => "usuario#ver_paquete"
+post "/operador/paquete/ver" => "operador#ver_paquete"
+post "/operador/paquete/crear" => "operador#crear_paquete"
+post "/operador/paquete/cambiar_ẹstado" => "operador#cambiar_estado_paquete"
+post "/administrador/tarifas/actualizar" => "administrador#actualizar_tarifas"
 
 #Declaracion de recursos
 #resources :empresas

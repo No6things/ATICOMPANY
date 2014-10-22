@@ -1,6 +1,7 @@
 class GeneralController < ApplicationController
 
-	def entrar
+	#Obtener un token para la utilizaci;n del webapi
+	def api_token
 		begin
 			prms = params.permit(
 				:login,
@@ -29,42 +30,28 @@ class GeneralController < ApplicationController
 		  			success_mssg: ""
 		  			}, status: 	:unauthorized
 		  	else
-		  		session[:id_usuario_actual]=u.id
-		  		
+		  		if u.api_token.nil?
+		  			u.update(api_token: Digest::SHA1.hexdigest("#{u.id}#{Time.now}"))
+		  		end
 		  		render json: {
 		  			err_mssg: "",
-		  			success_mssg: "OK"
+		  			success_mssg: "OK",
+		  			data: {'api_token'=> u.api_token}
 		  			}, status: 	:ok
 		  	end
 		 end
 	end
 
-	def salir
-		begin			
-			if session.key?:id_usuario_actual
-				reset_session
-				render json: {
-					err_mssg:"",
-					success_msg: "Sesion cerrada exitosamente"
-					}, status: :ok
-			else
-				raise "No ha iniciado en el sistema"
-			end
-		rescue Exception => e
-			render json: {
-				err_mssg: e.message,
-				success_msg: ""
-				}, status: :bad_request
-		end
-	end
-
+	#Registrar un usuario en la compa;ia
 	def registrar
 		begin
 			prms = params.permit(
 				:email,
 				:fname,
 				:lname,
-				:passwd
+				:passwd,
+				:pregunta,
+				:respuesta
 				)
 
 			u = Usuario.find_by(
@@ -76,10 +63,12 @@ class GeneralController < ApplicationController
 			end
 
 			u = Usuario.create(
-				nombre: prms.require(:fname), 
+				nombre: prms.require(:fname),
 				apellido: prms.require(:lname), 
 				correo_electronico: prms.require(:email), 
-				password: prms.require(:passwd), 
+				password: prms.require(:passwd),
+				pregunta: prms.require(:pregunta),
+				respuesta: prms.require(:respuesta),
 				fecha_ultimo_acceso: DateTime.now, 
 				tipo_usuario: TipoUsuario.find_by(abreviacion: "UA")
 				)
@@ -92,8 +81,17 @@ class GeneralController < ApplicationController
 		rescue ActionController::ParameterMissing
 
 			render json: {
-				err_mssg: "Parametros de acceso faltantes o incorrectos",
-				success_mssg: ""}, status: :bad_request
+				err_mssg: "Parametros de registro faltantes o incorrectos",
+				success_mssg: "",
+				data: {"parametros" => [ 
+					"fname",
+					"lname",
+					"email",
+					"passwd",
+					"pregunta", 
+					"respuesta"
+				]}
+				}, status: :bad_request
 
 		rescue Exception => e
 
@@ -104,6 +102,8 @@ class GeneralController < ApplicationController
 		end
 	end
 
+	# Calcular costo de envio de un paquete basado en la informacion de tarifas de
+	# una compa;ia
 	def calcular
 		begin			
 			if request.headers.key?("enterprise-token")
@@ -137,6 +137,7 @@ class GeneralController < ApplicationController
 		end
 	end
 
+	#Mostrar informacion de la compa;ia
 	def info
 		begin			
 			if request.headers.key?("enterprise-token")
@@ -165,8 +166,5 @@ class GeneralController < ApplicationController
 	end
 
 	def recuperar_clave
-	end
-
-	def obtener_api_token
 	end
 end
