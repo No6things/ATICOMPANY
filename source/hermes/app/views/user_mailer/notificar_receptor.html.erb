@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+      .tdhead{
+        color:black;
+        background-color: #ADE1EB;
+        text-align: left;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hola 
+    <%= @t.paquete.receptor.nombre.capitalize %>
+    &nbsp;&nbsp;
+    <%= @t.paquete.receptor.apellido.capitalize %>
+    </h1>
+
+      <p>
+        El siguiente mensaje ha sido generado de manera automatica para notificarte que el paquete # <%= @t.paquete.numero_guia %> esta en nuestras oficinas y puedes pasar a retirarlo cuando desees.
+      </p>
+      <table class="reference" style="widtr:100%">
+      <tbody>
+      
+      <tr>
+        <td class="tdhead">Descripci&oacute;n</td>
+        <td><%= @t.paquete.descripcion %></td>
+      </tr>
+
+      <tr>
+        <td class="tdhead">N&uacute;mero Gu&iacute;a</td>
+        <td><%= @t.paquete.numero_guia %></td>
+      </tr>
+
+      <tr>
+        <td class="tdhead">Ancho</td>    
+        <td><%= @t.paquete.ancho %></td>
+      </tr>
+
+      <tr>   
+        <td class="tdhead">Alto</td>
+        <td><%= @t.paquete.alto %></td>
+      </tr>
+
+      <tr>
+        <td class="tdhead">Peso</td>
+        <td><%= @t.paquete.peso %></td>
+      </tr>
+
+      <tr>
+        <td class="tdhead">Profundidad</td>
+        <td><%= @t.paquete.profundidad %></td>
+      </tr>
+
+      <tr> 
+        <td class="tdhead">Costo</td>
+        <td><%= @t.paquete.costo %></td>
+      </tr>
+
+      <tr>
+        <td class="tdhead">Emisor</td>
+        <td>
+        <%= @t.paquete.emisor.nombre.capitalize %>
+        &nbsp;
+        <%= @t.paquete.emisor.apellido.capitalize %>
+        </td>
+      </tr>
+
+      <tr>  
+        <td class="tdhead">Receptor</td>
+        <td>
+        <%= @t.paquete.receptor.nombre.capitalize %>
+        &nbsp;
+        <%= @t.paquete.receptor.apellido.capitalize %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="tdhead">Agencia</td>
+        <td><%= @t.agencia.nombre %></td>
+      </tr>
+
+      <tr>
+        <td class="tdhead">Ubicaci&oacute;n de Agencia</td>
+        <td><%= @t.agencia.ubicacion %></td>
+      </tr>
+
+      <tr>
+        <td class="tdhead">Estado</td>
+        <td><%= @t.tipo_estado.nombre %></td>
+      </tr>
+
+      <tr>
+        <td class="tdhead">Fecha de Arribo</td>
+        <td><%= @t.fecha_arribo %></td>
+      </tr>
+      </tbody></table>
+
+    <p>Feliz dia!</p>
+  </body>
+</html>

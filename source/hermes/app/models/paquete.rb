@@ -36,8 +36,11 @@ class Paquete < ActiveRecord::Base
 			if f.tipo_estado.abreviacion == 'R'
 				s = 'OT'
 			elsif f.tipo_estado.abreviacion == 'OT'
+				s = 'OA'
+			elsif f.tipo_estado.abreviacion == 'OA'
 				s = 'D'
 			end
+				
 
 			if not s.nil?
 			AgenciaPaquete.create!(

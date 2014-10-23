@@ -32,9 +32,7 @@ class Usuario < ActiveRecord::Base
 			:apellido => self.apellido,
 			:correo_electronico => self.correo_electronico,
 			:fecha_ultimo_acceso => self.fecha_ultimo_acceso,
-			:tipo_usuario => self.tipo_usuario.as_json,
-			:pregunta => self.pregunta,
-			:respuesta => self.respuesta			
+			:tipo_usuario => self.tipo_usuario.as_json		
 		}		
 	end
 end

@@ -1,4 +1,5 @@
 class AdministradorController < ApplicationController
+before_filter :check_api_token
 
 	# Actualizar informacion de tarifas de envio de paquetes
 	def actualizar_tarifas
@@ -47,5 +48,29 @@ class AdministradorController < ApplicationController
 			}, status: :bad_request
 		
 		end
+	end
+
+	def check_api_token		
+		begin
+			if request.headers.key?("api-token")
+				atoken = request.headers["api-token"]
+			else
+				raise "Parametro de identificacion api-token requerido en header http"
+			end
+
+			u = Usuario.find_by!(
+				api_token: atoken 
+			)
+
+			if not u.tipo_usuario.abreviacion == "A"
+				raise "Se requieren privilegios administrativos para tener acceso a estas funcionalidades"
+			end
+		
+		rescue Exception => e
+			render json: {
+				err_mssg: e.message,
+				success_mssg: ""
+				}, status: 	:unauthorized			
+		end		
 	end
 end
