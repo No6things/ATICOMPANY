@@ -12,37 +12,7 @@ $(function(){
 	  $("#econst").html(r.data.constante_tarifa);	  
 	});*/
 	
-	$(".login-form").on('submit', function(event) {
-	 	event.preventDefault();
-	  	event.stopImmediatePropagation();
-
-		$.ajax({
-			type: 'POST',
-			url: 'http://localhost:3000/login',
-			crossDomain: true,
-			xhrFields: {
-			  withCredentials: true
-			},
-			data: {
-			'login': $(this).find("input[name='login']").val(), 
-			'passwd': $(this).find("input[name='passwd']").val()
-			},			
-			success: function(server_data) {
-				$('#modal_notificacion .notification-content').html(server_data["success_mssg"]);
-				$('#modal_notificacion').foundation('reveal','open');
-			},
-			error: function(xhr, textStatus, errorThrown) {
-				console.log("error")
-				$('#modal_notificacion .notification-content').html(xhr.responseJSON.err_mssg);
-				$('#modal_notificacion').foundation('reveal','open');
-			}
-		});
-		$.find("input[name='login']").val(" ");
-		$.find("input[name='passwd']").val(" ");
-		$('#modal_notificacion .notification-content').html('');
-		$(this).trigger("reset");
-	});
-
+	
 
 	$(".register-form").on('submit', function(event) {
 	 	event.preventDefault();
