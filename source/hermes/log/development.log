@@ -1273,3 +1273,52 @@ Processing by OperadorController#listar_paquete as */*
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
   [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
 Completed 200 OK in 248ms (Views: 8.3ms | ActiveRecord: 27.6ms)
+
+
+Started OPTIONS "/login" for 127.0.0.1 at 2014-10-23 22:59:09 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApplicationController#route_options as */*
+  Parameters: {"path"=>"login"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 24ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 22:59:09 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@m.com", "passwd"=>"123456", "general"=>{"login"=>"o@m.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[35mUsuario Load (1.1ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 200 OK in 119ms (Views: 0.4ms | ActiveRecord: 5.0ms)
+
+
+Started OPTIONS "/login" for 127.0.0.1 at 2014-10-23 23:01:38 -0400
+Processing by ApplicationController#route_options as */*
+  Parameters: {"path"=>"login"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 23:01:38 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@m.com", "passwd"=>"123456", "general"=>{"login"=>"o@m.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[35mUsuario Load (0.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 200 OK in 103ms (Views: 0.4ms | ActiveRecord: 3.8ms)
+
+
+Started OPTIONS "/login" for 127.0.0.1 at 2014-10-23 23:02:15 -0400
+Processing by ApplicationController#route_options as */*
+  Parameters: {"path"=>"login"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 23:02:15 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@m.com", "passwd"=>"123456", "general"=>{"login"=>"o@m.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[35mUsuario Load (0.5ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1
+  [1m[36mTipoUsuario Load (0.6ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 200 OK in 80ms (Views: 0.3ms | ActiveRecord: 1.1ms)
