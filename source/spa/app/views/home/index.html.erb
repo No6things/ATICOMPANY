@@ -71,7 +71,7 @@
 							<ul class="dropdown">
 								
 								<!-- Opcion de Registro -->
-								<%if !cookies[:tipo]== 'O'%>
+							<%if !cookies[:tipo]== 'O' or !cookies %>
 									<li>
 										<a class="alert button" href="#" data-reveal-id="modal_registrar_usuario">
 											
@@ -92,12 +92,29 @@
 									</li>
 				
 									<!-- Opcion de Listar Paquete -->
-									<li>
-										<a id="listar_paquete"  class="alert button" data-reveal-id="modal_paquete" >
+									 <li ng-controller="ModalListarPaqueteController">
+										<a 
+										id="listar_paquete"
+										class="alert button"
+										ng-click="open()"
+										>
 											Paquetes
 											&nbsp;
-											<i class="fa fa-archive fa-lg"></i>				
+											<i class="fa fa-archive fa-lg"></i>
 										</a>
+									</li>
+									
+									<li>
+									<a 
+									id=""
+									class="alert button" 
+									href
+									data-reveal-id="modal_cambiar_contrasena" 
+									>
+									Cambiar Contraseña
+									&nbsp;
+									<i class="fa fa-key fa-lg"></i>	
+									</a>
 									</li>
 
 									<!-- Opcion de Logout -->
@@ -321,7 +338,7 @@
 	</div>
 
 	<!-- ~~~~~~~~~ Modal Resultado de Busqueda ~~~~~~~~~-->
-	<div id="modal_resultados_busqueda" class="reveal-modal small custom-modal-container white-text" data-reveal>
+	<div id="modal_resultados_busqueda" class="reveal-modal large custom-modal-container white-text" data-reveal>
 	  <div class="modal-header row custom-modal-header slogan-u">
 	  	<h4 class="white-text">Resultados de B&uacute;squeda</h4>				
 	  	<a class="close-reveal-modal">&#215;</a>
