@@ -18,8 +18,9 @@ get "/usuario/paquete/buscar" => "usuario#buscar_paquete"
 get "/operador/paquete/buscar" => "operador#buscar_paquete"
 get "/operador/paquete/listar" => "operador#listar_paquete"
 get "/usuario/paquete/listar" => "usuario#listar_paquete"
+post "/operador/cambiar_password" => "operador#cambiar_password"
 post "/operador/paquete/crear" => "operador#crear_paquete"
-post "/operador/paquete/cambiar_ẹstado" => "operador#cambiar_estado_paquete"
+post "/operador/paquete/cambiar_estado" => "operador#cambiar_estado_paquete"
 post "/administrador/tarifas/actualizar" => "administrador#actualizar_tarifas"
 
 match '*path', :to => 'application#route_options', via: [:options]

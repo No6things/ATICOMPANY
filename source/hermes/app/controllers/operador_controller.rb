@@ -286,6 +286,10 @@ before_filter :check_api_token
 =end
 	def cambiar_estado_paquete
 		begin
+			puts "----"
+			puts params
+			puts "----"
+
 			prms = params.permit(
 				:id,
 				:agencia
@@ -643,6 +647,40 @@ before_filter :check_api_token
 				success_mssg: ""
 			},
 			status: :bad_request
+		end
+	end
+
+	def cambiar_password
+		begin
+			prms = params.permit(
+				:email,
+				:password				
+			)		
+			
+			
+			atoken = request.headers["api-token"]
+
+			u = Usuario.find_by!(
+				correo_electronico: prms.require(:email)
+			)
+
+			if atoken != u.api_token
+				raise "Credenciales de acceso erroneas, acceso no autorizado"
+			end
+
+			u.update(password: prms.require(:password))
+			
+			render json: {
+					err_mssg: "",
+					success_mssg: "OK"					
+				},
+				status: :ok
+
+		rescue Exception => e
+			render json: {
+				err_mssg: e.message,
+				success_mssg: ""
+				}, status: 	:unauthorized	
 		end
 	end
 

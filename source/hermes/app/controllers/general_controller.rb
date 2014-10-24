@@ -51,7 +51,6 @@ class GeneralController < ApplicationController
 		  			}, status: 	:unauthorized
 		  	else
 		  		session[:id_usuario_actual]=u.id
-		  		puts session[:id_usuario_actual]
 		  		render json: {
 		  			err_mssg: "",
 		  			success_mssg: "OK",
