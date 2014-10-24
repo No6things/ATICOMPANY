@@ -10,10 +10,20 @@
 	});
 
 	app.controller('ListarPaquetesController', [$http, function($http){
+		var c = this;
+		var data = {
+			email: 'o@m.com'
+		};
 		this.paquetes = {};
-		
-
-
+		$http.get(
+			remoteDomain+'/operador/paquete/listar',
+			data
+		).success(function(d){
+			console.log(d);
+			c.paquetes = d;
+		}).error(function(e){
+			console.log(e);
+		});
 	}]);
 
 
