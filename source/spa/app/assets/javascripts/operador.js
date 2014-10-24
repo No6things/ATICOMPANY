@@ -9,7 +9,8 @@
 	    delete $httpProvider.defaults.headers.common['X-Requested-With'];
 	});
 
-	app.controller('ListarPaquetesController', [$http, function($http){		
+	app.controller('ListarPaquetesController', ['$http', function($http){
+
 		var c = this;
 		c.paquetes = {};
 		/*

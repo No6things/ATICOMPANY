@@ -164,7 +164,7 @@ $(function(){
 	 	});
 
 	});
-
+/*
 	$(".paquete-form").on('submit', function(event) {		
 	 	event.preventDefault();
 	  	event.stopImmediatePropagation();	
@@ -197,7 +197,7 @@ $(function(){
 		$('#modal_notificacion .notification-content').html('');
 		$(this).trigger("reset");
 	});
-
+*/
 	$('.keyup_target').keyup(function(){
 		var costo = 0;
 		var alto =$('#newp_alto').val();
@@ -214,17 +214,13 @@ $(function(){
 			valor!="" 
 		){
 			$.ajax({
-				type: 'POST',
-				url: '/enterprise',
-				data: {			
-				'ancho': ancho,	
-				'alto': alto,
-				'peso': peso,
-				'valor': valor,
-				'profundidad': profundidad,
-				},			
+				type: 'GET',
+				url: 'http://localhost:3000/info',
 				success: function(server_data) {
-					$('#newp_costo').val(server_data.costo)
+					costo=((alto*ancho*profundidad*peso)/server_data.data.constante_tarifa)+((valor*server_data.data.porcentaje_tarifa)/100);
+					$('#newp_costo').val(Number((costo).toFixed(2)));
+					alert ($('#newp_costo').val());
+
 				},
 				fail: function(xhr, textStatus, errorThrown) {
 					console.log("error")
