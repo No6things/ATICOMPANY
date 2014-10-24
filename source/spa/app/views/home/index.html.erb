@@ -38,7 +38,8 @@
 					
 					<li>
 						<%if !cookies[:api_token]%>
-						<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button"><%= cookies[:nombre]%>Iniciar Sesi&oacute;n</a>
+						<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button">
+							Iniciar Sesi&oacute;n</a>
 						<%else%>
 						<a href="#"  class="alert button">Bienvenido, <%= cookies[:nombre]%></a>
 						<%end%>
@@ -68,13 +69,30 @@
 								</li>
 							<%end%>
 							<%if cookies[:tipo]== 'O'%>
-								<li>
-									<a id="listar_paquete"  class="alert button" data-reveal-id="modal_paquete" >
+							<li 
+							ng-controller="ModalListarPaqueteController">
+									<a
+									href 
+									id="listar_paquete"  
+									class="alert button"
+									ng-click="open()">
 										Paquetes
 										&nbsp;
 										<i class="fa fa-archive fa-lg"></i>				
 									</a>
-								</li>
+							</li>
+							<li>
+								<a 
+								id="cambiar_pass"
+								class="alert button" 
+								href 
+								data-reveal-id="modal_cambiar_contrasena" 
+								>
+									Cambiar Contraseña
+									&nbsp;
+									<i class="fa fa-key fa-lg"></i>
+								</a>
+							</li>
 							<%end%>
 							<%if cookies[:tipo]== 'UA'%>
 								<li>
@@ -494,15 +512,85 @@
 
 	  <div class="modal-footer row"></div> 	  
 	</div>
+
+	<!-- ~~~~~~~~~ Modal Cambiar Contrase;a ~~~~~~~~~-->
+	<div 
+	id="modal_cambiar_contrasena" 
+	class="reveal-modal small custom-modal-container" 
+	data-reveal>
+	  <div 
+	  class="modal-header row custom-modal-header slogan-u">
+	  	<h4 
+	  	class="white-text">
+	  		Cambiar Contraseña
+	  	</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div 
+	  class="modal-content row">
+	  	<form 
+	  	id = "pass-change-form"
+	  	ng-controller="CambiarPasswordController"
+	  	class="change-form"
+	  	name = "CambiarClaveForm"
+	  	ng-submit="CambiarClaveForm.$valid && submit()" 
+	  	novalidate>
+	  		<%= token_tag(nil) %>
+
+	  		<div class="row">
+	  		    <div class="large-12 small-12 columns">
+	  		    	<input 
+	  		    	class="large-12 small-12 columns"
+	  		    	type="password"
+	  		    	placeholder="Nueva Contraseña" 
+	  		    	ng-model="contrasena" 
+	  		    	name="passwd" required />
+
+	  		    	<input
+	  		    	class="large-12 small-12 columns"
+	  		    	type="password"
+	  		    	placeholder="Confirme su nueva contraseña" 
+	  		    	ng-model="confirmacion" 
+	  		    	name="passwd" required />
+	  		    </div>
+
+	  		    <div id="zona-errores">
+	  		    	<div style="text-align: center;"
+	  		    	ng-show="confirmacion != contrasena && confirmacion!= '' && contrasena != ''"
+					>
+					<span class="label secondary tiny" 					
+					>Las contraseñas suministradas deben coincidir</span>
+					</div>
+	  		    </div>
+
+	  		</div>
+
+  		  	<input 
+  		  	type="submit"
+  		  	value="Submit" 
+  		  	class="hidden-submit-button" />
+
+  		  	<span 
+  		  	class="alert round label"
+  		  	>Presione Enter para acceder al sistema
+  		  	</span>
+	  	</form>	  	
+	  </div>
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- ~~~~~~~~~ END Definicion de modales utilizadas ~~~~~~~~~ -->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<script src="/assets/angular.min.js"></script>	
+	<script src="/assets/angular.min.js"></script>
+	<script src="/assets/mm-foundation-tpls-0.4.0.min.js"></script>
 	<script src="/assets/jquery.js"></script>	
 	<script src="/assets/modernizr.js"></script>
 	<script src="/assets/foundation.min.js"></script>
 	<script src="/assets/general.js"></script>
 	<script src="/assets/spa.js"></script>
+	<script src="/assets/operador.js"></script>
 	<script>
 		$(document).foundation({
 			orbit: {

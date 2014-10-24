@@ -1,5 +1,8 @@
 (function(){
   
+  var app = angular.module("spa", ['funciones-operadores']);
+  var remoteDomain = "http://localhost:3000/";
+  
   function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -9,7 +12,7 @@
         if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
     }
     return "";
-}
+  }
 
   function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -21,10 +24,6 @@
   function deleteCookie(cname){
     document.cookie = cname+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
   }
-
-
-  var app = angular.module("spa", []);
-  var remoteDomain = "http://localhost:3000/";
 
   app.config(function($httpProvider) {
       //Add the header used to identify Hermes SPA app
@@ -44,11 +43,15 @@ app.controller("loginController", ['$scope', '$rootScope', '$http', "$window",fu
     
   	$http.post(remoteDomain+"login",usuario).success( function(response) {
 			$rootScope.usuario= response.data;
+
+      console.log($rootScope.usuario);
+      
       $scope.correo='';
       $scope.contrasena='';
       setCookie('nombre',$rootScope.usuario.nombre,0.5);
       setCookie('tipo',$rootScope.usuario.tipo_usuario.abreviacion,0.5);
       setCookie('api_token', $rootScope.usuario.api_token,0.5);
+      setCookie('email', $rootScope.usuario.correo_electronico,0.5);
       $window.location=$window.location.pathname;
 		})
 		.error(function(response) {
@@ -65,6 +68,7 @@ app.controller("logoutController", ['$scope', '$http',function($scope, $http){
                           deleteCookie('nombre');
                           deleteCookie('tipo');
                           deleteCookie('api_token');
+                          deleteCookie('email');                          
                           $window.location=$window.location.pathname;
                         })
                         .error(function(response) {
