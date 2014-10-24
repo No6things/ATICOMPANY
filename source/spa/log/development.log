@@ -69097,3 +69097,1209 @@ Started GET "/assets/agent1.png" for 127.0.0.1 at 2014-10-24 12:56:53 -0400
 
 
 Started GET "/assets/listarpaquetes.html" for 127.0.0.1 at 2014-10-24 12:58:30 -0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-24 13:00:34 -0400
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 931ms (Views: 912.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/admin.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/font-config.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/font-awesome.min.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/agencia_paquetes.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.min.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/general.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/font-awesome.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/empresas.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/register.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.min.css" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/normalize.css" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/font-config.css" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/font-awesome.min.css" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/general.css" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/angular.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/angular-cookies.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/agencia_paquetes.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/empresas.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/fastclick.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.slider.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.tab.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/general.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/jquery.cookie.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/operador.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/placeholder.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/register.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/spa.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/angular.min.js" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/angular-cookies.min.js" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/modernizr.js" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/foundation.min.js" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/general.js" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/spa.js" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/operador.js" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/hermes-logo.png" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/img3.jpg" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/img4.jpg" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/img5.jpg" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/img6.jpg" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/img7.jpg" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/img8.jpg" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/fontawesome-webfont.woff?v=4.1.0" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/2BD01D_1_0.woff" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/agent2.jpg" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/circle-hermes-logo.png" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/assets/agent1.png" for 127.0.0.1 at 2014-10-24 13:00:35 -0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 687ms (Views: 686.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/angular-cookies.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/angular.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/fastclick.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/empresas.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/agencia_paquetes.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.slider.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.tab.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/general.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/jquery.cookie.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/operador.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/placeholder.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/register.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/angular.min.js" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/spa.js?body=1" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/angular-cookies.min.js" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/modernizr.js" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/foundation.min.js" for 127.0.0.1 at 2014-10-24 13:00:49 -0400
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2014-10-24 13:00:50 -0400
+
+
+Started GET "/assets/operador.js" for 127.0.0.1 at 2014-10-24 13:00:50 -0400
+
+
+Started GET "/assets/general.js" for 127.0.0.1 at 2014-10-24 13:00:50 -0400
+
+
+Started GET "/assets/spa.js" for 127.0.0.1 at 2014-10-24 13:00:50 -0400
+
+
+Started GET "/assets/listarpaquetes.html" for 127.0.0.1 at 2014-10-24 13:00:53 -0400
+
+
+Started GET "/assets/angular-cookies.min.js.map" for 127.0.0.1 at 2014-10-24 13:03:03 -0400
+
+ActionController::RoutingError (No route matches [GET] "/assets/angular-cookies.min.js.map"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.9ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (33.9ms)
+
+
+Started GET "/assets/angular.min.js.map" for 127.0.0.1 at 2014-10-24 13:03:03 -0400
+
+ActionController::RoutingError (No route matches [GET] "/assets/angular.min.js.map"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (16.4ms)
+
+
+Started GET "/assets/angular-sanitize.min.js.map" for 127.0.0.1 at 2014-10-24 13:03:03 -0400
+
+ActionController::RoutingError (No route matches [GET] "/assets/angular-sanitize.min.js.map"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (18.3ms)
+
+
+Started GET "/assets/angular-sanitize.min.js.map" for 127.0.0.1 at 2014-10-24 13:03:25 -0400
+
+ActionController::RoutingError (No route matches [GET] "/assets/angular-sanitize.min.js.map"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (39.5ms)
+
+
+Started GET "/assets/angular.min.js.map" for 127.0.0.1 at 2014-10-24 13:03:25 -0400
+
+ActionController::RoutingError (No route matches [GET] "/assets/angular.min.js.map"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (17.7ms)
+
+
+Started GET "/assets/angular-cookies.min.js.map" for 127.0.0.1 at 2014-10-24 13:03:25 -0400
+
+ActionController::RoutingError (No route matches [GET] "/assets/angular-cookies.min.js.map"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (18.8ms)
+
+
+Started GET "/assets/angular.min.js.map" for 127.0.0.1 at 2014-10-24 13:18:17 -0400
+
+ActionController::RoutingError (No route matches [GET] "/assets/angular.min.js.map"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (16.1ms)
+
+
+Started GET "/assets/angular-cookies.min.js.map" for 127.0.0.1 at 2014-10-24 13:18:17 -0400
+
+ActionController::RoutingError (No route matches [GET] "/assets/angular-cookies.min.js.map"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (24.5ms)
+
+
+Started GET "/assets/angular-sanitize.min.js.map" for 127.0.0.1 at 2014-10-24 13:18:17 -0400
+
+ActionController::RoutingError (No route matches [GET] "/assets/angular-sanitize.min.js.map"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (16.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 728ms (Views: 727.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/general.css?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/angular.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/angular-cookies.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/general.css" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/agencia_paquetes.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/empresas.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/fastclick.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/foundation.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:26 -0400
+
+
+Started GET "/assets/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/foundation.tab.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/foundation.slider.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/general.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/jquery.cookie.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/operador.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/placeholder.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/register.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/spa.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/angular.min.js" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/angular-cookies.min.js" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/modernizr.js" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/foundation.min.js" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/general.js" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/spa.js" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/assets/operador.js" for 127.0.0.1 at 2014-10-24 13:18:27 -0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-24 13:18:39 -0400
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 689ms (Views: 688.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/general.css?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/angular-cookies.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/agencia_paquetes.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/angular.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/general.css" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/empresas.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/fastclick.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.tab.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.slider.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/general.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/jquery.cookie.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/operador.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/placeholder.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/register.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/angular.min.js" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/angular-cookies.min.js" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/spa.js?body=1" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/modernizr.js" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/foundation.min.js" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/spa.js" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/general.js" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/assets/operador.js" for 127.0.0.1 at 2014-10-24 13:18:40 -0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-24 13:19:18 -0400
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 840ms (Views: 839.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/general.css?body=1" for 127.0.0.1 at 2014-10-24 13:19:18 -0400
+
+
+Started GET "/assets/general.css" for 127.0.0.1 at 2014-10-24 13:19:18 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:18 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:18 -0400
+
+
+Started GET "/assets/angular.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:18 -0400
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:18 -0400
+
+
+Started GET "/assets/angular-cookies.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:18 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:18 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/empresas.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/agencia_paquetes.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/fastclick.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.slider.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.tab.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/general.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/jquery.cookie.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/operador.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/placeholder.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/register.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/spa.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/angular-cookies.min.js" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/modernizr.js" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/angular.min.js" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/spa.js" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/foundation.min.js" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/general.js" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/operador.js" for 127.0.0.1 at 2014-10-24 13:19:19 -0400
+
+
+Started GET "/assets/listarpaquetes.html" for 127.0.0.1 at 2014-10-24 13:19:22 -0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-24 13:19:32 -0400
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 738ms (Views: 737.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/general.css?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/angular-cookies.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/angular.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/agencia_paquetes.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/empresas.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/fastclick.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/general.css" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.slider.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.tab.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/jquery.cookie.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/general.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/register.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/operador.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/angular-cookies.min.js" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/spa.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/angular.min.js" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/angular-sanitize.min.js" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/placeholder.js?body=1" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/mm-foundation-tpls-0.4.0.min.js" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/foundation.min.js" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/operador.js" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/general.js" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/spa.js" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
+
+
+Started GET "/assets/modernizr.js" for 127.0.0.1 at 2014-10-24 13:19:33 -0400
