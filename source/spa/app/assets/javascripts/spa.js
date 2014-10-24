@@ -77,21 +77,20 @@ app.controller("logoutController", ['$scope', '$http',function($scope, $http){
   };
 }]);
 
-app.controller("paqueteController", ['$scope', '$http',function($scope, $http){
+app.controller("paqueteController", ['$scope', '$http', '$window',function($scope, $http, $window){
   $scope.submit= function(){
-    var paquete = {
-      agencia: parseInt($scope.agencia,10),
-      alto: $scope.alto,
-      ancho: $scope.ancho,
-      profundidad: $scope.profundidad,
-      peso: $scope.peso,
-      costo: parseInt($('#newp_costo').val(),10),
-      emisor: $scope.emisor,
-      receptor: $scope.receptor,
-      descripcion: $scope.descripcion
-    };
+    var paquete = new Object();
+    paquete.agencia= parseInt($scope.agencia,10);
+    paquete.alto= $scope.alto;
+    paquete.ancho= $scope.ancho;
+    paquete.profundidad= $scope.profundidad;
+    paquete.peso= $scope.peso;
+    paquete.costo= parseInt($('#newp_costo').val(),10);
+    paquete.emisor= $scope.emisor;
+    paquete.receptor= $scope.receptor;
+    paquete.descripcion= $scope.descripcion;
     $http.defaults.headers.post= {'api-token': getCookie('api_token')};
-    $http.post(remoteDomain+"operador/paquete/crear",paquete).success( function(response) {
+    $http.post(remoteDomain+"operador/paquete/crear",paquete,{headers: {'Content-Type': 'application/json'}}).success( function(response) {
                           alert("Enhorabuena, el paquete se ha creado");
                           $window.location=$window.location.pathname;
                         })

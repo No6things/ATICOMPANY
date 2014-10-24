@@ -219,8 +219,6 @@ $(function(){
 				success: function(server_data) {
 					costo=((alto*ancho*profundidad*peso)/server_data.data.constante_tarifa)+((valor*server_data.data.porcentaje_tarifa)/100);
 					$('#newp_costo').val(Number((costo).toFixed(2)));
-					alert ($('#newp_costo').val());
-
 				},
 				fail: function(xhr, textStatus, errorThrown) {
 					console.log("error")
