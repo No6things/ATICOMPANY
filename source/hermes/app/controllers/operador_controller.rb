@@ -98,7 +98,7 @@ before_filter :check_api_token
 					err_mssg: msg+" - Motivo: "+ e.message,
 					success_mssg: ""
 				},
-				status: :404
+				status: :not_found
 		end
 	end
 
@@ -211,7 +211,7 @@ before_filter :check_api_token
 					err_mssg: msg+" - Motivo: "+ e.message,
 					success_mssg: ""
 				},
-				status: :404
+				status: :not_found
 		end
 	end
 
@@ -330,7 +330,7 @@ before_filter :check_api_token
 					err_mssg: msg+" - Motivo: "+ e.message,
 					success_mssg: ""
 				},
-				status: :404
+				status: :not_found
 		end
 	end
 
@@ -517,7 +517,131 @@ before_filter :check_api_token
 				err_mssg: "Error durante la busqueda debido a : "+e.message,
 				success_mssg: ""
 			},
-			status: :404
+			status: :not_found
+		end
+	end
+
+=begin
+
+@api Hermes 1.0
+
+@param email [String] correo electronico del usuario que ha 
+  enviado o recibido el paquete a listar.
+
+@return [Json] representacion en formato json de 
+  los paquetes encontrados.
+
+@note
+	GET '/operador/paquete/listar'
+
+@note 
+	Parametro 'api-token' requerido en cabecera HTTP
+
+@example Ejemplo de json en caso de retorno
+	{
+    "err_mssg": "",
+    "success_mssg": "OK",
+    "data": {
+        "paquetes": [
+            {
+                "id": 99,
+                "fecha_arribo": "2014-10-22",
+                "tipo_estado": {
+                    "id": 2,
+                    "nombre": "Recibido",
+                    "abreviacion": "R"
+                },
+                "paquete": {
+                    "id": 41,
+                    "ancho": 3,
+                    "alto": 4,
+                    "peso": 4,
+                    "costo": 4,
+                    "profundidad": 23,
+                    "descripcion": "p1",
+                    "numero_guia": "3fc377c12d9f1c4222ed6a7ded3e3ff6246265e4",
+                    "emisor": {
+                        "id": 1,
+                        "nombre": "jesus",
+                        "apellido": "gomez",
+                        "correo_electronico": "jesus.igp009@gmail.com",
+                        "fecha_ultimo_acceso": "2014-09-26T20:51:59.367Z",
+                        "tipo_usuario": {
+                            "id": 1,
+                            "nombre": "Administrador",
+                            "abreviacion": "A"
+                        }
+                    },
+                    "receptor": {
+                        "id": 16,
+                        "nombre": "jesus",
+                        "apellido": "gomez",
+                        "correo_electronico": "jgomez@cgtscorp.com",
+                        "fecha_ultimo_acceso": "2014-10-22T22:59:40.423Z",
+                        "tipo_usuario": {
+                            "id": 3,
+                            "nombre": "Usuario Afiliado",
+                            "abreviacion": "UA"
+                        }
+                    }
+                },
+                "agencia": {
+                    "id": 1,
+                    "nombre": "Los Simbolos",
+                    "ubicacion": "descripcion",
+                    "latitud": 20,
+                    "longitud": 10,
+                    "empresa": {
+                        "id": 1,
+                        "nombre": "Hermes",
+                        "rif": "J-123456789-0",
+                        "constante_tarifa": 0,
+                        "porcentaje_tarifa": 45
+                    	}
+                	}
+            	},
+        	]
+    	}
+	}
+=end
+
+	def listar_paquete
+		begin
+			prms = params.permit(
+				:email				
+			)
+			
+			u = Usuario.find_by!(
+				correo_electronico: prms.require(:email)
+			)
+
+			a = UsuarioInternoAgencia.where(usuario: u).first
+
+			stt = AgenciaPaquete.select(
+				"DISTINCT on (paquete_id) *"
+				).where(
+					agencia: a.agencia
+				).order(
+					:paquete_id,
+					:fecha_arribo
+				).reverse_order
+
+			data = {
+				:paquetes => stt.as_json,				
+			}
+
+			render json: {
+					err_mssg: "",
+					success_mssg: "OK",
+					data: data
+				},
+				status: :ok
+		rescue Exception => e
+			render json: {
+				err_mssg: "Error durante la busqueda debido a : "+e.message,
+				success_mssg: ""
+			},
+			status: :bad_request
 		end
 	end
 

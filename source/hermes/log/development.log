@@ -1,0 +1,1275 @@
+  [1m[36mActiveRecord::SchemaMigration Load (14.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAtiTokenToUsuarios (20141021003719)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (10.8ms)[0m  [1mALTER TABLE "usuarios" ADD COLUMN "api_token" character varying(255)[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141021003719"]]
+  [1m[36m (18.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (20.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (27.9ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTipoUsuarios (20140924041724)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (20.7ms)[0m  [1mCREATE TABLE "tipo_usuarios" ("id" serial primary key, "nombre" character varying(255), "abreviacion" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (17.9ms)[0m  CREATE  INDEX  "index_tipo_usuarios_on_abreviacion" ON "tipo_usuarios"  ("abreviacion")
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140924041724"]]
+  [1m[35m (5.2ms)[0m  COMMIT
+Migrating to CreatePaquetes (20140924042022)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (16.8ms)[0m  CREATE TABLE "paquetes" ("id" serial primary key, "ancho" float, "alto" float, "peso" float, "descripcion" text, "numero_guia" character varying(255), "costo" float, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (9.3ms)[0m  [1mCREATE  INDEX  "index_paquetes_on_numero_guia" ON "paquetes"  ("numero_guia")[0m
+  [1m[35m (9.6ms)[0m  CREATE  INDEX  "index_paquetes_on_costo" ON "paquetes"  ("costo")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140924042022"]]
+  [1m[35m (2.7ms)[0m  COMMIT
+Migrating to CreateTipoEstados (20140924042132)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (17.4ms)[0m  CREATE TABLE "tipo_estados" ("id" serial primary key, "nombre" character varying(255), "abreviacion" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (7.6ms)[0m  [1mCREATE  INDEX  "index_tipo_estados_on_abreviacion" ON "tipo_estados"  ("abreviacion")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140924042132"]]
+  [1m[36m (5.2ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEmpresas (20140924042408)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (15.9ms)[0m  [1mCREATE TABLE "empresas" ("id" serial primary key, "nombre" character varying(255), "rif" character varying(255), "frase_comercial" character varying(255), "constante_tarifa" float, "porcentaje_tarifa" float, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (7.7ms)[0m  CREATE  INDEX  "index_empresas_on_nombre" ON "empresas"  ("nombre")
+  [1m[36m (8.3ms)[0m  [1mCREATE  INDEX  "index_empresas_on_rif" ON "empresas"  ("rif")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140924042408"]]
+  [1m[36m (3.1ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsuarios (20140924042837)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (28.4ms)[0m  [1mCREATE TABLE "usuarios" ("id" serial primary key, "nombre" character varying(255), "apellido" character varying(255), "correo_electronico" character varying(255), "fecha_ultimo_acceso" timestamp, "tipo_usuario_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (9.0ms)[0m  CREATE  INDEX  "index_usuarios_on_nombre" ON "usuarios"  ("nombre")
+  [1m[36m (7.8ms)[0m  [1mCREATE  INDEX  "index_usuarios_on_apellido" ON "usuarios"  ("apellido")[0m
+  [1m[35m (13.7ms)[0m  CREATE  INDEX  "index_usuarios_on_correo_electronico" ON "usuarios"  ("correo_electronico")
+  [1m[36m (17.2ms)[0m  [1mCREATE  INDEX  "index_usuarios_on_fecha_ultimo_acceso" ON "usuarios"  ("fecha_ultimo_acceso")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140924042837"]]
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAgencia (20140924043040)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (20.3ms)[0m  [1mCREATE TABLE "agencia" ("id" serial primary key, "nombre" character varying(255), "ubicacion" text, "latitud" float, "longitud" float, "empresa_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (10.5ms)[0m  CREATE  INDEX  "index_agencia_on_nombre" ON "agencia"  ("nombre")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140924043040"]]
+  [1m[35m (16.8ms)[0m  COMMIT
+Migrating to CreateAgenciaPaquetes (20140924043340)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (12.9ms)[0m  CREATE TABLE "agencia_paquetes" ("id" serial primary key, "fecha_arribo" timestamp, "agencia_id" integer, "paquete_id" integer, "tipo_estado_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (7.4ms)[0m  [1mCREATE  INDEX  "index_agencia_paquetes_on_fecha_arribo" ON "agencia_paquetes"  ("fecha_arribo")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140924043340"]]
+  [1m[36m (3.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsuarioEmpresas (20140924043455)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (13.8ms)[0m  [1mCREATE TABLE "usuario_empresas" ("id" serial primary key, "usuario_id" integer, "empresa_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140924043455"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+Migrating to AddPasswordDigestUser (20140924123137)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "usuarios" ADD COLUMN "password_digest" character varying(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140924123137"]]
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+Migrating to AddEmisorIdToPaquete (20140925114200)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "paquetes" ADD COLUMN "emisor_id" integer[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140925114200"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+Migrating to AddReceptorIdToPaquete (20140925115952)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "paquetes" ADD COLUMN "receptor_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140925115952"]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsuarioInternoAgencia (20140925122005)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (12.0ms)[0m  [1mCREATE TABLE "usuario_interno_agencia" ("id" serial primary key, "usuario_id" integer, "agencia_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140925122005"]]
+  [1m[36m (5.0ms)[0m  [1mCOMMIT[0m
+Migrating to AddProfundidadToPaquete (20140927205022)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "paquetes" ADD COLUMN "profundidad" float[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140927205022"]]
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+Migrating to AddPreguntaToUsuarios (20140928100946)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "usuarios" ADD COLUMN "pregunta" character varying(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928100946"]]
+  [1m[36m (2.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddRespuestaToUsuarios (20140928101301)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "usuarios" ADD COLUMN "respuesta" character varying(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140928101301"]]
+  [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+Migrating to AddAtiTokenToUsuarios (20141021003719)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "usuarios" ADD COLUMN "api_token" character varying(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141021003719"]]
+  [1m[36m (3.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started OPTIONS "/login" for 127.0.0.1 at 2014-10-23 18:57:30 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApplicationController#route_options as */*
+  Parameters: {"path"=>"login"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 23ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:57:30 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@mail.com", "passwd"=>"12345", "general"=>{"login"=>"o@mail.com", "passwd"=>"12345"}}
+Unpermitted parameters: general
+  [1m[35mUsuario Load (0.9ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@mail.com' LIMIT 1
+Completed 400 Bad Request in 48ms (Views: 0.2ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:57:33 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@mail.com", "passwd"=>"12345", "general"=>{"login"=>"o@mail.com", "passwd"=>"12345"}}
+Unpermitted parameters: general
+  [1m[36mUsuario Load (0.4ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@mail.com' LIMIT 1[0m
+Completed 400 Bad Request in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:57:33 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@mail.com", "passwd"=>"12345", "general"=>{"login"=>"o@mail.com", "passwd"=>"12345"}}
+Unpermitted parameters: general
+  [1m[35mUsuario Load (0.7ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@mail.com' LIMIT 1
+Completed 400 Bad Request in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started OPTIONS "/login" for 127.0.0.1 at 2014-10-23 18:57:35 -0400
+Processing by ApplicationController#route_options as */*
+  Parameters: {"path"=>"login"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:57:35 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@mail.com", "passwd"=>"123456", "general"=>{"login"=>"o@mail.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[36mUsuario Load (0.4ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@mail.com' LIMIT 1[0m
+Completed 400 Bad Request in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:57:36 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@mail.com", "passwd"=>"123456", "general"=>{"login"=>"o@mail.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[35mUsuario Load (0.3ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@mail.com' LIMIT 1
+Completed 400 Bad Request in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:57:37 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@mail.com", "passwd"=>"123456", "general"=>{"login"=>"o@mail.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[36mUsuario Load (0.4ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@mail.com' LIMIT 1[0m
+Completed 400 Bad Request in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:57:37 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@mail.com", "passwd"=>"123456", "general"=>{"login"=>"o@mail.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[35mUsuario Load (0.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@mail.com' LIMIT 1
+Completed 400 Bad Request in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started OPTIONS "/login" for 127.0.0.1 at 2014-10-23 18:57:44 -0400
+Processing by ApplicationController#route_options as */*
+  Parameters: {"path"=>"login"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:57:44 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@m.com", "passwd"=>"12345", "general"=>{"login"=>"o@m.com", "passwd"=>"12345"}}
+Unpermitted parameters: general
+  [1m[36mUsuario Load (0.8ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1[0m
+Completed 401 Unauthorized in 84ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:57:46 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@m.com", "passwd"=>"123456", "general"=>{"login"=>"o@m.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[35mUsuario Load (0.6ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 200 OK in 134ms (Views: 0.4ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:57:47 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@m.com", "passwd"=>"123456", "general"=>{"login"=>"o@m.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[35mUsuario Load (0.9ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 200 OK in 104ms (Views: 0.3ms | ActiveRecord: 1.2ms)
+
+
+Started OPTIONS "/login" for 127.0.0.1 at 2014-10-23 18:58:16 -0400
+Processing by ApplicationController#route_options as */*
+  Parameters: {"path"=>"login"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:58:16 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@m.com", "passwd"=>"12345", "general"=>{"login"=>"o@m.com", "passwd"=>"12345"}}
+Unpermitted parameters: general
+  [1m[35mUsuario Load (0.5ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1
+Completed 401 Unauthorized in 74ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 18:58:19 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@m.com", "passwd"=>"123456", "general"=>{"login"=>"o@m.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[36mUsuario Load (2.5ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1[0m
+  [1m[35mTipoUsuario Load (0.2ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+Completed 200 OK in 82ms (Views: 0.3ms | ActiveRecord: 2.7ms)
+
+
+Started OPTIONS "/login" for 127.0.0.1 at 2014-10-23 20:03:49 -0400
+Processing by ApplicationController#route_options as */*
+  Parameters: {"path"=>"login"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-10-23 20:03:49 -0400
+Processing by GeneralController#entrar as */*
+  Parameters: {"login"=>"o@m.com", "passwd"=>"123456", "general"=>{"login"=>"o@m.com", "passwd"=>"123456"}}
+Unpermitted parameters: general
+  [1m[36mUsuario Load (0.4ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1[0m
+  [1m[35mTipoUsuario Load (0.3ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+Completed 200 OK in 100ms (Views: 0.4ms | ActiveRecord: 4.9ms)
+  [1m[36mUsuario Load (1.7ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  [1m[35mUsuario Load (0.6ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  [1m[36mUsuario Load (0.7ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  [1m[35mTipoUsuario Load (0.3ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (0.4ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTipoUsuario Load (0.2ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (1.9ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTipoUsuario Load (0.3ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (0.2ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (0.2ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoUsuario Load (0.2ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mUsuario Load (0.7ms)[0m  SELECT "usuarios".* FROM "usuarios"
+  [1m[36mTipoUsuario Load (0.5ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (0.4ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mTipoUsuario Load (0.4ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTipoUsuario Load (0.4ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mTipoUsuario Load (0.4ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (0.3ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mTipoUsuario Load (0.4ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTipoUsuario Load (0.5ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoUsuario Load (0.2ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTipoUsuario Load (0.3ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mTipoUsuario Load (0.4ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoUsuario Load (0.4ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (0.3ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mUsuario Load (0.8ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"[0m
+  [1m[35mTipoUsuario Load (1.8ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (0.5ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mTipoUsuario Load (0.4ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTipoUsuario Load (0.4ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mTipoUsuario Load (0.4ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (0.4ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mTipoUsuario Load (0.4ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mTipoUsuario Load (0.4ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (0.3ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mTipoUsuario Load (0.4ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mTipoUsuario Load (0.4ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoUsuario Load (0.2ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mUsuario Load (1.9ms)[0m  SELECT "usuarios".* FROM "usuarios"  WHERE "usuarios"."tipo_usuario_id" IN (SELECT "tipo_usuarios"."id" FROM "tipo_usuarios"  WHERE "tipo_usuarios"."abreviacion" = 'O')
+  [1m[36mUsuario Load (1.3ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"  WHERE "usuarios"."tipo_usuario_id" IN (SELECT "tipo_usuarios"."id" FROM "tipo_usuarios"  WHERE "tipo_usuarios"."abreviacion" = 'O')[0m
+  [1m[35mUsuario Load (1.1ms)[0m  SELECT "usuarios".* FROM "usuarios"  WHERE "usuarios"."tipo_usuario_id" IN (SELECT "tipo_usuarios"."id" FROM "tipo_usuarios"  WHERE "tipo_usuarios"."abreviacion" = 'O')
+  [1m[36mUsuario Load (1.1ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"  WHERE "usuarios"."tipo_usuario_id" IN (SELECT "tipo_usuarios"."id" FROM "tipo_usuarios"  WHERE "tipo_usuarios"."abreviacion" = 'O')[0m
+  [1m[35mUsuario Load (1.0ms)[0m  SELECT "usuarios".* FROM "usuarios"  WHERE "usuarios"."tipo_usuario_id" IN (SELECT "tipo_usuarios"."id" FROM "tipo_usuarios"  WHERE "tipo_usuarios"."abreviacion" = 'O')
+  [1m[36mUsuario Load (1.0ms)[0m  [1mSELECT "usuarios".* FROM "usuarios"  WHERE "usuarios"."tipo_usuario_id" IN (SELECT "tipo_usuarios"."id" FROM "tipo_usuarios"  WHERE "tipo_usuarios"."abreviacion" = 'O')[0m
+  [1m[35mAgenciaPaquete Load (1.8ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"
+  [1m[36mAgenciaPaquete Load (1.7ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (1.7ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (6.9ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: ...HERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete  O...
+                                                             ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (6.7ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id  ORDER BY "agencia_paquetes"."fecha_arribo" ASC[0m
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id
+  [1m[36mAgenciaPaquete Load (1.3ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1[0m
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: ...  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete
+                                                                ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete
+  [1m[36mAgenciaPaquete Load (0.9ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id[0m
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: ...  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete
+                                                                ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete
+  [1m[36mAgenciaPaquete Load (0.8ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete[0m
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: ...gencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+                                                                ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: ...gencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+                                                                ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+  [1m[36mAgenciaPaquete Load (0.8ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id[0m
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP B...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP B...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id
+  [1m[36mAgenciaPaquete Load (1.0ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id[0m
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP B...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id
+  [1m[36mAgenciaPaquete Load (0.9ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id[0m
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP B...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: ...gencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+                                                                ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+  [1m[36mAgenciaPaquete Load (1.7ms)[0m  [1mSELECT DISTINCT "agencia_paquetes".* FROM "agencia_paquetes"[0m
+  [1m[35m (0.8ms)[0m  SELECT DISTINCT paquete FROM "agencia_paquetes"
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: SELECT DISTINCT paquete FROM "agencia_paquetes"
+                        ^
+: SELECT DISTINCT paquete FROM "agencia_paquetes"
+  [1m[36m (0.7ms)[0m  [1mSELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"[0m
+  [1m[35mAgenciaPaquete Load (1.4ms)[0m  SELECT DISTINCT "agencia_paquetes".* FROM "agencia_paquetes"
+  [1m[36mAgenciaPaquete Load (1.3ms)[0m  [1mSELECT DISTINCT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1[0m
+  [1m[35mAgenciaPaquete Load (1.5ms)[0m  SELECT DISTINCT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[36mAgenciaPaquete Load (1.2ms)[0m  [1mSELECT DISTINCT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (1.2ms)[0m  SELECT DISTINCT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.4ms)[0m  [1mSELECT DISTINCT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mPaquete Load (0.6ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mPaquete Load (0.4ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 41]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 40]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 40]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 40]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 39]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 39]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 39]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mPaquete Load (0.4ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 37]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 37]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 33]]
+  [1m[36mPaquete Load (0.5ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 34]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 34]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 34]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 34]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 34]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 34]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 33]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 33]]
+  [1m[36mPaquete Load (0.1ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 33]]
+  [1m[35mPaquete Load (0.1ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 33]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 24]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 24]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 24]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 24]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mPaquete Load (0.6ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 31]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 30]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 29]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 28]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 27]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 26]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 25]]
+  [1m[36mAgenciaPaquete Load (1.3ms)[0m  [1mSELECT DISTINCT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (1.5ms)[0m  SELECT DISTINCT "agencia_paquetes".* FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.4ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: ...cia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete  O...
+                                                             ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (0.8ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP B...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT  DISTINCT paquete_id FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::InvalidColumnReference: ERROR:  for SELECT DISTINCT, ORDER BY expressions must appear in select list
+LINE 1: ...NCT paquete_id FROM "agencia_paquetes"   ORDER BY "agencia_p...
+                                                             ^
+: SELECT  DISTINCT paquete_id FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36m (0.8ms)[0m  [1mSELECT DISTINCT paquete FROM "agencia_paquetes"[0m
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: SELECT DISTINCT paquete FROM "agencia_paquetes"
+                        ^
+: SELECT DISTINCT paquete FROM "agencia_paquetes"
+  [1m[35m (0.6ms)[0m  SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"
+  [1m[36m (0.8ms)[0m  [1mSELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"[0m
+  [1m[35m (1.2ms)[0m  SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1
+  [1m[36m (1.1ms)[0m  [1mSELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+PG::InvalidColumnReference: ERROR:  for SELECT DISTINCT, ORDER BY expressions must appear in select list
+LINE 1: ...ERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_p...
+                                                             ^
+: SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[35m (0.7ms)[0m  SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+PG::InvalidColumnReference: ERROR:  for SELECT DISTINCT, ORDER BY expressions must appear in select list
+LINE 1: ...ERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_p...
+                                                             ^
+: SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[36m (0.8ms)[0m  [1mSELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1[0m
+  [1m[35m (0.8ms)[0m  SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+PG::InvalidColumnReference: ERROR:  for SELECT DISTINCT, ORDER BY expressions must appear in select list
+LINE 1: ...ERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_p...
+                                                             ^
+: SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[36m (0.9ms)[0m  [1mSELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" ASC[0m
+PG::InvalidColumnReference: ERROR:  for SELECT DISTINCT, ORDER BY expressions must appear in select list
+LINE 1: ..."."paquete_id" FROM "agencia_paquetes"   ORDER BY "agencia_p...
+                                                             ^
+: SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[35m (0.8ms)[0m  SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"
+  [1m[36m (0.8ms)[0m  [1mSELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"[0m
+  [1m[35m (0.7ms)[0m  SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"
+  [1m[36m (0.8ms)[0m  [1mSELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"[0m
+  [1m[35m (0.9ms)[0m  SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1
+  [1m[36mAgenciaPaquete Load (5.2ms)[0m  [1mSELECT DISTINCT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1[0m
+  [1m[35m (0.9ms)[0m  SELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1
+  [1m[36m (1.4ms)[0m  [1mSELECT DISTINCT "agencia_paquetes"."paquete_id" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1[0m
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: ...gencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+                                                                ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete
+  [1m[36mAgenciaPaquete Load (1.1ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id[0m
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP B...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  GROUP BY paquete_id
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: ...  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete
+                                                                ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete
+  [1m[36mAgenciaPaquete Load (1.0ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id[0m
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id
+PG::GroupingError: ERROR:  column "agencia_paquetes.id" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "...
+               ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY paquete_id
+  [1m[36mAgenciaPaquete Load (0.9ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY agencia_paquete_id, paquete_id[0m
+PG::UndefinedColumn: ERROR:  column "agencia_paquete_id" does not exist
+LINE 1: ...HERE "agencia_paquetes"."agencia_id" = 1 GROUP BY agencia_pa...
+                                                             ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY agencia_paquete_id, paquete_id
+  [1m[35mAgenciaPaquete Load (1.0ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY agencia_paquete
+PG::UndefinedColumn: ERROR:  column "agencia_paquete" does not exist
+LINE 1: ...HERE "agencia_paquetes"."agencia_id" = 1 GROUP BY agencia_pa...
+                                                             ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY agencia_paquete
+  [1m[36mAgenciaPaquete Load (1.4ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY id[0m
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY id, paquete
+PG::UndefinedColumn: ERROR:  column "paquete" does not exist
+LINE 1: ...ERE "agencia_paquetes"."agencia_id" = 1 GROUP BY id, paquete
+                                                                ^
+: SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY id, paquete
+  [1m[36mAgenciaPaquete Load (1.5ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1 GROUP BY id, paquete_id[0m
+  [1m[35mPaquete Load (0.6ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 27]]
+  [1m[36mAgenciaPaquete Load (0.8ms)[0m  [1mSELECT distinct paquete_id FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1[0m
+  [1m[35mAgenciaPaquete Load (1.1ms)[0m  SELECT distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1
+  [1m[36mAgenciaPaquete Load (0.9ms)[0m  [1mSELECT distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC[0m
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.1ms)[0m  [1mSELECT distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (0.7ms)[0m  SELECT fecha_arribo, distinct paquete_id FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::SyntaxError: ERROR:  syntax error at or near "distinct"
+LINE 1: SELECT fecha_arribo, distinct paquete_id FROM "agencia_paque...
+                             ^
+: SELECT fecha_arribo, distinct paquete_id FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (0.9ms)[0m  [1mSELECT distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (0.7ms)[0m  SELECT distinct paquete_id FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1
+  [1m[36mPaquete Load (0.4ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 34]]
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT distinct paquete_id FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1
+  [1m[36mAgenciaPaquete Load (1.4ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" ASC[0m
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT distinct paquete_id FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+PG::InvalidColumnReference: ERROR:  for SELECT DISTINCT, ORDER BY expressions must appear in select list
+LINE 1: ...ERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_p...
+                                                             ^
+: SELECT distinct paquete_id FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[36mAgenciaPaquete Load (0.8ms)[0m  [1mSELECT distinct paquete_id FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC[0m
+PG::InvalidColumnReference: ERROR:  for SELECT DISTINCT, ORDER BY expressions must appear in select list
+LINE 1: ...ERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_p...
+                                                             ^
+: SELECT distinct paquete_id FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[35mAgenciaPaquete Load (0.7ms)[0m  SELECT distinct paquete_id, distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+PG::SyntaxError: ERROR:  syntax error at or near "distinct"
+LINE 1: SELECT distinct paquete_id, distinct paquete_id, fecha_arrib...
+                                    ^
+: SELECT distinct paquete_id, distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[36mAgenciaPaquete Load (1.2ms)[0m  [1mSELECT distinct paquete_id, distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC[0m
+PG::SyntaxError: ERROR:  syntax error at or near "distinct"
+LINE 1: SELECT distinct paquete_id, distinct paquete_id, fecha_arrib...
+                                    ^
+: SELECT distinct paquete_id, distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT distinct paquete_id, distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+PG::SyntaxError: ERROR:  syntax error at or near "distinct"
+LINE 1: SELECT distinct paquete_id, distinct paquete_id, fecha_arrib...
+                                    ^
+: SELECT distinct paquete_id, distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[36mAgenciaPaquete Load (0.7ms)[0m  [1mSELECT distinct paquete_id, distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC[0m
+PG::SyntaxError: ERROR:  syntax error at or near "distinct"
+LINE 1: SELECT distinct paquete_id, distinct paquete_id, fecha_arrib...
+                                    ^
+: SELECT distinct paquete_id, distinct paquete_id, fecha_arribo FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[35mAgenciaPaquete Load (1.3ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" ASC
+  [1m[36mAgenciaPaquete Load (1.3ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (1.5ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (0.8ms)[0m  [1mSELECT distinct paquete_id FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+PG::InvalidColumnReference: ERROR:  for SELECT DISTINCT, ORDER BY expressions must appear in select list
+LINE 1: ...nct paquete_id FROM "agencia_paquetes"   ORDER BY "agencia_p...
+                                                             ^
+: SELECT distinct paquete_id FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT distinct paquete_id, "agencia_paquetes"."fecha_arribo" FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.3ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"   ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (1.0ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.3ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (1.0ms)[0m  SELECT distinct paquete_id, "agencia_paquetes"."fecha_arribo" FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.1ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (1.9ms)[0m  SELECT distinct on (paquete_id), * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::SyntaxError: ERROR:  syntax error at or near ","
+LINE 1: SELECT distinct on (paquete_id), * FROM "agencia_paquetes"  ...
+                                       ^
+: SELECT distinct on (paquete_id), * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (0.7ms)[0m  [1mSELECT distinct on (paquete_id), * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+PG::SyntaxError: ERROR:  syntax error at or near ","
+LINE 1: SELECT distinct on (paquete_id), * FROM "agencia_paquetes"  ...
+                                       ^
+: SELECT distinct on (paquete_id), * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT distinct on (paquete_id), *, distinct on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::SyntaxError: ERROR:  syntax error at or near ","
+LINE 1: SELECT distinct on (paquete_id), *, distinct on (paquete_id)...
+                                       ^
+: SELECT distinct on (paquete_id), *, distinct on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.1ms)[0m  [1mSELECT distinct on (paquete_id), *, distinct on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+PG::SyntaxError: ERROR:  syntax error at or near ","
+LINE 1: SELECT distinct on (paquete_id), *, distinct on (paquete_id)...
+                                       ^
+: SELECT distinct on (paquete_id), *, distinct on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[35mAgenciaPaquete Load (1.0ms)[0m  SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::InvalidColumnReference: ERROR:  SELECT DISTINCT ON expressions must match initial ORDER BY expressions
+LINE 1: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  W...
+                            ^
+: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.2ms)[0m  [1mSELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1[0m
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY id, fecha_arribo
+PG::InvalidColumnReference: ERROR:  SELECT DISTINCT ON expressions must match initial ORDER BY expressions
+LINE 1: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  W...
+                            ^
+: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY id, fecha_arribo
+  [1m[36mAgenciaPaquete Load (1.6ms)[0m  [1mSELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."id" ASC, "agencia_paquetes"."fecha_arribo" ASC[0m
+PG::InvalidColumnReference: ERROR:  SELECT DISTINCT ON expressions must match initial ORDER BY expressions
+LINE 1: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  W...
+                            ^
+: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."id" ASC, "agencia_paquetes"."fecha_arribo" ASC
+  [1m[35mAgenciaPaquete Load (0.8ms)[0m  SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."id" ASC, "agencia_paquetes"."fecha_arribo" ASC
+PG::InvalidColumnReference: ERROR:  SELECT DISTINCT ON expressions must match initial ORDER BY expressions
+LINE 1: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  W...
+                            ^
+: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."id" ASC, "agencia_paquetes"."fecha_arribo" ASC
+  [1m[36mAgenciaPaquete Load (1.0ms)[0m  [1mSELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."paquete_id" ASC, "agencia_paquetes"."fecha_arribo" ASC[0m
+  [1m[35mAgenciaPaquete Load (1.0ms)[0m  SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."paquete_id" DESC, "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.8ms)[0m  [1mSELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."paquete_id" DESC, "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (2.1ms)[0m  SELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (0.9ms)[0m  [1mSELECT DISTINCT on(paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+PG::InvalidColumnReference: ERROR:  SELECT DISTINCT ON expressions must match initial ORDER BY expressions
+LINE 1: SELECT DISTINCT on(paquete_id) * FROM "agencia_paquetes"  WH...
+                           ^
+: SELECT DISTINCT on(paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT DISTINCT on(paquete_id) *, DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::SyntaxError: ERROR:  syntax error at or near "DISTINCT"
+LINE 1: SELECT DISTINCT on(paquete_id) *, DISTINCT on (paquete_id) *...
+                                          ^
+: SELECT DISTINCT on(paquete_id) *, DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.2ms)[0m  [1mSELECT "agencia_paquetes".* FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (1.1ms)[0m  SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::InvalidColumnReference: ERROR:  SELECT DISTINCT ON expressions must match initial ORDER BY expressions
+LINE 1: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  W...
+                            ^
+: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (0.9ms)[0m  [1mSELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC[0m
+PG::InvalidColumnReference: ERROR:  SELECT DISTINCT ON expressions must match initial ORDER BY expressions
+LINE 1: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  W...
+                            ^
+: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[35mAgenciaPaquete Load (1.0ms)[0m  SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+PG::InvalidColumnReference: ERROR:  SELECT DISTINCT ON expressions must match initial ORDER BY expressions
+LINE 1: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  W...
+                            ^
+: SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mAgenciaPaquete Load (1.1ms)[0m  [1mSELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."paquete_id" DESC, "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mAgenciaPaquete Load (1.0ms)[0m  SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."paquete_id" DESC, "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mUsuario Load (1.3ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."email" = 'o@m.com' LIMIT 1[0m
+PG::UndefinedColumn: ERROR:  column usuarios.email does not exist
+LINE 1: SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."emai...
+                                                    ^
+: SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."email" = 'o@m.com' LIMIT 1
+  [1m[35mUsuario Load (1.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1
+  [1m[36mUsuarioInternoAgencia Load (1.1ms)[0m  [1mSELECT "usuario_interno_agencia".* FROM "usuario_interno_agencia"  WHERE "usuario_interno_agencia"."usuario_id" = 14[0m
+  [1m[35mAgencia Load (1.5ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUsuarioInternoAgencia Load (1.0ms)[0m  [1mSELECT  "usuario_interno_agencia".* FROM "usuario_interno_agencia"  WHERE "usuario_interno_agencia"."usuario_id" = 14  ORDER BY "usuario_interno_agencia"."id" ASC LIMIT 1[0m
+  [1m[35mAgencia Load (0.7ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAgenciaPaquete Load (1.0ms)[0m  [1mSELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."paquete_id" DESC, "agencia_paquetes"."fecha_arribo" DESC[0m
+  [1m[35mTipoEstado Load (0.5ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mPaquete Load (0.7ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 41]]
+  [1m[35mUsuario Load (0.5ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoUsuario Load (0.4ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.5ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 16]]
+  [1m[36mTipoUsuario Load (0.4ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mAgencia Load (0.4ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.5ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.3ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 40]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 16]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 39]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 16]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 16]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mAgencia Load (0.4ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.3ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 37]]
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.3ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mUsuario Load (0.3ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 34]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 33]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.3ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mPaquete Load (0.3ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.3ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.3ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 31]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 30]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.3ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 29]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.1ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.3ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 28]]
+  [1m[35mUsuario Load (0.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 27]]
+  [1m[35mUsuario Load (0.3ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 26]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.1ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mPaquete Load (0.5ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 25]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.3ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mPaquete Load (0.4ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 24]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoEstado Load (0.2ms)[0m  SELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mPaquete Load (0.2ms)[0m  [1mSELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUsuario Load (0.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mTipoUsuario Load (0.2ms)[0m  [1mSELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mAgencia Load (0.2ms)[0m  SELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mEmpresa Load (0.2ms)[0m  [1mSELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-23 22:34:36 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HermesApiController#index as HTML
+  Rendered hermes_api/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 1214ms (Views: 1196.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/administrador.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/admin.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/agencia_paquetes.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/font-config.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/empresas.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.min.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/hermes_api.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/operador.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/register.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/font-awesome.min.css" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/usuario.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/general.css?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/admin.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/administrador.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/fastclick.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/agencia_paquetes.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/empresas.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.min.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.slider.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.tab.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/hermes_api.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/general.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/jquery.cookie.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/usuario.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/operador.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/placeholder.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/register.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/fontawesome-webfont.woff?v=4.1.0" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/assets/2BD01D_1_0.woff" for 127.0.0.1 at 2014-10-23 22:34:38 -0400
+
+
+Started GET "/operador/paquete/listar" for 127.0.0.1 at 2014-10-23 22:34:52 -0400
+
+SyntaxError (/home/ruby/codes/project/ATICOMPANY-3/ATICOMPANY/source/hermes/app/controllers/operador_controller.rb:101: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END
+/home/ruby/codes/project/ATICOMPANY-3/ATICOMPANY/source/hermes/app/controllers/operador_controller.rb:214: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END
+/home/ruby/codes/project/ATICOMPANY-3/ATICOMPANY/source/hermes/app/controllers/operador_controller.rb:333: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END
+/home/ruby/codes/project/ATICOMPANY-3/ATICOMPANY/source/hermes/app/controllers/operador_controller.rb:520: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END):
+  app/controllers/operador_controller.rb:101: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END
+  app/controllers/operador_controller.rb:214: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END
+  app/controllers/operador_controller.rb:333: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END
+  app/controllers/operador_controller.rb:520: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (37.4ms)
+
+
+Started GET "/operador/paquete/listar" for 127.0.0.1 at 2014-10-23 22:37:32 -0400
+Processing by OperadorController#listar_paquete as HTML
+Filter chain halted as :check_api_token rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/token" for 127.0.0.1 at 2014-10-23 22:38:28 -0400
+Processing by GeneralController#api_token as */*
+Completed 400 Bad Request in 15ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/token?login=o@m.com&passwd=123456" for 127.0.0.1 at 2014-10-23 22:40:03 -0400
+
+ActionController::RoutingError (No route matches [GET] "/token"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.2ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.2ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (37.5ms)
+
+
+Started POST "/token" for 127.0.0.1 at 2014-10-23 22:41:13 -0400
+Processing by GeneralController#api_token as */*
+  Parameters: {"login"=>"o@m.com", "passwd"=>"123456"}
+  [1m[35mUsuario Load (1.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1
+Completed 200 OK in 110ms (Views: 0.3ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/operador/paquete/listar" for 127.0.0.1 at 2014-10-23 22:41:33 -0400
+
+ActionController::RoutingError (No route matches [POST] "/operador/paquete/listar"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/ruby/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /home/ruby/.rvm/gems/ruby-2.1.2@atigemset/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.6ms)
+
+
+Started GET "/operador/paquete/listar" for 127.0.0.1 at 2014-10-23 22:41:37 -0400
+Processing by OperadorController#listar_paquete as */*
+Filter chain halted as :check_api_token rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operador/paquete/listar" for 127.0.0.1 at 2014-10-23 22:41:49 -0400
+Processing by OperadorController#listar_paquete as */*
+  [1m[36mUsuario Load (0.5ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."api_token" = '460d5f641eb15a3e43061a653bf752519f26a06c' LIMIT 1[0m
+  [1m[35mTipoUsuario Load (0.3ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+Completed 400 Bad Request in 25ms (Views: 0.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/operador/paquete/listar?email=o@m.com" for 127.0.0.1 at 2014-10-23 22:42:03 -0400
+Processing by OperadorController#listar_paquete as */*
+  Parameters: {"email"=>"o@m.com"}
+  [1m[36mUsuario Load (0.4ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."api_token" = '460d5f641eb15a3e43061a653bf752519f26a06c' LIMIT 1[0m
+  [1m[35mTipoUsuario Load (0.2ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUsuario Load (0.4ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."correo_electronico" = 'o@m.com' LIMIT 1[0m
+  [1m[35mUsuarioInternoAgencia Load (0.7ms)[0m  SELECT  "usuario_interno_agencia".* FROM "usuario_interno_agencia"  WHERE "usuario_interno_agencia"."usuario_id" = 14  ORDER BY "usuario_interno_agencia"."id" ASC LIMIT 1
+  [1m[36mAgencia Load (0.3ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAgenciaPaquete Load (0.9ms)[0m  SELECT DISTINCT on (paquete_id) * FROM "agencia_paquetes"  WHERE "agencia_paquetes"."agencia_id" = 1  ORDER BY "agencia_paquetes"."paquete_id" DESC, "agencia_paquetes"."fecha_arribo" DESC
+  [1m[36mTipoEstado Load (0.2ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 41]]
+  [1m[36mUsuario Load (0.3ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTipoUsuario Load (0.6ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.3ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 16]]
+  [1m[35mTipoUsuario Load (0.2ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mEmpresa Load (0.6ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoEstado Load (0.4ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 40]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 16]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 39]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 16]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoEstado Load (0.2ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 38]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 16]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 34]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 33]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 31]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 30]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 29]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 28]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 27]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPaquete Load (0.4ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 26]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPaquete Load (0.3ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 25]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTipoEstado Load (0.3ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 24]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tipo_estados".* FROM "tipo_estados"  WHERE "tipo_estados"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mPaquete Load (0.2ms)[0m  SELECT  "paquetes".* FROM "paquetes"  WHERE "paquetes"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUsuario Load (0.2ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUsuario Load (0.3ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tipo_usuarios".* FROM "tipo_usuarios"  WHERE "tipo_usuarios"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "agencia".* FROM "agencia"  WHERE "agencia"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "empresas".* FROM "empresas"  WHERE "empresas"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 248ms (Views: 8.3ms | ActiveRecord: 27.6ms)
