@@ -9,21 +9,26 @@
 	    delete $httpProvider.defaults.headers.common['X-Requested-With'];
 	});
 
-	app.controller('ListarPaquetesController', [$http, function($http){
+	app.controller('ListarPaquetesController', [$http, function($http){		
 		var c = this;
-		var data = {
-			email: 'o@m.com'
-		};
-		this.paquetes = {};
-		$http.get(
-			remoteDomain+'/operador/paquete/listar',
-			data
-		).success(function(d){
-			console.log(d);
-			c.paquetes = d;
-		}).error(function(e){
-			console.log(e);
-		});
+		c.paquetes = {};
+		/*
+		| Carga de paquetes en modal de paquetes
+		*/
+		this.loadPaquetes = function(){
+			var data = {
+				email: 'o@m.com'
+			};			
+			$http.get(
+				remoteDomain+'/operador/paquete/listar',
+				data
+			).success(function(d){
+				console.log(d);
+				c.paquetes = d;
+			}).error(function(e){
+				console.log(e);
+			});
+		}
 	}]);
 
 
