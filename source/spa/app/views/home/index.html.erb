@@ -17,6 +17,7 @@
 	</head>
 
 	<body ng-app="spa" class="colored-body">
+
 	<div class="row">
 		<div class="large-12">
 			<nav class="top-bar" data-topbar role="navigation"> 
@@ -36,11 +37,13 @@
 					<ul class="right">
 					
 					<li>
-						<a href="#" ng-if="!usuario"data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
+						<a href="#" ng-if="!usuario" data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
 						<a href="#" ng-if="usuario" class="alert button">Bienvenido, {{ usuario.nombre }}</a>
 
-					</li> 
+					</li>
+
 					<li class="has-dropdown"> 
+						
 						<a href="#"><i class="fa fa-plus fa-lg"></i></a> 
 						<ul class="dropdown">
 							<li ng-if="!usuario">
@@ -55,7 +58,7 @@
 								<a class="alert button" href="#" data-reveal-id="modal_calculadora">
 									Calculadora de Tar&iacute;fas
 									&nbsp;
-									<i class="fa fa-usd fa-lg"></i>					
+									<i class="fa fa-usd fa-lg"></i>				
 								</a>
 							</li>			
 
@@ -68,7 +71,11 @@
 							</li>
 
 							<li ng-if="usuario.tipo_usuario.abreviacion=='O'">
-								<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+								<a
+								id="crear_paquete"
+								class="alert button"
+								href="#"
+								data-reveal-id="modal_paquete" >
 									Paquetes
 									&nbsp;
 									<i class="fa fa-archive fa-lg"></i>				
@@ -99,7 +106,8 @@
 									<i class="fa fa-sign-out fa-lg"></i>		
 								</a>
 							</li>
-						</ul> 
+						</ul>
+
 					</li> 
 					</ul> 
 					<ul class="left"> 
