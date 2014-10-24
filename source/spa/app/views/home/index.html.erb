@@ -22,6 +22,7 @@
 		<div class="large-12">
 			<nav class="top-bar" data-topbar role="navigation"> 
 				
+				<!-- Area del Titulo -->
 				<ul class="title-area"> 
 					<li class="name">
             			<h1><a href=""><i class="fa fa-university fa-fw"></i>
@@ -33,96 +34,87 @@
 					</li> 
 				</ul> 
 				
+				<!-- Barra Superior -->
 				<section class="top-bar-section"> 
+
+					<!-- Parte Derecha -->
 					<ul class="right">
 					
-					<li>
-						<%if !cookies[:api_token]%>
-						<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button">
-							Iniciar Sesi&oacute;n</a>
-						<%else%>
-						<a href="#"  class="alert button">Bienvenido, <%= cookies[:nombre]%></a>
-						<%end%>
-					</li> 
+						<!-- Barra de Busqueda -->
+						<%if cookies[:api_token]%>
+							<li class="has-form">
+							  <div class="row collapse">
+							    <div class="large-9 small-9 columns">
+							      <input type="text" ng-model="numero_guia" placeholder="Numero de guia">
+							    </div>
+							    <div class="large-3 small-3 columns">
+							      <a ng-controller="paqueteController" ng-click="search()" class="alert button expand" data-reveal-id="modal_resultados_busqueda">Buscar</a>
+							    </div>
+							  </div>
+							</li>
+						<% end %>
 
-					<li class="has-dropdown"> 
-						
-						<a href="#"><i class="fa fa-plus fa-lg"></i></a> 
-						<ul class="dropdown">
-						<%if !cookies[:api_token]%>
-							<li ng-if="!usuario">
-								<a class="alert button" href="#" data-reveal-id="modal_registrar_usuario">
-									
-									Registrarse
-									&nbsp;
-									<i class="fa fa-pencil-square-o fa-lg"></i>
-								</a>
-							</li>
-						<%else%>
-							<%if (cookies[:tipo]== 'O' or cookies[:tipo]== 'UA')%>
-								<li>
-									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
-										Enviar paquete
-										&nbsp;
-										<i class="fa fa-send-o fa-lg"></i>					
-									</a>
-								</li>
+						<li>
+							<!-- Opcion de Login -->
+							<%if !cookies[:api_token]%>
+								<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button"><%= cookies[:nombre]%>Iniciar Sesi&oacute;n</a>
+
+							<!-- Mensaje de Bienvenida -->
+							<%else%>
+								<a href="#"  class="alert button">Bienvenido, <%= cookies[:nombre]%></a>
 							<%end%>
-							<%if cookies[:tipo]== 'O'%>
-							<li 
-							ng-controller="ModalListarPaqueteController">
-									<a
-									href 
-									id="listar_paquete"  
-									class="alert button"
-									ng-click="open()">
-										Paquetes
-										&nbsp;
-										<i class="fa fa-archive fa-lg"></i>				
-									</a>
-							</li>
-							<li>
-								<a 
-								id="cambiar_pass"
-								class="alert button" 
-								href 
-								data-reveal-id="modal_cambiar_contrasena" 
-								>
-									Cambiar Contraseña
-									&nbsp;
-									<i class="fa fa-key fa-lg"></i>
-								</a>
-							</li>
-							<%end%>
-							<%if cookies[:tipo]== 'UA'%>
-								<li>
-									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
-										Estado de Paquetes
-										&nbsp;
-										<i class="fa fa-archive fa-lg"></i>								
-									</a>
-								</li>
-							<%end%>
-							<%if cookies[:tipo]== 'A'%>
-								<li>
-									<a class="alert button" href="http:localhost:3000/empresas/1">
-										Administraci&oacute;n
-										&nbsp;
-										<i class="fa fa-cog fa-lg"></i>		
-									</a>
-								</li>
-							<%end%>
-							<li>
-								<a class="alert button" ng-controller="logoutController" ng-click="logout()">
-									Cerrar Sesi&oacute;n
-									&nbsp;
-									<i class="fa fa-sign-out fa-lg"></i>		
-								</a>
-							</li>
-						<%end%>
-						</ul> 
-					</li> 
+						</li> 
+
+						<!-- Menu -->
+						<li class="has-dropdown"> 
+							<a href="#"><i class="fa fa-plus fa-lg"></i></a> 
+							<ul class="dropdown">
+								
+								<!-- Opcion de Registro -->
+								<%if !cookies[:tipo]== 'O'%>
+									<li>
+										<a class="alert button" href="#" data-reveal-id="modal_registrar_usuario">
+											
+											Registrarse
+											&nbsp;
+											<i class="fa fa-pencil-square-o fa-lg"></i>
+										</a>
+									</li>
+								<%else%>
+
+									<!-- Opcion de Crear Paquete -->
+									<li>
+										<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+											Enviar paquete
+											&nbsp;
+											<i class="fa fa-send-o fa-lg"></i>					
+										</a>
+									</li>
+				
+									<!-- Opcion de Listar Paquete -->
+									<li>
+										<a id="listar_paquete"  class="alert button" data-reveal-id="modal_paquete" >
+											Paquetes
+											&nbsp;
+											<i class="fa fa-archive fa-lg"></i>				
+										</a>
+									</li>
+
+									<!-- Opcion de Logout -->
+									<li>
+										<a class="alert button" ng-controller="logoutController" ng-click="logout()">
+											<%= token_tag(nil) %>
+											Cerrar Sesi&oacute;n
+											&nbsp;
+											<i class="fa fa-sign-out fa-lg"></i>		
+										</a>
+									</li>
+								<%end%>
+							</ul> 
+						</li> 
 					</ul> 
+
+					<!-- Parte Izquierda -->
 					<ul class="left"> 
 					<li><a  href="#" data-reveal-id="modal_quienes_somos">
 							<i class="fa fa-question fa-lg backward-icon"></i>
@@ -172,9 +164,9 @@
 			<img class="slider-image" src="/assets/img4.jpg" alt="slide 3" /> 
 			<div class="orbit-caption">
 				<div class="row">
-				<p class="large-12">
-					Siempre haciendo que el medio de entrega de sus paquetes sea el mas adecuado para su comodidad
-				</p>
+					<p class="large-12">
+						Siempre haciendo que el medio de entrega de sus paquetes sea el mas adecuado para su comodidad
+					</p>
 				</div>
 			</div> 
 		</li> 
@@ -183,9 +175,9 @@
 			<img class="slider-image" src="/assets/img5.jpg" alt="slide 4" /> 
 			<div class="orbit-caption">
 				<div class="row">
-				<p class="large-12">
-					Nuestro personal capacitado brinda la mejor atención del mercado
-				</p>
+					<p class="large-12">
+						Nuestro personal capacitado brinda la mejor atención del mercado
+					</p>
 				</div>
 			</div> 
 		</li> 
@@ -194,9 +186,9 @@
 			<img class="slider-image" src="/assets/img6.jpg" alt="slide 5" /> 
 			<div class="orbit-caption">
 				<div class="row">
-				<p class="large-12">
-				Tratamos con seriedad a nuestros clientes, garantizando asi un servicio de una calidad inigualable
-				</p>
+					<p class="large-12">
+					Tratamos con seriedad a nuestros clientes, garantizando asi un servicio de una calidad inigualable
+					</p>
 				</div>
 			</div> 
 		</li> 
@@ -205,9 +197,9 @@
 			<img class="slider-image" src="/assets/img7.jpg" alt="slide 6" /> 
 			<div class="orbit-caption">
 				<div class="row">
-				<p class="large-12">
-					Experiencia y conocimiento nos caracterizan como empresa
-				</p>
+					<p class="large-12">
+						Experiencia y conocimiento nos caracterizan como empresa
+					</p>
 				</div>
 			</div> 
 		</li> 
@@ -216,9 +208,9 @@
 			<img class="slider-image" src="/assets/img8.jpg" alt="slide 7" /> 
 			<div class="orbit-caption">
 				<div class="row">
-				<p class="large-12">
-					Nuestros almacenes y sucursales garantizan que tus paquetes permanezcan en buen estado mientras vas por ellos
-				</p>
+					<p class="large-12">
+						Nuestros almacenes y sucursales garantizan que tus paquetes permanezcan en buen estado mientras vas por ellos
+					</p>
 				</div>
 			</div> 
 		</li> 
@@ -243,7 +235,7 @@
 
 			<div class="small-2 large-2 small-offset-1 large-offset-1 centered-image-logo columns">
 				<div class="row">
-				<img class="" src="/assets/circle-hermes-logo.png"/> 	
+					<img class="" src="/assets/circle-hermes-logo.png"/> 	
 				</div>
 				<div class="row icon-space">
 					<a href="https://github.com/No6things/ATICOMPANY" class="white-link" >
@@ -328,41 +320,16 @@
 	  <div class="modal-footer row"></div> 	  
 	</div>
 
-	<!-- ~~~~~~~~~ Modal busqueda ~~~~~~~~~-->
-	<div id="modal_resultados_busqueda" class="reveal-modal large custom-modal-container withe-text" data-reveal>
+	<!-- ~~~~~~~~~ Modal Resultado de Busqueda ~~~~~~~~~-->
+	<div id="modal_resultados_busqueda" class="reveal-modal small custom-modal-container white-text" data-reveal>
 	  <div class="modal-header row custom-modal-header slogan-u">
-	  	<h4 class="white-text">B&uacute;squeda</h4>				
+	  	<h4 class="white-text">Resultados de B&uacute;squeda</h4>				
 	  	<a class="close-reveal-modal">&#215;</a>
 	  </div>
 	  
-	  <div class="modal-content row extra-padding-row">
-	  	<div class="large-3 small-3 columns">
-  		  	<input id="package-bool" type="radio" name="filter">
-  			<label class="white-text" for="package-bool">Paquete</label>
-	  	</div>
-	  	<div class="large-3 small-3 columns">	  		
-	  		<input id="user-bool" type="radio" name="filter">
-	  		<label class="white-text"for="user-bool">Usuario</label>
-	  	</div>
-	  	<div class="large-6 small-6 columns">
-	  		<form method="post" class="search-form" action="">
-	  			<input type="text" name="criteria" placeholder="Criterio de Busqueda" required>
-	  			<input type="submit" class="hidden-submit-button">
-	  		</form>
-	  	</div>
-		
-  	 	<table class="hovered-table">
-  	 	  <tbody>
-  	 	    <tr>
-  	 	      <td>Usuario ID</td>
-  	 	      <td>Content Goes Here</td>
-  	 	      <td><a href="" id="<usr-id>" class="button alert tiny">Ver</a></td>
-  	 	    </tr>
-  	 	    <tr>
-  	 	      <td>Package ID</td>  	 	      
-  	 	      <td>Content Goes Here</td>
-  	 	      <td><a href="" id="<pckg-id>" class="button alert tiny">Ver</a></td>
-  	 	    </tr>
+	  <div class="modal-content row extra-padding-row">	
+  	 	<table class="hovered-table " align="center">
+  	 	  <tbody ng-bind-html="tableHtml">
   	 	  </tbody>
   	 	</table>
 	  </div>
@@ -456,7 +423,6 @@
 
 				 <select class="columns" form="paquete-form" ng-model="agencia" name="agencia" id="newp_agencia"required>
 	  				<option value="">Agencia Destino</option>
-
 		          	<option ng-repeat="x in agencias" value={{x.id}} >{{x.nombre}}</option>
 		        	<end%>	
 		      	</select>
@@ -499,15 +465,12 @@
 	  </div>
 	  
 	  <div class="modal-content row extra-padding-row">
-	  	
 	  	<form class="contrasena-form" action="/retrieve" method="post">	
 	  		<%= token_tag(nil) %>	  		
 		  	<input class="columns" type="text" placeholder="Correo Electronico" name="correo_electronico" required />  		
-
   		  	<input type="submit" class="hidden-submit-button" />
   		  	<span class="alert round label">Presione Enter para recuperar su contrasena</span>
 	  	</form>	
-
 	  </div>
 
 	  <div class="modal-footer row"></div> 	  
@@ -583,7 +546,9 @@
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- ~~~~~~~~~ END Definicion de modales utilizadas ~~~~~~~~~ -->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<script src="/assets/angular.min.js"></script>
+	<script src="/assets/angular.min.js"></script>	
+	<script src="/assets/angular-sanitize.min.js"></script>
+	<script src="/assets/angular-cookies.min.js"></script>
 	<script src="/assets/mm-foundation-tpls-0.4.0.min.js"></script>
 	<script src="/assets/jquery.js"></script>	
 	<script src="/assets/modernizr.js"></script>
