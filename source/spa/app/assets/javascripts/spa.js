@@ -4,30 +4,6 @@
       return (!!input) ? input.replace(/([^\W_]+[^\s-]*) */g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) : '';  
   }
 
-
-  function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
-    }
-    return "";
-  }
-
-  function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
-  }
-
-  function deleteCookie(cname){
-    document.cookie = cname+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-  }
-
-
   var app = angular.module("spa", ['ngSanitize', 'ngCookies', 'funciones-operadores']);
   var remoteDomain = "http://localhost:3000/";
 
@@ -68,7 +44,6 @@ app.controller("loginController", ['$scope', '$rootScope', '$http', "$window", '
 
 app.controller("logoutController", ['$scope', '$http', '$window',function($scope, $http, $window){
   $scope.logout= function(){
-    //$http.defaults.headers.delete = {'api-token': getCookie('api_token')};
     $http.delete(remoteDomain+"logout").success( function(response) {
                           $window.location=$window.location.pathname;
                         })
@@ -78,13 +53,14 @@ app.controller("logoutController", ['$scope', '$http', '$window',function($scope
   };
 }]);
 
-app.controller("paqueteController", ['$scope', '$rootScope', '$http', '$window',function($scope, $rootScope, $http, $window){
+app.controller("paqueteController", ['$scope', '$rootScope', '$http', '$window', '$cookies',function($scope, $rootScope, $http, $window, $cookies){
   $scope.search= function(){
     if ($scope.numero_guia!=''){
 
-      $http.defaults.headers.get= {'api-token': getCookie('api_token')};
+      $http.defaults.headers.get= {'api-token': $cookies.api_token};
       $http.get(remoteDomain+"operador/paquete/buscar?numero_guia="+$scope.numero_guia).success( function(response) {
                             $rootScope.resultado_busqueda=response.data;
+                            $scope.numero_guia='';
                             $rootScope.tableHtml='<tr><th>Numero de Guia:</th> <td>'+response.data.paquete.numero_guia+'</td></tr>'+
                                                  '<tr><th>Agencia:</th> <td>'+response.data.agencia.nombre+'</td></tr>'+
                                                  '<tr><th>Fecha de Arribo:</th> <td>'+response.data.fecha_arribo+'</td></tr>'+
@@ -97,7 +73,6 @@ app.controller("paqueteController", ['$scope', '$rootScope', '$http', '$window',
                                                  '<tr><th>Profundidad:</th> <td>'+response.data.paquete.profundidad+'</td></tr>'+
                                                  '<tr><th>Peso:</th> <td>'+response.data.paquete.peso+'</td></tr>'+
                                                  '<tr><th>Costo:</th> <td>'+response.data.paquete.costo+'</td></tr>';
-
                           })
                           .error(function(response) {
                               $scope.numero_guia='';
@@ -117,7 +92,7 @@ app.controller("paqueteController", ['$scope', '$rootScope', '$http', '$window',
     paquete.emisor= $scope.emisor;
     paquete.receptor= $scope.receptor;
     paquete.descripcion= $scope.descripcion;
-    $http.defaults.headers.post= {'api-token': getCookie('api_token')};
+    $http.defaults.headers.post= {'api-token': $cookies.api_token};
     $http.post(remoteDomain+"operador/paquete/crear",paquete,{headers: {'Content-Type': 'application/json'}}).success( function(response) {
                           alert("Enhorabuena, el paquete se ha creado.\nSu numero de guia es: "+response.data.numero_guia);
                           $window.location=$window.location.pathname;
