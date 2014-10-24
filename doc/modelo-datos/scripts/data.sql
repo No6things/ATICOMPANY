@@ -141,7 +141,7 @@ SELECT pg_catalog.setval('agencia_paquetes_id_seq', 99, true);
 --
 
 COPY empresas (id, nombre, rif, frase_comercial, constante_tarifa, porcentaje_tarifa, created_at, updated_at) FROM stdin;
-1	Hermes	J-123456789-0	El servicio de entrega de los dioses	0	45	2014-09-25 10:01:34.521632	2014-10-21 01:46:10.97948
+1	Hermes	J-123456789-0	El servicio de entrega de los dioses	1	45	2014-09-25 10:01:34.521632	2014-10-21 01:46:10.97948
 \.
 
 
