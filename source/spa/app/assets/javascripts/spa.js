@@ -51,9 +51,8 @@ app.controller("loginController", ['$scope', '$rootScope', '$http', "$window", '
   	$http.post(remoteDomain+"login",usuario).success( function(response) {
 			$rootScope.usuario= response.data;
 
-      console.log($rootScope.usuario);
+      console.log($rootScope.usuario);      
       
-      $scope.correo='';
       $scope.contrasena='';
       $cookies.nombre=$rootScope.usuario.nombre;
       $cookies.tipo=$rootScope.usuario.tipo_usuario.abreviacion;

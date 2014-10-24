@@ -45,11 +45,13 @@
 						<%if cookies[:api_token]%>
 							<li class="has-form">
 							  <div class="row collapse">
-							    <div class="large-9 small-9 columns">
+							    <div class="large-10 small-10 columns">
 							      <input type="text" ng-model="numero_guia" placeholder="Numero de guia">
 							    </div>
-							    <div class="large-3 small-3 columns">
-							      <a ng-controller="paqueteController" ng-click="search()" class="alert button expand" data-reveal-id="modal_resultados_busqueda">Buscar</a>
+							    <div class="large-2 small-2 columns">
+							      <a ng-controller="paqueteController" ng-click="search()" class="alert button expand" data-reveal-id="modal_resultados_busqueda">
+							      	<i class="fa fa-search"></i>     	
+							      </a>
 							    </div>
 							  </div>
 							</li>
