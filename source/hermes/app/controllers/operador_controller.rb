@@ -34,6 +34,7 @@ before_filter :check_api_token
 =end
 	def crear_paquete	
 		begin
+			puts params
 			prms = params.permit(
 				:agencia,
 				:alto,
@@ -44,8 +45,7 @@ before_filter :check_api_token
 				:emisor,
 				:receptor,
 				:descripcion
-			)
-			puts params
+			)			
 			e = Usuario.find_by(correo_electronico: prms.require(:emisor))
 			r = Usuario.find_by(correo_electronico: prms.require(:receptor))
 
