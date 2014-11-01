@@ -18,6 +18,7 @@ gem 'globalid'
 gem 'pg'
 gem 'tzinfo'
 gem 'bcrypt', '~> 3.1.7'
+gem 'yard'
 
 # Use unicorn as the app server
 # gem 'unicorn'

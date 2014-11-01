@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: AdministradorController
+  
+    &mdash; Documentation by YARD 0.8.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!AdministradorController.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (A)</a> &raquo;
+    
+    
+    <span class="title">AdministradorController</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: AdministradorController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
+          
+            <li class="next">AdministradorController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/controllers/administrador_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#actualizar_tarifas-instance_method" title="#actualizar_tarifas (instance method)">- (Object) <strong>actualizar_tarifas</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Actualizar informacion de tarifas de envio de paquetes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#check_api_token-instance_method" title="#check_api_token (instance method)">- (Object) <strong>check_api_token</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="actualizar_tarifas-instance_method">
+  
+    - (<tt>Object</tt>) <strong>actualizar_tarifas</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Actualizar informacion de tarifas de envio de paquetes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/administrador_controller.rb', line 5</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_actualizar_tarifas'>actualizar_tarifas</span>
+	<span class='kw'>begin</span>
+		<span class='kw'>if</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>enterprise-token</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+			<span class='id identifier rubyid_eid'>eid</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>enterprise-token</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+
+			<span class='id identifier rubyid_prms'>prms</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span>
+				<span class='symbol'>:constante_tarifa</span><span class='comma'>,</span>
+				<span class='symbol'>:porcentaje_tarifa</span><span class='comma'>,</span>
+			<span class='rparen'>)</span>
+
+			<span class='const'>Empresa</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span>
+				<span class='id identifier rubyid_eid'>eid</span><span class='comma'>,</span>
+				<span class='label'>constante_tarifa:</span> <span class='id identifier rubyid_prms'>prms</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:constante_tarifa</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='comma'>,</span>
+				<span class='label'>porcentaje_tarifa:</span> <span class='id identifier rubyid_prms'>prms</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:porcentaje_tarifa</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+				<span class='rparen'>)</span>
+
+			<span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span>
+					<span class='label'>err_mssg:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+					<span class='label'>success_msg:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Actualizacion exitosa</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+				<span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:ok</span>
+		<span class='kw'>else</span>
+			<span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Parametro de identificacion enterprise-token requerido en header http</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>end</span>
+	<span class='kw'>rescue</span> <span class='const'>ActionController</span><span class='op'>::</span><span class='const'>ParameterMissing</span>
+		
+		<span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span>
+			<span class='label'>err_mssg:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Parametros de actualizacion faltantes</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+			<span class='label'>success_mssg:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+			<span class='label'>data:</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>parametros</span><span class='tstring_end'>&quot;</span></span><span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>constante_tarifa</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>porcentaje_tarifa</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span>
+			<span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:bad_request</span>
+
+	<span class='kw'>rescue</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>RecordNotFound</span>
+	
+		<span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span>
+			<span class='label'>err_mssg:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Parametro enterprise-token erroneo</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+			<span class='label'>success_mssg:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+			<span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:bad_request</span>
+
+	<span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+	
+		<span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span>
+			<span class='label'>err_mssg:</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='comma'>,</span>
+			<span class='label'>success_mssg:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:bad_request</span>
+	
+	<span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="check_api_token-instance_method">
+  
+    - (<tt>Object</tt>) <strong>check_api_token</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/administrador_controller.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_check_api_token'>check_api_token</span>		
+	<span class='kw'>begin</span>
+		<span class='kw'>if</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>api-token</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+			<span class='id identifier rubyid_atoken'>atoken</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>api-token</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+		<span class='kw'>else</span>
+			<span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Parametro de identificacion api-token requerido en header http</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>end</span>
+
+		<span class='id identifier rubyid_u'>u</span> <span class='op'>=</span> <span class='const'>Usuario</span><span class='period'>.</span><span class='id identifier rubyid_find_by!'>find_by!</span><span class='lparen'>(</span>
+			<span class='label'>api_token:</span> <span class='id identifier rubyid_atoken'>atoken</span> 
+		<span class='rparen'>)</span>
+
+		<span class='kw'>if</span> <span class='kw'>not</span> <span class='id identifier rubyid_u'>u</span><span class='period'>.</span><span class='id identifier rubyid_tipo_usuario'>tipo_usuario</span><span class='period'>.</span><span class='id identifier rubyid_abreviacion'>abreviacion</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>A</span><span class='tstring_end'>&quot;</span></span>
+			<span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Se requieren privilegios administrativos para tener acceso a estas funcionalidades</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>end</span>
+	
+	<span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+		<span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span>
+			<span class='label'>err_mssg:</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='comma'>,</span>
+			<span class='label'>success_mssg:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+			<span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> 	<span class='symbol'>:unauthorized</span>			
+	<span class='kw'>end</span>		
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Thu Oct 23 23:34:43 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.4 (ruby-2.1.3).
+</div>
+
+  </body>
+</html>
