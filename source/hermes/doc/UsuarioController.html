@@ -121,7 +121,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#buscar_paquete-instance_method" title="#buscar_paquete (instance method)">- (Object) <strong>buscar_paquete</strong> </a>
+      <a href="#buscar_paquete-instance_method" title="#buscar_paquete (instance method)">- (Json) <strong>buscar_paquete</strong> </a>
     
 
     
@@ -135,7 +135,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Representacion en formato json del paquete encontrado.</p>
+</div></span>
   
 </li>
 
@@ -143,7 +145,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#check_api_token-instance_method" title="#check_api_token (instance method)">- (Object) <strong>check_api_token</strong> </a>
+      <a href="#check_api_token-instance_method" title="#check_api_token (instance method)">- (Json) <strong>check_api_token</strong> </a>
     
 
     
@@ -157,7 +159,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>La representacion de un mensaje 403 en  caso de acceso no autorizado o no
+contener el parametro &#39;api-token&#39; en la cabecera.</p>
+</div></span>
   
 </li>
 
@@ -189,7 +194,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ver_paquete-instance_method" title="#ver_paquete (instance method)">- (Object) <strong>ver_paquete</strong> </a>
+      <a href="#ver_paquete-instance_method" title="#ver_paquete (instance method)">- (Json) <strong>ver_paquete</strong> </a>
     
 
     
@@ -203,7 +208,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Representacion en formato json del paquete encontrado.</p>
+</div></span>
   
 </li>
 
@@ -227,53 +234,171 @@
       <div class="method_details first">
   <h3 class="signature first" id="buscar_paquete-instance_method">
   
-    - (<tt>Object</tt>) <strong>buscar_paquete</strong> 
+    - (<tt>Json</tt>) <strong>buscar_paquete</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Parametro &#39;api-token&#39; requerido en cabecera HTTP.</p>
+</div>
+  </div>
+
+
+<p>Returns representacion en formato json del paquete encontrado.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Ejemplo de json en caso de retorno</p>
+</div></p>
+      
+      <pre class="example code"><code>{
+    &quot;err_mssg&quot;: &quot;&quot;,
+    &quot;success_mssg&quot;: &quot;OK&quot;,
+    &quot;data&quot;: { 
+               &quot;id&quot;: 17,
+               &quot;ancho&quot;: 2,
+               &quot;alto&quot;: 2,
+               &quot;peso&quot;: 4,
+               &quot;costo&quot;: 2.35,
+               &quot;profundidad&quot;: 3,
+               &quot;descripcion&quot;: &quot;Test&quot;,
+               &quot;numero_guia&quot;: &quot;57921cab6d7d1d1c848747a14336345573dc00fb&quot;,
+               &quot;agencia_paquete&quot;: {
+				&quot;id&quot;: 8,
+				&quot;fecha_arribo&quot;: &quot;2014-09-26T21:29:39.152Z&quot;,
+				&quot;tipo_estado&quot;: &quot;R&quot;,
+				&quot;paquete&quot;: { Recursivo },
+				&quot;agencia&quot;: {
+					&quot;id&quot;: 15,
+					&quot;nombre&quot;: &quot;Hermes CCS&quot;,
+					&quot;ubicacion&quot;: &quot;Caracas&quot;,
+					&quot;latitud&quot;: &quot;13554.1546&quot;,
+					&quot;longitud&quot;: &quot;5466487.425&quot;,
+					&quot;empresa&quot;: &quot;Hermes&quot;,
+				}
+               },
+               &quot;emisor&quot;: {
+                   &quot;id&quot;: 14,
+                   &quot;nombre&quot;: &quot;operador&quot;,
+                   &quot;apellido&quot;: &quot;Prueba&quot;,
+                   &quot;correo_electronico&quot;: &quot;o@m.com&quot;,
+                   &quot;fecha_ultimo_acceso&quot;: &quot;2014-09-26T21:29:39.060Z&quot;,
+                   &quot;tipo_usuario&quot;: {
+                       &quot;id&quot;: 2,
+                       &quot;nombre&quot;: &quot;Operador&quot;,
+                       &quot;abreviacion&quot;: &quot;O&quot;
+                   }
+               },
+               &quot;receptor&quot;: {
+                   &quot;id&quot;: 13,
+                   &quot;nombre&quot;: &quot;Administrador&quot;,
+                   &quot;apellido&quot;: &quot;Prueba&quot;,
+                   &quot;correo_electronico&quot;: &quot;a@m.com&quot;,
+                   &quot;fecha_ultimo_acceso&quot;: &quot;2014-09-27T00:18:14.693Z&quot;,
+                   &quot;tipo_usuario&quot;: {
+                       &quot;id&quot;: 1,
+                       &quot;nombre&quot;: &quot;Administrador&quot;,
+                       &quot;abreviacion&quot;: &quot;A&quot;
+                   }
+               }
+    }
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>numero_guia</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>numero de guia perteneciente al paquete  enviado o recibido.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>representacion en formato json del paquete encontrado.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157</pre>
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 224</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_buscar_paquete'>buscar_paquete</span>
-<span class='comment'># Buscar paquete por numero de guia	
-</span>	<span class='kw'>begin</span>
+	<span class='kw'>begin</span>
 		<span class='id identifier rubyid_prms'>prms</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span>
 			<span class='symbol'>:numero_guia</span>
 		<span class='rparen'>)</span>
@@ -307,44 +432,75 @@
       <div class="method_details ">
   <h3 class="signature " id="check_api_token-instance_method">
   
-    - (<tt>Object</tt>) <strong>check_api_token</strong> 
+    - (<tt>Json</tt>) <strong>check_api_token</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns la representacion de un mensaje 403 en  caso de acceso no
+autorizado o no contener el parametro &#39;api-token&#39; en la cabecera.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>la representacion de un mensaje 403 en  caso de acceso no autorizado o no
+contener el parametro &#39;api-token&#39; en la cabecera.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214</pre>
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 192</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 362</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_api_token'>check_api_token</span>		
 	<span class='kw'>begin</span>
@@ -389,7 +545,7 @@
   <div class="note notetag">
     <strong>Note:</strong>
     <div class='inline'>
-<p>Parametro apt-token requereido en cabecera http</p>
+<p>Parametro &#39;api-token&#39; requerido en cabecera HTTP</p>
 </div>
   </div>
 
@@ -406,7 +562,7 @@
     
       
         <p class="example_title"><div class='inline'>
-<p>Ejemplo de json de retorno</p>
+<p>Ejemplo de json en caso de retorno</p>
 </div></p>
       
       <pre class="example code"><code>{
@@ -423,6 +579,20 @@
                 &quot;profundidad&quot;: 10,
                 &quot;descripcion&quot;: &quot;Teclado&quot;,
                 &quot;numero_guia&quot;: &quot;1acae99bed11b1424527f4c930907fc498273739&quot;,
+                &quot;agencia_paquete&quot;: {
+					&quot;id&quot;: 8,
+					&quot;fecha_arribo&quot;: &quot;2014-09-26T21:29:39.152Z&quot;,
+					&quot;tipo_estado&quot;: &quot;R&quot;,
+					&quot;paquete&quot;: { Recursivo },
+					&quot;agencia&quot;: {
+						&quot;id&quot;: 15,
+						&quot;nombre&quot;: &quot;Hermes CCS&quot;,
+						&quot;ubicacion&quot;: &quot;Caracas&quot;,
+						&quot;latitud&quot;: &quot;13554.1546&quot;,
+						&quot;longitud&quot;: &quot;5466487.425&quot;,
+						&quot;empresa&quot;: &quot;Hermes&quot;,
+					}
+               	},
                 &quot;emisor&quot;: {
                     &quot;id&quot;: 13,
                     &quot;nombre&quot;: &quot;Administrador&quot;,
@@ -459,6 +629,20 @@
                 &quot;profundidad&quot;: 3,
                 &quot;descripcion&quot;: &quot;Test&quot;,
                 &quot;numero_guia&quot;: &quot;57921cab6d7d1d1c848747a14336345573dc00fb&quot;,
+                &quot;agencia_paquete&quot;: {
+					&quot;id&quot;: 8,
+					&quot;fecha_arribo&quot;: &quot;2014-09-26T21:29:39.152Z&quot;,
+					&quot;tipo_estado&quot;: &quot;R&quot;,
+					&quot;paquete&quot;: { Recursivo },
+					&quot;agencia&quot;: {
+						&quot;id&quot;: 15,
+						&quot;nombre&quot;: &quot;Hermes CCS&quot;,
+						&quot;ubicacion&quot;: &quot;Caracas&quot;,
+						&quot;latitud&quot;: &quot;13554.1546&quot;,
+						&quot;longitud&quot;: &quot;5466487.425&quot;,
+						&quot;empresa&quot;: &quot;Hermes&quot;,
+					}
+                },
                 &quot;emisor&quot;: {
                     &quot;id&quot;: 14,
                     &quot;nombre&quot;: &quot;operador&quot;,
@@ -536,39 +720,39 @@ listar</p>
       <pre class="lines">
 
 
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
 127
-128</pre>
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_listar_paquete'>listar_paquete</span>
 	<span class='kw'>begin</span>
@@ -608,53 +792,176 @@ listar</p>
       <div class="method_details ">
   <h3 class="signature " id="ver_paquete-instance_method">
   
-    - (<tt>Object</tt>) <strong>ver_paquete</strong> 
+    - (<tt>Json</tt>) <strong>ver_paquete</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Parametro &#39;api-token&#39; requerido en cabecera HTTP.</p>
+</div>
+  </div>
+
+
+<p>Returns representacion en formato json del paquete encontrado.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Ejemplo de json en caso de retorno</p>
+</div></p>
+      
+      <pre class="example code"><code>{
+    &quot;err_mssg&quot;: &quot;&quot;,
+    &quot;success_mssg&quot;: &quot;OK&quot;,
+    &quot;data&quot;: {
+	    &quot;trensaccion&quot;: { 
+	    		&quot;id&quot;: 8,
+				&quot;fecha_arribo&quot;: &quot;2014-09-26T21:29:39.152Z&quot;,
+				&quot;tipo_estado&quot;: &quot;R&quot;,
+				&quot;paquete&quot;: { 
+					&quot;id&quot;: 17,
+	                &quot;ancho&quot;: 2,
+	                &quot;alto&quot;: 2,
+	                &quot;peso&quot;: 4,
+	                &quot;costo&quot;: 2.35,
+	                &quot;profundidad&quot;: 3,
+	                &quot;descripcion&quot;: &quot;Test&quot;,
+	                &quot;numero_guia&quot;: &quot;57921cab6d7d1d1c848747a14336345573dc00fb&quot;,
+	                &quot;agencia_paquete&quot;: { Recursivo
+	                },
+	                &quot;emisor&quot;: {
+	                    &quot;id&quot;: 14,
+	                    &quot;nombre&quot;: &quot;operador&quot;,
+	                    &quot;apellido&quot;: &quot;Prueba&quot;,
+	                    &quot;correo_electronico&quot;: &quot;o@m.com&quot;,
+	                    &quot;fecha_ultimo_acceso&quot;: &quot;2014-09-26T21:29:39.060Z&quot;,
+	                    &quot;tipo_usuario&quot;: {
+	                        &quot;id&quot;: 2,
+	                        &quot;nombre&quot;: &quot;Operador&quot;,
+	                        &quot;abreviacion&quot;: &quot;O&quot;
+	                    }
+	                },
+	                &quot;receptor&quot;: {
+	                    &quot;id&quot;: 13,
+	                    &quot;nombre&quot;: &quot;Administrador&quot;,
+	                    &quot;apellido&quot;: &quot;Prueba&quot;,
+	                    &quot;correo_electronico&quot;: &quot;a@m.com&quot;,
+	                    &quot;fecha_ultimo_acceso&quot;: &quot;2014-09-27T00:18:14.693Z&quot;,
+	                    &quot;tipo_usuario&quot;: {
+	                        &quot;id&quot;: 1,
+	                        &quot;nombre&quot;: &quot;Administrador&quot;,
+	                        &quot;abreviacion&quot;: &quot;A&quot;
+	                    }
+                },
+				&quot;agencia&quot;: {
+				&quot;id&quot;: 15,
+					&quot;nombre&quot;: &quot;Hermes CCS&quot;,
+					&quot;ubicacion&quot;: &quot;Caracas&quot;,
+					&quot;latitud&quot;: &quot;13554.1546&quot;,
+					&quot;longitud&quot;: &quot;5466487.425&quot;,
+					&quot;empresa&quot;: &quot;Hermes&quot;,
+			   	}
+
+        }
+	}	
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>'id'String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>del paquete que desea ver.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>representacion en formato json del paquete encontrado.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190</pre>
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 159</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 322</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ver_paquete'>ver_paquete</span>
 	<span class='kw'>begin</span>
@@ -698,9 +1005,9 @@ listar</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Oct 23 23:34:42 2014 by
+  Generated on Mon Nov  3 04:56:05 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.4 (ruby-2.1.3).
+  0.8.7.4 (ruby-2.1.2).
 </div>
 
   </body>
