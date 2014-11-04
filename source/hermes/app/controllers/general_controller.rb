@@ -1,13 +1,13 @@
 class GeneralController < ApplicationController
-before_filter :cors_set_access
-	
-def cors_set_access
-	headers['Access-Control-Allow-Origin'] = '*'
-	headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
-	headers['Access-Control-Request-Method'] = '*'
-	headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-end
-
+before_action :cors_set_access_control_headers
+  	
+  	def cors_set_access_control_headers
+  		puts 'dicks'
+		headers['Access-Control-Allow-Origin'] = '*'
+		headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, PATCH, GET, OPTIONS'
+		headers['Access-Control-Request-Method'] = '*'
+		headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization, X-CSRF-Token, enterprise-token'
+	end
 
 =begin
 
