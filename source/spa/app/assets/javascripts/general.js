@@ -3,19 +3,14 @@ $(function(){
 	$.ajaxSetup({
 	  headers: {
 	    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
-	    'enterprise-token': $('meta[name="enterprise_token"]').attr('content'),
-	    'Access-Control-Allow-Origin': '*',
-	    'Access-Control-Allow-Methods': 'POST, PUT, PATCH, DELETE, GET, OPTIONS',
-		'Access-Control-Request-Method': '*',
-		'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-		'Access-Control-Expose-Headers': 'x-json'
+	    'enterprise-token': $('meta[name="enterprise_token"]').attr('content')
 	  }
 	});
 
-	$.get( "/enterprise_data", function( r ) {		
+	/*$.get( "/enterprise_data", function( r ) {		
 	  $("#eporc").html(r.data.porcentaje_tarifa);
 	  $("#econst").html(r.data.constante_tarifa);	  
-	});
+	});*/
 	
 	$(".login-form").on('submit', function(event) {
 	 	event.preventDefault();
@@ -24,6 +19,10 @@ $(function(){
 		$.ajax({
 			type: 'POST',
 			url: 'http://localhost:3000/login',
+			crossDomain: true,
+			xhrFields: {
+			  withCredentials: true
+			},
 			data: {
 			'login': $(this).find("input[name='login']").val(), 
 			'passwd': $(this).find("input[name='passwd']").val()

@@ -1,12 +1,5 @@
 class HomeController < ApplicationController
-before_filter :cors_set_access
-	
-def cors_set_access
-	headers['Access-Control-Allow-Origin'] = '*'
-	headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
-	headers['Access-Control-Request-Method'] = '*'
-	headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-end
+
 
 	def index
 		if session.has_key?("id_usuario_actual")
