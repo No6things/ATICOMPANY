@@ -21,6 +21,7 @@ before_filter :check_api_token
 	El calculo de tarifas corresponde a la formula:  ((cm de ancho)*(cm	de alto)*(cm de	profundo)*(kilos)/Constante)+K%(valor en Bs.F)
 
 =end
+
 	def actualizar_tarifas
 		begin
 			if request.headers.key?("enterprise-token")
