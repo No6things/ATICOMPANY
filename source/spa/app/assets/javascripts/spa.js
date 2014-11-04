@@ -7,9 +7,11 @@ app.config(function($httpProvider) {
   });
 
 app.controller("loginController", function ($scope, $http){
-  $scope.correo="John";
-  $scope.contrasena="123456";
-	$http.post("http://localhost:3000/login").success( function(response) {
+  var usuario = {
+    login: $scope.correo,
+    passwd: $scope.contrasena
+  };
+	$http.post("http://localhost:3000/login",usuario).success( function(response) {
 												$scope.usuario.nombre = response;
 											})
 											.error(function() {

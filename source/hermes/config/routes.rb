@@ -20,7 +20,7 @@ post "/operador/paquete/crear" => "operador#crear_paquete"
 post "/operador/paquete/cambiar_ẹstado" => "operador#cambiar_estado_paquete"
 post "/administrador/tarifas/actualizar" => "administrador#actualizar_tarifas"
 
-match '*unmatched_route', :to => 'application#route_options', via: [:options]
+match '*path', :to => 'application#route_options', via: [:options]
 #Declaracion de recursos
 #resources :empresas
 #resources :usuarios
