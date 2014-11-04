@@ -1,5 +1,7 @@
 class HermesApiController < ApplicationController
-	
+=begin
+@api private 
+=end
 	def index
 		@menu = [
 				"Abrir sesion",

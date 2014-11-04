@@ -121,7 +121,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_page-instance_method" title="#get_page (instance method)">- (Object) <strong>get_page</strong> </a>
+      <a href="#get_page-instance_method" title="#get_page (instance method)">- (Json) <strong>get_page</strong> </a>
     
 
     
@@ -132,10 +132,13 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>La representacion de un mensaje: 200 en caso de haber encontrado la pagina
+de transacciones.</p>
+</div></span>
   
 </li>
 
@@ -143,7 +146,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#show-instance_method" title="#show (instance method)">- (Object) <strong>show</strong> </a>
+      <a href="#show-instance_method" title="#show (instance method)">- (Json) <strong>show</strong> </a>
     
 
     
@@ -154,10 +157,13 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>La representacion de un mensaje: 200 en caso de haber encontrado la
+transaccion.</p>
+</div></span>
   
 </li>
 
@@ -165,7 +171,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#show_by_user-instance_method" title="#show_by_user (instance method)">- (Object) <strong>show_by_user</strong> </a>
+      <a href="#show_by_user-instance_method" title="#show_by_user (instance method)">- (Json) <strong>show_by_user</strong> </a>
     
 
     
@@ -176,10 +182,13 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>La representacion de: un mensaje 200 con las primeras 10 transacciones
+relacionadas directamente con el usuario.</p>
+</div></span>
   
 </li>
 
@@ -187,7 +196,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#update-instance_method" title="#update (instance method)">- (Object) <strong>update</strong> </a>
+      <a href="#update-instance_method" title="#update (instance method)">- (Json) <strong>update</strong> </a>
     
 
     
@@ -198,10 +207,13 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>La representacion de un mensaje: 200 en caso de haber encontrado la
+transaccion.</p>
+</div></span>
   
 </li>
 
@@ -225,49 +237,132 @@
       <div class="method_details first">
   <h3 class="signature first" id="get_page-instance_method">
   
-    - (<tt>Object</tt>) <strong>get_page</strong> 
+    - (<tt>Json</tt>) <strong>get_page</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Parametro &#39;enterprise-token&#39; requerido en cabecera HTTP.</p>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Parametro &#39;sense&#39; opcional.</p>
+</div>
+  </div>
+
+
+<p>Returns la representacion de un mensaje: 200 en caso de haber encontrado la
+pagina de transacciones. 400 en caso de no contener el parametro
+&#39;enterprise-token&#39; en la cabecera.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>sense</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>page</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>numero de pagina entre las transacciones realizadas en una agencia.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>la representacion de un mensaje: 200 en caso de haber encontrado la pagina
+de transacciones. 400 en caso de no contener el parametro
+&#39;enterprise-token&#39; en la cabecera.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48</pre>
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/agencia_paquetes_controller.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/agencia_paquetes_controller.rb', line 171</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_page'>get_page</span>
 	<span class='kw'>begin</span>						
@@ -305,29 +400,148 @@
       <div class="method_details ">
   <h3 class="signature " id="show-instance_method">
   
-    - (<tt>Object</tt>) <strong>show</strong> 
+    - (<tt>Json</tt>) <strong>show</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns la representacion de un mensaje: 200 en caso de haber encontrado la
+transaccion. 400 en caso de no haber encontrado la transaccion.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Ejemplo de json en caso de exito.</p>
+</div></p>
+      
+      <pre class="example code"><code>{
+	&quot;err_mssg&quot;: &quot;&quot;,
+	&quot;success_mssg&quot;: &quot;Transaction Found&quot;,
+	&quot;data&quot;: {
+		&quot;id&quot;: 8,
+		&quot;fecha_arribo&quot;: &quot;2014-09-26T21:29:39.152Z&quot;,
+		&quot;tipo_estado&quot;: &quot;R&quot;,
+		&quot;paquete&quot;: { 
+			&quot;id&quot;: 17,
+               &quot;ancho&quot;: 2,
+               &quot;alto&quot;: 2,
+               &quot;peso&quot;: 4,
+               &quot;costo&quot;: 2.35,
+               &quot;profundidad&quot;: 3,
+               &quot;descripcion&quot;: &quot;Test&quot;,
+               &quot;numero_guia&quot;: &quot;57921cab6d7d1d1c848747a14336345573dc00fb&quot;,
+               &quot;agencia_paquete&quot;: { Recursivo
+               },
+               &quot;emisor&quot;: {
+                   &quot;id&quot;: 14,
+                   &quot;nombre&quot;: &quot;operador&quot;,
+                   &quot;apellido&quot;: &quot;Prueba&quot;,
+                   &quot;correo_electronico&quot;: &quot;o@m.com&quot;,
+                   &quot;fecha_ultimo_acceso&quot;: &quot;2014-09-26T21:29:39.060Z&quot;,
+                   &quot;tipo_usuario&quot;: {
+                       &quot;id&quot;: 2,
+                       &quot;nombre&quot;: &quot;Operador&quot;,
+                       &quot;abreviacion&quot;: &quot;O&quot;
+                   }
+               },
+               &quot;receptor&quot;: {
+                   &quot;id&quot;: 13,
+                   &quot;nombre&quot;: &quot;Administrador&quot;,
+                   &quot;apellido&quot;: &quot;Prueba&quot;,
+                   &quot;correo_electronico&quot;: &quot;a@m.com&quot;,
+                   &quot;fecha_ultimo_acceso&quot;: &quot;2014-09-27T00:18:14.693Z&quot;,
+                   &quot;tipo_usuario&quot;: {
+                       &quot;id&quot;: 1,
+                       &quot;nombre&quot;: &quot;Administrador&quot;,
+                       &quot;abreviacion&quot;: &quot;A&quot;
+                   }
+           },
+		&quot;agencia&quot;: {
+			&quot;id&quot;: 15,
+			&quot;nombre&quot;: &quot;Hermes CCS&quot;,
+			&quot;ubicacion&quot;: &quot;Caracas&quot;,
+			&quot;latitud&quot;: &quot;13554.1546&quot;,
+			&quot;longitud&quot;: &quot;5466487.425&quot;,
+			&quot;empresa&quot;: &quot;Hermes&quot;,
+	   	}
+	},
+	&quot;status&quot;: 200
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>identificador de la transaccion.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>la representacion de un mensaje: 200 en caso de haber encontrado la
+transaccion. 400 en caso de no haber encontrado la transaccion.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-3
-4
-5
-6
-7
-8
-9
-10</pre>
+68
+69
+70
+71
+72
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/agencia_paquetes_controller.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/agencia_paquetes_controller.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
 	<span class='kw'>begin</span>				
@@ -345,33 +559,85 @@
       <div class="method_details ">
   <h3 class="signature " id="show_by_user-instance_method">
   
-    - (<tt>Object</tt>) <strong>show_by_user</strong> 
+    - (<tt>Json</tt>) <strong>show_by_user</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Parametro &#39;enterprise-token&#39; requerido en cabecera HTTP.</p>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Debe haber un sesion activa.</p>
+</div>
+  </div>
+
+
+<p>Returns la representacion de: un mensaje 200 con las primeras 10
+transacciones relacionadas directamente con el usuario. un mensaje 404 en
+caso de no contener el parametro &#39;enterprise-token&#39; en la cabecera.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>la representacion de: un mensaje 200 con las primeras 10 transacciones
+relacionadas directamente con el usuario. un mensaje 404 en caso de no
+contener el parametro &#39;enterprise-token&#39; en la cabecera.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61</pre>
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/agencia_paquetes_controller.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/agencia_paquetes_controller.rb', line 214</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show_by_user'>show_by_user</span>
 	<span class='kw'>begin</span>				
@@ -393,29 +659,148 @@
       <div class="method_details ">
   <h3 class="signature " id="update-instance_method">
   
-    - (<tt>Object</tt>) <strong>update</strong> 
+    - (<tt>Json</tt>) <strong>update</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+<p>Returns la representacion de un mensaje: 200 en caso de haber encontrado la
+transaccion. 400 en caso de no haber encontrado la transaccion.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Ejemplo de json en caso de exito.</p>
+</div></p>
+      
+      <pre class="example code"><code>{
+	&quot;err_mssg&quot;: &quot;&quot;,
+	&quot;success_mssg&quot;: &quot;Transaction Found&quot;,
+	&quot;data&quot;: {
+		&quot;id&quot;: 8,
+		&quot;fecha_arribo&quot;: &quot;2014-09-26T21:29:39.152Z&quot;,
+		&quot;tipo_estado&quot;: &quot;R&quot;,
+		&quot;paquete&quot;: { 
+			&quot;id&quot;: 17,
+               &quot;ancho&quot;: 2,
+               &quot;alto&quot;: 2,
+               &quot;peso&quot;: 4,
+               &quot;costo&quot;: 2.35,
+               &quot;profundidad&quot;: 3,
+               &quot;descripcion&quot;: &quot;Test&quot;,
+               &quot;numero_guia&quot;: &quot;57921cab6d7d1d1c848747a14336345573dc00fb&quot;,
+               &quot;agencia_paquete&quot;: { Recursivo
+               },
+               &quot;emisor&quot;: {
+                   &quot;id&quot;: 14,
+                   &quot;nombre&quot;: &quot;operador&quot;,
+                   &quot;apellido&quot;: &quot;Prueba&quot;,
+                   &quot;correo_electronico&quot;: &quot;o@m.com&quot;,
+                   &quot;fecha_ultimo_acceso&quot;: &quot;2014-09-26T21:29:39.060Z&quot;,
+                   &quot;tipo_usuario&quot;: {
+                       &quot;id&quot;: 2,
+                       &quot;nombre&quot;: &quot;Operador&quot;,
+                       &quot;abreviacion&quot;: &quot;O&quot;
+                   }
+               },
+               &quot;receptor&quot;: {
+                   &quot;id&quot;: 13,
+                   &quot;nombre&quot;: &quot;Administrador&quot;,
+                   &quot;apellido&quot;: &quot;Prueba&quot;,
+                   &quot;correo_electronico&quot;: &quot;a@m.com&quot;,
+                   &quot;fecha_ultimo_acceso&quot;: &quot;2014-09-27T00:18:14.693Z&quot;,
+                   &quot;tipo_usuario&quot;: {
+                       &quot;id&quot;: 1,
+                       &quot;nombre&quot;: &quot;Administrador&quot;,
+                       &quot;abreviacion&quot;: &quot;A&quot;
+                   }
+           },
+		&quot;agencia&quot;: {
+			&quot;id&quot;: 15,
+			&quot;nombre&quot;: &quot;Hermes CCS&quot;,
+			&quot;ubicacion&quot;: &quot;Caracas&quot;,
+			&quot;latitud&quot;: &quot;13554.1546&quot;,
+			&quot;longitud&quot;: &quot;5466487.425&quot;,
+			&quot;empresa&quot;: &quot;Hermes&quot;,
+	   	}
+	},
+	&quot;status&quot;: 200
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>identificador de la transaccion.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>la representacion de un mensaje: 200 en caso de haber encontrado la
+transaccion. 400 en caso de no haber encontrado la transaccion.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-12
-13
-14
-15
-16
-17
-18
-19</pre>
+142
+143
+144
+145
+146
+147
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/agencia_paquetes_controller.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/agencia_paquetes_controller.rb', line 142</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
 	<span class='kw'>begin</span>				
@@ -435,7 +820,7 @@
 </div>
 
     <div id="footer">
-  Generated on Mon Nov  3 04:56:05 2014 by
+  Generated on Tue Nov  4 02:00:41 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.1.2).
 </div>

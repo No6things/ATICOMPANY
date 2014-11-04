@@ -1,6 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
+* Ruby Version  = 2.1.2
+* Base de Datos = PostgreSQL
+* Servicios     = Autenticacion, Registro de Usuarios, Creacion y Edicion de Paquetes con Emisor y Receptor
+* Despliegue    = 
+                     1- Ubicarse a traves de terminal en la carpeta "Hermes"
+                     2- Usar un gemset de Ruby 2.1.2, p.e: "rvm use 2.1.2@ATICOMPANY"
+                     3- Habilitar el uso de las gemas necesarias tecleando el comando "bundle install"
+                     4- Levantar el servidor de Ruby a traves del comando "rails s"
+
+/*This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
@@ -25,4 +34,4 @@ Things you may want to cover:
 
 
 Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+<tt>rake doc:app</tt>./*

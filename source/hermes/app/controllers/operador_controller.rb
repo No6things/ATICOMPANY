@@ -1,7 +1,37 @@
 class OperadorController < ApplicationController
 before_filter :check_api_token
 
-	# Crear paquete dentro del sistema
+=begin
+
+@api Hermes 1.0
+
+@param agencia [Integer] identificador de la agencia.
+@param ancho [Float] ancho del paquete.
+@param alto [Float] altura del paquete.
+@param profundidad [Float] profundidad del paquete.
+@param peso [Float] peso del paquete.
+@param costo [Float] costo del paquete.
+@param emisor [String] correo electronico del emisor.
+@param receptor [String] correo electronico del receptor.
+@param descripcion [String] descripcion fisica del paquete.
+
+
+@return [Json] representacion en formato json del numero guia correspondiente al paquete creado o 400 en caso de error. 
+
+@note
+	POST '/operador/paquete/crear'
+@note 
+	Parametro 'api-token' requerido en cabecera HTTP
+
+@example Ejemplo de json en caso de retorno
+	{
+	    "err_mssg": "",
+	    "success_mssg": "OK",
+	    "data": { 
+                "numero_guia": 25,
+                }
+	}
+=end
 	def crear_paquete	
 		begin
 			prms = params.permit(
@@ -27,7 +57,7 @@ before_filter :check_api_token
 			end	
 
 			if e == r 
-				raise "No se permite que usuario receptor y emisor sean iguales"
+				raise "No se permite que usuario receptor y emisor sean la misma persona"
 			end
 
 			paquete = Paquete.create!(
@@ -65,6 +95,79 @@ before_filter :check_api_token
 		end
 	end
 
+
+=begin
+
+@api Hermes 1.0
+
+@param id [Integer] identificador del paquete.
+
+@return [Json] representacion en formato json del paquete modificado o 400 en caso de error. 
+
+@note
+	GET '/operador/paquete/ver'
+
+@note 
+	Parametro 'api-token' requerido en cabecera HTTP
+
+@example Ejemplo de json en caso de retorno
+	{
+	    "err_mssg": "",
+	    "success_mssg": "OK",
+	    "data": {
+		    "transaccion": { 
+		    		"id": 8,
+					"fecha_arribo": "2014-09-26T21:29:39.152Z",
+					"tipo_estado": "R",
+					"paquete": { 
+						"id": 17,
+		                "ancho": 2,
+		                "alto": 2,
+		                "peso": 4,
+		                "costo": 2.35,
+		                "profundidad": 3,
+		                "descripcion": "Test",
+		                "numero_guia": "57921cab6d7d1d1c848747a14336345573dc00fb",
+		                "agencia_paquete": { Recursivo
+		                },
+		                "emisor": {
+		                    "id": 14,
+		                    "nombre": "operador",
+		                    "apellido": "Prueba",
+		                    "correo_electronico": "o@m.com",
+		                    "fecha_ultimo_acceso": "2014-09-26T21:29:39.060Z",
+		                    "tipo_usuario": {
+		                        "id": 2,
+		                        "nombre": "Operador",
+		                        "abreviacion": "O"
+		                    }
+		                },
+		                "receptor": {
+		                    "id": 13,
+		                    "nombre": "Administrador",
+		                    "apellido": "Prueba",
+		                    "correo_electronico": "a@m.com",
+		                    "fecha_ultimo_acceso": "2014-09-27T00:18:14.693Z",
+		                    "tipo_usuario": {
+		                        "id": 1,
+		                        "nombre": "Administrador",
+		                        "abreviacion": "A"
+		                    }
+	                },
+					"agencia": {
+						"id": 15,
+						"nombre": "Hermes CCS",
+						"ubicacion": "Caracas",
+						"latitud": "13554.1546",
+						"longitud": "5466487.425",
+						"empresa": "Hermes",
+				   	}
+	                
+	        }
+		}	
+	}
+
+=end
 	def ver_paquete
 		begin
 			prms = params.permit(
@@ -89,7 +192,7 @@ before_filter :check_api_token
 				status: :ok
 
 		rescue Exception => e
-			msg= 'Lo sentimos pero ha ocurrido un problema con la creacion del paquete'
+			msg= 'Lo sentimos pero ha ocurrido un problema con la visualizacion del paquete'
 			render json: {
 					err_mssg: msg+" - Motivo: "+ e.message,
 					success_mssg: ""
@@ -98,6 +201,75 @@ before_filter :check_api_token
 		end
 	end
 
+=begin
+
+@api Hermes 1.0
+
+@param id [Integer] identificador del paquete.
+@param agencia [Integer] identificador de la agencia.
+
+@return [Json] representacion en formato json del paquete modificado o 400 en caso de error. 
+
+@note
+	POST '/operador/paquete/cambiar_estado'
+
+@note 
+	Parametro 'api-token' requerido en cabecera HTTP
+
+@example Ejemplo de json en caso de retorno
+	{
+	    "err_mssg": "",
+	    "success_mssg": "OK",
+	    "data": { 
+                "id": 17,
+                "ancho": 2,
+                "alto": 2,
+                "peso": 4,
+                "costo": 2.35,
+                "profundidad": 3,
+                "descripcion": "Test",
+                "numero_guia": "57921cab6d7d1d1c848747a14336345573dc00fb",
+                "agencia_paquete": {
+					"id": 8,
+					"fecha_arribo": "2014-09-26T21:29:39.152Z",
+					"tipo_estado": "R",
+					"paquete": { Recursivo },
+					"agencia": {
+						"id": 15,
+						"nombre": "Hermes CCS",
+						"ubicacion": "Caracas",
+						"latitud": "13554.1546",
+						"longitud": "5466487.425",
+						"empresa": "Hermes",
+					}
+                },
+                "emisor": {
+                    "id": 14,
+                    "nombre": "operador",
+                    "apellido": "Prueba",
+                    "correo_electronico": "o@m.com",
+                    "fecha_ultimo_acceso": "2014-09-26T21:29:39.060Z",
+                    "tipo_usuario": {
+                        "id": 2,
+                        "nombre": "Operador",
+                        "abreviacion": "O"
+                    }
+                },
+                "receptor": {
+                    "id": 13,
+                    "nombre": "Administrador",
+                    "apellido": "Prueba",
+                    "correo_electronico": "a@m.com",
+                    "fecha_ultimo_acceso": "2014-09-27T00:18:14.693Z",
+                    "tipo_usuario": {
+                        "id": 1,
+                        "nombre": "Administrador",
+                        "abreviacion": "A"
+                    }
+                }
+	    }
+	}
+=end
 	def cambiar_estado_paquete
 		begin
 			prms = params.permit(
@@ -123,7 +295,7 @@ before_filter :check_api_token
 
 				render json: {
 						err_mssg: "",
-						success_mssg: "Cambio de esto satisfactorio a: #{pq.tipo_estado.nombre}",
+						success_mssg: "Cambio de estado satisfactorio a: #{pq.tipo_estado.nombre}",
 						data: pq.as_json
 					},
 					status: :ok
@@ -132,7 +304,7 @@ before_filter :check_api_token
 			end
 					
 		rescue Exception => e
-			msg= 'Lo sentimos pero ha ocurrido un problema con la creacion del paquete'
+			msg= 'Lo sentimos pero ha ocurrido un problema con la modificacion del paquete'
 			render json: {
 					err_mssg: msg+" - Motivo: "+ e.message,
 					success_mssg: ""
@@ -141,6 +313,131 @@ before_filter :check_api_token
 		end
 	end
 
+
+=begin
+
+@api Hermes 1.0
+
+@param numero_guia [Integer] numero guia del paquete.
+@param email [String] correo electronico del usuario que ha enviado o recibido el paquete a listar.
+
+@return [Json] representacion en formato json de los paquetes encontrados.
+
+@note
+	GET '/operador/paquete/buscar'
+
+@note 
+	Parametro 'api-token' requerido en cabecera HTTP
+
+@example Ejemplo de json en caso de retorno
+	{
+	    "err_mssg": "",
+	    "success_mssg": "OK",
+	    "data": {
+	        "como_emisor": [
+	            {
+	                "id": 15,
+	                "ancho": 5,
+	                "alto": 5,
+	                "peso": 0.15,
+	                "costo": 24.5,
+	                "profundidad": 10,
+	                "descripcion": "Teclado",
+	                "numero_guia": "1acae99bed11b1424527f4c930907fc498273739",
+	                "agencia_paquete": {
+						"id": 8,
+						"fecha_arribo": "2014-09-26T21:29:39.152Z",
+						"tipo_estado": "R",
+						"paquete": { Recursivo },
+						"agencia": {
+							"id": 15,
+							"nombre": "Hermes CCS",
+							"ubicacion": "Caracas",
+							"latitud": "13554.1546",
+							"longitud": "5466487.425",
+							"empresa": "Hermes",
+						}
+                	},
+	                "emisor": {
+	                    "id": 13,
+	                    "nombre": "Administrador",
+	                    "apellido": "Prueba",
+	                    "correo_electronico": "a@m.com",
+	                    "fecha_ultimo_acceso": "2014-09-27T00:18:14.693Z",
+	                    "tipo_usuario": {
+	                        "id": 1,
+	                        "nombre": "Administrador",
+	                        "abreviacion": "A"
+	                    }
+	                },
+	                "receptor": {
+	                    "id": 12,
+	                    "nombre": "cliente",
+	                    "apellido": "prueba",
+	                    "correo_electronico": "c@m.com",
+	                    "fecha_ultimo_acceso": "2014-09-26T22:41:43.804Z",
+	                    "tipo_usuario": {
+	                        "id": 3,
+	                        "nombre": "Usuario Afiliado",
+	                        "abreviacion": "UA"
+	                    }
+	                }
+	            },            
+	        ],
+	        "como_receptor": [
+	            {
+	                "id": 17,
+	                "ancho": 2,
+	                "alto": 2,
+	                "peso": 4,
+	                "costo": 2.35,
+	                "profundidad": 3,
+	                "descripcion": "Test",
+	                "numero_guia": "57921cab6d7d1d1c848747a14336345573dc00fb",
+	                "agencia_paquete": {
+						"id": 8,
+						"fecha_arribo": "2014-09-26T21:29:39.152Z",
+						"tipo_estado": "R",
+						"paquete": { Recursivo },
+						"agencia": {
+							"id": 15,
+							"nombre": "Hermes CCS",
+							"ubicacion": "Caracas",
+							"latitud": "13554.1546",
+							"longitud": "5466487.425",
+							"empresa": "Hermes",
+						}
+	                },
+	                "emisor": {
+	                    "id": 14,
+	                    "nombre": "operador",
+	                    "apellido": "Prueba",
+	                    "correo_electronico": "o@m.com",
+	                    "fecha_ultimo_acceso": "2014-09-26T21:29:39.060Z",
+	                    "tipo_usuario": {
+	                        "id": 2,
+	                        "nombre": "Operador",
+	                        "abreviacion": "O"
+	                    }
+	                },
+	                "receptor": {
+	                    "id": 13,
+	                    "nombre": "Administrador",
+	                    "apellido": "Prueba",
+	                    "correo_electronico": "a@m.com",
+	                    "fecha_ultimo_acceso": "2014-09-27T00:18:14.693Z",
+	                    "tipo_usuario": {
+	                        "id": 1,
+	                        "nombre": "Administrador",
+	                        "abreviacion": "A"
+	                    }
+	                }
+	            }
+	        ]
+	    }
+	}
+
+=end
 	def buscar_paquete
 		begin
 			prms = params.permit(
@@ -194,6 +491,17 @@ before_filter :check_api_token
 		end
 	end
 
+
+=begin
+
+@api Hermes 1.0
+
+@note
+	Este metodo es un filtro.
+
+@return [Json] la representacion de un mensaje 403 en  caso de acceso no autorizado o no contener el parametro 'api-token' en la cabecera.
+
+=end
 	def check_api_token		
 		begin
 			if request.headers.key?("api-token")

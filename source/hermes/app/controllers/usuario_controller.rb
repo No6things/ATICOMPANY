@@ -5,12 +5,12 @@ before_filter :check_api_token
 
 @api Hermes 1.0
 
-@param email [String] correo electronico del usuario que ha 
-	enviado o recibido el paquete a listar
+@param email [String] correo electronico del usuario que ha enviado o recibido el paquete a listar.
 
-@return [Json] representacion en formato json de los paquetes 
-	encontrados
+@return [Json] representacion en formato json de los paquetes encontrados.
 
+@note 
+	GET '/usuario/paquete/listar'
 @note 
 	Parametro 'api-token' requerido en cabecera HTTP
 
@@ -158,10 +158,12 @@ before_filter :check_api_token
 
 @api Hermes 1.0
 
-@param numero_guia [String] numero de guia perteneciente al paquete 
-	enviado o recibido.
+@param numero_guia [Integer] numero de guia perteneciente al paquete  de una transaccion.
 
-@return [Json] representacion en formato json del paquete encontrado.
+@return [Json] representacion en formato json del paquete encontrado por numero de guia.
+
+@note 
+	GET '/usuario/paquete/buscar'
 
 @note 
 	Parametro 'api-token' requerido en cabecera HTTP.
@@ -254,9 +256,12 @@ before_filter :check_api_token
 
 @api Hermes 1.0
 
-@param 'id' [String] id del paquete que desea ver.
+@param id [Integer] identificador del paquete que desea ver.
 
-@return [Json] representacion en formato json del paquete encontrado.
+@return [Json] representacion en formato json del paquete encontrado por id.
+
+@note
+	GET '/usuario/paquete/ver'
 
 @note 
 	Parametro 'api-token' requerido en cabecera HTTP.
@@ -266,7 +271,7 @@ before_filter :check_api_token
 	    "err_mssg": "",
 	    "success_mssg": "OK",
 	    "data": {
-		    "trensaccion": { 
+		    "transaccion": { 
 		    		"id": 8,
 					"fecha_arribo": "2014-09-26T21:29:39.152Z",
 					"tipo_estado": "R",
@@ -306,7 +311,7 @@ before_filter :check_api_token
 		                    }
 	                },
 					"agencia": {
-					"id": 15,
+						"id": 15,
 						"nombre": "Hermes CCS",
 						"ubicacion": "Caracas",
 						"latitud": "13554.1546",
@@ -357,6 +362,9 @@ before_filter :check_api_token
 @api Hermes 1.0
 
 @return [Json] la representacion de un mensaje 403 en  caso de acceso no autorizado o no contener el parametro 'api-token' en la cabecera.
+
+@note
+	Este metodo es un filtro.
 
 =end
 	def check_api_token		

@@ -121,7 +121,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#api_token-instance_method" title="#api_token (instance method)">- (Object) <strong>api_token</strong> </a>
+      <a href="#api_token-instance_method" title="#api_token (instance method)">- (Json) <strong>api_token</strong> </a>
     
 
     
@@ -136,7 +136,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Obtener un token para la utilizaci;n del webapi.</p>
+<p>Representacion del nuevo token asociado al usuario.</p>
 </div></span>
   
 </li>
@@ -145,7 +145,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#calcular-instance_method" title="#calcular (instance method)">- (Object) <strong>calcular</strong> </a>
+      <a href="#calcular-instance_method" title="#calcular (instance method)">- (Json) <strong>calcular</strong> </a>
     
 
     
@@ -160,8 +160,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Calcular costo de envio de un paquete basado en la informacion de tarifas
-de una compa;ia.</p>
+<p>Representacion del precio calculado a pagar por el envio del paquete.</p>
 </div></span>
   
 </li>
@@ -170,29 +169,7 @@ de una compa;ia.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#entrar-instance_method" title="#entrar (instance method)">- (Object) <strong>entrar</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#info-instance_method" title="#info (instance method)">- (Object) <strong>info</strong> </a>
+      <a href="#entrar-instance_method" title="#entrar (instance method)">- (Json) <strong>entrar</strong> </a>
     
 
     
@@ -207,7 +184,7 @@ de una compa;ia.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Mostrar informacion de la compa;ia.</p>
+<p>Representacion de un mensaje indicado una autenticacion exitosa.</p>
 </div></span>
   
 </li>
@@ -216,29 +193,7 @@ de una compa;ia.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#recuperar_clave-instance_method" title="#recuperar_clave (instance method)">- (Object) <strong>recuperar_clave</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#registrar-instance_method" title="#registrar (instance method)">- (Object) <strong>registrar</strong> </a>
+      <a href="#info-instance_method" title="#info (instance method)">- (Json) <strong>info</strong> </a>
     
 
     
@@ -253,7 +208,7 @@ de una compa;ia.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Registrar un usuario en la compa;ia.</p>
+<p>Representacion de la informacion correspondiente a la empresa.</p>
 </div></span>
   
 </li>
@@ -262,7 +217,7 @@ de una compa;ia.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#salir-instance_method" title="#salir (instance method)">- (Object) <strong>salir</strong> </a>
+      <a href="#registrar-instance_method" title="#registrar (instance method)">- (Json) <strong>registrar</strong> </a>
     
 
     
@@ -276,7 +231,33 @@ de una compa;ia.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Representacion de un mensaje con la bienvenida al usuario creado.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#salir-instance_method" title="#salir (instance method)">- (Json) <strong>salir</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Representacion de un mensaje indicado el cierre de la sesion.</p>
+</div></span>
   
 </li>
 
@@ -300,7 +281,7 @@ de una compa;ia.</p>
       <div class="method_details first">
   <h3 class="signature first" id="api_token-instance_method">
   
-    - (<tt>Object</tt>) <strong>api_token</strong> 
+    - (<tt>Json</tt>) <strong>api_token</strong> 
   
 
   
@@ -309,13 +290,92 @@ de una compa;ia.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Obtener un token para la utilizaci;n del webapi</p>
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>GET &#39;/token&#39;</p>
+</div>
+  </div>
+
+
+<p>Returns representacion del nuevo token asociado al usuario. 400 en caso de
+no contener los parametros necesitados. 403 en caso error en la
+autenticacion.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>{
+	&quot;err_mssg&quot;: &quot;&quot;, 
+	&quot;success_msg&quot;: &quot;OK&quot;,
+	&quot;data&quot;: {
+		&quot;api_token&quot;: &quot;a54dae6rx3qe344587e&quot;
+	}
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>login</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>correo electronico del usuario.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>passwd</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>contraseña del usuario.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>representacion del nuevo token asociado al usuario. 400 en caso de no
+contener los parametros necesitados. 403 en caso error en la autenticacion.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -323,49 +383,49 @@ de una compa;ia.</p>
       <pre class="lines">
 
 
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101</pre>
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_api_token'>api_token</span>
 	<span class='kw'>begin</span>
@@ -415,7 +475,7 @@ de una compa;ia.</p>
       <div class="method_details ">
   <h3 class="signature " id="calcular-instance_method">
   
-    - (<tt>Object</tt>) <strong>calcular</strong> 
+    - (<tt>Json</tt>) <strong>calcular</strong> 
   
 
   
@@ -424,14 +484,164 @@ de una compa;ia.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Calcular costo de envio de un paquete basado en la informacion de tarifas
-de una compa;ia</p>
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>GET &#39;/calcular&#39;</p>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Parametro &#39;enterprise-token&#39; requerido en cabecera HTTP.</p>
+</div>
+  </div>
+
+
+<p>Returns representacion del precio calculado a pagar por el envio del
+paquete. 400 en caso de no contener el parametro &#39;enterprise-token&#39;
+en la cabecera.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>{
+	&quot;err_mssg&quot;: &quot;&quot;, 
+	&quot;success_msg&quot;: &quot;Datos de la compañia&quot;,
+	&quot;data&quot;: {
+		&quot;r&quot;: 152
+	}
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>agencia</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>identificador de la agencia.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ancho</span>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ancho del paquete.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>alto</span>
+      
+      
+        <span class='type'>(<tt>FLoat</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>altura del paquete.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>profundidad</span>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>profundidad del paquete.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>peso</span>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>peso del paquete.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>valor</span>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>costo del paquete.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>representacion del precio calculado a pagar por el envio del paquete. 400
+en caso de no contener el parametro &#39;enterprise-token&#39; en la
+cabecera.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -439,41 +649,41 @@ de una compa;ia</p>
       <pre class="lines">
 
 
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196</pre>
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 272</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_calcular'>calcular</span>
 	<span class='kw'>begin</span>			
@@ -515,38 +725,106 @@ de una compa;ia</p>
       <div class="method_details ">
   <h3 class="signature " id="entrar-instance_method">
   
-    - (<tt>Object</tt>) <strong>entrar</strong> 
+    - (<tt>Json</tt>) <strong>entrar</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>POST &#39;/login&#39;</p>
+</div>
+  </div>
+
+
+<p>Returns representacion de un mensaje indicado una autenticacion exitosa.
+400 en caso de no contener los parametros necesitados. 403 en caso error en
+la autenticacion.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>{
+	&quot;err_mssg&quot;: &quot;&quot;, 
+	&quot;success_msg&quot;: &quot;OK&quot;,
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>login</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>correo electronico del usuario.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>passwd</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>contraseña del usuario.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>representacion de un mensaje indicado una autenticacion exitosa. 400 en
+caso de no contener los parametros necesitados. 403 en caso error en la
+autenticacion.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
 23
 24
 25
@@ -564,10 +842,30 @@ de una compa;ia</p>
 37
 38
 39
-40</pre>
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_entrar'>entrar</span>
 	<span class='kw'>begin</span>
@@ -615,7 +913,7 @@ de una compa;ia</p>
       <div class="method_details ">
   <h3 class="signature " id="info-instance_method">
   
-    - (<tt>Object</tt>) <strong>info</strong> 
+    - (<tt>Json</tt>) <strong>info</strong> 
   
 
   
@@ -624,13 +922,67 @@ de una compa;ia</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Mostrar informacion de la compa;ia</p>
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>GET &#39;/info&#39;</p>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Parametro &#39;enterprise-token&#39; requerido en cabecera HTTP.</p>
+</div>
+  </div>
+
+
+<p>Returns representacion de la informacion correspondiente a la empresa. 400
+en caso de no contener el parametro &#39;enterprise-token&#39; en la
+cabecera.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>{
+	&quot;err_mssg&quot;: &quot;&quot;, 
+	&quot;success_msg&quot;: &quot;Datos de la compañia&quot;,
+	&quot;data&quot;: {
+		&quot;Nombre&quot;: &quot;Hermes&quot;,
+		&quot;RIF&quot;: &quot;J-215675&quot;,
+		&quot;Frase Comercial&quot;: &quot;The courier of gods&quot;,
+		&quot;Constante de Ganancia&quot;: 0.15,
+		&quot;Porcentaje de Ganancia&quot;: 0.10
+	}
+}</code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>representacion de la informacion correspondiente a la empresa. 400 en caso
+de no contener el parametro &#39;enterprise-token&#39; en la cabecera.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -638,35 +990,35 @@ de una compa;ia</p>
       <pre class="lines">
 
 
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224</pre>
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 328</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_info'>info</span>
 	<span class='kw'>begin</span>			
@@ -700,37 +1052,9 @@ de una compa;ia</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="recuperar_clave-instance_method">
-  
-    - (<tt>Object</tt>) <strong>recuperar_clave</strong> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-226
-227</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 226</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_recuperar_clave'>recuperar_clave</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="registrar-instance_method">
   
-    - (<tt>Object</tt>) <strong>registrar</strong> 
+    - (<tt>Json</tt>) <strong>registrar</strong> 
   
 
   
@@ -739,13 +1063,152 @@ de una compa;ia</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Registrar un usuario en la compa;ia</p>
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>POST &#39;/registrar&#39;</p>
+</div>
+  </div>
+
+
+<p>Returns representacion de un mensaje con la bienvenida al usuario creado.
+400 en caso de no contener los parametros necesitados.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>{
+	&quot;err_mssg&quot;: &quot;&quot;, 
+	&quot;success_msg&quot;: &quot;Bienvenid@ a Hermes Leandro, para acceder a tu perfil inicia sesión empleando tu email y contraseña&quot;
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>email</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>correo electronico del usuario.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>fname</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>primer nombre del usuario.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>lname</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>apellido del usuario.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>passwd</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>contraseña del usuario.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>pregunta</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>pregunta secreta.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>respuesta</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>respuesta secreta.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>representacion de un mensaje con la bienvenida al usuario creado. 400 en
+caso de no contener los parametros necesitados.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -753,67 +1216,67 @@ de una compa;ia</p>
       <pre class="lines">
 
 
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161</pre>
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 186</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_registrar'>registrar</span>
 	<span class='kw'>begin</span>
@@ -881,39 +1344,96 @@ de una compa;ia</p>
       <div class="method_details ">
   <h3 class="signature " id="salir-instance_method">
   
-    - (<tt>Object</tt>) <strong>salir</strong> 
+    - (<tt>Json</tt>) <strong>salir</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Debe haber un sesion asociada a la peticion.</p>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>DELETE &#39;/logout&#39;</p>
+</div>
+  </div>
+
+
+<p>Returns representacion de un mensaje indicado el cierre de la sesion. 401
+en caso de no existir una sesion.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>{
+	&quot;err_mssg&quot;: &quot;&quot;, 
+	&quot;success_msg&quot;: &quot;Sesion cerrada exitosamente&quot;
+}</code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Json</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>representacion de un mensaje indicado el cierre de la sesion. 401 en caso
+de no existir una sesion.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59</pre>
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/general_controller.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_salir'>salir</span>
 	<span class='kw'>begin</span>			
@@ -930,7 +1450,7 @@ de una compa;ia</p>
 		<span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span>
 			<span class='label'>err_mssg:</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='comma'>,</span>
 			<span class='label'>success_msg:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
-			<span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:bad_request</span>
+			<span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:unauthorized</span>
 	<span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -943,7 +1463,7 @@ de una compa;ia</p>
 </div>
 
     <div id="footer">
-  Generated on Mon Nov  3 04:56:05 2014 by
+  Generated on Tue Nov  4 02:00:41 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.1.2).
 </div>

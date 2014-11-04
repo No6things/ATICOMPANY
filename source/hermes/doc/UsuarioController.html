@@ -136,7 +136,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Representacion en formato json del paquete encontrado.</p>
+<p>Representacion en formato json del paquete encontrado por numero de guia.</p>
 </div></span>
   
 </li>
@@ -185,7 +185,7 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Representacion en formato json de los paquetes  encontrados.</p>
+<p>Representacion en formato json de los paquetes encontrados.</p>
 </div></span>
   
 </li>
@@ -209,7 +209,7 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Representacion en formato json del paquete encontrado.</p>
+<p>Representacion en formato json del paquete encontrado por id.</p>
 </div></span>
   
 </li>
@@ -246,12 +246,20 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
   <div class="note notetag">
     <strong>Note:</strong>
     <div class='inline'>
+<p>GET &#39;/usuario/paquete/buscar&#39;</p>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
 <p>Parametro &#39;api-token&#39; requerido en cabecera HTTP.</p>
 </div>
   </div>
 
 
-<p>Returns representacion en formato json del paquete encontrado.</p>
+<p>Returns representacion en formato json del paquete encontrado por numero de
+guia.</p>
 
 
   </div>
@@ -328,13 +336,13 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
         <span class='name'>numero_guia</span>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt>Integer</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'>
-<p>numero de guia perteneciente al paquete  enviado o recibido.</p>
+<p>numero de guia perteneciente al paquete  de una transaccion.</p>
 </div>
       
     </li>
@@ -353,7 +361,7 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
       
         &mdash;
         <div class='inline'>
-<p>representacion en formato json del paquete encontrado.</p>
+<p>representacion en formato json del paquete encontrado por numero de guia.</p>
 </div>
       
     </li>
@@ -366,8 +374,6 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
       <pre class="lines">
 
 
-224
-225
 226
 227
 228
@@ -392,10 +398,12 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
 247
 248
 249
-250</pre>
+250
+251
+252</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 224</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 226</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_buscar_paquete'>buscar_paquete</span>
 	<span class='kw'>begin</span>
@@ -441,6 +449,14 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Este metodo es un filtro.</p>
+</div>
+  </div>
+
+
 <p>Returns la representacion de un mensaje 403 en  caso de acceso no
 autorizado o no contener el parametro &#39;api-token&#39; en la cabecera.</p>
 
@@ -475,14 +491,6 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
       <pre class="lines">
 
 
-362
-363
-364
-365
-366
-367
-368
-369
 370
 371
 372
@@ -497,10 +505,18 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
 381
 382
 383
-384</pre>
+384
+385
+386
+387
+388
+389
+390
+391
+392</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 362</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 370</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_api_token'>check_api_token</span>		
 	<span class='kw'>begin</span>
@@ -545,12 +561,19 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
   <div class="note notetag">
     <strong>Note:</strong>
     <div class='inline'>
+<p>GET &#39;/usuario/paquete/listar&#39;</p>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
 <p>Parametro &#39;api-token&#39; requerido en cabecera HTTP</p>
 </div>
   </div>
 
 
-<p>Returns representacion en formato json de los paquetes  encontrados</p>
+<p>Returns representacion en formato json de los paquetes encontrados.</p>
 
 
   </div>
@@ -687,8 +710,8 @@ contener el parametro &#39;api-token&#39; en la cabecera.</p>
       
         &mdash;
         <div class='inline'>
-<p>correo electronico del usuario que ha  enviado o recibido el paquete a
-listar</p>
+<p>correo electronico del usuario que ha enviado o recibido el paquete a
+listar.</p>
 </div>
       
     </li>
@@ -707,7 +730,7 @@ listar</p>
       
         &mdash;
         <div class='inline'>
-<p>representacion en formato json de los paquetes  encontrados</p>
+<p>representacion en formato json de los paquetes encontrados.</p>
 </div>
       
     </li>
@@ -804,12 +827,19 @@ listar</p>
   <div class="note notetag">
     <strong>Note:</strong>
     <div class='inline'>
+<p>GET &#39;/usuario/paquete/ver&#39;</p>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
 <p>Parametro &#39;api-token&#39; requerido en cabecera HTTP.</p>
 </div>
   </div>
 
 
-<p>Returns representacion en formato json del paquete encontrado.</p>
+<p>Returns representacion en formato json del paquete encontrado por id.</p>
 
 
   </div>
@@ -828,7 +858,7 @@ listar</p>
     &quot;err_mssg&quot;: &quot;&quot;,
     &quot;success_mssg&quot;: &quot;OK&quot;,
     &quot;data&quot;: {
-	    &quot;trensaccion&quot;: { 
+	    &quot;transaccion&quot;: { 
 	    		&quot;id&quot;: 8,
 				&quot;fecha_arribo&quot;: &quot;2014-09-26T21:29:39.152Z&quot;,
 				&quot;tipo_estado&quot;: &quot;R&quot;,
@@ -868,7 +898,7 @@ listar</p>
 	                    }
                 },
 				&quot;agencia&quot;: {
-				&quot;id&quot;: 15,
+					&quot;id&quot;: 15,
 					&quot;nombre&quot;: &quot;Hermes CCS&quot;,
 					&quot;ubicacion&quot;: &quot;Caracas&quot;,
 					&quot;latitud&quot;: &quot;13554.1546&quot;,
@@ -889,13 +919,13 @@ listar</p>
         <span class='name'>id</span>
       
       
-        <span class='type'>(<tt>'id'String</tt>)</span>
+        <span class='type'>(<tt>Integer</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'>
-<p>del paquete que desea ver.</p>
+<p>identificador del paquete que desea ver.</p>
 </div>
       
     </li>
@@ -914,7 +944,7 @@ listar</p>
       
         &mdash;
         <div class='inline'>
-<p>representacion en formato json del paquete encontrado.</p>
+<p>representacion en formato json del paquete encontrado por id.</p>
 </div>
       
     </li>
@@ -927,11 +957,6 @@ listar</p>
       <pre class="lines">
 
 
-322
-323
-324
-325
-326
 327
 328
 329
@@ -958,10 +983,15 @@ listar</p>
 350
 351
 352
-353</pre>
+353
+354
+355
+356
+357
+358</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 322</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/usuario_controller.rb', line 327</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ver_paquete'>ver_paquete</span>
 	<span class='kw'>begin</span>
@@ -1005,7 +1035,7 @@ listar</p>
 </div>
 
     <div id="footer">
-  Generated on Mon Nov  3 04:56:05 2014 by
+  Generated on Tue Nov  4 02:00:41 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.1.2).
 </div>

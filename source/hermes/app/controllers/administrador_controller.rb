@@ -1,7 +1,26 @@
 class AdministradorController < ApplicationController
 before_filter :check_api_token
 
-	# Actualizar informacion de tarifas de envio de paquetes
+
+=begin
+
+@api Hermes 1.0
+
+@param constante_tarifa [Float] constante usada para el calculo de tarifas de la empresa.
+
+@param porcentaje_tarifa [Float] porcentaje usado para el calculo de tarifas de la empresa.
+
+@return [Json] la representacion de un mensaje 400 en caso de no contener el parametro 'enterprise-token' en la cabecera.
+
+@note
+	POST '/administrador/tarifas/actualizar'
+@note 
+	Parametro 'enterprise-token' requerido en cabecera HTTP.
+	Parametro 'api-token' requerido en cabecera HTTP.
+@note
+	El calculo de tarifas corresponde a la formula:  ((cm de ancho)*(cm	de alto)*(cm de	profundo)*(kilos)/Constante)+K%(valor en Bs.F)
+
+=end
 	def actualizar_tarifas
 		begin
 			if request.headers.key?("enterprise-token")
@@ -49,7 +68,14 @@ before_filter :check_api_token
 		
 		end
 	end
+=begin
 
+@api Hermes 1.0
+@note
+	Este metodo es un filtro.
+@return [Json] la representacion de un mensaje 403 en  caso de acceso no autorizado o no contener el parametro 'api-token' en la cabecera.
+
+=end	
 	def check_api_token		
 		begin
 			if request.headers.key?("api-token")
