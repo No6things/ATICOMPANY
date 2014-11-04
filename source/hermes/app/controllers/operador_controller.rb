@@ -84,14 +84,21 @@ before_filter :check_api_token
 					data: { :numero_guia => paquete.numero_guia }
 	 			},
 				status: :created		
-		
+		rescue ActionController::ParameterMissing
+			
+			render json: {
+				err_mssg: "Faltan parametros", 
+				success_mssg: "",
+				data: { "parametros"=> ["alto", "ancho", "profundida", "peso", "descripcion", "costo", "emisor", "receptor", "agencia"]}
+				}, status: :bad_request
+
 		rescue Exception => e
 			msg= 'Lo sentimos pero ha ocurrido un problema con la creacion del paquete'
 			render json: {
 					err_mssg: msg+" - Motivo: "+ e.message,
 					success_mssg: ""
 				},
-				status: :bad_request
+				status: :404
 		end
 	end
 
@@ -190,6 +197,13 @@ before_filter :check_api_token
 					data: {:transaccion => stt.as_json}
 				},
 				status: :ok
+		rescue ActionController::ParameterMissing
+			
+			render json: {
+				err_mssg: "Faltan parametros", 
+				success_mssg: "",
+				data: { "parametros"=> ["id"]}
+				}, status: :bad_request
 
 		rescue Exception => e
 			msg= 'Lo sentimos pero ha ocurrido un problema con la visualizacion del paquete'
@@ -197,7 +211,7 @@ before_filter :check_api_token
 					err_mssg: msg+" - Motivo: "+ e.message,
 					success_mssg: ""
 				},
-				status: :bad_request
+				status: :404
 		end
 	end
 
@@ -302,14 +316,21 @@ before_filter :check_api_token
 			else
 				raise "Este paquete no puede cambiar de estado ya que ha sido entregado y no esta bajo el control del sistema"
 			end
-					
+		rescue ActionController::ParameterMissing
+			
+			render json: {
+				err_mssg: "Faltan parametros", 
+				success_mssg: "",
+				data: { "parametros"=> ["id", "agencia"]}
+				}, status: :bad_request
+
 		rescue Exception => e
 			msg= 'Lo sentimos pero ha ocurrido un problema con la modificacion del paquete'
 			render json: {
 					err_mssg: msg+" - Motivo: "+ e.message,
 					success_mssg: ""
 				},
-				status: :bad_request
+				status: :404
 		end
 	end
 
@@ -482,12 +503,21 @@ before_filter :check_api_token
 					data: data
 				},
 				status: :ok
+
+		rescue ActionController::ParameterMissing
+			
+			render json: {
+				err_mssg: "Faltan parametros", 
+				success_mssg: "",
+				data: { "parametros"=> ["numero_guia", "email"]}
+				}, status: :bad_request
+
 		rescue Exception => e
 			render json: {
 				err_mssg: "Error durante la busqueda debido a : "+e.message,
 				success_mssg: ""
 			},
-			status: :bad_request
+			status: :404
 		end
 	end
 

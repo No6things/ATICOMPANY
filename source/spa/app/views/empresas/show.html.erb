@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html class="no-js Newslab" lang="es-VE">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="enterprise_token" content="1">
+	<%= csrf_meta_tag %>
+	
+	<title>Admin</title>
+	
+	<link rel="stylesheet" href="/assets/normalize.css">
+	<link rel="stylesheet" href="/assets/foundation.min.css" />
+	<link rel="stylesheet" href="/assets/font-config.css">		
+	<link rel="stylesheet" href="/assets/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/general.css" />		
+	</head>
+
+	<body class="colored-body">
+	<div class="row">
+		<div class="large-12">
+			<nav class="top-bar" data-topbar role="navigation"> 
+				
+				<ul class="title-area"> 
+					<li class="name">
+            			<h1><a href=""><i class="fa fa-university fa-fw"></i>
+            				Hermes&nbsp;>&nbsp;Panel Administrativo</a></h1>
+        			</li>
+
+					<li class="toggle-topbar menu-icon">
+						<a href="#"><span>Menu</span></a>
+					</li> 
+				</ul> 
+				
+				<section class="top-bar-section"> 
+					<ul class="right"> 
+
+					<li>
+						<%if @usuario %>
+							<a href="#" class="alert button">Bienvenido, <%= @usuario.nombre.capitalize+" "+@usuario.apellido.capitalize %></a>
+						<%else%>
+							<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
+						<%end-%>
+
+					</li> 
+					<li class="has-dropdown"> 
+						<a href="#"><i class="fa fa-plus fa-lg"></i></a> 
+						<ul class="dropdown">
+							<%if !@usuario %>
+							<li>
+								<a class="alert button" href="#" data-reveal-id="modal_registrar_usuario">
+									
+									Registrarse
+									&nbsp;
+									<i class="fa fa-pencil-square-o fa-lg"></i>
+								</a>
+							</li>
+							<% end %>
+							<li>
+								<a class="alert button" href="#" data-reveal-id="modal_calculadora">
+									Calculadora de Tar&iacute;fas
+									&nbsp;
+									<i class="fa fa-usd fa-lg"></i>					
+								</a>
+							</li>							
+							<%if @usuario %>
+
+							<%if @usuario.tipo_usuario.abreviacion == "A"%>
+							<li>
+								<a class="alert button" href="/empresas/1">
+									Administraci&oacute;n
+									&nbsp;
+									<i class="fa fa-cog fa-lg"></i>		
+								</a>
+							</li>
+							<li>
+								<a class="alert button" href="/">
+									Inicio
+									&nbsp;
+									<i class="fa fa-home fa-lg"></i>		
+								</a>
+							</li>
+							<%end%>
+							
+							<li>
+								<a class="alert button" href="#" data-reveal-id="modal_paquete">
+									Enviar paquete
+									&nbsp;
+									<i class="fa fa-send-o fa-lg"></i>					
+								</a>
+							</li>
+							<li>
+								<a class="alert button" href="/logout">
+									Cerrar Sesi&oacute;n
+									&nbsp;
+									<i class="fa fa-sign-out fa-lg"></i>		
+								</a>
+							</li>
+							<% end %>
+						</ul> 
+					</li> 
+					</ul> 
+					<ul class="left"> 
+					<li><a  href="#" data-reveal-id="modal_quienes_somos">
+							<i class="fa fa-question fa-lg backward-icon"></i>
+							&nbsp;Qui&eacute;nes somos&nbsp;
+							<i class="fa fa-question fa-lg" ></i>							
+						</a>
+					</li> 
+					</ul>
+				</section> 
+			</nav>
+		</div>	
+	</div>
+	
+    <div class="row extra-padding-row">
+      <div class="large-12 columns">
+      	<div class="centered-image">
+      		<%= image_tag "hermes-logo.png" %>
+      	</div>        
+      </div>
+    </div>
+    <div class="row">
+    	<div class="large-12 columns slogan-container">
+    		<h4 class="slogan-frace">
+				<i class="fa fa-quote-left"></i>
+				&nbsp;
+    			El servicio de entrega de los dioses
+    			&nbsp;
+    			<i class="fa fa-quote-right"></i>
+    		</h4>
+    	</div>    	
+    </div>
+
+	
+
+	<div class="row content-container fixture-margintop">	
+		<div class="row">
+			<div class="large-12 small-12 slogan-container slogan-u columns">
+				<h4 class="slogan-frace">
+					Panel Administrativo
+				</h4>
+			</div>
+		</div>	
+
+		<div class="row fixture-margintop">
+			<div class="small-5 large-5 columns cool-corner-container">
+			<p class="slogan-frace">Parametros de Sistema</p>
+			<form class="empresa_setting_form" action="" method="post">
+			<div class="large-4 small-4 large-offset-4">
+				<label for="constante_tarifa" class="slogan-frace">Constante K</label>
+				<input 
+				name="constante_tarifa"
+				type="number" min="1" step="0.01"
+				value=<%= @empresa.constante_tarifa%>
+				required/>
+
+				<label 
+				for="porcentaje_tarifa" class="slogan-frace">Porcentaje</label>
+				<input 
+				name="porcentaje_tarifa" 
+				type="number" min="1" step="0.01"
+				value=<%= @empresa.porcentaje_tarifa%>
+				required/>
+				<button class="tiny alert button" type="submit">Guardar</button>
+			</div>
+			</form>
+			</div>
+
+			<div class="small-5 large-5 large-offset-1 small-offset-1 columns slogan-frace cool-corner-container">
+			<p class="slogan-frace">Informaci&oacute;n de la Empresa</p>
+			<p><b>Nombre:</b>&nbsp;&nbsp;<%= @empresa.nombre%></p>
+			<p><b>Frase Comercial:</b>&nbsp;&nbsp;<p>"<%= @empresa.frase_comercial%>"</p>
+			<p><b>RIF:</b>&nbsp;&nbsp;<%= @empresa.rif%></p>			
+			</div>
+		</div>
+<!--
+	TODO Usuario - Agencia CRUD
+		<div class="row fixture-margintop">				
+			<p class="slogan-frace">Agencias</p>
+			<table class="large-12 small-12 columns">
+				<thead>
+					<th class="ui-helper-center">Nombre</th>
+					<th class="ui-helper-center">Ubicacion</th>
+					<th class="ui-helper-center">Opciones</th>
+				</thead>
+				<tbody>
+					<#@agencias.each do |a|%>
+						<tr>
+							<td class="ui-helper-center"><#=a.nombre%></td>
+							<td class="ui-helper-center"><#=a.ubicacion%></td>
+							<td class="ui-helper-center">
+
+								<button href="" data-dropdown="da<#=a.id%>" aria-controls="da<#=a.id%>" aria-expanded="false" class="tiny alert button dropdown tiny-custom"><i class="fa fa-plus fa-lg"></i</button>
+								<ul id="da<#=a.id%>" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+								  <li>
+								  	<a href="">
+								  		<i class="fa fa-eye fa-lg"></i>
+								  	</a>
+								  </li>
+
+								  <li>
+								  	<a href="">
+								  		<i class="fa fa-pencil-square-o fa-lg"></i>
+								  	</a>
+								  </li>
+
+								  <li>
+								  	<a href="">
+								  		<i class="fa fa-times fa-lg"></i>
+								  	</a>
+								  </li>
+								</ul>
+							</td>
+						</tr>
+					<#end%>
+				</tbody>
+			</table>			
+			<ul class="pagination centered-container" id="paginador-agencia">
+				<li class="arrow unavailable"><a href="">&laquo;</a></li>
+				<li class="current"><a href="">1</a></li>
+				<li><a href="">2</a></li>
+				<li class="unavailable"><a href="">&hellip;</a></li>
+				<li class="arrow"><a href="">&raquo;</a></li>
+			</ul>			
+		</div>		
+
+		<div class="row fixture-margintop">
+			<p class="slogan-frace">Usuarios</p>
+				<table class="large-12 small-12 columns">
+					<thead>
+						<th class="ui-helper-center">
+							Nombre						
+						</th>
+						<th class="ui-helper-center">
+							Apellido
+						</th>
+						<th class="ui-helper-center">
+							Email
+						</th>
+						<th class="ui-helper-center">
+							Opciones
+						</th>
+					</thead>
+					<tbody>
+						<#@usuarios.each do |u|%>
+							<tr>
+								<td class="ui-helper-center"><#=u.usuario.nombre.capitalize%></td>
+								<td class="ui-helper-center"><#=u.usuario.apellido.capitalize%></td>
+								<td class="ui-helper-center"><#=u.usuario.correo_electronico%></td>
+								<td class="ui-helper-center">
+								<button href="" data-dropdown="du<#=u.id%>" aria-controls="du<#=u.id%>" aria-expanded="false" class="tiny alert button dropdown tiny-custom"><i class="fa fa-plus fa-lg"></i</button>
+								<ul id="du<#=u.id%>" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+								  <li>
+								  	<a href="">
+								  		<i class="fa fa-eye fa-lg"></i>
+								  	</a>
+								  </li>
+
+								  <li>
+								  	<a href="">
+								  		<i class="fa fa-pencil-square-o fa-lg"></i>
+								  	</a>
+								  </li>
+
+								  <li>
+								  	<a href="">
+								  		<i class="fa fa-times fa-lg"></i>
+								  	</a>
+								  </li>
+								</ul>
+								</td>
+							</tr>
+						<#end%>
+					</tbody>
+				</table>
+				<ul class="pagination centered-container" id="paginador-usuario">
+					<li class="arrow unavailable"><a href="">&laquo;</a></li>
+					<li class="current"><a href="">1</a></li>
+					<li><a href="">2</a></li>
+					<li class="unavailable"><a href="">&hellip;</a></li>
+					<li class="arrow"><a href="">&raquo;</a></li>
+				</ul>				
+		</div>
+-->
+		<div class="row fixture-margintop">			
+			<p class="slogan-frace">Estado de Transacciones</p>
+			<table class="large-12 small-12 columns" id="tabla-transacciones">
+				<thead>
+					<th>Fecha</th>					
+					<th colspan="2">N&uacute;mero Guia</th>
+					<th>Estado</th>					
+					<th colspan="2" class="ui-helper-center">Opciones</th>
+				</thead>
+				<tbody class="transacciones-body">
+					<% @paquetes.each do |p| %>
+					<tr>
+						<td><%=p.fecha_arribo.to_date%></td>
+						<td colspan="2"><%=p.paquete.numero_guia%></td>
+						<td >
+							<label 
+							
+							<% if p.tipo_estado.abreviacion == "S" %>
+								class="regular label"
+							<% elsif  p.tipo_estado.abreviacion == "R" or p.tipo_estado.abreviacion == "OT" %>
+								class="warning label"
+							<% elsif p.tipo_estado.abreviacion == "D" %>
+								class="success label"
+							<% end %>
+							>										
+							<%=p.tipo_estado.nombre%>
+							</label>
+						</td>
+						<td class="ui-helper-center">
+							<a class="get_agencia_paquete button alert tiny tiny-custom" href="<%=agencia_paquete_path(p) %>">
+								<i class="fa fa-eye fa-lg"></i>
+							</a>
+						</td>			
+					</tr>					
+					<%end%>
+				</tbody>
+			</table>
+			<ul class="pagination centered-container" id="paginador" current_page="0">
+				<li class="arrow" sentido="-"><a href=""><i class="fa fa-arrow-circle-left fa-lg"></i></a></li>				
+				<li class="arrow" sentido="+"><a href=""><i class="fa fa-arrow-circle-right fa-lg"></i></a></li>
+			</ul>		
+		</div>
+
+		
+
+	<div class="row bottom-container">
+		<div class="small-4 large-4 small-offset-4 large-offset-4 columns">
+			<a href="#" class="small-4 large-4 button tiny alert column">				
+				<i class="fa fa-arrow-up fa-2x"></i>				
+			</a>
+			<a href="#" class="small-4 large-4 button tiny alert column">				
+				<i class="fa fa-envelope fa-2x"></i>				
+			</a>
+			<a href="#" class="small-4 large-4 button tiny alert column">		
+				<i class="fa fa-twitter fa-2x"></i>				
+			</a>
+		</div>
+	</div>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~ BEGIN Definicion de modales utilizadas ~~~~~~~~~ -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- ~~~~~~~~~ Modal quienes somos ~~~~~~~~~-->
+	<div id="modal_quienes_somos" class="reveal-modal large custom-modal-container" data-reveal>
+		<div class="modal-header row custom-modal-header slogan-u">
+			<h4 class="white-text">
+				<i class="fa fa-question fa-lg backward-icon"></i>		  	
+				Quienes somos	  	
+				&nbsp;
+				<i class="fa fa-question fa-lg"></i>
+			</h4>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+	  
+	  	<div class="modal-content row extra-padding-row">
+			<div class="large-8 small-8 large-offset-2 small-offset-2 columns">
+				<img class="centered-image" src="/assets/hermes-logo.png" alt="">
+			</div>
+		</div>
+		<div class="modal-content row boxContainer slogan">
+			<div class="large-12 small-12">
+				<h4 class="custom-modal-text">Servicio de entrega y envio de paquetes a nivel nacional</h4>				
+			</div>
+		</div>
+		<div class="modal-content row boxContainer slogan">
+			<div class="large-12 small-12">
+				<h4 class="custom-modal-text">Garantizamos puntualidad y buen servicio</h4>				
+			</div>
+		</div>
+		<div class="modal-content row boxContainer">
+			<div class="large-12 small-12">
+				<h4 class="custom-modal-text"><u>Tarifas</u></h4>
+			</div>
+		</div>
+		
+		<div class="modal-content row custom-modal-text">
+			<b>Constante Tarifa:&nbsp;&nbsp;</b><p id="econst"></p>		
+			<b>% Tarifa:&nbsp;&nbsp;</b><p id="eporc"></p>		
+			<b>Formula de c&aacute;lculo:&nbsp;</b><p id="eform"> ((&nbsp;ancho&nbsp;*&nbsp;alto&nbsp;*&nbsp;profundo&nbsp;*&nbsp;peso)&nbsp;/&nbsp;Constante Tarifa&nbsp;)&nbsp;+&nbsp;((&nbsp;percio&nbsp;*&nbsp;% Tarifa&nbsp;)&nbsp;/&nbsp;100)</p>					
+		</div>	
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal registrar usuario ~~~~~~~~~-->
+	<div id="modal_registrar_usuario" class="reveal-modal large custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text">Registrar</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row extra-padding-row">
+
+	  	<div class="large-8 small-8 large-offset-2 small-offset-2 columns">
+	  	<form class="register-form" method="post">
+	  		<%= token_tag(nil) %>	  		
+	  		<input name="fname" type="text" placeholder="Primer Nombre" required>
+	  		<input name="lname" type="text" placeholder="Primer Apellido" required>	  		
+	  		<input name="email" type="email" placeholder="Correo Electronico" required>
+	  		<input name="passwd" type="password" placeholder="Contraseña" required>
+	  		<span class="alert round label">Presione Enter para registrarse</span>
+			<input type="submit" class="hidden-submit-button">
+	  	</form>	 
+	  	</div> 	
+	  </div>
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal calculadora ~~~~~~~~~-->
+	<div id="modal_calculadora" class="reveal-modal small custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text">Calculadora de Tarifas</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	   
+	  <div class="modal-content row extra-padding-row">
+	  	<form class="calculadora-form"  method="post">	
+	  		<%= token_tag(nil) %>	  		
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" id="anchop" name="ancho" required />  		
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" id="altop" name="alto" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" id="profundidadp" name="profundidad" required />
+			<input class="columns" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" id="pesop" name="peso" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" id="valorp" name="valor" required />
+  		  	<input type="submit" class="hidden-submit-button" />
+  		  	<span class="alert round label">Presione Enter para calcular</span>
+	  	</form>	  	
+	  </div>
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal notificacion ~~~~~~~~~-->
+	<div id="modal_notificacion" class="reveal-modal small custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text notification-tittle">Notificacion</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row extra-padding-row notification-content slogan-frace">	  		
+	  </div>
+
+	  <div class="modal-footer row notification-footer">	  	
+	  </div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal transaccion ~~~~~~~~~-->
+	<div id="modal_transaccion" class="reveal-modal large custom-modal-container" data-reveal>
+	<div class="modal-header row custom-modal-header slogan-u">
+		<h4 class="white-text notification-tittle">Ver Transaccion</h4>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+
+	<div class="modal-content row extra-padding-row slogan-frace">
+		<table class="large-12 small-12">			
+			<tbody>
+				<tr>
+					<td><b>Fecha<b/></td>
+					<td id="fecha"></td>
+				</tr>
+				<tr>
+					<td><b>N&uacute;mero Guia<b/></td>
+					<td id="guia"></td>
+				</tr>
+				<tr>
+					<td><b>Estado<b/></td>
+					<td id="estado"></td>
+				</tr>
+				<tr>
+					<td><b>Emisor<b/></td>
+					<td id="emisor"></td>
+				</tr>
+				<tr>
+					<td><b>Receptor<b/></td>
+					<td id="receptor"></td>
+				</tr>
+				<tr>
+					<td><b>Agencia<b/></td>
+					<td id="agencia"></td>
+				</tr>
+				<tr>
+					<td><b>Peso<b/></td>
+					<td id="peso"></td>
+				</tr>
+				<tr>
+					<td><b>Alto<b/></td>
+					<td id="alto"></td>
+				</tr>
+				<tr>
+					<td><b>Ancho<b/></td>
+					<td id="ancho"></td>
+				</tr>
+				<tr>
+					<td><b>Profunidad<b/></td>
+					<td id="profundo"></td>
+				</tr>
+				<tr>
+					<td><b>Costo<b/></td>
+					<td id="costo"></td>
+				</tr>
+				<tr>
+					<td><b>Descripcion<b/></td>
+					<td id="descripcion"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="modal-footer row notification-footer">	  	
+	</div> 	  
+	</div>	
+
+	<!-- ~~~~~~~~~ Modal paquete ~~~~~~~~~-->
+	<div id="modal_paquete" class="reveal-modal large custom-modal-container" has_confirmation="false" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text notification-tittle">Enviar Paquete</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row extra-padding-row">
+		  <div class="large-8 small-8 large-offset-2 small-offset-2 columns">
+
+		  	<form class="paquete-form row" method="post">
+
+		  		<%= token_tag(nil) %>	  		
+				 <select class="columns" form="paquete-form"  name="agencia" id="newp_agencia" required>
+	  				<option value="">Agencia Destino</option>
+		        	<% Agencia.find_each do |agencia| %>
+		          	<option value="<%=agencia.id%>"><%=agencia.nombre%></option>
+		        	<%end%>	
+		      	</select>
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" id="newp_ancho" required /> 
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" id="newp_alto" required />
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" id="newp_profundidad" required />
+
+			  	<input class="columns keyup_target" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" name="peso" id="newp_peso" required />
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" id="newp_valor" required />
+
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Emisor" name="origen" id="newp_origen" required /> 
+
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Receptor" name="destino" id="newp_destino" required /> 
+
+			  	<textarea class="columns" form="paquete-form" placeholder="Descripci&oacute;n" name="descripcion" id="newp_descripcion" required></textarea>	
+
+				<p class="slogan-frace">Costo estimado<p>
+			  	<input class="columns" type="text" placeholder="El costo de env&iacute;o es:" name="costo" value="0" id="newp_costo" disabled />
+
+	  		  <input class="hidden-submit-button" type="submit"/>
+
+	  		  <span class="alert round label">Presione Enter para Enviar</span>
+
+		  	</form>
+		  </div>	  
+	  </div>
+	  <div class="modal-footer row notification-footer"></div> 			
+	</div>
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~ END Definicion de modales utilizadas ~~~~~~~~~ -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<script src="/assets/modernizr.js"></script>
+	<script src="/assets/jquery.js"></script>	
+	<script src="/assets/foundation.min.js"></script>
+	<script src="/assets/general.js"></script>
+	<script>
+		$(document).foundation();
+	</script>
+	
+	</body>
+</html>

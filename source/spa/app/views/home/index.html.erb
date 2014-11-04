@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html class="no-js Newslab" lang="es-VE">
+	<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="enterprise_token" content="1">	
+	<%= csrf_meta_tag %>
+
+	<link rel="stylesheet" href="/assets/normalize.css">
+	<link rel="stylesheet" href="/assets/foundation.min.css" />
+	<link rel="stylesheet" href="/assets/font-config.css">		
+	<link rel="stylesheet" href="/assets/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/general.css" />
+	<link rel="stylesheet" href="/assets/modernizr.css"/>
+
+	<title>Hermes | Home</title>
+	</head>
+
+	<body class="colored-body">
+	<div class="row">
+		<div class="large-12">
+			<nav class="top-bar" data-topbar role="navigation"> 
+				
+				<ul class="title-area"> 
+					<li class="name">
+            			<h1><a href=""><i class="fa fa-university fa-fw"></i>
+            				Hermes</a></h1>
+        			</li>
+
+					<li class="toggle-topbar menu-icon">
+						<a href="#"><span>Menu</span></a>
+					</li> 
+				</ul> 
+				
+				<section class="top-bar-section"> 
+					<ul class="right">
+					
+					<li>
+						<%if @usuario %>
+							<a href="#" class="alert button">Bienvenido, <%= @usuario.nombre.capitalize+" "+@usuario.apellido.capitalize %></a>
+						<%else%>
+							<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
+						<%end-%>
+
+					</li> 
+					<li class="has-dropdown"> 
+						<a href="#"><i class="fa fa-plus fa-lg"></i></a> 
+						<ul class="dropdown">
+							<%if !@usuario %>
+							<li>
+								<a class="alert button" href="#" data-reveal-id="modal_registrar_usuario">
+									
+									Registrarse
+									&nbsp;
+									<i class="fa fa-pencil-square-o fa-lg"></i>
+								</a>
+							</li>
+							<% end %>
+							<li>
+								<a class="alert button" href="#" data-reveal-id="modal_calculadora">
+									Calculadora de Tar&iacute;fas
+									&nbsp;
+									<i class="fa fa-usd fa-lg"></i>					
+								</a>
+							</li>							
+							<%if @usuario %>
+								<%if @usuario.tipo_usuario.abreviacion == "O" or @usuario.tipo_usuario.abreviacion == "UA"  %>
+								<li>
+									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+										Enviar paquete
+										&nbsp;
+										<i class="fa fa-send-o fa-lg"></i>					
+									</a>
+								</li>
+								<%end%>
+
+								<%if @usuario.tipo_usuario.abreviacion == "O"  %>
+								<li>
+									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+										Paquetes
+										&nbsp;
+										<i class="fa fa-archive fa-lg"></i>				
+									</a>
+								</li>
+								<%end%>
+
+								<%if @usuario.tipo_usuario.abreviacion == "UA"  %>
+								<li>
+									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+										Estado de Paquetes
+										&nbsp;
+										<i class="fa fa-archive fa-lg"></i>								
+									</a>
+								</li>
+								<%end%>
+
+							<%if @usuario.tipo_usuario.abreviacion == "A"%>
+							<li>
+								<a class="alert button" href="/empresas/1">
+									Administraci&oacute;n
+									&nbsp;
+									<i class="fa fa-cog fa-lg"></i>		
+								</a>
+							</li>
+							<%end%>
+							
+							
+							<li>
+								<a class="alert button" href="/logout">
+									Cerrar Sesi&oacute;n
+									&nbsp;
+									<i class="fa fa-sign-out fa-lg"></i>		
+								</a>
+							</li>
+						<% end %>
+						</ul> 
+					</li> 
+					</ul> 
+					<ul class="left"> 
+					<li><a  href="#" data-reveal-id="modal_quienes_somos">
+							<i class="fa fa-question fa-lg backward-icon"></i>
+							&nbsp;Qui&eacute;nes somos&nbsp;
+							<i class="fa fa-question fa-lg" ></i>							
+						</a>
+					</li> 
+					</ul>
+				</section> 
+			</nav>
+		</div>	
+	</div>
+	
+  <div class="row extra-padding-row">
+    <div class="large-12 columns">
+     	<div class="centered-image">
+    		<%= image_tag "hermes-logo.png" %>
+    	</div>
+      <!--<img class="centered-image" src="app/assets/images/hermes-logo.png" alt="">-->
+    </div>
+  </div>
+  <div class="row">
+   	<div class="large-12 columns slogan-container">
+   		<h4 class="slogan-frace">
+				<i class="fa fa-quote-left"></i>
+				&nbsp;
+  			El servicio de entrega de los dioses
+  			&nbsp;
+  			<i class="fa fa-quote-right"></i>
+  		</h4>
+  	</div>    	
+  </div>
+
+	<ul data-orbit> 
+		<li> 
+			<img class="slider-image" src="/assets/img3.jpg" alt="slide 2" /> 
+			<div class="orbit-caption">
+				<div class="row">					
+					<p class="large-12">
+						Nuestro compromiso y seriedad se ven reflejados en la calidad de nuestro servicio
+					</p>							
+				</div>				
+			</div> 			
+		</li> 
+
+		<li> 
+			<img class="slider-image" src="/assets/img4.jpg" alt="slide 3" /> 
+			<div class="orbit-caption">
+				<div class="row">
+				<p class="large-12">
+					Siempre haciendo que el medio de entrega de sus paquetes sea el mas adecuado para su comodidad
+				</p>
+				</div>
+			</div> 
+		</li> 
+
+		<li class="active"> 
+			<img class="slider-image" src="/assets/img5.jpg" alt="slide 4" /> 
+			<div class="orbit-caption">
+				<div class="row">
+				<p class="large-12">
+					Nuestro personal capacitado brinda la mejor atención del mercado
+				</p>
+				</div>
+			</div> 
+		</li> 
+
+		<li> 
+			<img class="slider-image" src="/assets/img6.jpg" alt="slide 5" /> 
+			<div class="orbit-caption">
+				<div class="row">
+				<p class="large-12">
+				Tratamos con seriedad a nuestros clientes, garantizando asi un servicio de una calidad inigualable
+				</p>
+				</div>
+			</div> 
+		</li> 
+
+		<li> 
+			<img class="slider-image" src="/assets/img7.jpg" alt="slide 6" /> 
+			<div class="orbit-caption">
+				<div class="row">
+				<p class="large-12">
+					Experiencia y conocimiento nos caracterizan como empresa
+				</p>
+				</div>
+			</div> 
+		</li> 
+
+		<li> 
+			<img class="slider-image" src="/assets/img8.jpg" alt="slide 7" /> 
+			<div class="orbit-caption">
+				<div class="row">
+				<p class="large-12">
+					Nuestros almacenes y sucursales garantizan que tus paquetes permanezcan en buen estado mientras vas por ellos
+				</p>
+				</div>
+			</div> 
+		</li> 
+	</ul>	
+
+	<div class="row content-container fixture-margintop">	
+		<div class="row">
+			<div class="large-12 small-12 slogan-container slogan-u columns">
+				<h4 class="slogan-frace">
+					Servicio de envio y recepci&oacute;n de paquetes
+				</h4>
+			</div>
+		</div>	
+		
+		<div class="row fixture-margintop">
+			<div class="small-4 large-4 cool-corner-container columns">
+				<div class="agent-image">
+					<img src="/assets/agent2.jpg" />
+				</div>
+				<p class="cool-corner-text">Desde 1990 Hermes, se ha perfilado como uno de los servicios de entrega y recepci&oacute;n de paqueteria m&aacute;s populares a nivel mundial pudiendo ser catalogado hoy en dia como la compañia con la cartera de clientes m&aacute;s diversa antes vista.</p>
+			</div>
+
+			<div class="small-2 large-2 small-offset-1 large-offset-1 centered-image-logo columns">
+				<div class="row">
+				<img class="" src="/assets/circle-hermes-logo.png"/> 	
+				</div>
+				<div class="row icon-space">
+					<a href="https://github.com/No6things/ATICOMPANY" class="white-link" >
+						<i class="fa fa-github fa-4x"></i>
+					</a>
+					<h4 class="white-text">Github</h4>	
+				</div>
+				<div class="row icon-space">
+					<a href="http://www.w3.org/Style/CSS/" class="white-link" >
+						<i class="fa fa-css3 fa-4x"></i>
+					</a>
+					<h4 class="white-text" >CSS 3 Based</h4>
+				</div>		
+			</div>
+
+			<div class="small-4 large-4 small-offset-1 large-offset-1  cool-corner-container columns">
+				<div class="agent-image">
+					<img src="/assets/agent1.png" />
+				</div>
+				<p class="cool-corner-text">Un conjunto de especialistas, capacitados para la busqueda, recepci&oacute;n de paquetes y alamacenamiento seguro de tus paquetes garantizan que seras tratado como un Dios porque si para ti es importante entonces para nosotros tambien lo es.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row bottom-container">
+		<div class="small-4 large-4 small-offset-4 large-offset-4 columns">
+			<a href="#" class="small-4 large-4 button tiny alert column">				
+				<i class="fa fa-arrow-up fa-2x"></i>				
+			</a>
+			<a href="#" class="small-4 large-4 button tiny alert column">				
+				<i class="fa fa-envelope fa-2x"></i>				
+			</a>
+			<a href="#" class="small-4 large-4 button tiny alert column">		
+				<i class="fa fa-twitter fa-2x"></i>				
+			</a>
+		</div>
+	</div>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~ BEGIN Definicion de modales utilizadas ~~~~~~~~~ -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- ~~~~~~~~~ Modal quienes somos ~~~~~~~~~-->
+	<div id="modal_quienes_somos" class="reveal-modal large custom-modal-container" data-reveal>
+		<div class="modal-header row custom-modal-header slogan-u">
+			<h4 class="white-text">
+				<i class="fa fa-question fa-lg backward-icon"></i>		  	
+				Quienes somos	  	
+				&nbsp;
+				<i class="fa fa-question fa-lg"></i>
+			</h4>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+	  
+	  	<div class="modal-content row extra-padding-row">
+			<div class="large-8 small-8 large-offset-2 small-offset-2 columns">
+				<img class="centered-image" src="/assets/hermes-logo.png" alt="">
+			</div>
+		</div>
+		<div class="modal-content row boxContainer slogan">
+			<div class="large-12 small-12">
+				<h4 class="custom-modal-text">Servicio de entrega y envio de paquetes a nivel nacional</h4>				
+			</div>
+		</div>
+		<div class="modal-content row boxContainer slogan">
+			<div class="large-12 small-12">
+				<h4 class="custom-modal-text">Garantizamos puntualidad y buen servicio</h4>				
+			</div>
+		</div>
+		<div class="modal-content row boxContainer">
+			<div class="large-12 small-12">
+				<h4 class="custom-modal-text"><u>Tarifas</u></h4>
+			</div>
+		</div>
+		
+		<div class="modal-content row custom-modal-text">
+			<b>Constante Tarifa:&nbsp;&nbsp;</b><p id="econst"></p>		
+			<b>% Tarifa:&nbsp;&nbsp;</b><p id="eporc"></p>		
+			<b>Formula de c&aacute;lculo:&nbsp;</b><p id="eform"> ((&nbsp;ancho&nbsp;*&nbsp;alto&nbsp;*&nbsp;profundo&nbsp;*&nbsp;peso)&nbsp;/&nbsp;Constante Tarifa&nbsp;)&nbsp;+&nbsp;((&nbsp;percio&nbsp;*&nbsp;% Tarifa&nbsp;)&nbsp;/&nbsp;100)</p>					
+		</div>	
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal busqueda ~~~~~~~~~-->
+	<div id="modal_resultados_busqueda" class="reveal-modal large custom-modal-container withe-text" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text">B&uacute;squeda</h4>				
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row extra-padding-row">
+	  	<div class="large-3 small-3 columns">
+  		  	<input id="package-bool" type="radio" name="filter">
+  			<label class="white-text" for="package-bool">Paquete</label>
+	  	</div>
+	  	<div class="large-3 small-3 columns">	  		
+	  		<input id="user-bool" type="radio" name="filter">
+	  		<label class="white-text"for="user-bool">Usuario</label>
+	  	</div>
+	  	<div class="large-6 small-6 columns">
+	  		<form method="post" class="search-form" action="">
+	  			<input type="text" name="criteria" placeholder="Criterio de Busqueda" required>
+	  			<input type="submit" class="hidden-submit-button">
+	  		</form>
+	  	</div>
+		
+  	 	<table class="hovered-table">
+  	 	  <tbody>
+  	 	    <tr>
+  	 	      <td>Usuario ID</td>
+  	 	      <td>Content Goes Here</td>
+  	 	      <td><a href="" id="<usr-id>" class="button alert tiny">Ver</a></td>
+  	 	    </tr>
+  	 	    <tr>
+  	 	      <td>Package ID</td>  	 	      
+  	 	      <td>Content Goes Here</td>
+  	 	      <td><a href="" id="<pckg-id>" class="button alert tiny">Ver</a></td>
+  	 	    </tr>
+  	 	  </tbody>
+  	 	</table>
+	  </div>
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal inicio de sesion ~~~~~~~~~-->
+	<div id="modal_inicio_sesion" class="reveal-modal small custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text">Iniciar Sesi&oacute;n</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row">
+	  	<form id="login-form" class="login-form" method="post">	
+	  		<%= token_tag(nil) %>
+
+	  		<div class="row">
+	  		    <div class="large-12 small-12 columns">	  		      
+	  		    	<input type="text" placeholder="Usuario" name="login" required />
+	  		    	<input type="password" placeholder="Contraseña" name="passwd" required />
+	  		    </div>
+	  		</div>
+
+	  		<h4><small><a data-reveal-id="modal_recuperar_contrasena">¿Olvidaste tu contraseña?</a></small></h4>
+  	  
+  		  	<input type="submit" class="hidden-submit-button" />
+  		  	<span class="alert round label">Presione Enter para acceder al sistema</span>
+
+	  	</form>	  	
+	  </div>
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal registrar usuario ~~~~~~~~~-->
+	<div id="modal_registrar_usuario" class="reveal-modal large custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text">Registrar</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row extra-padding-row">
+
+	  	<div class="large-8 small-8 large-offset-2 small-offset-2 columns">
+	    	<form class="register-form" method="post">
+
+	    		<%= token_tag(nil) %>	  		
+	    		<input name="fname" type="text" placeholder="Primer Nombre" required />
+	    		<input name="lname" type="text" placeholder="Primer Apellido" required />	  		
+	    		<input name="email" type="email" placeholder="Correo Electronico" required />
+	    		<input name="passwd" type="password" placeholder="Contraseña" required />
+
+	    		<span class="alert round label">Presione Enter para registrarse</span>
+  			    <input type="submit" class="hidden-submit-button"/>
+
+	    	</form>	 
+	  	</div> 	
+	  </div>
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal calculadora ~~~~~~~~~-->
+	<div id="modal_calculadora" class="reveal-modal small custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text">Calculadora de Tarifas</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	   
+	  <div class="modal-content row extra-padding-row">
+	  	<form class="calculadora-form"  method="post">	
+	  		<%= token_tag(nil) %>	  		
+		  	<input class="columns" type="number" min="1" step="0.01" placeholder="Ancho en cm" id="anchop" name="ancho" required />  		
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Alto en cm" id="altop" name="alto" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Profundidad en cm" id="profundidadp" name="profundidad" required />
+			<input class="columns" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" id="pesop" name="peso" required />
+			<input class="columns" type="number" min="1" step="0.01" placeholder="Valor en Bs" id="valorp" name="valor" required />
+  		  	<input type="submit" class="hidden-submit-button" />
+  		  	<span class="alert round label">Presione Enter para calcular</span>
+	  	</form>	  	
+	  </div>
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal notificacion ~~~~~~~~~-->
+	<div id="modal_notificacion" class="reveal-modal small custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text notification-tittle">Notificacion</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row extra-padding-row notification-content slogan-frace">	  		
+	  </div>
+
+	  <div class="modal-footer row notification-footer">	  	
+	  </div> 	  
+	</div>
+
+	<!-- ~~~~~~~~~ Modal paquete ~~~~~~~~~-->
+	<div id="modal_paquete" class="reveal-modal large custom-modal-container" has_confirmation="false" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text notification-tittle">Enviar Paquete</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row extra-padding-row">
+		  <div class="large-8 small-8 large-offset-2 small-offset-2 columns">
+
+		  	<form class="paquete-form row" method="post">
+		  		<!-- Lanzar una peticion ajax pidiendo las agencias y manejarla
+		  		<= token_tag(ni) %>	  		
+				 <select class="columns" form="paquete-form"  name="agencia" id="newp_agencia"required>
+	  				<option value="">Agencia Destino</option>
+		        	< Agencia.find_each do |agencia| %>
+		          	<option value="<=agencia.id%>"><=agencia.nombre%></option>
+		        	<end%>	
+		      	</select>
+				-->
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Ancho en cm" name="ancho" id="newp_ancho" required /> 
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Alto en cm" name="alto" id="newp_alto" required />
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Profundidad en cm" name="profundidad" id="newp_profundidad" required />
+
+			  	<input class="columns keyup_target" type="number" min="0.1" step="0.01" placeholder="Peso en Kg" name="peso" id="newp_peso" required />
+
+			  	<input class="columns keyup_target" type="number" min="1" step="0.01" placeholder="Valor en Bs" name="valor" id="newp_valor" required />
+
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Emisor" name="origen" id="newp_origen" required /> 
+
+			  	<input class="columns" type="text" placeholder="Correo Electr&oacute;nico del Receptor" name="destino" id="newp_destino" required /> 
+
+			  	<textarea class="columns" form="paquete-form" placeholder="Descripci&oacute;n" name="descripcion" id="newp_descripcion" required></textarea>	
+
+				<p class="slogan-frace">Costo estimado<p>
+			  	<input class="columns" type="text" placeholder="El costo de env&iacute;o es:" name="costo" value="0" id="newp_costo" disabled />
+
+	  		  <input class="hidden-submit-button" type="submit"/>
+
+	  		  <span class="alert round label">Presione Enter para Enviar</span>
+
+		  	</form>
+		  </div>	  
+	  </div>
+	  <div class="modal-footer row notification-footer"></div> 			
+	</div>
+
+	<!-- ~~~~~~~~~ Modal recuperar password ~~~~~~~~~-->
+	<div id="modal_recuperar_contrasena" class="reveal-modal small custom-modal-container" data-reveal>
+	  <div class="modal-header row custom-modal-header slogan-u">
+	  	<h4 class="white-text">Recuperar Contrasena</h4>
+	  	<a class="close-reveal-modal">&#215;</a>
+	  </div>
+	  
+	  <div class="modal-content row extra-padding-row">
+	  	
+	  	<form class="contrasena-form" action="/retrieve" method="post">	
+	  		<%= token_tag(nil) %>	  		
+		  	<input class="columns" type="text" placeholder="Correo Electronico" name="correo_electronico" required />  		
+
+  		  	<input type="submit" class="hidden-submit-button" />
+  		  	<span class="alert round label">Presione Enter para recuperar su contrasena</span>
+	  	</form>	
+
+	  </div>
+
+	  <div class="modal-footer row"></div> 	  
+	</div>
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~ END Definicion de modales utilizadas ~~~~~~~~~ -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<script src="/assets/jquery.js"></script>	
+	<script src="/assets/modernizr.js"></script>
+	<script src="/assets/foundation.min.js"></script>
+	<script src="/assets/general.js"></script>
+	<script>
+		$(document).foundation({
+			orbit: {
+				animation: 'fade',
+				slide_number: false, 
+				bullets: false,       			      
+      			variable_height: true, 
+      			circular:true,
+      			timer_speed: 7000, 
+      			pause_on_hover: false,   			
+				}
+			});
+
+	</script>
+
+	</body>
+</html>

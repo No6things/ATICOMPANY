@@ -8,7 +8,7 @@ class AgenciaPaquetesController < ApplicationController
 @param id [Integer] identificador de la transaccion.
 
 @return [Json] la representacion de un mensaje: 200 en caso de haber encontrado la transaccion.
-												400 en caso de no haber encontrado la transaccion.
+												404 en caso de no haber encontrado la transaccion.
 
 @example Ejemplo de json en caso de exito.
 	{
@@ -70,7 +70,7 @@ class AgenciaPaquetesController < ApplicationController
 			t = AgenciaPaquete.find(params[:id].to_i)
 			render json: {err_mssg: "", success_mssg: "Transaction Found", data: t.as_json}, status: 200			
 		rescue Exception => e
-			render json: {err_mssg: "No Transaction found", success_mssg: ""}, status: 400
+			render json: {err_mssg: "Transaction Not found", success_mssg: ""}, status: 404
 		end
 	end
 
@@ -82,7 +82,7 @@ class AgenciaPaquetesController < ApplicationController
 @param id [Integer] identificador de la transaccion.
 
 @return [Json] la representacion de un mensaje: 200 en caso de haber encontrado la transaccion.
-												400 en caso de no haber encontrado la transaccion.
+												404 en caso de no haber encontrado la transaccion.
 
 @example Ejemplo de json en caso de exito.
 	{
@@ -144,7 +144,7 @@ class AgenciaPaquetesController < ApplicationController
 			t = AgenciaPaquete.find(params[:id].to_i)
 			render json: {err_mssg: "", success_mssg: "Transaction Found", data: t.as_json}, status: 200			
 		rescue Exception => e
-			render json: {err_mssg: "No Transaction found", success_mssg: ""}, status: 400
+			render json: {err_mssg: "Transaction not found", success_mssg: ""}, status: 404
 		end
 	end
 
@@ -214,13 +214,16 @@ class AgenciaPaquetesController < ApplicationController
 	def show_by_user
 		begin				
 			i = request.headers["enterprise-token"].to_i
+			if i.nil?
+				raise "Non Enterprise Token given (invalid Access)"
+			end
 			e = session[:id_usuario_actual]
 			as_sender = AgenciaPaquete.where(agencia: Agencia.where(empresa_id: i)).joins(:paquete).merge(Paquete.where(emisor_id: e.id)).limit(5)
 			as_repcipent = AgenciaPaquete.where(agencia: Agencia.where(empresa_id: i)).joins(:paquete).merge(Paquete.where(receptor_id: e.id)).limit(5)
 			
 			render json: {err_mssg: "", success_mssg: "Transaction Found", data:{ as_sender: as_sender.as_json, as_repcipent: as_repcipent.as_json}}, status: 200
 		rescue Exception => e
-			render json: {err_mssg: "No Transaction found", success_mssg: ""}, status: 400
+			render json: {err_mssg: "Transaction not found", success_mssg: ""}, status: 400
 		end
 	end	
 end

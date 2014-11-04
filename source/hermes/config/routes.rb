@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
 root to: "hermes_api#index"
 
 #Acceso permitido a funcionalidades sin restriccion
