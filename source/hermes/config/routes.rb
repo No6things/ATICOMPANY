@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 root to: "hermes_api#index"
 
 #Acceso permitido a funcionalidades sin restriccion
-post "/login" => "general#entrar"
-delete "/logout" => "general#salir" 
+post "/login" => "general#entrar" 			#retorna id
+delete "/logout" => "general#salir" 		#retorna un mensaje
 get "/info" => "general#info"
 post "/token" => "general#api_token"
 post "/registrar" => "general#registrar"

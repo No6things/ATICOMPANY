@@ -36,18 +36,14 @@
 					<ul class="right">
 					
 					<li>
-						<%if @usuario %>
-							<a href="#" class="alert button">Bienvenido, {{ usuario.nombre }}</a>
-						<%else%>
-							<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
-						<%end-%>
+						<a href="#" ng-if="!usuario"data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
+						<a href="#" ng-if="usuario" class="alert button">Bienvenido, {{ usuario.nombre }}</a>
 
 					</li> 
 					<li class="has-dropdown"> 
 						<a href="#"><i class="fa fa-plus fa-lg"></i></a> 
 						<ul class="dropdown">
-							<%if !@usuario %>
-							<li>
+							<li ng-if="!usuario">
 								<a class="alert button" href="#" data-reveal-id="modal_registrar_usuario">
 									
 									Registrarse
@@ -55,64 +51,54 @@
 									<i class="fa fa-pencil-square-o fa-lg"></i>
 								</a>
 							</li>
-							<% end %>
 							<li>
 								<a class="alert button" href="#" data-reveal-id="modal_calculadora">
 									Calculadora de Tar&iacute;fas
 									&nbsp;
 									<i class="fa fa-usd fa-lg"></i>					
 								</a>
-							</li>							
-							<%if @usuario %>
-								<%if @usuario.tipo_usuario.abreviacion == "O" or @usuario.tipo_usuario.abreviacion == "UA"  %>
-								<li>
-									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
-										Enviar paquete
-										&nbsp;
-										<i class="fa fa-send-o fa-lg"></i>					
-									</a>
-								</li>
-								<%end%>
+							</li>			
 
-								<%if @usuario.tipo_usuario.abreviacion == "O"  %>
-								<li>
-									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
-										Paquetes
-										&nbsp;
-										<i class="fa fa-archive fa-lg"></i>				
-									</a>
-								</li>
-								<%end%>
+							<li ng-if="usuario.tipo_usuario.abreviacion=='O' ||  usuario.tipo_usuario.abreviacion=='UA'" >
+								<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+									Enviar paquete
+									&nbsp;
+									<i class="fa fa-send-o fa-lg"></i>					
+								</a>
+							</li>
 
-								<%if @usuario.tipo_usuario.abreviacion == "UA"  %>
-								<li>
-									<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
-										Estado de Paquetes
-										&nbsp;
-										<i class="fa fa-archive fa-lg"></i>								
-									</a>
-								</li>
-								<%end%>
+							<li ng-if="usuario.tipo_usuario.abreviacion=='O'">
+								<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+									Paquetes
+									&nbsp;
+									<i class="fa fa-archive fa-lg"></i>				
+								</a>
+							</li>
 
-							<%if @usuario.tipo_usuario.abreviacion == "A"%>
-							<li>
+							<li ng-if="usuario.tipo_usuario.abreviacion=='UA'">
+								<a id="crear_paquete" class="alert button" href="#" data-reveal-id="modal_paquete" >
+									Estado de Paquetes
+									&nbsp;
+									<i class="fa fa-archive fa-lg"></i>								
+								</a>
+							</li>
+
+							<li ng-if="usuario.tipo_usuario.abreviacion=='A'">
 								<a class="alert button" href="/empresas/1">
 									Administraci&oacute;n
 									&nbsp;
 									<i class="fa fa-cog fa-lg"></i>		
 								</a>
 							</li>
-							<%end%>
 							
 							
-							<li>
+							<li ng-if="usuario">
 								<a class="alert button" href="/logout">
 									Cerrar Sesi&oacute;n
 									&nbsp;
 									<i class="fa fa-sign-out fa-lg"></i>		
 								</a>
 							</li>
-						<% end %>
 						</ul> 
 					</li> 
 					</ul> 
@@ -371,7 +357,7 @@
 	  </div>
 	  
 	  <div class="modal-content row">
-	  	<form class="login-form" ng-controller="loginController" >	
+	  	<form class="login-form" ng-submit="submit()" ng-controller="loginController" >	
 	  		<%= token_tag(nil) %>
 
 	  		<div class="row">
@@ -382,8 +368,7 @@
 	  		</div>
 
 	  		<h4><small><a data-reveal-id="modal_recuperar_contrasena">¿Olvidaste tu contraseña?</a></small></h4>
-  	  
-  		  	<input type="submit" class="hidden-submit-button" />
+  		  	<input type="submit" value="Submit" class="hidden-submit-button" />
   		  	<span class="alert round label">Presione Enter para acceder al sistema</span>
 
 	  	</form>	  	

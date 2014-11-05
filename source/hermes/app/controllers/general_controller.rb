@@ -48,11 +48,10 @@ class GeneralController < ApplicationController
 		  			}, status: 	:unauthorized
 		  	else
 		  		session[:id_usuario_actual]=u.id
-		  		
 		  		render json: {
 		  			err_mssg: "",
 		  			success_mssg: "OK",
-		  			data: u.id
+		  			data: u.as_json
 		  			}, status: 	:ok
 		  	end
 		 end
