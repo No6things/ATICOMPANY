@@ -80,7 +80,7 @@ app.controller("paqueteController", ['$scope', '$http',function($scope, $http){
       ancho: $scope.ancho,
       profundidad: $scope.profundidad,
       peso: $scope.peso,
-      costo: $('#newp_costo').val(),
+      costo: parseInt($('#newp_costo').val(),10),
       emisor: $scope.emisor,
       receptor: $scope.receptor,
       descripcion: $scope.descripcion
