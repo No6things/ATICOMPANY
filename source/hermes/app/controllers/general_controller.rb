@@ -51,6 +51,7 @@ class GeneralController < ApplicationController
 		  			}, status: 	:unauthorized
 		  	else
 		  		session[:id_usuario_actual]=u.id
+		  		puts session[:id_usuario_actual]
 		  		render json: {
 		  			err_mssg: "",
 		  			success_mssg: "OK",
@@ -80,7 +81,8 @@ class GeneralController < ApplicationController
 	}
 =end
 	def salir
-		begin			
+		begin		
+			puts session[:id_usuario_actual]	
 			if session.key?:id_usuario_actual
 				reset_session
 				render json: {
@@ -335,11 +337,11 @@ class GeneralController < ApplicationController
 						err_mssg: "", 
 						success_msg: "Datos de la compañia",
 						data: {
-							'Nombre'=>e.nombre,
+							'nombre'=>e.nombre,
 							'RIF' => e.rif,
-							'Frase Comercial' => e.frase_comercial,
-							'Constante de Ganancia' => e.constante_tarifa,
-							'Porcentaje de Ganancia' => e.porcentaje_tarifa
+							'frase_comercial' => e.frase_comercial,
+							'constante_tarifa' => e.constante_tarifa,
+							'porcentaje_tarifa' => e.porcentaje_tarifa
 						}
 					}, status: :ok
 			else

@@ -9,6 +9,7 @@ get "/info" => "general#info"
 post "/token" => "general#api_token"
 post "/registrar" => "general#registrar"
 get "/calcular" => "general#calcular"
+get "/agencia" => "agencia#listar_agencia"
 
 # Funcionalidades que requieren acceso con autenticacion previa
 post "/usuario/paquete/ver" => "usuario#ver_paquete"

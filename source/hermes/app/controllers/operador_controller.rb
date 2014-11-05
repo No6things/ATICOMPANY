@@ -513,6 +513,7 @@ before_filter :check_api_token
 				}, status: :bad_request
 
 		rescue Exception => e
+
 			render json: {
 				err_mssg: "Error durante la busqueda debido a : "+e.message,
 				success_mssg: ""
@@ -520,7 +521,6 @@ before_filter :check_api_token
 			status: :404
 		end
 	end
-
 
 =begin
 
