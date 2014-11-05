@@ -45,6 +45,7 @@ before_filter :check_api_token
 				:receptor,
 				:descripcion
 			)
+			puts params
 			e = Usuario.find_by(correo_electronico: prms.require(:emisor))
 			r = Usuario.find_by(correo_electronico: prms.require(:receptor))
 
@@ -59,7 +60,6 @@ before_filter :check_api_token
 			if e == r 
 				raise "No se permite que usuario receptor y emisor sean la misma persona"
 			end
-
 			paquete = Paquete.create!(
 				ancho:prms.require(:ancho),
 				alto:prms.require(:alto),
@@ -70,7 +70,6 @@ before_filter :check_api_token
 				emisor_id: e.id,
 				receptor_id: r.id
 			)
-
 			agencia_paquete=AgenciaPaquete.create(
 				fecha_arribo: DateTime.now,
 				agencia_id: prms.require(:agencia).to_i,
@@ -671,7 +670,6 @@ before_filter :check_api_token
 			if not u.tipo_usuario.abreviacion == "O"
 				raise "Se requieren privilegios de operador para tener acceso a estas funcionalidades"
 			end
-		
 		rescue Exception => e
 			render json: {
 				err_mssg: e.message,

@@ -24,7 +24,6 @@ class GeneralController < ApplicationController
 				:login,
 				:passwd
 				)
-			
 			u = Usuario.find_by(
 				correo_electronico: prms.require(:login),
 				).authenticate(
