@@ -48,6 +48,8 @@ class GeneralController < ApplicationController
 		  			}, status: 	:unauthorized
 		  	else
 		  		session[:id_usuario_actual]=u.id
+		  		if u.api_token.nil?
+		  			u.update(api_token: Digest::SHA1.hexdigest("#{u.id}#{Time.now}"))
 		  		render json: {
 		  			err_mssg: "",
 		  			success_mssg: "OK",

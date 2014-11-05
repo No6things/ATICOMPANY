@@ -18,8 +18,6 @@ app.controller("loginController", ['$scope', '$rootScope','$http',function ($sco
   												$rootScope.usuario= response.data;
                           $scope.correo='';
                           $scope.contrasena='';
-                          alert($rootScope.usuario.nombre);
-
   											})
   											.error(function() {
       											console.log("error");

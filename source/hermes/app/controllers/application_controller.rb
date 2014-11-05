@@ -5,14 +5,12 @@ class ApplicationController < ActionController::Base
   before_filter :cors_preflight_check
 
   	def route_options
-  		puts 'huehuehue///////////////////////////////////////////////////////////////////////////'
   		cors_preflight_check
   		render nothing: true
   	end
 
 
   	def cors_preflight_check
-  		puts 'hahahahe///////////////////////////////////////////////////////////////////////////'
 
   		if request.headers["HTTP_ORIGIN"]     
   			puts 'hohohohohoh///////////////////////////////////////////////////////////////////////////'
@@ -22,7 +20,6 @@ class ApplicationController < ActionController::Base
 			headers['Access-Control-Allow-Headers'] = '*, Origin, X-Requested-With, X-Prototype-Version,X-CSRF-Token, enterprise-token, Content-Type, Accept, Authorization'
 			headers['Access-Control-Allow-Credentials'] = 'true'
 			headers['Access-Control-Expose-Headers'] = 'x-json'
-			puts 'hohohohohoh///////////////////////////////////////////////////////////////////////////'
 
   		end
 	end
