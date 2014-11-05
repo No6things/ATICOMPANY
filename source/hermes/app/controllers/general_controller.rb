@@ -30,9 +30,12 @@ class GeneralController < ApplicationController
 				).authenticate(
 					prms.require(:passwd)
 				)
+			if !u.api_token
+				u.update(api_token: Digest::SHA1.hexdigest("#{u.id}#{Time.now}"))
+			end
 		rescue NoMethodError
 			render json: {
-				err_mssg: "Parametro de acceso correo_electronico erroneo o no registrado",
+				err_mssg: "Parametro de acceso login erroneo o no registrado",
 				success_mssg: ""
 				}, status: 	:bad_request
 		rescue ActionController::ParameterMissing
@@ -48,8 +51,6 @@ class GeneralController < ApplicationController
 		  			}, status: 	:unauthorized
 		  	else
 		  		session[:id_usuario_actual]=u.id
-		  		if u.api_token.nil?
-		  			u.update(api_token: Digest::SHA1.hexdigest("#{u.id}#{Time.now}"))
 		  		render json: {
 		  			err_mssg: "",
 		  			success_mssg: "OK",

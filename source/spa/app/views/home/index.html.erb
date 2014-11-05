@@ -36,9 +36,11 @@
 					<ul class="right">
 					
 					<li>
-						<a href="#" ng-if="!usuario"data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
-						<a href="#" ng-if="usuario" class="alert button">Bienvenido, {{ usuario.nombre }}</a>
-
+						<%if !cookies[:nombre]%>
+						<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button"><%= cookies[:nombre]%>Iniciar Sesi&oacute;n</a>
+						<%else%>
+						<a href="#"  class="alert button">Bienvenido, <%= cookies[:nombre]%></a>
+						<%end%>
 					</li> 
 					<li class="has-dropdown"> 
 						<a href="#"><i class="fa fa-plus fa-lg"></i></a> 
