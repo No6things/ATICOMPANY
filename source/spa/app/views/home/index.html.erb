@@ -17,6 +17,7 @@
 	</head>
 
 	<body ng-app="spa" class="colored-body">
+
 	<div class="row">
 		<div class="large-12">
 			<nav class="top-bar" data-topbar role="navigation"> 
@@ -42,7 +43,9 @@
 						<a href="#"  class="alert button">Bienvenido, <%= cookies[:nombre]%></a>
 						<%end%>
 					</li> 
+
 					<li class="has-dropdown"> 
+						
 						<a href="#"><i class="fa fa-plus fa-lg"></i></a> 
 						<ul class="dropdown">
 						<%if !cookies[:api_token]%>

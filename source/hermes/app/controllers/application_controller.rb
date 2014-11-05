@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
   	def cors_preflight_check
 
   		if request.headers["HTTP_ORIGIN"]     
-  			puts 'hohohohohoh///////////////////////////////////////////////////////////////////////////'
 		    headers['Access-Control-Allow-Origin'] = 'http://localhost:3001'
 			headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, PATCH, GET, OPTIONS, HEAD'
 			headers['Access-Control-Request-Method'] = '*'

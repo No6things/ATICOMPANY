@@ -41,18 +41,19 @@ app.controller("loginController", ['$scope', '$rootScope', '$http', "$window",fu
       login: $scope.correo,
       passwd: $scope.contrasena
     };
+    
   	$http.post(remoteDomain+"login",usuario).success( function(response) {
-  												$rootScope.usuario= response.data;
-                          $scope.correo='';
-                          $scope.contrasena='';
-                          setCookie('nombre',$rootScope.usuario.nombre,0.5);
-                          setCookie('tipo',$rootScope.usuario.tipo_usuario.abreviacion,0.5);
-                          setCookie('api_token', $rootScope.usuario.api_token,0.5);
-                          $window.location=$window.location.pathname;
-  											})
-  											.error(function(response) {
-      											console.log(response);
-  											});
+			$rootScope.usuario= response.data;
+      $scope.correo='';
+      $scope.contrasena='';
+      setCookie('nombre',$rootScope.usuario.nombre,0.5);
+      setCookie('tipo',$rootScope.usuario.tipo_usuario.abreviacion,0.5);
+      setCookie('api_token', $rootScope.usuario.api_token,0.5);
+      $window.location=$window.location.pathname;
+		})
+		.error(function(response) {
+				console.log(response);
+		});
   };
 }]);
 
