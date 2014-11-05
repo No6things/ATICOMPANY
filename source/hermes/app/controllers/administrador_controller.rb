@@ -1,7 +1,7 @@
 class AdministradorController < ApplicationController
 before_filter :check_api_token
 
-	# Actualizar informacion de tarifas de envio de paquetes
+	# Actualizar informacion de tarifas de envio de paquetes 
 	def actualizar_tarifas
 		begin
 			if request.headers.key?("enterprise-token")
