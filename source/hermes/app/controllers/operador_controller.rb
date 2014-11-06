@@ -464,7 +464,6 @@ before_filter :check_api_token
 				:numero_guia,
 				:email
 			)
-			
 			if prms.size != 1
 				raise "Numero de parametros invalidos, solo estan permitidos uno de los siguientes: numero_guia ó email"
 			end

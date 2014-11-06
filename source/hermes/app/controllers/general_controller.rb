@@ -49,8 +49,6 @@ class GeneralController < ApplicationController
 		  			success_mssg: ""
 		  			}, status: 	:unauthorized
 		  	else
-		  		session[:id_usuario_actual]=u.id
-		  		puts session[:id_usuario_actual]
 		  		render json: {
 		  			err_mssg: "",
 		  			success_mssg: "OK",
@@ -81,9 +79,16 @@ class GeneralController < ApplicationController
 =end
 	def salir
 		begin		
-			puts session[:id_usuario_actual]	
-			if session.key?:id_usuario_actual
-				reset_session
+			if cookies.key?:api_token
+				cookies.delete(:api_token)
+				if (cookies.key?:nombre) 
+					cookies.delete(:nombre)
+				end
+				if (cookies.key?:tipo)
+					cookies.delete(:tipo)
+				end
+
+
 				render json: {
 					err_mssg:"",
 					success_msg: "Sesion cerrada exitosamente"

@@ -6,12 +6,6 @@ $(function(){
 	    'enterprise-token': $('meta[name="enterprise_token"]').attr('content')
 	  }
 	});
-
-	/*$.get( "/enterprise_data", function( r ) {		
-	  $("#eporc").html(r.data.porcentaje_tarifa);
-	  $("#econst").html(r.data.constante_tarifa);	  
-	});*/
-	
 	
 
 	$(".register-form").on('submit', function(event) {
@@ -164,40 +158,7 @@ $(function(){
 	 	});
 
 	});
-/*
-	$(".paquete-form").on('submit', function(event) {		
-	 	event.preventDefault();
-	  	event.stopImmediatePropagation();	
-	  	
-		$.ajax({
-			type: 'POST',
-			url: '/create',
-			data: {
-			'agencia': $('#newp_agencia').val(), 
-			'alto': $('#newp_alto').val(), 
-			'ancho':  $('#newp_ancho').val(), 
-			'profundidad': $('#newp_profundidad').val(), 
-			'peso': $('#newp_peso').val(), 
-			'valor': $('#newp_valor').val(), 
-			'costo': $('#newp_costo').val(), 
-			'emisor': $('#newp_origen').val(), 
-			'receptor': $('#newp_destino').val(), 
-			'descripcion': $('#newp_descripcion').val(), 
-			},			
-			success: function(server_data) {
-				$('#modal_notificacion .notification-content').html(server_data["success_mssg"]);
-				$('#modal_notificacion').foundation('reveal','open');
-			},
-			error: function(xhr, textStatus, errorThrown) {
-				console.log("error")
-				$('#modal_notificacion .notification-content').html(xhr.responseJSON.err_mssg);
-				$('#modal_notificacion').foundation('reveal','open');
-			}
-		});
-		$('#modal_notificacion .notification-content').html('');
-		$(this).trigger("reset");
-	});
-*/
+
 	$('.keyup_target').keyup(function(){
 		var costo = 0;
 		var alto =$('#newp_alto').val();
@@ -231,32 +192,5 @@ $(function(){
 			$('#newp_costo').val(0);
 		}		
 	});
-
-	$(".calculadora-form").on('submit', function(event) {
-	 	event.preventDefault();
-	  	event.stopImmediatePropagation();
-
-		$.ajax({
-			type: 'POST',
-			url: '/enterprise',
-			data: {			
-			'ancho': $("#anchop").val(),	
-			'alto': $("#altop").val(),
-			'peso': $("#pesop").val(),
-			'valor': $("#valorp").val(),
-			'profundidad': $("#profundidadp").val(),
-			},			
-			success: function(server_data) {
-				$('#modal_notificacion .notification-content').html("El Costo estimado a pagar por tu producto es de  "+server_data.costo+"  Bsf");
-				$('#modal_notificacion').foundation('reveal','open');
-
-			},
-			fail: function(xhr, textStatus, errorThrown) {
-				console.log("error")
-				$('#modal_notificacion .notification-content').html(xhr.responseJSON.err_mssg);
-				$('#modal_notificacion').foundation('reveal','open');
-			}
-		});
-	});	
 
 });
