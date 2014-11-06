@@ -33,28 +33,28 @@
 					<td class="large-2 columns">
 						<span 
 						id = "paquete_{{paquete.paquete.id}}"
-						ng-show="paquete.tipo_estado.abreviacion === 'R'"
+						ng-if="paquete.tipo_estado.abreviacion === 'R'"
 						class="label alert small">
 						Recibido
 						</span>
 
 						<span 
 						id = "paquete_{{paquete.paquete.id}}"
-						ng-show="paquete.tipo_estado.abreviacion === 'OT'"
+						ng-if="paquete.tipo_estado.abreviacion === 'OT'"
 						class="label warning small">
 						En Transito
 						</span>
 
 						<span 
 						id = "paquete_{{paquete.paquete.id}}"
-						ng-show="paquete.tipo_estado.abreviacion === 'OA'"
+						ng-if="paquete.tipo_estado.abreviacion === 'OA'"
 						class="label warning small">
 						En Agencia
 						</span>
 
 						<span 
 						id = "paquete_{{paquete.paquete.id}}"
-						ng-show="paquete.tipo_estado.abreviacion === 'D'"
+						ng-if="paquete.tipo_estado.abreviacion === 'D'"
 						class="label success small">
 						Entregado
 						</span>
