@@ -22,7 +22,8 @@ module Hermes
 
         config.assets.paths << Rails.root.join("app", "assets", "font-awesome","fonts")
         config.assets.paths << Rails.root.join("app", "assets", "font-awesome","css")
-        config.assets.paths << Rails.root.join("app", "assets", "font-awesome")        
+        config.assets.paths << Rails.root.join("app", "assets", "font-awesome")
         config.assets.paths << Rails.root.join("app", "assets", "fonts")
+                
     end
 end

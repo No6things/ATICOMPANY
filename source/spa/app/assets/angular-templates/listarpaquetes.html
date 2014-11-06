@@ -1,0 +1,78 @@
+<div ng-controller="ModalListarPaqueteController">
+	<div class="modal-header row custom-modal-header slogan-u">
+		<h4 class="notification-tittle">Paquetes Registrados</h4>
+	  	<a class="close-reveal-modal" ng-click="cancel()">&#215;</a>
+	</div>
+	  
+	<div class="modal-content row extra-padding-row">
+		<div class="large-12 small-12 columns">
+			<table class="large-12 small-12 columns">
+				<tbody>
+					<tr ng-repeat="paquete in paquetes" class="row">
+					
+					<td class="large-2 columns">
+						<strong>Número Guía: </strong>
+						{{paquete.paquete.numero_guia}}
+					</td>
+
+					<td class="large-2 columns">
+						<strong>Fecha Modificación de estado: </strong>
+						{{paquete.fecha_arribo | date}}
+					</td>
+					
+					<td class="large-2 columns">
+						<strong>Emisor: </strong>						
+						{{paquete.paquete.emisor.correo_electronico}}
+					</td>
+					
+					<td class="large-2 columns">
+						<strong>Receptor: </strong>
+						{{paquete.paquete.receptor.correo_electronico}}
+					</td>
+					
+					<td class="large-2 columns">
+						<span 
+						id = "paquete_{{paquete.paquete.id}}"
+						ng-show="paquete.tipo_estado.abreviacion === 'R'"
+						class="label alert small">
+						Recibido
+						</span>
+
+						<span 
+						id = "paquete_{{paquete.paquete.id}}"
+						ng-show="paquete.tipo_estado.abreviacion === 'OT'"
+						class="label warning small">
+						En Transito
+						</span>
+
+						<span 
+						id = "paquete_{{paquete.paquete.id}}"
+						ng-show="paquete.tipo_estado.abreviacion === 'OA'"
+						class="label warning small">
+						En Agencia
+						</span>
+
+						<span 
+						id = "paquete_{{paquete.paquete.id}}"
+						ng-show="paquete.tipo_estado.abreviacion === 'D'"
+						class="label success small">
+						Entregado
+						</span>
+					</td>
+					
+					<td class="large-2 columns" >
+						<button 
+						id = "promover_{{paquete.paquete.id}}" 
+						ng-hide="paquete.tipo_estado.abreviacion === 'D'"
+						ng-click="promoverPaquete(paquete.paquete.id, paquete.agencia.id)" 
+						class="default tiny round" 
+						style="float: right;">
+						<i class="fa fa-check-circle fa-2x"></i>&nbsp;&nbsp;&nbsp;Promover</button>
+					</td>				
+					</tr>
+				</tbody>
+			</table>
+		</div>	  
+	</div>
+	<div class="modal-footer row notification-footer"></div>
+</div>

@@ -49,6 +49,7 @@ class GeneralController < ApplicationController
 		  			success_mssg: ""
 		  			}, status: 	:unauthorized
 		  	else
+				cookies[:dix]='212'
 		  		render json: {
 		  			err_mssg: "",
 		  			success_mssg: "OK",

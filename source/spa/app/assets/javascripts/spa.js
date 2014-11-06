@@ -4,6 +4,7 @@
       return (!!input) ? input.replace(/([^\W_]+[^\s-]*) */g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) : '';  
   }
 
+
   function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -27,10 +28,10 @@
   }
 
 
-  var app = angular.module("spa", ['ngSanitize', 'ngCookies']);
+  var app = angular.module("spa", ['ngSanitize', 'ngCookies', 'funciones-operadores']);
   var remoteDomain = "http://localhost:3000/";
 
-  app.config(function($httpProvider) {
+app.config(function($httpProvider) {
       $httpProvider.defaults.withCredentials = true;
       //Add the header used to identify Hermes SPA app
       $httpProvider.defaults.headers.common= {'enterprise-token': 1};
@@ -49,6 +50,9 @@ app.controller("loginController", ['$scope', '$rootScope', '$http', "$window", '
     
   	$http.post(remoteDomain+"login",usuario).success( function(response) {
 			$rootScope.usuario= response.data;
+
+      console.log($rootScope.usuario);
+      
       $scope.correo='';
       $scope.contrasena='';
       $cookies.nombre=$rootScope.usuario.nombre;
@@ -62,7 +66,7 @@ app.controller("loginController", ['$scope', '$rootScope', '$http', "$window", '
   };
 }]);
 
-app.controller("logoutController", ['$scope', '$http', '$window', '$cookies',function($scope, $http, $window, $cookies){
+app.controller("logoutController", ['$scope', '$http', '$window',function($scope, $http, $window){
   $scope.logout= function(){
     //$http.defaults.headers.delete = {'api-token': getCookie('api_token')};
     $http.delete(remoteDomain+"logout").success( function(response) {
