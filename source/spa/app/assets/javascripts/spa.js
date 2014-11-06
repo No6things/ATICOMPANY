@@ -45,7 +45,6 @@ app.controller("loginController", ['$scope', '$rootScope', '$http', "$window", '
 
 app.controller("logoutController", ['$scope', '$http', '$window',function($scope, $http, $window){
   $scope.logout= function(){
-    //$http.defaults.headers.delete = {'api-token': getCookie('api_token')};
     $http.delete(remoteDomain+"logout").success( function(response) {
                           $window.location=$window.location.pathname;
                         })
@@ -59,9 +58,10 @@ app.controller("paqueteController", ['$scope', '$rootScope', '$http', '$window',
   $scope.search= function(){
     if ($scope.numero_guia!=''){
 
-      $http.defaults.headers.get= {'api-token': getCookie('api_token')};
+      $http.defaults.headers.get= {'api-token': $cookies.api_token};
       $http.get(remoteDomain+"operador/paquete/buscar?numero_guia="+$scope.numero_guia).success( function(response) {
                             $rootScope.resultado_busqueda=response.data;
+                            $scope.numero_guia='';
                             $rootScope.tableHtml='<tr><th>Numero de Guia:</th> <td>'+response.data.paquete.numero_guia+'</td></tr>'+
                                                  '<tr><th>Agencia:</th> <td>'+response.data.agencia.nombre+'</td></tr>'+
                                                  '<tr><th>Fecha de Arribo:</th> <td>'+response.data.fecha_arribo+'</td></tr>'+
@@ -74,7 +74,6 @@ app.controller("paqueteController", ['$scope', '$rootScope', '$http', '$window',
                                                  '<tr><th>Profundidad:</th> <td>'+response.data.paquete.profundidad+'</td></tr>'+
                                                  '<tr><th>Peso:</th> <td>'+response.data.paquete.peso+'</td></tr>'+
                                                  '<tr><th>Costo:</th> <td>'+response.data.paquete.costo+'</td></tr>';
-
                           })
                           .error(function(response) {
                               $scope.numero_guia='';
