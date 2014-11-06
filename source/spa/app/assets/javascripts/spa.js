@@ -34,6 +34,7 @@ app.controller("loginController", ['$scope', '$rootScope', '$http', "$window", '
       $cookies.nombre=$rootScope.usuario.nombre;
       $cookies.tipo=$rootScope.usuario.tipo_usuario.abreviacion;
       $cookies.api_token=$rootScope.usuario.api_token;
+      $cookies.email = $rootScope.usuario.correo_electronico;
       $window.location=$window.location.pathname;
 		})
 		.error(function(response) {
