@@ -39,7 +39,8 @@
 
 					<!-- Parte Derecha -->
 					<ul class="right">
-					
+
+
 						<!-- Barra de Busqueda -->
 						<%if cookies[:api_token]%>
 							<li class="has-form">
@@ -92,11 +93,30 @@
 									</li>
 				
 									<!-- Opcion de Listar Paquete -->
+									<li 
+											ng-controller="ModalListarPaqueteController">
+											<a
+											href 
+											id="listar_paquete"  
+											class="alert button"
+											ng-click="open()">
+												Paquetes
+												&nbsp;
+												<i class="fa fa-archive fa-lg"></i>				
+											</a>
+									</li>
+
+									<!-- Opcion de cambiar contrase;a -->
 									<li>
-										<a id="listar_paquete"  class="alert button" data-reveal-id="modal_paquete" >
-											Paquetes
+										<a 
+										id="cambiar_pass"
+										class="alert button" 
+										href 
+										data-reveal-id="modal_cambiar_contrasena" 
+										>
+											Cambiar Contraseña
 											&nbsp;
-											<i class="fa fa-archive fa-lg"></i>				
+											<i class="fa fa-key fa-lg"></i>
 										</a>
 									</li>
 

@@ -49,7 +49,7 @@ class GeneralController < ApplicationController
 		  			success_mssg: ""
 		  			}, status: 	:unauthorized
 		  	else
-				cookies[:dix]='212'
+				cookies[:id]=u.id
 		  		render json: {
 		  			err_mssg: "",
 		  			success_mssg: "OK",
@@ -80,8 +80,8 @@ class GeneralController < ApplicationController
 =end
 	def salir
 		begin		
-			if cookies.key?:api_token
-				cookies.delete(:api_token)
+			if cookies.key?:id
+				cookies.delete(:id)
 				if (cookies.key?:nombre) 
 					cookies.delete(:nombre)
 				end
