@@ -9,6 +9,7 @@
 	var remoteDomain = "http://localhost:3000/";
 
 	app.config(function($httpProvider) {
+     	$httpProvider.defaults.withCredentials = true;
 	    $httpProvider.defaults.headers.common= {'enterprise-token': 1};
 	    $httpProvider.defaults.useXDomain = true;
 	    delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -57,7 +58,7 @@
 				$http(
 					{
 						method: 'GET',
-						url: remoteDomain+'/operador/paquete/listar?email='+email					
+						url: remoteDomain+'operador/paquete/listar?email='+email					
 					}).success(function(d){											
 						$scope.paquetes = d.data.paquetes;
 						console.log($scope.paquetes);

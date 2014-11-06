@@ -82,6 +82,9 @@ class GeneralController < ApplicationController
 		begin		
 			if cookies.key?:id
 				cookies.delete(:id)
+				if (cookies.key?:api_token) 
+					cookies.delete(:api_token)
+				end
 				if (cookies.key?:nombre) 
 					cookies.delete(:nombre)
 				end

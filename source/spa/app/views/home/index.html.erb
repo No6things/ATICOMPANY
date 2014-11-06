@@ -42,7 +42,7 @@
 
 
 						<!-- Barra de Busqueda -->
-						<%if cookies[:api_token]%>
+						<%if cookies[:id]%>
 							<li class="has-form">
 							  <div class="row collapse">
 							    <div class="large-9 small-9 columns">
@@ -57,11 +57,10 @@
 
 						<li>
 							<!-- Opcion de Login -->
-							<%if !cookies[:api_token]%>
-								<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button"><%= cookies[:nombre]%>Iniciar Sesi&oacute;n</a>
-
+							<%if !cookies[:id]%>
+								<a href="#" data-reveal-id="modal_inicio_sesion" class="alert button">Iniciar Sesi&oacute;n</a>
 							<!-- Mensaje de Bienvenida -->
-							<%else%>
+							<%elsif cookies[:nombre]%>
 								<a href="#"  class="alert button">Bienvenido, <%= cookies[:nombre]%></a>
 							<%end%>
 						</li> 
@@ -467,7 +466,7 @@
 			  	
 			  	<input class="columns" ng-model="costo" type="text" placeholder="El costo de env&iacute;o es:" name="costo" value="0" id="newp_costo" disabled />
 
-	  		  <input class="" value="Submit" type="submit"/>
+	  		  <input class="hidden-submit-button" value="Submit" type="submit"/>
 
 	  		  <span class="alert round label">Presione Enter para Enviar</span>
 
